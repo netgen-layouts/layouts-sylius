@@ -1,0 +1,39 @@
+{
+    "name": "netgen/block-manager-sylius",
+    "description": "Netgen Block Manager & Sylius eCommerce integration",
+    "authors": [
+        {
+            "name": "Netgen",
+            "homepage": "http://www.netgenlabs.com"
+        }
+    ],
+    "require": {
+        "netgen/block-manager": "^1.0@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.5",
+        "symfony/phpunit-bridge": "^2.8|^3.0",
+        "matthiasnoback/symfony-dependency-injection-test": "^1.0",
+        "matthiasnoback/symfony-config-test": "^2.0",
+        "sylius/core": "^0.19|^1.0"
+    },
+    "repositories": [
+        { "type": "composer", "url": "https://packagist.netgen.biz" }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Netgen\\BlockManager\\Sylius\\": "lib/",
+            "Netgen\\Bundle\\SyliusBlockManagerBundle\\": "bundle/"
+        },
+        "exclude-from-classmap": [
+            "**/Tests/"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

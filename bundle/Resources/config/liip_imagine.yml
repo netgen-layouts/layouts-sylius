@@ -1,0 +1,5 @@
+filter_sets:
+    ngbm_sylius_product_app_preview:
+        filters:
+            thumbnail: { size: [160, 90], mode: outbound }
+            strip: ~
