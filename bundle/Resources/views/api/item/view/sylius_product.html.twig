@@ -2,9 +2,7 @@
 
 {% if product.image is not null %}
     <div class="image">
-        {% set path = product.image.path|imagine_filter('ngbm_sylius_product_app_preview') %}
-
-        <img src="{{ path }}" />
+        <img src="{{ product.image.path|imagine_filter('ngbm_sylius_product_app_preview') }}" />
     </div>
 {% endif %}
 
