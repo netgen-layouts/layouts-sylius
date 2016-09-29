@@ -1,8 +1,15 @@
 {% set product = item.object %}
+{% set image_path = null %}
 
-{% if product.image is not null %}
+{% if product.imageByCode('thumbnail') is not null %}
+    {% set image_path = product.imageByCode('thumbnail').path %}
+{% elseif product.images.first %}
+    {% set image_path = product.images.first.path %}
+{% endif %}
+
+{% if image_path is not null %}
     <div class="image">
-        <img src="{{ product.image.path|imagine_filter('ngbm_sylius_product_app_preview') }}" />
+        <img src="{{ image_path|imagine_filter('ngbm_sylius_product_app_preview') }}" />
     </div>
 {% endif %}
 
