@@ -2,7 +2,7 @@
 
 namespace Netgen\BlockManager\Sylius\Item\ValueLoader;
 
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Netgen\BlockManager\Exception\InvalidItemException;
 use Netgen\BlockManager\Item\ValueLoaderInterface;
 use Exception;
@@ -17,7 +17,7 @@ class ProductValueLoader implements ValueLoaderInterface
     /**
      * Constructor.
      *
-     * @param \Sylius\Component\Core\Repository\ProductRepositoryInterface $productRepository
+     * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface $productRepository
      */
     public function __construct(ProductRepositoryInterface $productRepository)
     {
