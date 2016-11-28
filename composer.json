@@ -8,14 +8,15 @@
         }
     ],
     "require": {
-        "netgen/block-manager": "^1.0@dev"
+        "netgen/block-manager": "^1.0@dev",
+        "sylius/sylius": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.5",
         "symfony/phpunit-bridge": "^2.8|^3.0",
         "matthiasnoback/symfony-dependency-injection-test": "^1.0",
         "matthiasnoback/symfony-config-test": "^2.0",
-        "sylius/sylius": "^1.0"
+        "franzl/studio": "*"
     },
     "repositories": [
         { "type": "composer", "url": "https://packagist.netgen.biz" }
