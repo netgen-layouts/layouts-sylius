@@ -30,8 +30,8 @@
             <directory suffix=".php">bundle</directory>
             <exclude>
                 <directory>lib/Tests</directory>
-                <directory>bundles/*Bundle/Tests</directory>
-                <directory>bundles/*Bundle/Resources</directory>
+                <directory>bundle/Tests</directory>
+                <directory>bundle/Resources</directory>
             </exclude>
         </whitelist>
     </filter>
