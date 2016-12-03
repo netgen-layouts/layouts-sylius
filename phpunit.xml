@@ -17,10 +17,10 @@
 >
     <testsuites>
         <testsuite name="Netgen\BlockManager\Sylius">
-            <directory>lib/Tests</directory>
+            <directory>tests/lib</directory>
         </testsuite>
         <testsuite name="Netgen\Bundle\SyliusBlockManagerBundle">
-            <directory>bundle/Tests</directory>
+            <directory>tests/bundle</directory>
         </testsuite>
     </testsuites>
 
@@ -29,8 +29,6 @@
             <directory suffix=".php">lib</directory>
             <directory suffix=".php">bundle</directory>
             <exclude>
-                <directory>lib/Tests</directory>
-                <directory>bundle/Tests</directory>
                 <directory>bundle/Resources</directory>
             </exclude>
         </whitelist>

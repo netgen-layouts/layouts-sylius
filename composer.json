@@ -25,10 +25,13 @@
         "psr-4": {
             "Netgen\\BlockManager\\Sylius\\": "lib/",
             "Netgen\\Bundle\\SyliusBlockManagerBundle\\": "bundle/"
-        },
-        "exclude-from-classmap": [
-            "**/Tests/"
-        ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Netgen\\BlockManager\\Sylius\\Tests\\": "tests/lib/",
+            "Netgen\\Bundle\\SyliusBlockManagerBundle\\Tests\\": "tests/bundle/"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
