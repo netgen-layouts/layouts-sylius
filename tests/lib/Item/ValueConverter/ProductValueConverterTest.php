@@ -4,9 +4,9 @@ namespace Netgen\BlockManager\Sylius\Tests\Item\ValueConverter;
 
 use Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter;
 use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product as ProductStub;
+use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Model\Product;
 use Sylius\Component\Taxonomy\Model\Taxon;
-use PHPUnit\Framework\TestCase;
 
 class ProductValueConverterTest extends TestCase
 {

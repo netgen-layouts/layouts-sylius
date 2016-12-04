@@ -2,10 +2,10 @@
 
 namespace Netgen\BlockManager\Sylius\Item\ValueLoader;
 
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
+use Exception;
 use Netgen\BlockManager\Exception\InvalidItemException;
 use Netgen\BlockManager\Item\ValueLoaderInterface;
-use Exception;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 class ProductValueLoader implements ValueLoaderInterface
 {

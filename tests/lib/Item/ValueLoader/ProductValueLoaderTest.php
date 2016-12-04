@@ -2,11 +2,11 @@
 
 namespace Netgen\BlockManager\Sylius\Tests\Item\ValueLoader;
 
-use Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader;
 use Netgen\BlockManager\Exception\InvalidItemException;
+use Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader;
 use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 class ProductValueLoaderTest extends TestCase
 {

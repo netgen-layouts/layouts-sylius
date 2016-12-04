@@ -4,8 +4,8 @@ namespace Netgen\BlockManager\Sylius\Tests\Item\ValueUrlBuilder;
 
 use Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder;
 use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
-use Symfony\Component\Routing\RouterInterface;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Routing\RouterInterface;
 
 class ProductValueUrlBuilderTest extends TestCase
 {

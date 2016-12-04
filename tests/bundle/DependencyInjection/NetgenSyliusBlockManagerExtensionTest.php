@@ -2,23 +2,12 @@
 
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\DependencyInjection;
 
+use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 use Netgen\Bundle\BlockManagerBundle\DependencyInjection\NetgenBlockManagerExtension;
 use Netgen\Bundle\SyliusBlockManagerBundle\DependencyInjection\NetgenSyliusBlockManagerExtension;
-use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 
 class NetgenSyliusBlockManagerExtensionTest extends AbstractExtensionTestCase
 {
-    /**
-     * Return an array of container extensions that need to be registered for
-     * each test (usually just the container extension you are testing).
-     *
-     * @return \Symfony\Component\DependencyInjection\Extension\ExtensionInterface[]
-     */
-    protected function getContainerExtensions()
-    {
-        return array(new NetgenSyliusBlockManagerExtension());
-    }
-
     /**
      * We test for existence of one service from each of the config files.
      *
@@ -54,5 +43,16 @@ class NetgenSyliusBlockManagerExtensionTest extends AbstractExtensionTestCase
         $this->assertArrayHasKey('item_view', $config['view']);
         $this->assertArrayHasKey('api', $config['view']['item_view']);
         $this->assertArrayHasKey('sylius_product', $config['view']['item_view']['api']);
+    }
+
+    /**
+     * Return an array of container extensions that need to be registered for
+     * each test (usually just the container extension you are testing).
+     *
+     * @return \Symfony\Component\DependencyInjection\Extension\ExtensionInterface[]
+     */
+    protected function getContainerExtensions()
+    {
+        return array(new NetgenSyliusBlockManagerExtension());
     }
 }

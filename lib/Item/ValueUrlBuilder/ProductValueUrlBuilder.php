@@ -21,6 +21,7 @@ class ProductValueUrlBuilder implements ValueUrlBuilderInterface
     {
         $this->router = $router;
     }
+
     /**
      * Returns the value type for which this URL builder builds the URL.
      *
