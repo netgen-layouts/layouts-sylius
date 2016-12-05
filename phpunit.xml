@@ -29,6 +29,7 @@
             <directory suffix=".php">lib</directory>
             <directory suffix=".php">bundle</directory>
             <exclude>
+                <file>bundle/NetgenSyliusBlockManagerBundle.php</file>
                 <directory>bundle/Resources</directory>
             </exclude>
         </whitelist>
