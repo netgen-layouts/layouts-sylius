@@ -49,7 +49,9 @@ class ProductValueLoader implements ValueLoaderInterface
             return $this->productRepository->find($id);
         } catch (Exception $e) {
             throw new InvalidItemException(
-                sprintf('Value with ID "%s" could not be loaded.', $id)
+                sprintf('Product with ID %s could not be loaded.', $id),
+                0,
+                $e
             );
         }
     }

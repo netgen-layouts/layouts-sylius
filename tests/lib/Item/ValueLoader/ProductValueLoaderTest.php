@@ -47,6 +47,7 @@ class ProductValueLoaderTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
      * @expectedException \Netgen\BlockManager\Exception\InvalidItemException
+     * @expectedExceptionMessage Product with ID 42 could not be loaded.
      */
     public function testLoadThrowsInvalidItemException()
     {
