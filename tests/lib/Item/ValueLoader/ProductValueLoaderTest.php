@@ -59,12 +59,4 @@ class ProductValueLoaderTest extends TestCase
 
         $this->valueLoader->load(42);
     }
-
-    /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::getValueType
-     */
-    public function testGetValueType()
-    {
-        $this->assertEquals('sylius_product', $this->valueLoader->getValueType());
-    }
 }

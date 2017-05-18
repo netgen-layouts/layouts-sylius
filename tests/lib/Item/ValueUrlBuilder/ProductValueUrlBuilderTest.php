@@ -27,15 +27,6 @@ class ProductValueUrlBuilderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder::__construct
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder::getValueType
-     */
-    public function testGetValueType()
-    {
-        $this->assertEquals('sylius_product', $this->urlBuilder->getValueType());
-    }
-
-    /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder::getUrl
      */
     public function testGetUrl()
