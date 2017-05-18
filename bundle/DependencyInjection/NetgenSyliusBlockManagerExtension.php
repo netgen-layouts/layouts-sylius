@@ -39,6 +39,7 @@ class NetgenSyliusBlockManagerExtension extends Extension implements PrependExte
     {
         $prependConfigs = array(
             'liip_imagine.yml' => 'liip_imagine',
+            'value_types.yml' => 'netgen_block_manager',
             'view/item_view.yml' => 'netgen_block_manager',
         );
 

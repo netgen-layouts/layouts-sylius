@@ -43,6 +43,9 @@ class NetgenSyliusBlockManagerExtensionTest extends AbstractExtensionTestCase
         $this->assertArrayHasKey('item_view', $config['view']);
         $this->assertArrayHasKey('api', $config['view']['item_view']);
         $this->assertArrayHasKey('sylius_product', $config['view']['item_view']['api']);
+
+        $this->assertArrayHasKey('value_types', $config['items']);
+        $this->assertArrayHasKey('sylius_product', $config['items']['value_types']);
     }
 
     /**
