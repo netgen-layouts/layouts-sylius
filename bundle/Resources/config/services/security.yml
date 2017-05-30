@@ -1,0 +1,6 @@
+services:
+    netgen_block_manager.sylius.security.admin_access_voter:
+        class: Netgen\BlockManager\Sylius\Security\Authorization\Voter\AdminAccessVoter
+        public: false
+        tags:
+            - { name: security.voter }
