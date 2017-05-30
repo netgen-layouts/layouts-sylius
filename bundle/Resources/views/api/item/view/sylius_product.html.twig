@@ -1,8 +1,8 @@
 {% set product = item.object %}
 {% set image_path = null %}
 
-{% if product.imageByCode('thumbnail') is not null %}
-    {% set image_path = product.imageByCode('thumbnail').path %}
+{% if product.imagesByType('thumbnail') is not empty %}
+    {% set image_path = product.imagesByType('thumbnail').first.path %}
 {% elseif product.images.first %}
     {% set image_path = product.images.first.path %}
 {% endif %}
