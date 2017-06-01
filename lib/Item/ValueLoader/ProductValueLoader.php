@@ -3,8 +3,9 @@
 namespace Netgen\BlockManager\Sylius\Item\ValueLoader;
 
 use Exception;
-use Netgen\BlockManager\Exception\InvalidItemException;
+use Netgen\BlockManager\Exception\Item\ItemException;
 use Netgen\BlockManager\Item\ValueLoaderInterface;
+use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 class ProductValueLoader implements ValueLoaderInterface
@@ -29,20 +30,22 @@ class ProductValueLoader implements ValueLoaderInterface
      *
      * @param int|string $id
      *
-     * @throws \Netgen\BlockManager\Exception\InvalidItemException If value cannot be loaded
+     * @throws \Netgen\BlockManager\Exception\Item\ItemException If value cannot be loaded
      *
      * @return mixed
      */
     public function load($id)
     {
         try {
-            return $this->productRepository->find($id);
+            $product = $this->productRepository->find($id);
         } catch (Exception $e) {
-            throw new InvalidItemException(
-                sprintf('Product with ID %s could not be loaded.', $id),
-                0,
-                $e
-            );
+            throw ItemException::noValue($id);
         }
+
+        if (!$product instanceof ProductInterface) {
+            throw ItemException::noValue($id);
+        }
+
+        return $product;
     }
 }

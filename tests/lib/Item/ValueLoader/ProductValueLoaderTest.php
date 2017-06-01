@@ -2,7 +2,7 @@
 
 namespace Netgen\BlockManager\Sylius\Tests\Item\ValueLoader;
 
-use Netgen\BlockManager\Exception\InvalidItemException;
+use Exception;
 use Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader;
 use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\TestCase;
@@ -46,16 +46,32 @@ class ProductValueLoaderTest extends TestCase
 
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
-     * @expectedException \Netgen\BlockManager\Exception\InvalidItemException
-     * @expectedExceptionMessage Product with ID 42 could not be loaded.
+     * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
+     * @expectedExceptionMessage Value with ID 42 does not exist.
      */
-    public function testLoadThrowsInvalidItemException()
+    public function testLoadThrowsItemExceptionWithNoProduct()
     {
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
             ->with($this->equalTo(42))
-            ->will($this->throwException(new InvalidItemException()));
+            ->will($this->returnValue(null));
+
+        $this->valueLoader->load(42);
+    }
+
+    /**
+     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
+     * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
+     * @expectedExceptionMessage Value with ID 42 does not exist.
+     */
+    public function testLoadThrowsItemExceptionWithRepositoryException()
+    {
+        $this->productRepositoryMock
+            ->expects($this->any())
+            ->method('find')
+            ->with($this->equalTo(42))
+            ->will($this->throwException(new Exception()));
 
         $this->valueLoader->load(42);
     }
