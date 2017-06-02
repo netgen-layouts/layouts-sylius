@@ -1,0 +1,7 @@
+services:
+    netgen_block_manager.sylius.event_listener.admin.main_menu_builder:
+        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener
+        arguments:
+            - "@security.authorization_checker"
+        tags:
+            - { name: kernel.event_subscriber }

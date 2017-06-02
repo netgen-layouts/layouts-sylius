@@ -29,6 +29,7 @@ class NetgenSyliusBlockManagerExtension extends Extension implements PrependExte
 
         $loader->load('services/items.yml');
         $loader->load('services/security.yml');
+        $loader->load('services/event_listeners.yml');
     }
 
     /**
