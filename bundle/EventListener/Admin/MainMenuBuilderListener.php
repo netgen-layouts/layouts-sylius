@@ -60,26 +60,22 @@ class MainMenuBuilderListener implements EventSubscriberInterface
 
         $layouts = $menu
             ->addChild('nglayouts')
-            ->setLabel('sylius.menu.admin.main.nglayouts.header')
-        ;
+            ->setLabel('sylius.menu.admin.main.nglayouts.header');
 
         $layouts
             ->addChild('layout_resolver', array('route' => 'ngbm_admin_layout_resolver_index'))
             ->setLabel('sylius.menu.admin.main.nglayouts.layout_resolver')
-            ->setLabelAttribute('icon', 'random')
-        ;
+            ->setLabelAttribute('icon', 'random');
 
         $layouts
             ->addChild('layouts', array('route' => 'ngbm_admin_layouts_index'))
             ->setLabel('sylius.menu.admin.main.nglayouts.layouts')
-            ->setLabelAttribute('icon', 'newspaper')
-        ;
+            ->setLabelAttribute('icon', 'newspaper');
 
         $layouts
             ->addChild('shared_layouts', array('route' => 'ngbm_admin_shared_layouts_index'))
             ->setLabel('sylius.menu.admin.main.nglayouts.shared_layouts')
-            ->setLabelAttribute('icon', 'list layout')
-        ;
+            ->setLabelAttribute('icon', 'list layout');
 
         $menu->reorderChildren($menuOrder);
     }
