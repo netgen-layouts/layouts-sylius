@@ -6,6 +6,13 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    netgen_block_manager.sylius.event_listener.admin.set_page_layout:
+        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener
+        arguments:
+            - "%netgen_block_manager.sylius.admin.pagelayout%"
+        tags:
+            - { name: kernel.event_subscriber }
+
     netgen_block_manager.sylius.event_listener.shop.product_show:
         class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener
         arguments:

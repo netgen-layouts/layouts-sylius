@@ -1,8 +1,12 @@
 .idea/
+.sass-cache/
+.tmp/
 coverage/
+node_modules/
 vendor/
 composer.phar
 composer.lock
+grunt.lock
 phpunit.phar
 studio.json
 .php_cs.cache
