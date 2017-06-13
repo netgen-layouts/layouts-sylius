@@ -1,0 +1,13 @@
+services:
+    netgen_block_manager.sylius.templating.twig.extension.sylius:
+        class: Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension
+        tags:
+            - { name: twig.extension }
+
+    netgen_block_manager.sylius.templating.twig.runtime.sylius:
+        class: Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime
+        arguments:
+            - "@sylius.repository.product"
+        tags:
+            - { name: twig.runtime }
+            - { name: netgen_block_manager.twig.runtime }
