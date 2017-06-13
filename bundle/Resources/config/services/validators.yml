@@ -5,3 +5,10 @@ services:
             - "@sylius.repository.product"
         tags:
             - { name: validator.constraint_validator, alias: ngbm_sylius_product }
+
+    netgen_block_manager.validator.sylius_taxon:
+        class: Netgen\BlockManager\Sylius\Validator\TaxonValidator
+        arguments:
+            - "@sylius.repository.taxon"
+        tags:
+            - { name: validator.constraint_validator, alias: ngbm_sylius_taxon }

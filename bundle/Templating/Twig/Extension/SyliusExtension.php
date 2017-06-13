@@ -30,6 +30,10 @@ class SyliusExtension extends Twig_Extension
                 'ngbm_sylius_product_name',
                 array(SyliusRuntime::class, 'getProductName')
             ),
+            new Twig_SimpleFunction(
+                'ngbm_sylius_taxon_path',
+                array(SyliusRuntime::class, 'getTaxonPath')
+            ),
         );
     }
 }

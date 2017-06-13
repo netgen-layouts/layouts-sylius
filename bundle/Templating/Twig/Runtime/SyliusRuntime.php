@@ -4,6 +4,8 @@ namespace Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime;
 
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 class SyliusRuntime
 {
@@ -13,13 +15,22 @@ class SyliusRuntime
     protected $productRepository;
 
     /**
+     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
+     */
+    protected $taxonRepository;
+
+    /**
      * Constructor.
      *
      * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface $productRepository
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface $taxonRepository
      */
-    public function __construct(ProductRepositoryInterface $productRepository)
-    {
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        TaxonRepositoryInterface $taxonRepository
+    ) {
         $this->productRepository = $productRepository;
+        $this->taxonRepository = $taxonRepository;
     }
 
     /**
@@ -37,5 +48,29 @@ class SyliusRuntime
         }
 
         return $product->getName();
+    }
+
+    /**
+     * Returns the taxon path.
+     *
+     * @param int|string $taxonId
+     *
+     * @return string
+     */
+    public function getTaxonPath($taxonId)
+    {
+        $taxon = $this->taxonRepository->find($taxonId);
+        if (!$taxon instanceof TaxonInterface) {
+            return null;
+        }
+
+        $parts = array($taxon->getName());
+        while ($taxon->getParent() instanceof TaxonInterface) {
+            $taxon = $taxon->getParent();
+
+            $parts[] = $taxon->getName();
+        }
+
+        return array_reverse($parts);
     }
 }

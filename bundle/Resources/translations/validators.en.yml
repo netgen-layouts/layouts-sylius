@@ -1,1 +1,2 @@
 netgen_block_manager.sylius_product.product_not_found: 'Product with ID %productId% does not exist.'
+netgen_block_manager.sylius_taxon.taxon_not_found: 'Taxon with ID %taxonId% does not exist.'

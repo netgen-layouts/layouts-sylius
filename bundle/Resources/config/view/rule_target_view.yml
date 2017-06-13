@@ -5,3 +5,7 @@ view:
                 template: "@NetgenSyliusBlockManager/admin/layout_resolver/target/value/product.html.twig"
                 match:
                     rule_target\type: sylius_product
+            sylius_taxon:
+                template: "@NetgenSyliusBlockManager/admin/layout_resolver/target/value/taxon.html.twig"
+                match:
+                    rule_target\type: sylius_taxon

@@ -8,6 +8,7 @@ services:
         class: Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime
         arguments:
             - "@sylius.repository.product"
+            - "@sylius.repository.taxon"
         tags:
             - { name: twig.runtime }
             - { name: netgen_block_manager.twig.runtime }

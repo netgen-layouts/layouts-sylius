@@ -1,1 +1,2 @@
 layout_resolver.target.sylius_product: 'Sylius product'
+layout_resolver.target.sylius_taxon: 'Sylius taxon'
