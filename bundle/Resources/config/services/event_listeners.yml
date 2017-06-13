@@ -5,3 +5,10 @@ services:
             - "@security.authorization_checker"
         tags:
             - { name: kernel.event_subscriber }
+
+    netgen_block_manager.sylius.event_listener.shop.product_show:
+        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener
+        arguments:
+            - "@request_stack"
+        tags:
+            - { name: kernel.event_subscriber }
