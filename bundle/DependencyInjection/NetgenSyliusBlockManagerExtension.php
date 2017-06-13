@@ -30,6 +30,10 @@ class NetgenSyliusBlockManagerExtension extends Extension implements PrependExte
         $loader->load('services/items.yml');
         $loader->load('services/security.yml');
         $loader->load('services/event_listeners.yml');
+        $loader->load('services/layout_resolver.yml');
+        $loader->load('services/validators.yml');
+        $loader->load('services/templating.yml');
+        $loader->load('default_settings.yml');
     }
 
     /**
@@ -43,6 +47,7 @@ class NetgenSyliusBlockManagerExtension extends Extension implements PrependExte
             'liip_imagine.yml' => 'liip_imagine',
             'value_types.yml' => 'netgen_block_manager',
             'view/item_view.yml' => 'netgen_block_manager',
+            'view/rule_target_view.yml' => 'netgen_block_manager',
         );
 
         foreach ($prependConfigs as $configFile => $prependConfig) {
