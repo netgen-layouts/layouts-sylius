@@ -1,0 +1,7 @@
+services:
+    netgen_block_manager.validator.sylius_product:
+        class: Netgen\BlockManager\Sylius\Validator\ProductValidator
+        arguments:
+            - "@sylius.repository.product"
+        tags:
+            - { name: validator.constraint_validator, alias: ngbm_sylius_product }
