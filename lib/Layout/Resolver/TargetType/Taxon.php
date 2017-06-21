@@ -47,7 +47,7 @@ class Taxon implements TargetTypeInterface
     {
         $product = $request->attributes->get('ngbm_sylius_product');
         if (!$product instanceof ProductInterface) {
-            return false;
+            return null;
         }
 
         return array_map(
