@@ -27,6 +27,7 @@ class ProductValueUrlBuilderTest extends TestCase
     }
 
     /**
+     * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder::__construct
      * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder::getUrl
      */
     public function testGetUrl()
