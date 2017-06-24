@@ -43,16 +43,14 @@ class ProductShowListener implements EventSubscriberInterface
      */
     public function onProductShow(ResourceControllerEvent $event)
     {
-        $currentRequest = $this->requestStack->getCurrentRequest();
-        if (!$currentRequest instanceof Request) {
-            return;
-        }
-
         $product = $event->getSubject();
         if (!$product instanceof ProductInterface) {
             return;
         }
 
-        $currentRequest->attributes->set('ngbm_sylius_product', $product);
+        $currentRequest = $this->requestStack->getCurrentRequest();
+        if ($currentRequest instanceof Request) {
+            $currentRequest->attributes->set('ngbm_sylius_product', $product);
+        }
     }
 }
