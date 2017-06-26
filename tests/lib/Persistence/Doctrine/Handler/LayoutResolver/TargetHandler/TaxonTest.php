@@ -47,6 +47,6 @@ class TaxonTest extends AbstractTargetHandlerTest
      */
     protected function insertDatabaseFixtures($fixturesPath)
     {
-        parent::insertDatabaseFixtures(__DIR__ . '/../../../../../_fixtures');
+        parent::insertDatabaseFixtures(__DIR__ . '/../../../../../../_fixtures');
     }
 }
