@@ -1,11 +1,13 @@
 services:
     netgen_block_manager.item.value_converter.sylius_product:
         class: Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter
+        public: false
         tags:
             - { name: netgen_block_manager.item.value_converter }
 
     netgen_block_manager.item.value_loader.sylius_product:
         class: Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader
+        public: false
         arguments:
             - "@sylius.repository.product"
         tags:
@@ -13,6 +15,7 @@ services:
 
     netgen_block_manager.item.value_url_builder.sylius_product:
         class: Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder
+        public: false
         arguments:
             - "@router"
         tags:
