@@ -2,6 +2,7 @@
 
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
+use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
 use Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use PHPUnit\Framework\TestCase;
@@ -27,15 +28,17 @@ class ProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product::getFormOptions
+     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product::mapOptions
      */
-    public function testGetFormOptions()
+    public function testMapOptions()
     {
         $this->assertEquals(
             array(
                 'item_type' => 'sylius_product',
             ),
-            $this->mapper->getFormOptions()
+            $this->mapper->mapOptions(
+                $this->createMock(TargetTypeInterface::class)
+            )
         );
     }
 }

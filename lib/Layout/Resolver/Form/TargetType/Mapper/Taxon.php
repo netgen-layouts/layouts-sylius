@@ -3,6 +3,7 @@
 namespace Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper;
 
 use Netgen\BlockManager\Layout\Resolver\Form\TargetType\Mapper;
+use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 
 class Taxon extends Mapper
@@ -18,11 +19,13 @@ class Taxon extends Mapper
     }
 
     /**
-     * Returns the form options.
+     * Maps the form type options from provided target type.
+     *
+     * @param \Netgen\BlockManager\Layout\Resolver\TargetTypeInterface $targetType
      *
      * @return array
      */
-    public function getFormOptions()
+    public function mapOptions(TargetTypeInterface $targetType)
     {
         return array(
             'item_type' => 'sylius_taxon',

@@ -2,6 +2,7 @@
 
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
+use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
 use Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +28,7 @@ class TaxonTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon::getFormOptions
+     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon::mapOptions
      */
     public function testGetFormOptions()
     {
@@ -35,7 +36,9 @@ class TaxonTest extends TestCase
             array(
                 'item_type' => 'sylius_taxon',
             ),
-            $this->mapper->getFormOptions()
+            $this->mapper->mapOptions(
+                $this->createMock(TargetTypeInterface::class)
+            )
         );
     }
 }
