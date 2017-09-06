@@ -13,4 +13,3 @@ services:
             - "@sylius.repository.taxon"
         tags:
             - { name: twig.runtime }
-            - { name: netgen_block_manager.twig.runtime }
