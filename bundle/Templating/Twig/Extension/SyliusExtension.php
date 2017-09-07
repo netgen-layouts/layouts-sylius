@@ -3,10 +3,10 @@
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension;
 
 use Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime;
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class SyliusExtension extends Twig_Extension
+class SyliusExtension extends AbstractExtension
 {
     /**
      * Returns the name of the extension.
@@ -21,16 +21,16 @@ class SyliusExtension extends Twig_Extension
     /**
      * Returns a list of functions to add to the existing list.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction(
+            new TwigFunction(
                 'ngbm_sylius_product_name',
                 array(SyliusRuntime::class, 'getProductName')
             ),
-            new Twig_SimpleFunction(
+            new TwigFunction(
                 'ngbm_sylius_taxon_path',
                 array(SyliusRuntime::class, 'getTaxonPath')
             ),
