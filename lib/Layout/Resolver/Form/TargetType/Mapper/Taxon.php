@@ -8,23 +8,11 @@ use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 
 class Taxon extends Mapper
 {
-    /**
-     * Returns the form type that will be used to edit the value of this condition type.
-     *
-     * @return string
-     */
     public function getFormType()
     {
         return ContentBrowserType::class;
     }
 
-    /**
-     * Maps the form type options from provided target type.
-     *
-     * @param \Netgen\BlockManager\Layout\Resolver\TargetTypeInterface $targetType
-     *
-     * @return array
-     */
     public function mapOptions(TargetTypeInterface $targetType)
     {
         return array(

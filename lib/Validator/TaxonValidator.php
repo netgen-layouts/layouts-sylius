@@ -16,22 +16,11 @@ class TaxonValidator extends ConstraintValidator
      */
     protected $taxonRepository;
 
-    /**
-     * Constructor.
-     *
-     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface $taxonRepository
-     */
     public function __construct(TaxonRepositoryInterface $taxonRepository)
     {
         $this->taxonRepository = $taxonRepository;
     }
 
-    /**
-     * Checks if the passed value is valid.
-     *
-     * @param mixed $value The value that should be validated
-     * @param \Symfony\Component\Validator\Constraint $constraint The constraint for the validation
-     */
     public function validate($value, Constraint $constraint)
     {
         if ($value === null) {

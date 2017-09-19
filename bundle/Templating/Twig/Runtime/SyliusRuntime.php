@@ -19,12 +19,6 @@ class SyliusRuntime
      */
     protected $taxonRepository;
 
-    /**
-     * Constructor.
-     *
-     * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface $productRepository
-     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface $taxonRepository
-     */
     public function __construct(
         ProductRepositoryInterface $productRepository,
         TaxonRepositoryInterface $taxonRepository

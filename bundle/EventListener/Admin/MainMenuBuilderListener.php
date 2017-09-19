@@ -15,21 +15,11 @@ class MainMenuBuilderListener implements EventSubscriberInterface
      */
     protected $authorizationChecker;
 
-    /**
-     * Constructor.
-     *
-     * @param \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface $authorizationChecker
-     */
     public function __construct(AuthorizationCheckerInterface $authorizationChecker)
     {
         $this->authorizationChecker = $authorizationChecker;
     }
 
-    /**
-     * Returns an array of event names this subscriber wants to listen to.
-     *
-     * @return array
-     */
     public static function getSubscribedEvents()
     {
         return array(MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild');

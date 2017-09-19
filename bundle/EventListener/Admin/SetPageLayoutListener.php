@@ -23,11 +23,6 @@ class SetPageLayoutListener implements EventSubscriberInterface
         $this->pageLayoutTemplate = $pageLayoutTemplate;
     }
 
-    /**
-     * Returns an array of event names this subscriber wants to listen to.
-     *
-     * @return array
-     */
     public static function getSubscribedEvents()
     {
         return array(BlockManagerAdminEvents::ADMIN_MATCH => array('onAdminMatch', -255));

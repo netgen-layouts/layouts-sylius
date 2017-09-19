@@ -12,18 +12,6 @@ use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
  */
 class AdminAccessVoter implements VoterInterface
 {
-    /**
-     * Returns the vote for the given parameters.
-     *
-     * This method must return one of the following constants:
-     * ACCESS_GRANTED, ACCESS_DENIED, or ACCESS_ABSTAIN.
-     *
-     * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
-     * @param object|null $object
-     * @param array $attributes
-     *
-     * @return int either ACCESS_GRANTED, ACCESS_ABSTAIN, or ACCESS_DENIED
-     */
     public function vote(TokenInterface $token, $object, array $attributes)
     {
         if ($token->getUser() instanceof AdminUserInterface) {

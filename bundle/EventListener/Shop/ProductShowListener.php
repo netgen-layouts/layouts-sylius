@@ -15,21 +15,11 @@ class ProductShowListener implements EventSubscriberInterface
      */
     protected $requestStack;
 
-    /**
-     * Constructor.
-     *
-     * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
-     */
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
     }
 
-    /**
-     * Returns an array of event names this subscriber wants to listen to.
-     *
-     * @return array
-     */
     public static function getSubscribedEvents()
     {
         return array('sylius.product.show' => 'onProductShow');
