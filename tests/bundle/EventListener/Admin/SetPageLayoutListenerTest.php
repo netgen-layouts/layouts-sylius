@@ -14,7 +14,7 @@ class SetPageLayoutListenerTest extends TestCase
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener
      */
-    protected $listener;
+    private $listener;
 
     public function setUp()
     {

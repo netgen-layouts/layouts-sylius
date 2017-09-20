@@ -15,12 +15,12 @@ class MainMenuBuilderListenerTest extends TestCase
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener
      */
-    protected $listener;
+    private $listener;
 
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    protected $authCheckerMock;
+    private $authCheckerMock;
 
     public function setUp()
     {

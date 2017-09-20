@@ -14,17 +14,17 @@ class SyliusRuntimeTest extends TestCase
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    protected $productRepositoryMock;
+    private $productRepositoryMock;
 
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    protected $taxonRepositoryMock;
+    private $taxonRepositoryMock;
 
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime
      */
-    protected $runtime;
+    private $runtime;
 
     public function setUp()
     {

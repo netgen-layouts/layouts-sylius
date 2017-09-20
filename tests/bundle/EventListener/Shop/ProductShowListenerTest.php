@@ -15,12 +15,12 @@ class ProductShowListenerTest extends TestCase
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener
      */
-    protected $listener;
+    private $listener;
 
     /**
      * @var \Symfony\Component\HttpFoundation\RequestStack
      */
-    protected $requestStack;
+    private $requestStack;
 
     public function setUp()
     {

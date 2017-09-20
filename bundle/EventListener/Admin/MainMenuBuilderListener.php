@@ -13,7 +13,7 @@ class MainMenuBuilderListener implements EventSubscriberInterface
     /**
      * @var \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface
      */
-    protected $authorizationChecker;
+    private $authorizationChecker;
 
     public function __construct(AuthorizationCheckerInterface $authorizationChecker)
     {
@@ -44,7 +44,7 @@ class MainMenuBuilderListener implements EventSubscriberInterface
      *
      * @param \Knp\Menu\ItemInterface $menu
      */
-    protected function addLayoutsSubMenu(ItemInterface $menu)
+    private function addLayoutsSubMenu(ItemInterface $menu)
     {
         $menuOrder = $this->getNewMenuOrder($menu);
 
@@ -77,7 +77,7 @@ class MainMenuBuilderListener implements EventSubscriberInterface
      *
      * @return array
      */
-    protected function getNewMenuOrder(ItemInterface $menu)
+    private function getNewMenuOrder(ItemInterface $menu)
     {
         $menuOrder = array_keys($menu->getChildren());
         $configMenuIndex = array_search('configuration', $menuOrder, true);

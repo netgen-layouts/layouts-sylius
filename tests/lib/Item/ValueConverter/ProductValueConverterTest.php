@@ -13,7 +13,7 @@ class ProductValueConverterTest extends TestCase
     /**
      * @var \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter
      */
-    protected $valueConverter;
+    private $valueConverter;
 
     public function setUp()
     {

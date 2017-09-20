@@ -13,12 +13,12 @@ class ProductValueLoaderTest extends TestCase
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    protected $productRepositoryMock;
+    private $productRepositoryMock;
 
     /**
      * @var \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader
      */
-    protected $valueLoader;
+    private $valueLoader;
 
     public function setUp()
     {

@@ -13,7 +13,7 @@ class AdminAccessVoterTest extends TestCase
     /**
      * @var \Netgen\BlockManager\Sylius\Security\Authorization\Voter\AdminAccessVoter
      */
-    protected $voter;
+    private $voter;
 
     public function setUp()
     {

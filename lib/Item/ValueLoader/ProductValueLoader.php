@@ -13,7 +13,7 @@ class ProductValueLoader implements ValueLoaderInterface
     /**
      * @var \Sylius\Component\Core\Repository\ProductRepositoryInterface
      */
-    protected $productRepository;
+    private $productRepository;
 
     public function __construct(ProductRepositoryInterface $productRepository)
     {

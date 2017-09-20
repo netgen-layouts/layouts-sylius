@@ -14,12 +14,12 @@ class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
     /**
      * @var \Sylius\Component\Resource\Repository\RepositoryInterface
      */
-    protected $repository;
+    private $repository;
 
     /**
      * @var \Symfony\Component\Validator\ConstraintValidatorFactoryInterface
      */
-    protected $baseValidatorFactory;
+    private $baseValidatorFactory;
 
     /**
      * Constructor.

@@ -13,7 +13,7 @@ class ProductShowListener implements EventSubscriberInterface
     /**
      * @var \Symfony\Component\HttpFoundation\RequestStack
      */
-    protected $requestStack;
+    private $requestStack;
 
     public function __construct(RequestStack $requestStack)
     {

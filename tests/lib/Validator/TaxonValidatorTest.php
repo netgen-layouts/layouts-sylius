@@ -14,7 +14,7 @@ class TaxonValidatorTest extends ValidatorTestCase
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    protected $repositoryMock;
+    private $repositoryMock;
 
     public function setUp()
     {

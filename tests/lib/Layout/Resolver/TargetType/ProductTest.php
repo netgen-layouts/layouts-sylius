@@ -15,12 +15,12 @@ class ProductTest extends TestCase
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    protected $repositoryMock;
+    private $repositoryMock;
 
     /**
      * @var \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product
      */
-    protected $targetType;
+    private $targetType;
 
     public function setUp()
     {

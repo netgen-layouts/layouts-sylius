@@ -14,7 +14,7 @@ class TaxonValidator extends ConstraintValidator
     /**
      * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
      */
-    protected $taxonRepository;
+    private $taxonRepository;
 
     public function __construct(TaxonRepositoryInterface $taxonRepository)
     {

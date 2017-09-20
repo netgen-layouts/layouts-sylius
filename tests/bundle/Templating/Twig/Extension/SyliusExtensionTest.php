@@ -11,7 +11,7 @@ class SyliusExtensionTest extends TestCase
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension
      */
-    protected $extension;
+    private $extension;
 
     public function setUp()
     {

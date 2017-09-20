@@ -12,12 +12,12 @@ class SyliusRuntime
     /**
      * @var \Sylius\Component\Product\Repository\ProductRepositoryInterface
      */
-    protected $productRepository;
+    private $productRepository;
 
     /**
      * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
      */
-    protected $taxonRepository;
+    private $taxonRepository;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,

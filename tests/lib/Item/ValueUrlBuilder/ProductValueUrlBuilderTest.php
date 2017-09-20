@@ -12,12 +12,12 @@ class ProductValueUrlBuilderTest extends TestCase
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    protected $router;
+    private $router;
 
     /**
      * @var \Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder
      */
-    protected $urlBuilder;
+    private $urlBuilder;
 
     public function setUp()
     {

@@ -11,7 +11,7 @@ class SetPageLayoutListener implements EventSubscriberInterface
     /**
      * @var string
      */
-    protected $pageLayoutTemplate;
+    private $pageLayoutTemplate;
 
     /**
      * Constructor.

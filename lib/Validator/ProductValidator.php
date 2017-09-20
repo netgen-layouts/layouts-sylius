@@ -14,7 +14,7 @@ class ProductValidator extends ConstraintValidator
     /**
      * @var \Sylius\Component\Product\Repository\ProductRepositoryInterface
      */
-    protected $productRepository;
+    private $productRepository;
 
     public function __construct(ProductRepositoryInterface $productRepository)
     {
