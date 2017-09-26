@@ -5,7 +5,7 @@ namespace Netgen\BlockManager\Sylius\Item\ValueConverter;
 use Netgen\BlockManager\Item\ValueConverterInterface;
 use Sylius\Component\Product\Model\ProductInterface;
 
-class ProductValueConverter implements ValueConverterInterface
+final class ProductValueConverter implements ValueConverterInterface
 {
     public function supports($object)
     {

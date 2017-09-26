@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class ProductShowListener implements EventSubscriberInterface
+final class ProductShowListener implements EventSubscriberInterface
 {
     /**
      * @var \Symfony\Component\HttpFoundation\RequestStack

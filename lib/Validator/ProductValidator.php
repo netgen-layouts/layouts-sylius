@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-class ProductValidator extends ConstraintValidator
+final class ProductValidator extends ConstraintValidator
 {
     /**
      * @var \Sylius\Component\Product\Repository\ProductRepositoryInterface

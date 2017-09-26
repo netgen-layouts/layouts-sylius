@@ -5,7 +5,7 @@ namespace Netgen\BlockManager\Sylius\Item\ValueUrlBuilder;
 use Netgen\BlockManager\Item\ValueUrlBuilderInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-class ProductValueUrlBuilder implements ValueUrlBuilderInterface
+final class ProductValueUrlBuilder implements ValueUrlBuilderInterface
 {
     /**
      * @var \Symfony\Component\Routing\RouterInterface

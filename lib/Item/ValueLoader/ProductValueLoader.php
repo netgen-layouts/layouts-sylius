@@ -8,7 +8,7 @@ use Netgen\BlockManager\Item\ValueLoaderInterface;
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
-class ProductValueLoader implements ValueLoaderInterface
+final class ProductValueLoader implements ValueLoaderInterface
 {
     /**
      * @var \Sylius\Component\Core\Repository\ProductRepositoryInterface

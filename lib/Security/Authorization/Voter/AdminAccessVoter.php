@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
  * Votes on Netgen Layouts attributes (ROLE_NGBM_*) by matching corresponding access
  * rights in Sylius eCommerce.
  */
-class AdminAccessVoter implements VoterInterface
+final class AdminAccessVoter implements VoterInterface
 {
     public function vote(TokenInterface $token, $object, array $attributes)
     {

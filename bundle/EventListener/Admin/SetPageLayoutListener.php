@@ -6,7 +6,7 @@ use Netgen\Bundle\BlockManagerAdminBundle\Event\AdminMatchEvent;
 use Netgen\Bundle\BlockManagerAdminBundle\Event\BlockManagerAdminEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class SetPageLayoutListener implements EventSubscriberInterface
+final class SetPageLayoutListener implements EventSubscriberInterface
 {
     /**
      * @var string

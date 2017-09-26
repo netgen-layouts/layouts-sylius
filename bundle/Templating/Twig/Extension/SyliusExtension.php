@@ -6,7 +6,7 @@ use Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class SyliusExtension extends AbstractExtension
+final class SyliusExtension extends AbstractExtension
 {
     public function getName()
     {

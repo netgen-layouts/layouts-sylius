@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-class TaxonValidator extends ConstraintValidator
+final class TaxonValidator extends ConstraintValidator
 {
     /**
      * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface

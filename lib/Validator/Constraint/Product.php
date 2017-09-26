@@ -4,7 +4,7 @@ namespace Netgen\BlockManager\Sylius\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 
-class Product extends Constraint
+final class Product extends Constraint
 {
     /**
      * @var string

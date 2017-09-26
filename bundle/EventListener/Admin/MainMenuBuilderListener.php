@@ -8,7 +8,7 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-class MainMenuBuilderListener implements EventSubscriberInterface
+final class MainMenuBuilderListener implements EventSubscriberInterface
 {
     /**
      * @var \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface

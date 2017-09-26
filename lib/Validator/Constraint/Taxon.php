@@ -4,7 +4,7 @@ namespace Netgen\BlockManager\Sylius\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 
-class Taxon extends Constraint
+final class Taxon extends Constraint
 {
     /**
      * @var string

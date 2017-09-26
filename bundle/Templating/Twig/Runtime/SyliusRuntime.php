@@ -7,7 +7,7 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
-class SyliusRuntime
+final class SyliusRuntime
 {
     /**
      * @var \Sylius\Component\Product\Repository\ProductRepositoryInterface
