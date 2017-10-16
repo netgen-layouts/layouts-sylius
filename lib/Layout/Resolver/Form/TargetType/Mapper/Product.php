@@ -3,7 +3,6 @@
 namespace Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper;
 
 use Netgen\BlockManager\Layout\Resolver\Form\TargetType\Mapper;
-use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 
 class Product extends Mapper
@@ -13,7 +12,7 @@ class Product extends Mapper
         return ContentBrowserType::class;
     }
 
-    public function mapOptions(TargetTypeInterface $targetType)
+    public function getFormOptions()
     {
         return array(
             'item_type' => 'sylius_product',
