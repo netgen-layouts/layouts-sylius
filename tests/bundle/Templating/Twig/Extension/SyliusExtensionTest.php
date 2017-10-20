@@ -19,14 +19,6 @@ class SyliusExtensionTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension::getName
-     */
-    public function testGetName()
-    {
-        $this->assertEquals(get_class($this->extension), $this->extension->getName());
-    }
-
-    /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension::getFunctions
      */
     public function testGetFunctions()

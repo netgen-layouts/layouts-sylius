@@ -8,11 +8,6 @@ use Twig\TwigFunction;
 
 final class SyliusExtension extends AbstractExtension
 {
-    public function getName()
-    {
-        return self::class;
-    }
-
     public function getFunctions()
     {
         return array(
