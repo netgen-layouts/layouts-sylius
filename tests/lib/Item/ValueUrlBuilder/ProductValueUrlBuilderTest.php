@@ -5,14 +5,14 @@ namespace Netgen\BlockManager\Sylius\Tests\Item\ValueUrlBuilder;
 use Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder;
 use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ProductValueUrlBuilderTest extends TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
      */
-    private $router;
+    private $urlGenerator;
 
     /**
      * @var \Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder
@@ -21,9 +21,9 @@ class ProductValueUrlBuilderTest extends TestCase
 
     public function setUp()
     {
-        $this->router = $this->createMock(RouterInterface::class);
+        $this->urlGenerator = $this->createMock(UrlGeneratorInterface::class);
 
-        $this->urlBuilder = new ProductValueUrlBuilder($this->router);
+        $this->urlBuilder = new ProductValueUrlBuilder($this->urlGenerator);
     }
 
     /**
@@ -32,7 +32,7 @@ class ProductValueUrlBuilderTest extends TestCase
      */
     public function testGetUrl()
     {
-        $this->router
+        $this->urlGenerator
             ->expects($this->once())
             ->method('generate')
             ->with(

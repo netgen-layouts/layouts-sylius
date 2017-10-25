@@ -3,23 +3,23 @@
 namespace Netgen\BlockManager\Sylius\Item\ValueUrlBuilder;
 
 use Netgen\BlockManager\Item\ValueUrlBuilderInterface;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ProductValueUrlBuilder implements ValueUrlBuilderInterface
 {
     /**
-     * @var \Symfony\Component\Routing\RouterInterface
+     * @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface
      */
-    private $router;
+    private $urlGenerator;
 
-    public function __construct(RouterInterface $router)
+    public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
     }
 
     public function getUrl($object)
     {
-        return $this->router->generate(
+        return $this->urlGenerator->generate(
             'sylius_shop_product_show',
             array(
                 'slug' => $object->getSlug(),
