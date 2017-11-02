@@ -2,6 +2,7 @@
 
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Shop;
 
+use Netgen\BlockManager\Context\Context;
 use Netgen\BlockManager\Sylius\Tests\Stubs\Product;
 use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon;
 use Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener;
@@ -22,11 +23,17 @@ class ProductShowListenerTest extends TestCase
      */
     private $requestStack;
 
+    /**
+     * @var \Netgen\BlockManager\Context\Context
+     */
+    private $context;
+
     public function setUp()
     {
         $this->requestStack = new RequestStack();
+        $this->context = new Context();
 
-        $this->listener = new ProductShowListener($this->requestStack);
+        $this->listener = new ProductShowListener($this->requestStack, $this->context);
     }
 
     /**
@@ -54,6 +61,9 @@ class ProductShowListenerTest extends TestCase
         $this->listener->onProductShow($event);
 
         $this->assertEquals($product, $request->attributes->get('ngbm_sylius_product'));
+
+        $this->assertTrue($this->context->has('sylius_product_id'));
+        $this->assertEquals(42, $this->context->get('sylius_product_id'));
     }
 
     /**
@@ -69,5 +79,6 @@ class ProductShowListenerTest extends TestCase
         $this->listener->onProductShow($event);
 
         $this->assertFalse($request->attributes->has('ngbm_sylius_product'));
+        $this->assertFalse($this->context->has('sylius_product_id'));
     }
 }

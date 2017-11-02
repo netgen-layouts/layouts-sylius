@@ -20,5 +20,6 @@ services:
         public: false
         arguments:
             - "@request_stack"
+            - "@netgen_block_manager.context"
         tags:
             - { name: kernel.event_subscriber }
