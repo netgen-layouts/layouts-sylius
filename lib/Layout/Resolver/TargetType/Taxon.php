@@ -9,7 +9,7 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
-class Taxon implements TargetTypeInterface
+final class Taxon implements TargetTypeInterface
 {
     public function getType()
     {

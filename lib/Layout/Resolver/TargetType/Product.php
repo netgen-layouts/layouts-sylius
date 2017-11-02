@@ -8,7 +8,7 @@ use Sylius\Component\Product\Model\ProductInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
-class Product implements TargetTypeInterface
+final class Product implements TargetTypeInterface
 {
     public function getType()
     {

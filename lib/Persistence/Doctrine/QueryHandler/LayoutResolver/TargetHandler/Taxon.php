@@ -6,7 +6,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler;
 
-class Taxon implements TargetHandler
+final class Taxon implements TargetHandler
 {
     public function handleQuery(QueryBuilder $query, $value)
     {
