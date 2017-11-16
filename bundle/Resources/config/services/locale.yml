@@ -1,0 +1,10 @@
+services:
+    netgen_block_manager.locale.provider:
+        alias: netgen_block_manager.locale.provider.sylius
+        public: false
+
+    netgen_block_manager.locale.provider.sylius:
+        class: Netgen\BlockManager\Sylius\Locale\LocaleProvider
+        public: false
+        arguments:
+            - "@sylius.locale_provider"

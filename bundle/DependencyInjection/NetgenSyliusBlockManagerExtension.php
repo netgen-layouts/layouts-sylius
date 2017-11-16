@@ -27,6 +27,7 @@ final class NetgenSyliusBlockManagerExtension extends Extension implements Prepe
         $loader->load('services/templating.yml');
         $loader->load('services/query_types.yml');
         $loader->load('services/parameters.yml');
+        $loader->load('services/locale.yml');
         $loader->load('default_settings.yml');
     }
 
