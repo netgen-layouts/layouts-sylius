@@ -25,6 +25,7 @@ final class NetgenSyliusBlockManagerExtension extends Extension implements Prepe
         $loader->load('services/layout_resolver.yml');
         $loader->load('services/validators.yml');
         $loader->load('services/templating.yml');
+        $loader->load('services/query_types.yml');
         $loader->load('services/parameters.yml');
         $loader->load('default_settings.yml');
     }
@@ -34,6 +35,7 @@ final class NetgenSyliusBlockManagerExtension extends Extension implements Prepe
         $prependConfigs = array(
             'liip_imagine.yml' => 'liip_imagine',
             'value_types.yml' => 'netgen_block_manager',
+            'query_types.yml' => 'netgen_block_manager',
             'view/item_view.yml' => 'netgen_block_manager',
             'view/rule_target_view.yml' => 'netgen_block_manager',
         );

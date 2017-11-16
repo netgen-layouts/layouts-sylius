@@ -1,2 +1,10 @@
+query.sylius_latest_products.use_current_taxon: 'Use current taxon as parent'
+query.sylius_latest_products.parent_taxon_id: 'Parent taxon'
+
+query.sylius_taxon_products.use_current_taxon: 'Use current taxon as parent'
+query.sylius_taxon_products.parent_taxon_id: 'Parent taxon'
+query.sylius_taxon_products.sort_type: 'Sort type'
+query.sylius_taxon_products.sort_direction: 'Sort direction'
+
 layout_resolver.target.sylius_product: 'Sylius product'
 layout_resolver.target.sylius_taxon: 'Sylius taxon'

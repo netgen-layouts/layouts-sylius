@@ -1,0 +1,5 @@
+query_types:
+    sylius_latest_products:
+        name: 'Sylius latest products'
+    sylius_taxon_products:
+        name: 'Sylius taxon products'
