@@ -9,7 +9,7 @@ use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductReposi
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 
-class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
+final class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {
     public function findByTaxon(
         ChannelInterface $channel,

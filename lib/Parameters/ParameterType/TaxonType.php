@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints;
 /**
  * Parameter type used to store and validate an ID of a taxon in Sylius.
  */
-class TaxonType extends ParameterType
+final class TaxonType extends ParameterType
 {
     public function getIdentifier()
     {

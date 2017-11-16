@@ -15,7 +15,7 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class LatestProductsHandler implements QueryTypeHandlerInterface
+final class LatestProductsHandler implements QueryTypeHandlerInterface
 {
     /**
      * @var \Netgen\BlockManager\Sylius\Doctrine\ORM\ProductRepositoryInterface
