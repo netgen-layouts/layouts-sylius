@@ -24,10 +24,12 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    netgen_block_manager.sylius.event_listener.shop.taxon_show:
-        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\TaxonShowListener
+    netgen_block_manager.sylius.event_listener.shop.product_index:
+        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener
         public: false
         arguments:
+            - "@sylius.repository.taxon"
+            - "@sylius.context.locale"
             - "@request_stack"
             - "@netgen_block_manager.context"
         tags:

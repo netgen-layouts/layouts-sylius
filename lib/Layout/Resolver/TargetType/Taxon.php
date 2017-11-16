@@ -4,7 +4,6 @@ namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
 use Netgen\BlockManager\Sylius\Validator\Constraint as SyliusConstraints;
-use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
@@ -28,16 +27,17 @@ final class Taxon implements TargetTypeInterface
 
     public function provideValue(Request $request)
     {
-        $product = $request->attributes->get('ngbm_sylius_product');
-        if (!$product instanceof ProductInterface) {
+        $taxon = $request->attributes->get('ngbm_sylius_taxon');
+        if (!$taxon instanceof TaxonInterface) {
             return null;
         }
 
-        return array_map(
-            function (TaxonInterface $taxon) {
-                return $taxon->getId();
-            },
-            $product->getTaxons()->getValues()
-        );
+        $taxonIds = array();
+        do {
+            $taxonIds[] = $taxon->getId();
+            $taxon = $taxon->getParent();
+        } while ($taxon instanceof TaxonInterface);
+
+        return $taxonIds;
     }
 }

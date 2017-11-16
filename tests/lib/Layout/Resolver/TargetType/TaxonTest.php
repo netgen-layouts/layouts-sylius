@@ -3,11 +3,9 @@
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\BlockManager\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\TestCase;
-use Sylius\Component\Core\Model\ProductTaxon;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
@@ -79,18 +77,13 @@ class TaxonTest extends TestCase
      */
     public function testProvideValue()
     {
-        $product = new ProductStub(42);
-        foreach (array(12, 13) as $taxonId) {
-            $productTaxon = new ProductTaxon();
-            $productTaxon->setTaxon(new TaxonStub($taxonId));
-
-            $product->addProductTaxon($productTaxon);
-        }
+        $taxon = new TaxonStub(42);
+        $taxon->setParent(new TaxonStub(24));
 
         $request = Request::create('/');
-        $request->attributes->set('ngbm_sylius_product', $product);
+        $request->attributes->set('ngbm_sylius_taxon', $taxon);
 
-        $this->assertEquals(array(12, 13), $this->targetType->provideValue($request));
+        $this->assertEquals(array(42, 24), $this->targetType->provideValue($request));
     }
 
     /**
