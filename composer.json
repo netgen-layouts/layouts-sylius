@@ -36,7 +36,8 @@
         ],
         "psr-4": {
             "Netgen\\BlockManager\\Sylius\\Tests\\": "tests/lib/",
-            "Netgen\\Bundle\\SyliusBlockManagerBundle\\Tests\\": "tests/bundle/"
+            "Netgen\\Bundle\\SyliusBlockManagerBundle\\Tests\\": "tests/bundle/",
+            "Netgen\\BlockManager\\Tests\\": "vendor/netgen/block-manager/tests/lib"
         }
     },
     "minimum-stability": "dev",
