@@ -23,3 +23,12 @@ services:
             - "@netgen_block_manager.context"
         tags:
             - { name: kernel.event_subscriber }
+
+    netgen_block_manager.sylius.event_listener.shop.taxon_show:
+        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\TaxonShowListener
+        public: false
+        arguments:
+            - "@request_stack"
+            - "@netgen_block_manager.context"
+        tags:
+            - { name: kernel.event_subscriber }
