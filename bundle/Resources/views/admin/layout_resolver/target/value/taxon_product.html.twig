@@ -1,0 +1,3 @@
+{% set path = ngbm_sylius_taxon_path(target.value) %}
+
+{{ path != null ? path|join(' / ') : '(INVALID TAXON)' }}

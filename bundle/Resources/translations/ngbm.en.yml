@@ -8,3 +8,4 @@ query.sylius_taxon_products.sort_direction: 'Sort direction'
 
 layout_resolver.target.sylius_product: 'Sylius product'
 layout_resolver.target.sylius_taxon: 'Sylius taxon'
+layout_resolver.target.sylius_taxon_product: 'Sylius taxon products'

@@ -1,2 +1,3 @@
 layout_resolver.rule.target_header.sylius_product: 'Applied to Sylius product'
 layout_resolver.rule.target_header.sylius_taxon: 'Applied to Sylius taxon'
+layout_resolver.rule.target_header.sylius_taxon_product: 'Applied to Sylius taxon products'
