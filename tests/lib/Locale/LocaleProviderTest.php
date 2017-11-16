@@ -44,7 +44,6 @@ class LocaleProviderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::setLanguages
      * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::getRequestLocales
      */
     public function testGetRequestLocales()

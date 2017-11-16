@@ -102,6 +102,21 @@ class ProductIndexListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
+    public function testOnProductIndexWithoutRequest()
+    {
+        $this->taxonRepositoryMock
+            ->expects($this->never())
+            ->method('findOneBySlug');
+
+        $event = new ResourceControllerEvent();
+        $this->listener->onProductIndex($event);
+
+        $this->assertFalse($this->context->has('sylius_taxon_id'));
+    }
+
+    /**
+     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
+     */
     public function testOnProductIndexWithoutSlug()
     {
         $request = Request::create('/');
