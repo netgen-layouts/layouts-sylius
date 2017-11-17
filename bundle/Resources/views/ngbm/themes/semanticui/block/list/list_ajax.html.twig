@@ -1,0 +1,10 @@
+{% set number_of_columns = block.parameter('number_of_columns').value|default(2) %}
+{% set number_of_columns_class_map = {2: 'two', 3: 'three', 4: 'four', 6: 'six'} %}
+
+<div class="ui one column stackable grid">
+    {% for result in collection %}
+        <div class="column">
+            {{ ngbm_render_item(result.item, block.itemViewType, {}, 'default') }}
+        </div>
+    {% endfor %}
+</div>

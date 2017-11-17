@@ -5,25 +5,25 @@
 {% set number_of_columns_class_map = {2: 'two', 3: 'three', 4: 'four', 6: 'six'} %}
 
 {% set collection_html %}
-    {% for result in collections[collection_identifier] %}
-        <div class="column">
-            {{ ngbm_render_item(result.item, block.itemViewType) }}
-        </div>
-    {% endfor %}
+    <div class="ui {{ number_of_columns_class_map[number_of_columns] }} column stackable grid">
+        {% for result in collections[collection_identifier] %}
+            <div class="column">
+                {{ ngbm_render_item(result.item, block.itemViewType) }}
+            </div>
+        {% endfor %}
+    </div>
 {% endset %}
 
 {% block content %}
     {% if collections[collection_identifier] is defined and collections[collection_identifier] is not empty %}
-        <div class="ui {{ number_of_columns_class_map[number_of_columns] }} column stackable grid" id="products">
-            {% if block.parameter('paged_collections:enabled').value %}
-                {% embed '@NetgenBlockManager/collection/paged_collection.html.twig' with {pager: pagers[collection_identifier]} %}
-                    {% block collection_page %}
-                        {{ collection_html }}
-                    {% endblock %}
-                {% endembed %}
-            {% else %}
-                {{ collection_html }}
-            {% endif %}
-        </div>
+        {% if block.parameter('paged_collections:enabled').value %}
+            {% embed '@NetgenBlockManager/collection/paged_collection.html.twig' with {pager: pagers[collection_identifier]} %}
+                {% block collection_page %}
+                    {{ collection_html }}
+                {% endblock %}
+            {% endembed %}
+        {% else %}
+            {{ collection_html }}
+        {% endif %}
     {% endif %}
 {% endblock %}
