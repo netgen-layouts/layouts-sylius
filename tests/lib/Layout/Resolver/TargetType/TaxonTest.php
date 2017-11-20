@@ -93,7 +93,7 @@ class TaxonTest extends TestCase
     {
         $request = Request::create('/');
 
-        $this->assertEquals(null, $this->targetType->provideValue($request));
+        $this->assertNull($this->targetType->provideValue($request));
     }
 
     /**
