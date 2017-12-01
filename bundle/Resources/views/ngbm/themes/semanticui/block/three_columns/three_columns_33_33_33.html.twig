@@ -1,0 +1,15 @@
+{% extends '@ngbm/block/block.html.twig' %}
+
+{% block content %}
+    <div class="ui twelve column stackable grid">
+        <div class="four wide column">
+            {{ ngbm_render_placeholder(block, 'left') }}
+        </div>
+        <div class="four wide column">
+            {{ ngbm_render_placeholder(block, 'center') }}
+        </div>
+        <div class="four wide column">
+            {{ ngbm_render_placeholder(block, 'right') }}
+        </div>
+    </div>
+{% endblock %}
