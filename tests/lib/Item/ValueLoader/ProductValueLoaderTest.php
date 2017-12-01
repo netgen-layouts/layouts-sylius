@@ -11,7 +11,7 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 class ProductValueLoaderTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject
      */
     private $productRepositoryMock;
 

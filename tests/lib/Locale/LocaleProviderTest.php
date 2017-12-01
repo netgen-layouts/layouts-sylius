@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class LocaleProviderTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject
      */
     private $syliusLocaleProviderMock;
 

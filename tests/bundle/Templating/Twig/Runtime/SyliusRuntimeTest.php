@@ -12,12 +12,12 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 class SyliusRuntimeTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject
      */
     private $productRepositoryMock;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject
      */
     private $taxonRepositoryMock;
 

@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class TaxonValidatorTest extends ValidatorTestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject
      */
     private $repositoryMock;
 
