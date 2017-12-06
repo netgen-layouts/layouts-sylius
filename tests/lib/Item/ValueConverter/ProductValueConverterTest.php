@@ -56,6 +56,19 @@ class ProductValueConverterTest extends TestCase
     }
 
     /**
+     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getRemoteId
+     */
+    public function testGetRemoteId()
+    {
+        $this->assertEquals(
+            42,
+            $this->valueConverter->getRemoteId(
+                new ProductStub(42, 'Product name')
+            )
+        );
+    }
+
+    /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getName
      */
     public function testGetName()

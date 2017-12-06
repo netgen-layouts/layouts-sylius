@@ -22,6 +22,11 @@ final class ProductValueConverter implements ValueConverterInterface
         return $object->getId();
     }
 
+    public function getRemoteId($object)
+    {
+        return $object->getId();
+    }
+
     public function getName($object)
     {
         return $object->getName();

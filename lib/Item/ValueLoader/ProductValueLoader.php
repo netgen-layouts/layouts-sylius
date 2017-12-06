@@ -34,4 +34,9 @@ final class ProductValueLoader implements ValueLoaderInterface
 
         return $product;
     }
+
+    public function loadByRemoteId($remoteId)
+    {
+        return $this->load($remoteId);
+    }
 }
