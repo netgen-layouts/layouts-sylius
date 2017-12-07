@@ -36,4 +36,9 @@ final class ProductValueConverter implements ValueConverterInterface
     {
         return true;
     }
+
+    public function getObject($object)
+    {
+        return $object;
+    }
 }

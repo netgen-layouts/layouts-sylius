@@ -92,4 +92,14 @@ class ProductValueConverterTest extends TestCase
             )
         );
     }
+
+    /**
+     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getObject
+     */
+    public function testGetObject()
+    {
+        $product = new ProductStub(42, 'Product name');
+
+        $this->assertEquals($product, $this->valueConverter->getObject($product));
+    }
 }
