@@ -4,7 +4,7 @@ namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Netgen\BlockManager\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerInterface;
+use Netgen\BlockManager\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 
 final class TaxonProduct implements TargetHandlerInterface
 {

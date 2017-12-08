@@ -33,7 +33,7 @@ class TaxonTest extends AbstractTargetHandlerTest
     /**
      * Creates the handler under test.
      *
-     * @return \Netgen\BlockManager\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerInterface
+     * @return \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\TargetHandlerInterface
      */
     protected function getTargetHandler()
     {
