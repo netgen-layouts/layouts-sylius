@@ -11,11 +11,11 @@ services:
         tags:
             - { name: netgen_block_manager.layout.resolver.form.target_type.mapper, target_type: sylius_product }
 
-    netgen_block_manager.sylius.persistence.doctrine.layout_resolver.query_handler.target_handler.sylius_product:
-        class: Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler\Product
+    netgen_block_manager.sylius.layout.resolver.target_handler.doctrine.sylius_product:
+        class: Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Product
         public: false
         tags:
-            - { name: netgen_block_manager.persistence.doctrine.layout_resolver.query_handler.target_handler, target_type: sylius_product }
+            - { name: netgen_block_manager.layout.resolver.target_handler.doctrine, target_type: sylius_product }
 
     netgen_block_manager.sylius.layout.resolver.target_type.taxon_product:
         class: Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct
@@ -29,11 +29,11 @@ services:
         tags:
             - { name: netgen_block_manager.layout.resolver.form.target_type.mapper, target_type: sylius_taxon_product }
 
-    netgen_block_manager.sylius.persistence.doctrine.layout_resolver.query_handler.target_handler.sylius_taxon_product:
-        class: Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler\TaxonProduct
+    netgen_block_manager.sylius.layout.resolver.target_handler.doctrine.sylius_taxon_product:
+        class: Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\TaxonProduct
         public: false
         tags:
-            - { name: netgen_block_manager.persistence.doctrine.layout_resolver.query_handler.target_handler, target_type: sylius_taxon_product }
+            - { name: netgen_block_manager.layout.resolver.target_handler.doctrine, target_type: sylius_taxon_product }
 
     netgen_block_manager.sylius.layout.resolver.target_type.taxon:
         class: Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon
@@ -47,8 +47,8 @@ services:
         tags:
             - { name: netgen_block_manager.layout.resolver.form.target_type.mapper, target_type: sylius_taxon }
 
-    netgen_block_manager.sylius.persistence.doctrine.layout_resolver.query_handler.target_handler.sylius_taxon:
-        class: Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler\Taxon
+    netgen_block_manager.sylius.layout.resolver.target_handler.doctrine.sylius_taxon:
+        class: Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon
         public: false
         tags:
-            - { name: netgen_block_manager.persistence.doctrine.layout_resolver.query_handler.target_handler, target_type: sylius_taxon }
+            - { name: netgen_block_manager.layout.resolver.target_handler.doctrine, target_type: sylius_taxon }

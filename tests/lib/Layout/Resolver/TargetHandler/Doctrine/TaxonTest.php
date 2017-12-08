@@ -1,23 +1,23 @@
 <?php
 
-namespace Netgen\BlockManager\Sylius\Tests\Persistence\Doctrine\Handler\LayoutResolver\TargetHandler;
+namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetHandler\Doctrine;
 
-use Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler\TaxonProduct;
-use Netgen\BlockManager\Tests\Persistence\Doctrine\Handler\LayoutResolver\TargetHandler\AbstractTargetHandlerTest;
+use Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon;
+use Netgen\BlockManager\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
 
-class TaxonProductTest extends AbstractTargetHandlerTest
+class TaxonTest extends AbstractTargetHandlerTest
 {
     /**
      * @covers \Netgen\BlockManager\Persistence\Doctrine\Handler\LayoutResolverHandler::matchRules
      * @covers \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolverQueryHandler::matchRules
-     * @covers \Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler\TaxonProduct::handleQuery
+     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon::handleQuery
      */
     public function testMatchRules()
     {
         $rules = $this->handler->matchRules($this->getTargetIdentifier(), array(1, 2, 42));
 
         $this->assertCount(1, $rules);
-        $this->assertEquals(6, $rules[0]->id);
+        $this->assertEquals(4, $rules[0]->id);
     }
 
     /**
@@ -27,17 +27,17 @@ class TaxonProductTest extends AbstractTargetHandlerTest
      */
     protected function getTargetIdentifier()
     {
-        return 'sylius_taxon_product';
+        return 'sylius_taxon';
     }
 
     /**
      * Creates the handler under test.
      *
-     * @return \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler
+     * @return \Netgen\BlockManager\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerInterface
      */
     protected function getTargetHandler()
     {
-        return new TaxonProduct();
+        return new Taxon();
     }
 
     /**
@@ -47,6 +47,6 @@ class TaxonProductTest extends AbstractTargetHandlerTest
      */
     protected function insertDatabaseFixtures($fixturesPath)
     {
-        parent::insertDatabaseFixtures(__DIR__ . '/../../../../../../_fixtures');
+        parent::insertDatabaseFixtures(__DIR__ . '/../../../../../_fixtures');
     }
 }

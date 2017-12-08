@@ -1,16 +1,16 @@
 <?php
 
-namespace Netgen\BlockManager\Sylius\Tests\Persistence\Doctrine\Handler\LayoutResolver\TargetHandler;
+namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetHandler\Doctrine;
 
-use Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler\Product;
-use Netgen\BlockManager\Tests\Persistence\Doctrine\Handler\LayoutResolver\TargetHandler\AbstractTargetHandlerTest;
+use Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Product;
+use Netgen\BlockManager\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
 
 class ProductTest extends AbstractTargetHandlerTest
 {
     /**
      * @covers \Netgen\BlockManager\Persistence\Doctrine\Handler\LayoutResolverHandler::matchRules
      * @covers \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolverQueryHandler::matchRules
-     * @covers \Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler\Product::handleQuery
+     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Product::handleQuery
      */
     public function testMatchRules()
     {
@@ -33,7 +33,7 @@ class ProductTest extends AbstractTargetHandlerTest
     /**
      * Creates the handler under test.
      *
-     * @return \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler
+     * @return \Netgen\BlockManager\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerInterface
      */
     protected function getTargetHandler()
     {
@@ -47,6 +47,6 @@ class ProductTest extends AbstractTargetHandlerTest
      */
     protected function insertDatabaseFixtures($fixturesPath)
     {
-        parent::insertDatabaseFixtures(__DIR__ . '/../../../../../../_fixtures');
+        parent::insertDatabaseFixtures(__DIR__ . '/../../../../../_fixtures');
     }
 }

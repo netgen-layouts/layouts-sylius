@@ -1,12 +1,12 @@
 <?php
 
-namespace Netgen\BlockManager\Sylius\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler;
+namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolver\TargetHandler;
+use Netgen\BlockManager\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerInterface;
 
-final class TaxonProduct implements TargetHandler
+final class Taxon implements TargetHandlerInterface
 {
     public function handleQuery(QueryBuilder $query, $value)
     {
