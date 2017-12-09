@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "netgen/block-manager": "~0.10.0@dev",
+        "netgen/block-manager": "~0.10.0",
         "sylius/sylius": "^1.0"
     },
     "require-dev": {
