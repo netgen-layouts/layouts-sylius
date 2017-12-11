@@ -4,22 +4,90 @@ Netgen Block Manager & Sylius eCommerce integration installation instructions
 Use Composer to install the integration
 ---------------------------------------
 
-Run the following command to install Netgen Block Manager & Sylius eCommerce integration:
+Run the following command to install Netgen Block Manager & Sylius eCommerce
+integration:
 
 ```
-composer require netgen/block-manager-sylius:^1.0
+composer require netgen/block-manager-standard:^1.0 netgen/block-manager-sylius:^1.0
 ```
 
 Activating integration bundle
 -----------------------------
 
-After completing standard Block Manager install instructions, you also need to activate `NetgenSyliusBlockManagerBundle`. Make sure it is activated after all other Block Manager bundles.
+After completing standard Block Manager install instructions, you also need to
+activate `NetgenSyliusBlockManagerBundle`. Make sure it is activated after all
+other Block Manager bundles:
 
 ```
 ...
 
-$bundles[] = new Netgen\Bundle\BlockManagerAdminBundle\NetgenBlockManagerAdminBundle();
 $bundles[] = new Netgen\Bundle\SyliusBlockManagerBundle\NetgenSyliusBlockManagerBundle();
 
 return $bundles;
+```
+
+Configure the main layout and design
+------------------------------------
+
+Due to how Netgen Layouts works, your main layout template needs to wrap the
+`content` block inside a new `layout` block:
+
+```
+{% block layout %}
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+
+```
+
+All full view templates (those that are rendered directly by controllers), need
+to extend `ngbm.layoutTemplate` instead of your original layout:
+
+```
+{% extends ngbm.LayoutTemplate %}
+
+{% block content %}
+
+    ...
+
+{% endblock %}
+```
+
+This allows Netgen Layouts to inject a layout resolved for the request into
+your page. Since you configured all your full views to now use Netgen Layouts,
+they will not fallback to your main layout template. Because of that, you need
+to configure Netgen Layouts with your main layout template, so the fallback
+keeps working as it should.
+
+Add the following to your `app/config/config.yml` file to configure the layout
+and specify the default design for block and layout templates:
+
+```
+netgen_block_manager:
+    pagelayout: '@MyShop/layout.html.twig'
+    design: sylius
+```
+
+Activate ESI and fragments support
+----------------------------------
+
+Netgen Layouts requires that ESI and fragments support is activated in Symfony.
+Add the following to your `app/config/config.yml` file:
+
+```
+framework:
+    esi: ~
+    fragments: ~
+```
+
+Update security rules for admin UI integration
+----------------------------------------------
+
+To properly integrate Netgen Layouts and Sylius admin interfaces, you need to
+update admin regex parameter in your `app/config/security.yml` file to include
+Netgen Layouts admin routes:
+
+```
+parameters:
+    sylius.security.admin_regex: "^(/admin|/bm/app|/bm/api|/bm/admin|/cb)"
 ```
