@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class LocaleProviderTest extends TestCase
+final class LocaleProviderTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

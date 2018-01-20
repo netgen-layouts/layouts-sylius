@@ -6,7 +6,7 @@ use Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use PHPUnit\Framework\TestCase;
 
-class ProductTest extends TestCase
+final class ProductTest extends TestCase
 {
     /**
      * @var \Netgen\BlockManager\Layout\Resolver\Form\TargetType\MapperInterface

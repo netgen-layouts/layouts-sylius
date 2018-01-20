@@ -9,7 +9,7 @@ use Netgen\BlockManager\Tests\TestCase\ValidatorTestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class ProductValidatorTest extends ValidatorTestCase
+final class ProductValidatorTest extends ValidatorTestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

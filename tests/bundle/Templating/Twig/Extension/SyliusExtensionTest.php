@@ -6,7 +6,7 @@ use Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExten
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
-class SyliusExtensionTest extends TestCase
+final class SyliusExtensionTest extends TestCase
 {
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension

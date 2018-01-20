@@ -5,7 +5,7 @@ namespace Netgen\BlockManager\Sylius\Tests\Item\Stubs;
 use Sylius\Component\Product\Model\Product as BaseProduct;
 use Sylius\Component\Product\Model\ProductInterface;
 
-class Product extends BaseProduct implements ProductInterface
+final class Product extends BaseProduct implements ProductInterface
 {
     /**
      * Constructor.

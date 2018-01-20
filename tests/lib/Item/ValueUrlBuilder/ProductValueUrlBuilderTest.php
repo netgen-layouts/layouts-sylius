@@ -7,7 +7,7 @@ use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class ProductValueUrlBuilderTest extends TestCase
+final class ProductValueUrlBuilderTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

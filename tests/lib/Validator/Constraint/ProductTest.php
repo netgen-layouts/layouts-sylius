@@ -5,7 +5,7 @@ namespace Netgen\BlockManager\Sylius\Tests\Validator\Constraint;
 use Netgen\BlockManager\Sylius\Validator\Constraint\Product;
 use PHPUnit\Framework\TestCase;
 
-class ProductTest extends TestCase
+final class ProductTest extends TestCase
 {
     /**
      * @covers \Netgen\BlockManager\Sylius\Validator\Constraint\Product::validatedBy

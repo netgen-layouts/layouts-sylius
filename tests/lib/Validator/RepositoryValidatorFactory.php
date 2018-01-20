@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
 
-class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
+final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
 {
     /**
      * @var \Sylius\Component\Resource\Repository\RepositoryInterface

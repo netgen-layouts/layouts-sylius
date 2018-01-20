@@ -10,7 +10,7 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
-class ProductTest extends TestCase
+final class ProductTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

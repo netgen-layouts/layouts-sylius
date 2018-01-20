@@ -5,7 +5,7 @@ namespace Netgen\BlockManager\Sylius\Tests\Validator\Constraint;
 use Netgen\BlockManager\Sylius\Validator\Constraint\Taxon;
 use PHPUnit\Framework\TestCase;
 
-class TaxonTest extends TestCase
+final class TaxonTest extends TestCase
 {
     /**
      * @covers \Netgen\BlockManager\Sylius\Validator\Constraint\Taxon::validatedBy

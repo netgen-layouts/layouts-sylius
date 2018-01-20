@@ -5,7 +5,7 @@ namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetHandler\Doctrin
 use Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\TaxonProduct;
 use Netgen\BlockManager\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
 
-class TaxonProductTest extends AbstractTargetHandlerTest
+final class TaxonProductTest extends AbstractTargetHandlerTest
 {
     /**
      * @covers \Netgen\BlockManager\Persistence\Doctrine\Handler\LayoutResolverHandler::matchRules

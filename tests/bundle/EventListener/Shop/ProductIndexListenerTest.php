@@ -13,7 +13,7 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class ProductIndexListenerTest extends TestCase
+final class ProductIndexListenerTest extends TestCase
 {
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener

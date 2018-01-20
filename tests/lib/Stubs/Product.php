@@ -4,7 +4,7 @@ namespace Netgen\BlockManager\Sylius\Tests\Stubs;
 
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
-class Product extends BaseProduct
+final class Product extends BaseProduct
 {
     /**
      * @param int $id

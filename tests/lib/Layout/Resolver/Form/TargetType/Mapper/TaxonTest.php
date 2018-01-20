@@ -6,7 +6,7 @@ use Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use PHPUnit\Framework\TestCase;
 
-class TaxonTest extends TestCase
+final class TaxonTest extends TestCase
 {
     /**
      * @var \Netgen\BlockManager\Layout\Resolver\Form\TargetType\MapperInterface

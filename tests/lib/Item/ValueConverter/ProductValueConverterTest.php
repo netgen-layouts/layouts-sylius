@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Model\Product;
 use Sylius\Component\Taxonomy\Model\Taxon;
 
-class ProductValueConverterTest extends TestCase
+final class ProductValueConverterTest extends TestCase
 {
     /**
      * @var \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter

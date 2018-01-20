@@ -8,7 +8,7 @@ use Sylius\Component\Core\Model\AdminUser;
 use Sylius\Component\User\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
-class AdminAccessVoterTest extends TestCase
+final class AdminAccessVoterTest extends TestCase
 {
     /**
      * @var \Netgen\BlockManager\Sylius\Security\Authorization\Voter\AdminAccessVoter

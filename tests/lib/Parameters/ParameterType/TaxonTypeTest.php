@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Validation;
 
-class TaxonTypeTest extends TestCase
+final class TaxonTypeTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

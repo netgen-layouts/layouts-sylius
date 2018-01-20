@@ -8,7 +8,7 @@ use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
-class ProductValueLoaderTest extends TestCase
+final class ProductValueLoaderTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

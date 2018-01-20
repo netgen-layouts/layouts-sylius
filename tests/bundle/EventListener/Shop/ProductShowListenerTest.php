@@ -11,7 +11,7 @@ use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class ProductShowListenerTest extends TestCase
+final class ProductShowListenerTest extends TestCase
 {
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener

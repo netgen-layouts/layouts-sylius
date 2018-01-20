@@ -9,7 +9,7 @@ use Netgen\BlockManager\Tests\TestCase\ValidatorTestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class TaxonValidatorTest extends ValidatorTestCase
+final class TaxonValidatorTest extends ValidatorTestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

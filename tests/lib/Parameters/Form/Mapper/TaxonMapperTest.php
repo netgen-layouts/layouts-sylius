@@ -8,7 +8,7 @@ use Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType as ParameterTy
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use PHPUnit\Framework\TestCase;
 
-class TaxonMapperTest extends TestCase
+final class TaxonMapperTest extends TestCase
 {
     /**
      * @var \Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper

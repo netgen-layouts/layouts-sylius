@@ -10,7 +10,7 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
-class TaxonTest extends TestCase
+final class TaxonTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

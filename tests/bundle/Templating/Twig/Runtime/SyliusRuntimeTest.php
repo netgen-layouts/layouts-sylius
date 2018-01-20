@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
-class SyliusRuntimeTest extends TestCase
+final class SyliusRuntimeTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject

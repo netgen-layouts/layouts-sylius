@@ -10,7 +10,7 @@ use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-class MainMenuBuilderListenerTest extends TestCase
+final class MainMenuBuilderListenerTest extends TestCase
 {
     /**
      * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener
