@@ -5,7 +5,7 @@ namespace Netgen\BlockManager\Sylius\Tests\Parameters\ParameterType;
 use Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType;
 use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\BlockManager\Sylius\Tests\Validator\RepositoryValidatorFactory;
-use Netgen\BlockManager\Tests\Parameters\Stubs\Parameter;
+use Netgen\BlockManager\Tests\Parameters\Stubs\ParameterDefinition;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Validation;
@@ -63,11 +63,11 @@ final class TaxonTypeTest extends TestCase
      * @param bool $required
      * @param mixed $defaultValue
      *
-     * @return \Netgen\BlockManager\Parameters\ParameterInterface
+     * @return \Netgen\BlockManager\Parameters\ParameterDefinitionInterface
      */
     public function getParameter(array $options = array(), $required = false, $defaultValue = null)
     {
-        return new Parameter(
+        return new ParameterDefinition(
             array(
                 'name' => 'name',
                 'type' => new TaxonType(),
@@ -182,7 +182,7 @@ final class TaxonTypeTest extends TestCase
     public function testIsValueEmpty($value, $isEmpty)
     {
         $type = new TaxonType();
-        $this->assertEquals($isEmpty, $type->isValueEmpty(new Parameter(), $value));
+        $this->assertEquals($isEmpty, $type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
     /**

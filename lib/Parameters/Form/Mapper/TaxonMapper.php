@@ -3,7 +3,7 @@
 namespace Netgen\BlockManager\Sylius\Parameters\Form\Mapper;
 
 use Netgen\BlockManager\Parameters\Form\Mapper;
-use Netgen\BlockManager\Parameters\ParameterInterface;
+use Netgen\BlockManager\Parameters\ParameterDefinitionInterface;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 
 final class TaxonMapper extends Mapper
@@ -13,11 +13,11 @@ final class TaxonMapper extends Mapper
         return ContentBrowserType::class;
     }
 
-    public function mapOptions(ParameterInterface $parameter)
+    public function mapOptions(ParameterDefinitionInterface $parameterDefinition)
     {
         return array(
             'item_type' => 'sylius_taxon',
-            'required' => $parameter->isRequired(),
+            'required' => $parameterDefinition->isRequired(),
         );
     }
 }

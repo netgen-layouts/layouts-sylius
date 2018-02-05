@@ -2,7 +2,7 @@
 
 namespace Netgen\BlockManager\Sylius\Tests\Parameters\Form\Mapper;
 
-use Netgen\BlockManager\Parameters\Parameter;
+use Netgen\BlockManager\Parameters\ParameterDefinition;
 use Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper;
 use Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType as ParameterType;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
@@ -38,7 +38,7 @@ final class TaxonMapperTest extends TestCase
                 'item_type' => 'sylius_taxon',
                 'required' => false,
             ),
-            $this->mapper->mapOptions(new Parameter(array('type' => new ParameterType(), 'isRequired' => false)))
+            $this->mapper->mapOptions(new ParameterDefinition(array('type' => new ParameterType(), 'isRequired' => false)))
         );
     }
 }
