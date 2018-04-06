@@ -6,6 +6,7 @@ node_modules/
 vendor/
 composer.phar
 composer.lock
+package-lock.json
 grunt.lock
 phpunit.phar
 studio.json
