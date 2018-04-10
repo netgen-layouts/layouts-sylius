@@ -13,10 +13,10 @@ services:
         tags:
             - { name: netgen_block_manager.item.value_loader, value_type: sylius_product }
 
-    netgen_block_manager.item.value_url_builder.sylius_product:
-        class: Netgen\BlockManager\Sylius\Item\ValueUrlBuilder\ProductValueUrlBuilder
+    netgen_block_manager.item.value_url_generator.sylius_product:
+        class: Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator
         public: false
         arguments:
             - "@router"
         tags:
-            - { name: netgen_block_manager.item.value_url_builder, value_type: sylius_product }
+            - { name: netgen_block_manager.item.value_url_generator, value_type: sylius_product }

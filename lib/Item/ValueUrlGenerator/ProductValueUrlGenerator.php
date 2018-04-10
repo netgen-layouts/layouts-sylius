@@ -1,11 +1,11 @@
 <?php
 
-namespace Netgen\BlockManager\Sylius\Item\ValueUrlBuilder;
+namespace Netgen\BlockManager\Sylius\Item\ValueUrlGenerator;
 
-use Netgen\BlockManager\Item\ValueUrlBuilderInterface;
+use Netgen\BlockManager\Item\ValueUrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-final class ProductValueUrlBuilder implements ValueUrlBuilderInterface
+final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
 {
     /**
      * @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface
@@ -17,7 +17,7 @@ final class ProductValueUrlBuilder implements ValueUrlBuilderInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function getUrl($object)
+    public function generate($object)
     {
         return $this->urlGenerator->generate(
             'sylius_shop_product_show',
