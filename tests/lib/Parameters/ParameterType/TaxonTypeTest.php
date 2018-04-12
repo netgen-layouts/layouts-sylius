@@ -2,16 +2,19 @@
 
 namespace Netgen\BlockManager\Sylius\Tests\Parameters\ParameterType;
 
+use Netgen\BlockManager\Parameters\ParameterDefinition;
 use Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType;
 use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\BlockManager\Sylius\Tests\Validator\RepositoryValidatorFactory;
-use Netgen\BlockManager\Tests\Parameters\Stubs\ParameterDefinition;
+use Netgen\BlockManager\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Validation;
 
 final class TaxonTypeTest extends TestCase
 {
+    use ParameterTypeTestTrait;
+
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject
      */
@@ -20,6 +23,8 @@ final class TaxonTypeTest extends TestCase
     public function setUp()
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
+
+        $this->type = new TaxonType();
     }
 
     /**
@@ -27,8 +32,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testGetIdentifier()
     {
-        $type = new TaxonType();
-        $this->assertEquals('sylius_taxon', $type->getIdentifier());
+        $this->assertEquals('sylius_taxon', $this->type->getIdentifier());
     }
 
     /**
@@ -40,7 +44,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testValidOptions($options, $resolvedOptions)
     {
-        $parameter = $this->getParameter($options);
+        $parameter = $this->getParameterDefinition($options);
         $this->assertEquals($resolvedOptions, $parameter->getOptions());
     }
 
@@ -53,29 +57,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testInvalidOptions($options)
     {
-        $this->getParameter($options);
-    }
-
-    /**
-     * Returns the parameter under test.
-     *
-     * @param array $options
-     * @param bool $required
-     * @param mixed $defaultValue
-     *
-     * @return \Netgen\BlockManager\Parameters\ParameterDefinitionInterface
-     */
-    public function getParameter(array $options = array(), $required = false, $defaultValue = null)
-    {
-        return new ParameterDefinition(
-            array(
-                'name' => 'name',
-                'type' => new TaxonType(),
-                'options' => $options,
-                'isRequired' => $required,
-                'defaultValue' => $defaultValue,
-            )
-        );
+        $this->getParameterDefinition($options);
     }
 
     /**
@@ -137,13 +119,12 @@ final class TaxonTypeTest extends TestCase
                 );
         }
 
-        $type = new TaxonType();
-        $parameter = $this->getParameter(array(), $required);
+        $parameter = $this->getParameterDefinition(array(), $required);
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
-        $errors = $validator->validate($value, $type->getConstraints($parameter, $value));
+        $errors = $validator->validate($value, $this->type->getConstraints($parameter, $value));
         $this->assertEquals($isValid, $errors->count() === 0);
     }
 
@@ -181,8 +162,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testIsValueEmpty($value, $isEmpty)
     {
-        $type = new TaxonType();
-        $this->assertEquals($isEmpty, $type->isValueEmpty(new ParameterDefinition(), $value));
+        $this->assertEquals($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
     /**
