@@ -3,7 +3,6 @@
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Shop;
 
 use Netgen\BlockManager\Context\Context;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Product;
 use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon;
 use Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener;
 use PHPUnit\Framework\TestCase;
