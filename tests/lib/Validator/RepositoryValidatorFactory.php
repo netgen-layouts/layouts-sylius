@@ -41,7 +41,9 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 
         if ($name === 'ngbm_sylius_product') {
             return new ProductValidator($this->repository);
-        } elseif ($name === 'ngbm_sylius_taxon') {
+        }
+
+        if ($name === 'ngbm_sylius_taxon') {
             return new TaxonValidator($this->repository);
         }
 

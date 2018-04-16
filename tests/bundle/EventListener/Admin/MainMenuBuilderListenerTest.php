@@ -42,9 +42,9 @@ final class MainMenuBuilderListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
+     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
     public function testOnMainMenuBuild()
     {
@@ -68,9 +68,9 @@ final class MainMenuBuilderListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
+     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
     public function testOnMainMenuBuildPlacedBeforeConfiguration()
     {
