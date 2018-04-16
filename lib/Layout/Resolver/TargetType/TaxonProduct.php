@@ -30,7 +30,7 @@ final class TaxonProduct implements TargetTypeInterface
     {
         $product = $request->attributes->get('ngbm_sylius_product');
         if (!$product instanceof ProductInterface) {
-            return null;
+            return;
         }
 
         return array_map(

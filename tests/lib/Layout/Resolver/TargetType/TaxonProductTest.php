@@ -57,7 +57,7 @@ final class TaxonProductTest extends TestCase
                     $this->returnCallback(
                         function () use ($value) {
                             if (!is_int($value) || $value > 20) {
-                                return null;
+                                return;
                             }
 
                             return new TaxonStub($value);

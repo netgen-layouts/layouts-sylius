@@ -52,7 +52,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
                     $this->returnCallback(
                         function () use ($taxonId) {
                             if (!is_int($taxonId) || $taxonId <= 0 || $taxonId > 20) {
-                                return null;
+                                return;
                             }
 
                             return new TaxonStub($taxonId);

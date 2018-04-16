@@ -110,7 +110,7 @@ final class TaxonTypeTest extends TestCase
                     $this->returnCallback(
                         function () use ($value) {
                             if (!is_int($value) || $value <= 0 || $value > 20) {
-                                return null;
+                                return;
                             }
 
                             return new TaxonStub($value);

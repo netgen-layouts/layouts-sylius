@@ -38,7 +38,7 @@ final class SyliusRuntime
     {
         $product = $this->productRepository->find($productId);
         if (!$product instanceof ProductInterface) {
-            return null;
+            return;
         }
 
         return $product->getName();
@@ -55,7 +55,7 @@ final class SyliusRuntime
     {
         $taxon = $this->taxonRepository->find($taxonId);
         if (!$taxon instanceof TaxonInterface) {
-            return null;
+            return;
         }
 
         $parts = array($taxon->getName());

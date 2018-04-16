@@ -52,7 +52,7 @@ final class ProductValidatorTest extends ValidatorTestCase
                     $this->returnCallback(
                         function () use ($productId) {
                             if (!is_int($productId) || $productId <= 0 || $productId > 20) {
-                                return null;
+                                return;
                             }
 
                             return new ProductStub($productId);

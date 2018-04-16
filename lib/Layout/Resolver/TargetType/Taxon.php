@@ -29,7 +29,7 @@ final class Taxon implements TargetTypeInterface
     {
         $taxon = $request->attributes->get('ngbm_sylius_taxon');
         if (!$taxon instanceof TaxonInterface) {
-            return null;
+            return;
         }
 
         $taxonIds = array();
