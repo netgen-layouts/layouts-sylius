@@ -66,7 +66,7 @@ final class ProductIndexListenerTest extends TestCase
     public function testGetSubscribedEvents()
     {
         $this->assertEquals(
-            array('sylius.product.index' => 'onProductIndex'),
+            ['sylius.product.index' => 'onProductIndex'],
             $this->listener->getSubscribedEvents()
         );
     }

@@ -29,7 +29,7 @@ final class ProductShowListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array('sylius.product.show' => 'onProductShow');
+        return ['sylius.product.show' => 'onProductShow'];
     }
 
     /**

@@ -58,7 +58,7 @@ final class SyliusRuntime
             return;
         }
 
-        $parts = array($taxon->getName());
+        $parts = [$taxon->getName()];
         while ($taxon->getParent() instanceof TaxonInterface) {
             $taxon = $taxon->getParent();
 

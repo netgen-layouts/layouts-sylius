@@ -31,7 +31,7 @@ final class LocaleProvider implements LocaleProviderInterface
 
     public function getAvailableLocales()
     {
-        $availableLocales = array();
+        $availableLocales = [];
 
         foreach ($this->syliusLocaleProvider->getAvailableLocalesCodes() as $localeCode) {
             $localeName = $this->localeBundle->getLocaleName($localeCode);
@@ -48,6 +48,6 @@ final class LocaleProvider implements LocaleProviderInterface
 
     public function getRequestLocales(Request $request)
     {
-        return array($request->getLocale());
+        return [$request->getLocale()];
     }
 }

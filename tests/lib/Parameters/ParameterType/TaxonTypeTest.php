@@ -67,12 +67,12 @@ final class TaxonTypeTest extends TestCase
      */
     public function validOptionsProvider()
     {
-        return array(
-            array(
-                array(),
-                array(),
-            ),
-        );
+        return [
+            [
+                [],
+                [],
+            ],
+        ];
     }
 
     /**
@@ -82,13 +82,13 @@ final class TaxonTypeTest extends TestCase
      */
     public function invalidOptionsProvider()
     {
-        return array(
-            array(
-                array(
+        return [
+            [
+                [
                     'undefined_value' => 'Value',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -119,7 +119,7 @@ final class TaxonTypeTest extends TestCase
                 );
         }
 
-        $parameter = $this->getParameterDefinition(array(), $required);
+        $parameter = $this->getParameterDefinition([], $required);
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
@@ -135,22 +135,22 @@ final class TaxonTypeTest extends TestCase
      */
     public function validationProvider()
     {
-        return array(
-            array(12, false, true),
-            array(24, false, false),
-            array(-12, false, false),
-            array(0, false, false),
-            array('12', false, false),
-            array('', false, false),
-            array(null, false, true),
-            array(12, true, true),
-            array(24, true, false),
-            array(-12, true, false),
-            array(0, true, false),
-            array('12', true, false),
-            array('', true, false),
-            array(null, true, false),
-        );
+        return [
+            [12, false, true],
+            [24, false, false],
+            [-12, false, false],
+            [0, false, false],
+            ['12', false, false],
+            ['', false, false],
+            [null, false, true],
+            [12, true, true],
+            [24, true, false],
+            [-12, true, false],
+            [0, true, false],
+            ['12', true, false],
+            ['', true, false],
+            [null, true, false],
+        ];
     }
 
     /**
@@ -172,9 +172,9 @@ final class TaxonTypeTest extends TestCase
      */
     public function emptyProvider()
     {
-        return array(
-            array(null, true),
-            array(new TaxonStub(42), false),
-        );
+        return [
+            [null, true],
+            [new TaxonStub(42), false],
+        ];
     }
 }

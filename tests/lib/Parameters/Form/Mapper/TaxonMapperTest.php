@@ -34,11 +34,11 @@ final class TaxonMapperTest extends TestCase
     public function testMapOptions()
     {
         $this->assertEquals(
-            array(
+            [
                 'item_type' => 'sylius_taxon',
                 'required' => false,
-            ),
-            $this->mapper->mapOptions(new ParameterDefinition(array('type' => new ParameterType(), 'isRequired' => false)))
+            ],
+            $this->mapper->mapOptions(new ParameterDefinition(['type' => new ParameterType(), 'isRequired' => false]))
         );
     }
 }

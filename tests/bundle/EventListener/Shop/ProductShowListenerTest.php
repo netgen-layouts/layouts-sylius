@@ -43,7 +43,7 @@ final class ProductShowListenerTest extends TestCase
     public function testGetSubscribedEvents()
     {
         $this->assertEquals(
-            array('sylius.product.show' => 'onProductShow'),
+            ['sylius.product.show' => 'onProductShow'],
             $this->listener->getSubscribedEvents()
         );
     }

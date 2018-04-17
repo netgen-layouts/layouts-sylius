@@ -100,14 +100,14 @@ final class ProductTest extends TestCase
      */
     public function validationProvider()
     {
-        return array(
-            array(12, true),
-            array(24, false),
-            array(-12, false),
-            array(0, false),
-            array('12', false),
-            array('', false),
-            array(null, false),
-        );
+        return [
+            [12, true],
+            [24, false],
+            [-12, false],
+            [0, false],
+            ['12', false],
+            ['', false],
+            [null, false],
+        ];
     }
 }

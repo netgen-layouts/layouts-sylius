@@ -54,43 +54,43 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         $builder->add(
             'use_current_taxon',
             ParameterType\Compound\BooleanType::class,
-            array(
+            [
                 'reverse' => true,
-            )
+            ]
         );
 
         $builder->get('use_current_taxon')->add(
             'parent_taxon_id',
             SyliusParameterType\TaxonType::class,
-            array(
+            [
                 'required' => true,
-            )
+            ]
         );
 
         $builder->add(
             'sort_type',
             ParameterType\ChoiceType::class,
-            array(
+            [
                 'required' => true,
-                'options' => array(
+                'options' => [
                     'Position' => 'position',
                     'Alphabetical' => 'name',
                     'Created' => 'createdAt',
                     'Price' => 'price',
-                ),
-            )
+                ],
+            ]
         );
 
         $builder->add(
             'sort_direction',
             ParameterType\ChoiceType::class,
-            array(
+            [
                 'required' => true,
-                'options' => array(
+                'options' => [
                     'Descending' => 'desc',
                     'Ascending' => 'asc',
-                ),
-            )
+                ],
+            ]
         );
     }
 
@@ -107,7 +107,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
             $this->requestStack->getCurrentRequest()->getLocale(),
             $offset,
             $limit,
-            array($sortType => $sortDirection)
+            [$sortType => $sortDirection]
         );
     }
 

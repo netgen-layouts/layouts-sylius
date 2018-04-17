@@ -14,8 +14,8 @@ final class Taxon extends Mapper
 
     public function getFormOptions()
     {
-        return array(
+        return [
             'item_type' => 'sylius_taxon',
-        );
+        ];
     }
 }

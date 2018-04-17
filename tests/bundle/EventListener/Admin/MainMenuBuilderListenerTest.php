@@ -36,7 +36,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testGetSubscribedEvents()
     {
         $this->assertEquals(
-            array(MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'),
+            [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'],
             $this->listener->getSubscribedEvents()
         );
     }
@@ -62,7 +62,7 @@ final class MainMenuBuilderListenerTest extends TestCase
         $this->assertArrayHasKey('nglayouts', $menuItem);
 
         $this->assertEquals(
-            array('layout_resolver', 'layouts', 'shared_layouts'),
+            ['layout_resolver', 'layouts', 'shared_layouts'],
             array_keys($menuItem['nglayouts']->getChildren())
         );
     }
@@ -88,7 +88,7 @@ final class MainMenuBuilderListenerTest extends TestCase
         $this->listener->onMainMenuBuild($event);
 
         $this->assertEquals(
-            array('nglayouts', 'configuration'),
+            ['nglayouts', 'configuration'],
             array_keys($menuItem->getChildren())
         );
     }

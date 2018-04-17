@@ -25,7 +25,7 @@ final class SetPageLayoutListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(BlockManagerAdminEvents::ADMIN_MATCH => array('onAdminMatch', -255));
+        return [BlockManagerAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]];
     }
 
     /**

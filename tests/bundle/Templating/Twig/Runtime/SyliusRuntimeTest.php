@@ -97,7 +97,7 @@ final class SyliusRuntimeTest extends TestCase
             ->with($this->equalTo(42))
             ->will($this->returnValue($taxon1));
 
-        $this->assertEquals(array('Taxon 44', 'Taxon 43', 'Taxon 42'), $this->runtime->getTaxonPath(42));
+        $this->assertEquals(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
     }
 
     /**

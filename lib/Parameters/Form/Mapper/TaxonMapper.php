@@ -15,9 +15,9 @@ final class TaxonMapper extends Mapper
 
     public function mapOptions(ParameterDefinitionInterface $parameterDefinition)
     {
-        return array(
+        return [
             'item_type' => 'sylius_taxon',
             'required' => $parameterDefinition->isRequired(),
-        );
+        ];
     }
 }

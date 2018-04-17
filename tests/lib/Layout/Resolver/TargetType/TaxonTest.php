@@ -83,7 +83,7 @@ final class TaxonTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('ngbm_sylius_taxon', $taxon);
 
-        $this->assertEquals(array(42, 24), $this->targetType->provideValue($request));
+        $this->assertEquals([42, 24], $this->targetType->provideValue($request));
     }
 
     /**
@@ -103,14 +103,14 @@ final class TaxonTest extends TestCase
      */
     public function validationProvider()
     {
-        return array(
-            array(12, true),
-            array(24, false),
-            array(-12, false),
-            array(0, false),
-            array('12', false),
-            array('', false),
-            array(null, false),
-        );
+        return [
+            [12, true],
+            [24, false],
+            [-12, false],
+            [0, false],
+            ['12', false],
+            ['', false],
+            [null, false],
+        ];
     }
 }

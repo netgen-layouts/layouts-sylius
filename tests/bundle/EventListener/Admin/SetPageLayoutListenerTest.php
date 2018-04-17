@@ -28,7 +28,7 @@ final class SetPageLayoutListenerTest extends TestCase
     public function testGetSubscribedEvents()
     {
         $this->assertEquals(
-            array(BlockManagerAdminEvents::ADMIN_MATCH => array('onAdminMatch', -255)),
+            [BlockManagerAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]],
             $this->listener->getSubscribedEvents()
         );
     }

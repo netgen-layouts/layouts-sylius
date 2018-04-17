@@ -18,12 +18,12 @@ final class TaxonProduct implements TargetTypeInterface
 
     public function getConstraints()
     {
-        return array(
+        return [
             new Constraints\NotBlank(),
-            new Constraints\Type(array('type' => 'numeric')),
-            new Constraints\GreaterThan(array('value' => 0)),
+            new Constraints\Type(['type' => 'numeric']),
+            new Constraints\GreaterThan(['value' => 0]),
             new SyliusConstraints\Taxon(),
-        );
+        ];
     }
 
     public function provideValue(Request $request)

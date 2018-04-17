@@ -32,9 +32,9 @@ final class TaxonTest extends TestCase
     public function testGetFormOptions()
     {
         $this->assertEquals(
-            array(
+            [
                 'item_type' => 'sylius_taxon',
-            ),
+            ],
             $this->mapper->getFormOptions()
         );
     }

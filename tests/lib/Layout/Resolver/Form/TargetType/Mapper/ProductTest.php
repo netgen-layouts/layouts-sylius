@@ -32,9 +32,9 @@ final class ProductTest extends TestCase
     public function testGetFormOptions()
     {
         $this->assertEquals(
-            array(
+            [
                 'item_type' => 'sylius_product',
-            ),
+            ],
             $this->mapper->getFormOptions()
         );
     }

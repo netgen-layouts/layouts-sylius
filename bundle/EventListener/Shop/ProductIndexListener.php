@@ -47,7 +47,7 @@ final class ProductIndexListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array('sylius.product.index' => 'onProductIndex');
+        return ['sylius.product.index' => 'onProductIndex'];
     }
 
     /**

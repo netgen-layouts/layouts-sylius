@@ -10,7 +10,7 @@ use Sylius\Component\Core\Repository\ProductRepositoryInterface as BaseProductRe
 
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {
-    public function findByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale, int $offset, int $count, array $sorting = array()): array;
+    public function findByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale, int $offset, int $count, array $sorting = []): array;
 
     public function countByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int;
 

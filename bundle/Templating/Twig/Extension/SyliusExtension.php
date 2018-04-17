@@ -10,15 +10,15 @@ final class SyliusExtension extends AbstractExtension
 {
     public function getFunctions()
     {
-        return array(
+        return [
             new TwigFunction(
                 'ngbm_sylius_product_name',
-                array(SyliusRuntime::class, 'getProductName')
+                [SyliusRuntime::class, 'getProductName']
             ),
             new TwigFunction(
                 'ngbm_sylius_taxon_path',
-                array(SyliusRuntime::class, 'getTaxonPath')
+                [SyliusRuntime::class, 'getTaxonPath']
             ),
-        );
+        ];
     }
 }

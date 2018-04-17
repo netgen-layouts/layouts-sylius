@@ -80,7 +80,7 @@ final class TaxonProductTest extends TestCase
     public function testProvideValue()
     {
         $product = new ProductStub(42);
-        foreach (array(12, 13) as $taxonId) {
+        foreach ([12, 13] as $taxonId) {
             $productTaxon = new ProductTaxon();
             $productTaxon->setTaxon(new TaxonStub($taxonId));
 
@@ -90,7 +90,7 @@ final class TaxonProductTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('ngbm_sylius_product', $product);
 
-        $this->assertEquals(array(12, 13), $this->targetType->provideValue($request));
+        $this->assertEquals([12, 13], $this->targetType->provideValue($request));
     }
 
     /**
@@ -110,14 +110,14 @@ final class TaxonProductTest extends TestCase
      */
     public function validationProvider()
     {
-        return array(
-            array(12, true),
-            array(24, false),
-            array(-12, false),
-            array(0, false),
-            array('12', false),
-            array('', false),
-            array(null, false),
-        );
+        return [
+            [12, true],
+            [24, false],
+            [-12, false],
+            [0, false],
+            ['12', false],
+            ['', false],
+            [null, false],
+        ];
     }
 }

@@ -24,10 +24,10 @@ final class TaxonType extends ParameterType
 
     protected function getValueConstraints(ParameterDefinitionInterface $parameterDefinition, $value)
     {
-        return array(
-            new Constraints\Type(array('type' => 'numeric')),
-            new Constraints\GreaterThan(array('value' => 0)),
+        return [
+            new Constraints\Type(['type' => 'numeric']),
+            new Constraints\GreaterThan(['value' => 0]),
             new SyliusConstraints\Taxon(),
-        );
+        ];
     }
 }

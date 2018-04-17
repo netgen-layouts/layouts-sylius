@@ -54,9 +54,9 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
         $builder->add(
             'use_current_taxon',
             ParameterType\Compound\BooleanType::class,
-            array(
+            [
                 'reverse' => true,
-            )
+            ]
         );
 
         $builder->get('use_current_taxon')->add(

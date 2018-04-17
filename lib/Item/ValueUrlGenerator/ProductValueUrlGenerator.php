@@ -21,9 +21,9 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
     {
         return $this->urlGenerator->generate(
             'sylius_shop_product_show',
-            array(
+            [
                 'slug' => $object->getSlug(),
-            )
+            ]
         );
     }
 }

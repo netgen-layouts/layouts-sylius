@@ -22,7 +22,7 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild');
+        return [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'];
     }
 
     /**
@@ -53,17 +53,17 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
             ->setLabel('sylius.menu.admin.main.nglayouts.header');
 
         $layouts
-            ->addChild('layout_resolver', array('route' => 'ngbm_admin_layout_resolver_index'))
+            ->addChild('layout_resolver', ['route' => 'ngbm_admin_layout_resolver_index'])
             ->setLabel('sylius.menu.admin.main.nglayouts.layout_resolver')
             ->setLabelAttribute('icon', 'random');
 
         $layouts
-            ->addChild('layouts', array('route' => 'ngbm_admin_layouts_index'))
+            ->addChild('layouts', ['route' => 'ngbm_admin_layouts_index'])
             ->setLabel('sylius.menu.admin.main.nglayouts.layouts')
             ->setLabelAttribute('icon', 'newspaper');
 
         $layouts
-            ->addChild('shared_layouts', array('route' => 'ngbm_admin_shared_layouts_index'))
+            ->addChild('shared_layouts', ['route' => 'ngbm_admin_shared_layouts_index'])
             ->setLabel('sylius.menu.admin.main.nglayouts.shared_layouts')
             ->setLabelAttribute('icon', 'list layout');
 
@@ -82,7 +82,7 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
         $menuOrder = array_keys($menu->getChildren());
         $configMenuIndex = array_search('configuration', $menuOrder, true);
         if ($configMenuIndex !== false) {
-            array_splice($menuOrder, array_search('configuration', $menuOrder, true), 0, array('nglayouts'));
+            array_splice($menuOrder, array_search('configuration', $menuOrder, true), 0, ['nglayouts']);
 
             return $menuOrder;
         }
