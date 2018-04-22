@@ -2,7 +2,7 @@
 
 namespace Netgen\BlockManager\Sylius\Parameters\ParameterType;
 
-use Netgen\BlockManager\Parameters\ParameterDefinitionInterface;
+use Netgen\BlockManager\Parameters\ParameterDefinition;
 use Netgen\BlockManager\Parameters\ParameterType;
 use Netgen\BlockManager\Sylius\Validator\Constraint as SyliusConstraints;
 use Symfony\Component\Validator\Constraints;
@@ -17,12 +17,12 @@ final class TaxonType extends ParameterType
         return 'sylius_taxon';
     }
 
-    public function isValueEmpty(ParameterDefinitionInterface $parameterDefinition, $value)
+    public function isValueEmpty(ParameterDefinition $parameterDefinition, $value)
     {
         return $value === null;
     }
 
-    protected function getValueConstraints(ParameterDefinitionInterface $parameterDefinition, $value)
+    protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value)
     {
         return [
             new Constraints\Type(['type' => 'numeric']),
