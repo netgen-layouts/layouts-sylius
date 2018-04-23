@@ -1,6 +1,7 @@
 {
     "name": "netgen/block-manager-sylius",
     "description": "Netgen Block Manager & Sylius eCommerce integration",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Netgen",
