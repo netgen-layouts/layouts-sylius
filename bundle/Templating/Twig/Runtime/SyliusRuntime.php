@@ -32,13 +32,13 @@ final class SyliusRuntime
      *
      * @param int|string $productId
      *
-     * @return string
+     * @return string|null
      */
     public function getProductName($productId)
     {
         $product = $this->productRepository->find($productId);
         if (!$product instanceof ProductInterface) {
-            return;
+            return null;
         }
 
         return $product->getName();
@@ -49,13 +49,13 @@ final class SyliusRuntime
      *
      * @param int|string $taxonId
      *
-     * @return string
+     * @return array|null
      */
     public function getTaxonPath($taxonId)
     {
         $taxon = $this->taxonRepository->find($taxonId);
         if (!$taxon instanceof TaxonInterface) {
-            return;
+            return null;
         }
 
         $parts = [$taxon->getName()];

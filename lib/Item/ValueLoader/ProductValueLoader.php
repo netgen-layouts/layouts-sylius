@@ -11,7 +11,7 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 final class ProductValueLoader implements ValueLoaderInterface
 {
     /**
-     * @var \Sylius\Component\Core\Repository\ProductRepositoryInterface
+     * @var \Sylius\Component\Product\Repository\ProductRepositoryInterface
      */
     private $productRepository;
 

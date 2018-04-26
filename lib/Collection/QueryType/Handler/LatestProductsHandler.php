@@ -13,6 +13,7 @@ use Netgen\BlockManager\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 final class LatestProductsHandler implements QueryTypeHandlerInterface
@@ -67,10 +68,15 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
 
     public function getValues(Query $query, $offset = 0, $limit = null)
     {
+        $currentRequest = $this->requestStack->getCurrentRequest();
+        if (!$currentRequest instanceof Request) {
+            return [];
+        }
+
         return $this->productRepository->findLatestByTaxon(
             $this->channelContext->getChannel(),
             $this->getParentTaxon($query),
-            $this->requestStack->getMasterRequest()->getLocale(),
+            $currentRequest->getLocale(),
             $offset,
             $limit
         );
@@ -78,10 +84,15 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
 
     public function getCount(Query $query)
     {
+        $currentRequest = $this->requestStack->getCurrentRequest();
+        if (!$currentRequest instanceof Request) {
+            return 0;
+        }
+
         return $this->productRepository->countLatestByTaxon(
             $this->channelContext->getChannel(),
             $this->getParentTaxon($query),
-            $this->requestStack->getMasterRequest()->getLocale()
+            $currentRequest->getLocale()
         );
     }
 
@@ -94,6 +105,9 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
     {
         if ($query->getParameter('use_current_taxon')->getValue()) {
             $currentRequest = $this->requestStack->getCurrentRequest();
+            if (!$currentRequest instanceof Request) {
+                return null;
+            }
 
             $taxonSlug = $currentRequest->attributes->get('slug');
             if (empty($taxonSlug)) {
