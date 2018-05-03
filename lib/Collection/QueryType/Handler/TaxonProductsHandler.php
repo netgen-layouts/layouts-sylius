@@ -50,7 +50,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         $this->requestStack = $requestStack;
     }
 
-    public function buildParameters(ParameterBuilderInterface $builder)
+    public function buildParameters(ParameterBuilderInterface $builder): void
     {
         $builder->add(
             'use_current_taxon',
@@ -133,7 +133,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         );
     }
 
-    public function isContextual(Query $query)
+    public function isContextual(Query $query): bool
     {
         return $query->getParameter('use_current_taxon')->getValue() === true;
     }

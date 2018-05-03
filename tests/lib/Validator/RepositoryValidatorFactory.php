@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Validator;
 
 use Netgen\BlockManager\Sylius\Validator\ProductValidator;
@@ -10,6 +12,7 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
+use Symfony\Component\Validator\ConstraintValidatorInterface;
 
 final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
 {
@@ -23,21 +26,13 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
      */
     private $baseValidatorFactory;
 
-    /**
-     * Constructor.
-     *
-     * @param \Sylius\Component\Resource\Repository\RepositoryInterface $repository
-     */
     public function __construct(RepositoryInterface $repository)
     {
         $this->repository = $repository;
         $this->baseValidatorFactory = new ConstraintValidatorFactory();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getInstance(Constraint $constraint)
+    public function getInstance(Constraint $constraint): ConstraintValidatorInterface
     {
         $name = $constraint->validatedBy();
 

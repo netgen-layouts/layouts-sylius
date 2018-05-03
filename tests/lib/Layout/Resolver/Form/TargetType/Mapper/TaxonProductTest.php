@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
 use Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct;
@@ -13,7 +15,7 @@ final class TaxonProductTest extends TestCase
      */
     private $mapper;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->mapper = new TaxonProduct();
     }
@@ -21,7 +23,7 @@ final class TaxonProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct::getFormType
      */
-    public function testGetFormType()
+    public function testGetFormType(): void
     {
         $this->assertEquals(ContentBrowserType::class, $this->mapper->getFormType());
     }
@@ -29,7 +31,7 @@ final class TaxonProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct::getFormOptions
      */
-    public function testGetFormOptions()
+    public function testGetFormOptions(): void
     {
         $this->assertEquals(
             [

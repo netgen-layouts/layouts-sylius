@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Admin;
 
 use Knp\Menu\MenuFactory;
@@ -22,7 +24,7 @@ final class MainMenuBuilderListenerTest extends TestCase
      */
     private $authCheckerMock;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->authCheckerMock = $this->createMock(AuthorizationCheckerInterface::class);
 
@@ -33,7 +35,7 @@ final class MainMenuBuilderListenerTest extends TestCase
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::__construct
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getSubscribedEvents
      */
-    public function testGetSubscribedEvents()
+    public function testGetSubscribedEvents(): void
     {
         $this->assertEquals(
             [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'],
@@ -46,7 +48,7 @@ final class MainMenuBuilderListenerTest extends TestCase
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
-    public function testOnMainMenuBuild()
+    public function testOnMainMenuBuild(): void
     {
         $this->authCheckerMock
             ->expects($this->any())
@@ -72,7 +74,7 @@ final class MainMenuBuilderListenerTest extends TestCase
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
-    public function testOnMainMenuBuildPlacedBeforeConfiguration()
+    public function testOnMainMenuBuildPlacedBeforeConfiguration(): void
     {
         $this->authCheckerMock
             ->expects($this->any())
@@ -96,7 +98,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
-    public function testOnMainMenuBuildWithNoAccess()
+    public function testOnMainMenuBuildWithNoAccess(): void
     {
         $this->authCheckerMock
             ->expects($this->any())

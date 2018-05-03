@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime;
 
 use Sylius\Component\Product\Model\ProductInterface;
@@ -31,10 +33,8 @@ final class SyliusRuntime
      * Returns the product name.
      *
      * @param int|string $productId
-     *
-     * @return string|null
      */
-    public function getProductName($productId)
+    public function getProductName($productId): ?string
     {
         $product = $this->productRepository->find($productId);
         if (!$product instanceof ProductInterface) {
@@ -48,10 +48,8 @@ final class SyliusRuntime
      * Returns the taxon path.
      *
      * @param int|string $taxonId
-     *
-     * @return array|null
      */
-    public function getTaxonPath($taxonId)
+    public function getTaxonPath($taxonId): ?array
     {
         $taxon = $this->taxonRepository->find($taxonId);
         if (!$taxon instanceof TaxonInterface) {

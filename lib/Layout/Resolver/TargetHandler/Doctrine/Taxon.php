@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine;
 
 use Doctrine\DBAL\Connection;
@@ -8,7 +10,7 @@ use Netgen\BlockManager\Persistence\Doctrine\QueryHandler\TargetHandlerInterface
 
 final class Taxon implements TargetHandlerInterface
 {
-    public function handleQuery(QueryBuilder $query, $value)
+    public function handleQuery(QueryBuilder $query, $value): void
     {
         $query->andWhere(
             $query->expr()->in('rt.value', [':target_value'])

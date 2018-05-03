@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Security\Authorization\Voter;
 
 use Netgen\BlockManager\Sylius\Security\Authorization\Voter\AdminAccessVoter;
@@ -15,7 +17,7 @@ final class AdminAccessVoterTest extends TestCase
      */
     private $voter;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->voter = new AdminAccessVoter();
     }
@@ -23,7 +25,7 @@ final class AdminAccessVoterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Security\Authorization\Voter\AdminAccessVoter::vote
      */
-    public function testVote()
+    public function testVote(): void
     {
         $token = $this->createMock(TokenInterface::class);
         $token->expects($this->any())
@@ -36,7 +38,7 @@ final class AdminAccessVoterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Security\Authorization\Voter\AdminAccessVoter::vote
      */
-    public function testVoteWithoutAdminUser()
+    public function testVoteWithoutAdminUser(): void
     {
         $token = $this->createMock(TokenInterface::class);
         $token->expects($this->any())

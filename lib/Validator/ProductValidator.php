@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Validator;
 
 use Netgen\BlockManager\Sylius\Validator\Constraint\Product;
@@ -21,7 +23,7 @@ final class ProductValidator extends ConstraintValidator
         $this->productRepository = $productRepository;
     }
 
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         if ($value === null) {
             return;

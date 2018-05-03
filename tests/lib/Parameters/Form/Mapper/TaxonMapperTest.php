@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Parameters\Form\Mapper;
 
 use Netgen\BlockManager\Parameters\ParameterDefinition;
@@ -15,7 +17,7 @@ final class TaxonMapperTest extends TestCase
      */
     private $mapper;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->mapper = new TaxonMapper();
     }
@@ -23,7 +25,7 @@ final class TaxonMapperTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper::getFormType
      */
-    public function testGetFormType()
+    public function testGetFormType(): void
     {
         $this->assertEquals(ContentBrowserType::class, $this->mapper->getFormType());
     }
@@ -31,7 +33,7 @@ final class TaxonMapperTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper::mapOptions
      */
-    public function testMapOptions()
+    public function testMapOptions(): void
     {
         $this->assertEquals(
             [

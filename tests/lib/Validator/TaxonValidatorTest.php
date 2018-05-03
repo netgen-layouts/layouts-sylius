@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Validator;
 
 use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon as TaxonStub;
@@ -16,17 +18,14 @@ final class TaxonValidatorTest extends ValidatorTestCase
      */
     private $repositoryMock;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->constraint = new Taxon();
     }
 
-    /**
-     * @return \Symfony\Component\Validator\ConstraintValidatorInterface
-     */
-    public function getValidator()
+    public function getValidator(): TaxonValidator
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 
@@ -41,7 +40,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
      * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::validate
      * @dataProvider validateDataProvider
      */
-    public function testValidate($taxonId, $isValid)
+    public function testValidate($taxonId, bool $isValid): void
     {
         if ($taxonId !== null) {
             $this->repositoryMock
@@ -69,7 +68,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
      * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
      * @expectedExceptionMessage Expected argument of type "Netgen\BlockManager\Sylius\Validator\Constraint\Taxon", "Symfony\Component\Validator\Constraints\NotBlank" given
      */
-    public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint()
+    public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->constraint = new NotBlank();
         $this->assertValid(true, 'value');
@@ -80,12 +79,12 @@ final class TaxonValidatorTest extends ValidatorTestCase
      * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
      * @expectedExceptionMessage Expected argument of type "scalar", "array" given
      */
-    public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue()
+    public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
         $this->assertValid(true, []);
     }
 
-    public function validateDataProvider()
+    public function validateDataProvider(): array
     {
         return [
             [12, true],

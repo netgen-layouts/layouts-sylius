@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon;
@@ -22,7 +24,7 @@ final class TaxonTest extends TestCase
      */
     private $targetType;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 
@@ -32,7 +34,7 @@ final class TaxonTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::getType
      */
-    public function testGetType()
+    public function testGetType(): void
     {
         $this->assertEquals('sylius_taxon', $this->targetType->getType());
     }
@@ -44,7 +46,7 @@ final class TaxonTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
      * @dataProvider validationProvider
      */
-    public function testValidation($value, $isValid)
+    public function testValidation($value, bool $isValid): void
     {
         if ($value !== null) {
             $this->repositoryMock
@@ -75,7 +77,7 @@ final class TaxonTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
      */
-    public function testProvideValue()
+    public function testProvideValue(): void
     {
         $taxon = new TaxonStub(42);
         $taxon->setParent(new TaxonStub(24));
@@ -89,19 +91,14 @@ final class TaxonTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
      */
-    public function testProvideValueWithNoTaxon()
+    public function testProvideValueWithNoTaxon(): void
     {
         $request = Request::create('/');
 
         $this->assertNull($this->targetType->provideValue($request));
     }
 
-    /**
-     * Extractor for testing valid parameter values.
-     *
-     * @return array
-     */
-    public function validationProvider()
+    public function validationProvider(): array
     {
         return [
             [12, true],

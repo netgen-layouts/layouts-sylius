@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
@@ -13,7 +15,7 @@ final class NetgenSyliusBlockManagerExtensionTest extends AbstractExtensionTestC
      *
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\DependencyInjection\NetgenSyliusBlockManagerExtension::load
      */
-    public function testServices()
+    public function testServices(): void
     {
         $this->load();
 
@@ -25,7 +27,7 @@ final class NetgenSyliusBlockManagerExtensionTest extends AbstractExtensionTestC
      *
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\DependencyInjection\NetgenSyliusBlockManagerExtension::prepend
      */
-    public function testPrepend()
+    public function testPrepend(): void
     {
         $this->container->setParameter('kernel.bundles', ['NetgenBlockManagerBundle' => true]);
         $this->container->registerExtension(new NetgenBlockManagerExtension());
@@ -49,13 +51,7 @@ final class NetgenSyliusBlockManagerExtensionTest extends AbstractExtensionTestC
         $this->assertArrayHasKey('sylius_product', $config['items']['value_types']);
     }
 
-    /**
-     * Return an array of container extensions that need to be registered for
-     * each test (usually just the container extension you are testing).
-     *
-     * @return \Symfony\Component\DependencyInjection\Extension\ExtensionInterface[]
-     */
-    protected function getContainerExtensions()
+    protected function getContainerExtensions(): array
     {
         return [new NetgenSyliusBlockManagerExtension()];
     }

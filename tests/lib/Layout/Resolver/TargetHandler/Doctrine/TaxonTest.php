@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetHandler\Doctrine;
 
+use Netgen\BlockManager\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 use Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon;
 use Netgen\BlockManager\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
 
@@ -12,7 +15,7 @@ final class TaxonTest extends AbstractTargetHandlerTest
      * @covers \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolverQueryHandler::matchRules
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon::handleQuery
      */
-    public function testMatchRules()
+    public function testMatchRules(): void
     {
         $rules = $this->handler->matchRules($this->getTargetIdentifier(), [1, 2, 42]);
 
@@ -20,32 +23,17 @@ final class TaxonTest extends AbstractTargetHandlerTest
         $this->assertEquals(4, $rules[0]->id);
     }
 
-    /**
-     * Returns the target identifier under test.
-     *
-     * @return string
-     */
-    protected function getTargetIdentifier()
+    protected function getTargetIdentifier(): string
     {
         return 'sylius_taxon';
     }
 
-    /**
-     * Creates the handler under test.
-     *
-     * @return \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\TargetHandlerInterface
-     */
-    protected function getTargetHandler()
+    protected function getTargetHandler(): TargetHandlerInterface
     {
         return new Taxon();
     }
 
-    /**
-     * Inserts database fixtures.
-     *
-     * @param string $fixturesPath
-     */
-    protected function insertDatabaseFixtures($fixturesPath)
+    protected function insertDatabaseFixtures($fixturesPath): void
     {
         parent::insertDatabaseFixtures(__DIR__ . '/../../../../../_fixtures');
     }

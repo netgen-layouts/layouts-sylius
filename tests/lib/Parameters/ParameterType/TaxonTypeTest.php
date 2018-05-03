@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Parameters\ParameterType;
 
 use Netgen\BlockManager\Parameters\ParameterDefinition;
@@ -20,7 +22,7 @@ final class TaxonTypeTest extends TestCase
      */
     private $repositoryMock;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 
@@ -30,7 +32,7 @@ final class TaxonTypeTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getIdentifier
      */
-    public function testGetIdentifier()
+    public function testGetIdentifier(): void
     {
         $this->assertEquals('sylius_taxon', $this->type->getIdentifier());
     }
@@ -38,11 +40,8 @@ final class TaxonTypeTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::configureOptions
      * @dataProvider validOptionsProvider
-     *
-     * @param array $options
-     * @param array $resolvedOptions
      */
-    public function testValidOptions($options, $resolvedOptions)
+    public function testValidOptions(array $options, array $resolvedOptions): void
     {
         $parameter = $this->getParameterDefinition($options);
         $this->assertEquals($resolvedOptions, $parameter->getOptions());
@@ -52,20 +51,16 @@ final class TaxonTypeTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::configureOptions
      * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidArgumentException
      * @dataProvider invalidOptionsProvider
-     *
-     * @param array $options
      */
-    public function testInvalidOptions($options)
+    public function testInvalidOptions(array $options): void
     {
         $this->getParameterDefinition($options);
     }
 
     /**
      * Provider for testing valid parameter attributes.
-     *
-     * @return array
      */
-    public function validOptionsProvider()
+    public function validOptionsProvider(): array
     {
         return [
             [
@@ -77,10 +72,8 @@ final class TaxonTypeTest extends TestCase
 
     /**
      * Provider for testing invalid parameter attributes.
-     *
-     * @return array
      */
-    public function invalidOptionsProvider()
+    public function invalidOptionsProvider(): array
     {
         return [
             [
@@ -99,7 +92,7 @@ final class TaxonTypeTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
      * @dataProvider validationProvider
      */
-    public function testValidation($value, $required, $isValid)
+    public function testValidation($value, bool $required, bool $isValid): void
     {
         if ($value !== null) {
             $this->repositoryMock
@@ -128,12 +121,7 @@ final class TaxonTypeTest extends TestCase
         $this->assertEquals($isValid, $errors->count() === 0);
     }
 
-    /**
-     * Provider for testing valid parameter values.
-     *
-     * @return array
-     */
-    public function validationProvider()
+    public function validationProvider(): array
     {
         return [
             [12, false, true],
@@ -160,17 +148,12 @@ final class TaxonTypeTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::isValueEmpty
      * @dataProvider emptyProvider
      */
-    public function testIsValueEmpty($value, $isEmpty)
+    public function testIsValueEmpty($value, bool $isEmpty): void
     {
         $this->assertEquals($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
-    /**
-     * Provider for testing if the value is empty.
-     *
-     * @return array
-     */
-    public function emptyProvider()
+    public function emptyProvider(): array
     {
         return [
             [null, true],

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop;
 
 use Netgen\BlockManager\Context\ContextInterface;
@@ -45,7 +47,7 @@ final class ProductIndexListener implements EventSubscriberInterface
         $this->context = $context;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return ['sylius.product.index' => 'onProductIndex'];
     }
@@ -53,10 +55,8 @@ final class ProductIndexListener implements EventSubscriberInterface
     /**
      * Sets the currently displayed taxon to the request,
      * to be able to match with layout resolver.
-     *
-     * @param \Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent $event
      */
-    public function onProductIndex(ResourceControllerEvent $event)
+    public function onProductIndex(ResourceControllerEvent $event): void
     {
         $currentRequest = $this->requestStack->getCurrentRequest();
         if (!$currentRequest instanceof Request) {

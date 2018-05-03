@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product;
@@ -22,7 +24,7 @@ final class ProductTest extends TestCase
      */
     private $targetType;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->repositoryMock = $this->createMock(ProductRepositoryInterface::class);
 
@@ -32,7 +34,7 @@ final class ProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::getType
      */
-    public function testGetType()
+    public function testGetType(): void
     {
         $this->assertEquals('sylius_product', $this->targetType->getType());
     }
@@ -44,7 +46,7 @@ final class ProductTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::getConstraints
      * @dataProvider validationProvider
      */
-    public function testValidation($value, $isValid)
+    public function testValidation($value, bool $isValid): void
     {
         if ($value !== null) {
             $this->repositoryMock
@@ -75,7 +77,7 @@ final class ProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::provideValue
      */
-    public function testProvideValue()
+    public function testProvideValue(): void
     {
         $request = Request::create('/');
         $request->attributes->set('ngbm_sylius_product', new ProductStub(42));
@@ -86,19 +88,14 @@ final class ProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::provideValue
      */
-    public function testProvideValueWithNoProduct()
+    public function testProvideValueWithNoProduct(): void
     {
         $request = Request::create('/');
 
         $this->assertNull($this->targetType->provideValue($request));
     }
 
-    /**
-     * Extractor for testing valid parameter values.
-     *
-     * @return array
-     */
-    public function validationProvider()
+    public function validationProvider(): array
     {
         return [
             [12, true],

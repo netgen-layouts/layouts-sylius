@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop;
 
 use Netgen\BlockManager\Context\ContextInterface;
@@ -27,7 +29,7 @@ final class ProductShowListener implements EventSubscriberInterface
         $this->context = $context;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return ['sylius.product.show' => 'onProductShow'];
     }
@@ -35,10 +37,8 @@ final class ProductShowListener implements EventSubscriberInterface
     /**
      * Sets the currently displayed product to the request,
      * to be able to match with layout resolver.
-     *
-     * @param \Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent $event
      */
-    public function onProductShow(ResourceControllerEvent $event)
+    public function onProductShow(ResourceControllerEvent $event): void
     {
         $product = $event->getSubject();
         if (!$product instanceof ProductInterface) {

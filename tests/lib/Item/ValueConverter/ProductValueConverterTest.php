@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Item\ValueConverter;
 
 use Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter;
@@ -15,7 +17,7 @@ final class ProductValueConverterTest extends TestCase
      */
     private $valueConverter;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->valueConverter = new ProductValueConverter();
     }
@@ -23,7 +25,7 @@ final class ProductValueConverterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::supports
      */
-    public function testSupports()
+    public function testSupports(): void
     {
         $this->assertTrue($this->valueConverter->supports(new Product()));
         $this->assertFalse($this->valueConverter->supports(new Taxon()));
@@ -32,7 +34,7 @@ final class ProductValueConverterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getValueType
      */
-    public function testGetValueType()
+    public function testGetValueType(): void
     {
         $this->assertEquals(
             'sylius_product',
@@ -45,7 +47,7 @@ final class ProductValueConverterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getId
      */
-    public function testGetId()
+    public function testGetId(): void
     {
         $this->assertEquals(
             42,
@@ -58,7 +60,7 @@ final class ProductValueConverterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getRemoteId
      */
-    public function testGetRemoteId()
+    public function testGetRemoteId(): void
     {
         $this->assertEquals(
             42,
@@ -71,7 +73,7 @@ final class ProductValueConverterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getName
      */
-    public function testGetName()
+    public function testGetName(): void
     {
         $this->assertEquals(
             'Product name',
@@ -84,7 +86,7 @@ final class ProductValueConverterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getIsVisible
      */
-    public function testGetIsVisible()
+    public function testGetIsVisible(): void
     {
         $this->assertTrue(
             $this->valueConverter->getIsVisible(
@@ -96,7 +98,7 @@ final class ProductValueConverterTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getObject
      */
-    public function testGetObject()
+    public function testGetObject(): void
     {
         $product = new ProductStub(42, 'Product name');
 

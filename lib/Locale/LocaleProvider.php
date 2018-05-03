@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Locale;
 
 use Netgen\BlockManager\Locale\LocaleProviderInterface;
@@ -29,7 +31,7 @@ final class LocaleProvider implements LocaleProviderInterface
         $this->localeBundle = Intl::getLocaleBundle();
     }
 
-    public function getAvailableLocales()
+    public function getAvailableLocales(): array
     {
         $availableLocales = [];
 
@@ -46,7 +48,7 @@ final class LocaleProvider implements LocaleProviderInterface
         return $availableLocales;
     }
 
-    public function getRequestLocales(Request $request)
+    public function getRequestLocales(Request $request): array
     {
         return [$request->getLocale()];
     }

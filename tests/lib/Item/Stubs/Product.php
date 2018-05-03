@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Item\Stubs;
 
 use Sylius\Component\Product\Model\Product as BaseProduct;
@@ -12,9 +14,9 @@ final class Product extends BaseProduct implements ProductInterface
      *
      * @param int $id
      * @param string $name
-     * @param string $slug
+     * @param string|null $slug
      */
-    public function __construct($id, $name, $slug = null)
+    public function __construct($id, string $name, ?string $slug = null)
     {
         parent::__construct();
 

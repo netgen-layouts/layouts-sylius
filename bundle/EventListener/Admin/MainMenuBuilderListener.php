@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin;
 
 use Knp\Menu\ItemInterface;
@@ -20,17 +22,15 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
         $this->authorizationChecker = $authorizationChecker;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'];
     }
 
     /**
      * This method adds Netgen Layouts menu items to Sylius admin interface.
-     *
-     * @param \Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent $event
      */
-    public function onMainMenuBuild(MenuBuilderEvent $event)
+    public function onMainMenuBuild(MenuBuilderEvent $event): void
     {
         if (!$this->authorizationChecker->isGranted('ROLE_NGBM_ADMIN')) {
             return;
@@ -41,10 +41,8 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
 
     /**
      * Adds the Netgen Layouts submenu to Sylius admin interface.
-     *
-     * @param \Knp\Menu\ItemInterface $menu
      */
-    private function addLayoutsSubMenu(ItemInterface $menu)
+    private function addLayoutsSubMenu(ItemInterface $menu): void
     {
         $menuOrder = $this->getNewMenuOrder($menu);
 
@@ -72,12 +70,8 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
 
     /**
      * Returns the new menu order.
-     *
-     * @param \Knp\Menu\ItemInterface $menu
-     *
-     * @return array
      */
-    private function getNewMenuOrder(ItemInterface $menu)
+    private function getNewMenuOrder(ItemInterface $menu): array
     {
         $menuOrder = array_keys($menu->getChildren());
         $configMenuIndex = array_search('configuration', $menuOrder, true);

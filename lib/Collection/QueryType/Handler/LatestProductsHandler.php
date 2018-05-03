@@ -50,7 +50,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
         $this->requestStack = $requestStack;
     }
 
-    public function buildParameters(ParameterBuilderInterface $builder)
+    public function buildParameters(ParameterBuilderInterface $builder): void
     {
         $builder->add(
             'use_current_taxon',
@@ -82,7 +82,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
         );
     }
 
-    public function getCount(Query $query)
+    public function getCount(Query $query): int
     {
         $currentRequest = $this->requestStack->getCurrentRequest();
         if (!$currentRequest instanceof Request) {
@@ -96,7 +96,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
         );
     }
 
-    public function isContextual(Query $query)
+    public function isContextual(Query $query): bool
     {
         return $query->getParameter('use_current_taxon')->getValue() === true;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\Templating\Twig\Runtime;
 
 use Netgen\BlockManager\Sylius\Tests\Stubs\Product;
@@ -26,7 +28,7 @@ final class SyliusRuntimeTest extends TestCase
      */
     private $runtime;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
@@ -41,7 +43,7 @@ final class SyliusRuntimeTest extends TestCase
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
      */
-    public function testGetProductName()
+    public function testGetProductName(): void
     {
         $product = new Product(42);
         $product->setCurrentLocale('en');
@@ -59,7 +61,7 @@ final class SyliusRuntimeTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
      */
-    public function testGetProductNameWithoutProduct()
+    public function testGetProductNameWithoutProduct(): void
     {
         $this->productRepositoryMock
             ->expects($this->once())
@@ -74,7 +76,7 @@ final class SyliusRuntimeTest extends TestCase
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
      */
-    public function testGetTaxonPath()
+    public function testGetTaxonPath(): void
     {
         $taxon1 = new Taxon(42);
         $taxon1->setCurrentLocale('en');
@@ -103,7 +105,7 @@ final class SyliusRuntimeTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
      */
-    public function testGetTaxonPathWithoutTaxon()
+    public function testGetTaxonPathWithoutTaxon(): void
     {
         $this->taxonRepositoryMock
             ->expects($this->once())

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
@@ -10,12 +12,12 @@ use Symfony\Component\Validator\Constraints;
 
 final class Taxon implements TargetTypeInterface
 {
-    public function getType()
+    public function getType(): string
     {
         return 'sylius_taxon';
     }
 
-    public function getConstraints()
+    public function getConstraints(): array
     {
         return [
             new Constraints\NotBlank(),
@@ -29,7 +31,7 @@ final class Taxon implements TargetTypeInterface
     {
         $taxon = $request->attributes->get('ngbm_sylius_taxon');
         if (!$taxon instanceof TaxonInterface) {
-            return;
+            return null;
         }
 
         $taxonIds = [];

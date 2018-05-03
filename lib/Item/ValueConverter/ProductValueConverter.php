@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Item\ValueConverter;
 
 use Netgen\BlockManager\Item\ValueConverterInterface;
@@ -7,12 +9,12 @@ use Sylius\Component\Product\Model\ProductInterface;
 
 final class ProductValueConverter implements ValueConverterInterface
 {
-    public function supports($object)
+    public function supports($object): bool
     {
         return $object instanceof ProductInterface;
     }
 
-    public function getValueType($object)
+    public function getValueType($object): string
     {
         return 'sylius_product';
     }
@@ -27,12 +29,14 @@ final class ProductValueConverter implements ValueConverterInterface
         return $object->getId();
     }
 
-    public function getName($object)
+    public function getName($object): string
     {
-        return $object->getName();
+        $name = $object->getName();
+
+        return $name !== null ? $name : '';
     }
 
-    public function getIsVisible($object)
+    public function getIsVisible($object): bool
     {
         return true;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct;
@@ -24,7 +26,7 @@ final class TaxonProductTest extends TestCase
      */
     private $targetType;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 
@@ -34,7 +36,7 @@ final class TaxonProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::getType
      */
-    public function testGetType()
+    public function testGetType(): void
     {
         $this->assertEquals('sylius_taxon_product', $this->targetType->getType());
     }
@@ -46,7 +48,7 @@ final class TaxonProductTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::getConstraints
      * @dataProvider validationProvider
      */
-    public function testValidation($value, $isValid)
+    public function testValidation($value, bool $isValid): void
     {
         if ($value !== null) {
             $this->repositoryMock
@@ -77,7 +79,7 @@ final class TaxonProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
      */
-    public function testProvideValue()
+    public function testProvideValue(): void
     {
         $product = new ProductStub(42);
         foreach ([12, 13] as $taxonId) {
@@ -96,19 +98,14 @@ final class TaxonProductTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
      */
-    public function testProvideValueWithNoTaxon()
+    public function testProvideValueWithNoTaxon(): void
     {
         $request = Request::create('/');
 
         $this->assertNull($this->targetType->provideValue($request));
     }
 
-    /**
-     * Extractor for testing valid parameter values.
-     *
-     * @return array
-     */
-    public function validationProvider()
+    public function validationProvider(): array
     {
         return [
             [12, true],

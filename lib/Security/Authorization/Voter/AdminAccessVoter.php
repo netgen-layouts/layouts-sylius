@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Security\Authorization\Voter;
 
 use Sylius\Component\Core\Model\AdminUserInterface;
@@ -12,7 +14,7 @@ use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
  */
 final class AdminAccessVoter implements VoterInterface
 {
-    public function vote(TokenInterface $token, $object, array $attributes)
+    public function vote(TokenInterface $token, $object, array $attributes): int
     {
         if ($token->getUser() instanceof AdminUserInterface) {
             return self::ACCESS_GRANTED;

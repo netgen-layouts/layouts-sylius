@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Locale;
 
 use Netgen\BlockManager\Sylius\Locale\LocaleProvider;
@@ -19,7 +21,7 @@ final class LocaleProviderTest extends TestCase
      */
     private $localeProvider;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->syliusLocaleProviderMock = $this->createMock(LocaleProviderInterface::class);
 
@@ -30,7 +32,7 @@ final class LocaleProviderTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::__construct
      * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::getAvailableLocales
      */
-    public function testGetAvailableLocales()
+    public function testGetAvailableLocales(): void
     {
         $this->syliusLocaleProviderMock
             ->expects($this->any())
@@ -46,7 +48,7 @@ final class LocaleProviderTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::getRequestLocales
      */
-    public function testGetRequestLocales()
+    public function testGetRequestLocales(): void
     {
         $request = Request::create('');
         $request->setDefaultLocale('hr');

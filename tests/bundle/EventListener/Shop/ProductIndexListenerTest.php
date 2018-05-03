@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Shop;
 
 use Netgen\BlockManager\Context\Context;
@@ -39,7 +41,7 @@ final class ProductIndexListenerTest extends TestCase
      */
     private $context;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
         $this->localeContextMock = $this->createMock(LocaleContextInterface::class);
@@ -63,7 +65,7 @@ final class ProductIndexListenerTest extends TestCase
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::__construct
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::getSubscribedEvents
      */
-    public function testGetSubscribedEvents()
+    public function testGetSubscribedEvents(): void
     {
         $this->assertEquals(
             ['sylius.product.index' => 'onProductIndex'],
@@ -74,7 +76,7 @@ final class ProductIndexListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
-    public function testOnProductIndex()
+    public function testOnProductIndex(): void
     {
         $request = Request::create('/');
         $request->attributes->set('slug', 'mugs');
@@ -101,7 +103,7 @@ final class ProductIndexListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
-    public function testOnProductIndexWithoutRequest()
+    public function testOnProductIndexWithoutRequest(): void
     {
         $this->taxonRepositoryMock
             ->expects($this->never())
@@ -116,7 +118,7 @@ final class ProductIndexListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
-    public function testOnProductIndexWithoutSlug()
+    public function testOnProductIndexWithoutSlug(): void
     {
         $request = Request::create('/');
         $this->requestStack->push($request);
@@ -135,7 +137,7 @@ final class ProductIndexListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
-    public function testOnProductIndexWithNonExistingTaxon()
+    public function testOnProductIndexWithNonExistingTaxon(): void
     {
         $request = Request::create('/');
         $request->attributes->set('slug', 'unknown');

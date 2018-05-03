@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Validator\Constraint;
 
 use Netgen\BlockManager\Sylius\Validator\Constraint\Taxon;
@@ -10,7 +12,7 @@ final class TaxonTest extends TestCase
     /**
      * @covers \Netgen\BlockManager\Sylius\Validator\Constraint\Taxon::validatedBy
      */
-    public function testValidatedBy()
+    public function testValidatedBy(): void
     {
         $constraint = new Taxon();
         $this->assertEquals('ngbm_sylius_taxon', $constraint->validatedBy());

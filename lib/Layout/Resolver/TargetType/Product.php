@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
@@ -10,12 +12,12 @@ use Symfony\Component\Validator\Constraints;
 
 final class Product implements TargetTypeInterface
 {
-    public function getType()
+    public function getType(): string
     {
         return 'sylius_product';
     }
 
-    public function getConstraints()
+    public function getConstraints(): array
     {
         return [
             new Constraints\NotBlank(),

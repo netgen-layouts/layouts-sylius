@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Parameters\ParameterType;
 
 use Netgen\BlockManager\Parameters\ParameterDefinition;
@@ -12,17 +14,17 @@ use Symfony\Component\Validator\Constraints;
  */
 final class TaxonType extends ParameterType
 {
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'sylius_taxon';
     }
 
-    public function isValueEmpty(ParameterDefinition $parameterDefinition, $value)
+    public function isValueEmpty(ParameterDefinition $parameterDefinition, $value): bool
     {
         return $value === null;
     }
 
-    protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value)
+    protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value): array
     {
         return [
             new Constraints\Type(['type' => 'numeric']),

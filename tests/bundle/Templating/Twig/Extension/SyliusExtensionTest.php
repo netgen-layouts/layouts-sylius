@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\Templating\Twig\Extension;
 
 use Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension;
@@ -13,7 +15,7 @@ final class SyliusExtensionTest extends TestCase
      */
     private $extension;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->extension = new SyliusExtension();
     }
@@ -21,7 +23,7 @@ final class SyliusExtensionTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension::getFunctions
      */
-    public function testGetFunctions()
+    public function testGetFunctions(): void
     {
         $this->assertNotEmpty($this->extension->getFunctions());
 

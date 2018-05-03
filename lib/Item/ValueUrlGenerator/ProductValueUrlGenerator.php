@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Item\ValueUrlGenerator;
 
 use Netgen\BlockManager\Item\ValueUrlGeneratorInterface;
@@ -17,7 +19,7 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function generate($object)
+    public function generate($object): ?string
     {
         return $this->urlGenerator->generate(
             'sylius_shop_product_show',

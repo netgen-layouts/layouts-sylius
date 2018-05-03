@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +14,7 @@ use Symfony\Component\Yaml\Yaml;
 
 final class NetgenSyliusBlockManagerExtension extends Extension implements PrependExtensionInterface
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(
             $container,
@@ -31,7 +33,7 @@ final class NetgenSyliusBlockManagerExtension extends Extension implements Prepe
         $loader->load('default_settings.yml');
     }
 
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $prependConfigs = [
             'liip_imagine.yml' => 'liip_imagine',

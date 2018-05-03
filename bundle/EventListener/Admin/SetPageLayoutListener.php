@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin;
 
 use Netgen\Bundle\BlockManagerAdminBundle\Event\AdminMatchEvent;
@@ -13,27 +15,20 @@ final class SetPageLayoutListener implements EventSubscriberInterface
      */
     private $pageLayoutTemplate;
 
-    /**
-     * Constructor.
-     *
-     * @param string $pageLayoutTemplate
-     */
-    public function __construct($pageLayoutTemplate)
+    public function __construct(string $pageLayoutTemplate)
     {
         $this->pageLayoutTemplate = $pageLayoutTemplate;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [BlockManagerAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]];
     }
 
     /**
      * Sets the pagelayout template for admin interface.
-     *
-     * @param \Netgen\Bundle\BlockManagerAdminBundle\Event\AdminMatchEvent $event
      */
-    public function onAdminMatch(AdminMatchEvent $event)
+    public function onAdminMatch(AdminMatchEvent $event): void
     {
         $pageLayoutTemplate = $event->getPageLayoutTemplate();
         if ($pageLayoutTemplate !== null) {

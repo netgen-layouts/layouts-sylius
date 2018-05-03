@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Shop;
 
 use Netgen\BlockManager\Context\Context;
@@ -28,7 +30,7 @@ final class ProductShowListenerTest extends TestCase
      */
     private $context;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->requestStack = new RequestStack();
         $this->context = new Context();
@@ -40,7 +42,7 @@ final class ProductShowListenerTest extends TestCase
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener::__construct
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener::getSubscribedEvents
      */
-    public function testGetSubscribedEvents()
+    public function testGetSubscribedEvents(): void
     {
         $this->assertEquals(
             ['sylius.product.show' => 'onProductShow'],
@@ -51,7 +53,7 @@ final class ProductShowListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener::onProductShow
      */
-    public function testOnProductShow()
+    public function testOnProductShow(): void
     {
         $request = Request::create('/');
         $this->requestStack->push($request);
@@ -69,7 +71,7 @@ final class ProductShowListenerTest extends TestCase
     /**
      * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener::onProductShow
      */
-    public function testOnProductShowWithoutProduct()
+    public function testOnProductShowWithoutProduct(): void
     {
         $request = Request::create('/');
         $this->requestStack->push($request);

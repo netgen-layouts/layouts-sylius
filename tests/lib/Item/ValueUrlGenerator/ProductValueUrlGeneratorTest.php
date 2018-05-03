@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\BlockManager\Sylius\Tests\Item\ValueUrlGenerator;
 
 use Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator;
@@ -19,7 +21,7 @@ final class ProductValueUrlGeneratorTest extends TestCase
      */
     private $urlGenerator;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->urlGeneratorMock = $this->createMock(UrlGeneratorInterface::class);
 
@@ -30,7 +32,7 @@ final class ProductValueUrlGeneratorTest extends TestCase
      * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::__construct
      * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generate
      */
-    public function testGenerate()
+    public function testGenerate(): void
     {
         $this->urlGeneratorMock
             ->expects($this->once())
