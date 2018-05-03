@@ -34,7 +34,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @param int $taxonId
+     * @param int|null $taxonId
      * @param bool $isValid
      *
      * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::__construct

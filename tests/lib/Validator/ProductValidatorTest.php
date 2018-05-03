@@ -34,7 +34,7 @@ final class ProductValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @param int $productId
+     * @param int|null $productId
      * @param bool $isValid
      *
      * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::__construct

@@ -30,6 +30,7 @@ final class NetgenSyliusBlockManagerExtensionTest extends AbstractExtensionTestC
         $this->container->setParameter('kernel.bundles', ['NetgenBlockManagerBundle' => true]);
         $this->container->registerExtension(new NetgenBlockManagerExtension());
 
+        /** @var \Netgen\Bundle\SyliusBlockManagerBundle\DependencyInjection\NetgenSyliusBlockManagerExtension $extension */
         $extension = $this->container->getExtension('netgen_sylius_block_manager');
         $extension->prepend($this->container);
 

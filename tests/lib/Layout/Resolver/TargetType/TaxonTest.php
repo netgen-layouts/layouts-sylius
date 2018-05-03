@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Validation;
 final class TaxonTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
+     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface&\PHPUnit\Framework\MockObject\MockObject
      */
     private $repositoryMock;
 
