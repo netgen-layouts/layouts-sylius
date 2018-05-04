@@ -31,9 +31,7 @@ final class ProductValueConverter implements ValueConverterInterface
 
     public function getName($object): string
     {
-        $name = $object->getName();
-
-        return $name !== null ? $name : '';
+        return (string) $object->getName();
     }
 
     public function getIsVisible($object): bool
