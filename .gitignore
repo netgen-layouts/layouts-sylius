@@ -4,10 +4,10 @@
 coverage/
 node_modules/
 vendor/
-composer.phar
+.php_cs.cache
 composer.lock
-package-lock.json
+composer.phar
 grunt.lock
+package-lock.json
 phpunit.phar
 studio.json
-.php_cs.cache
