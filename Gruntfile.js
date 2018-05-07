@@ -6,13 +6,13 @@ module.exports = function (grunt) {
 
     // Automatically load required grunt tasks
     require('jit-grunt')(grunt, {
-        lockfile: 'grunt-lock'
+        lockfile: 'grunt-lock',
     });
 
     // Configurable paths
     var config = {
-        resources_dir: 'bundle/Resources/',
-        public_dir: 'bundle/Resources/public/'
+        resources_dir: 'bundle/Resources',
+        public_dir: 'bundle/Resources/public',
     };
 
     // Define the configuration for all the tasks
@@ -20,11 +20,11 @@ module.exports = function (grunt) {
         // Project settings
         config: config,
 
-        //Prevent multiple grunt instances
+        // Prevent multiple grunt instances
         lockfile: {
             grunt: {
-                path: 'grunt.lock'
-            }
+                path: 'grunt.lock',
+            },
         },
 
         // Watches files for changes and runs tasks based on the changed files
@@ -32,13 +32,13 @@ module.exports = function (grunt) {
             gruntfile: {
                 files: ['Gruntfile.js'],
                 options: {
-                    reload: true
-                }
+                    reload: true,
+                },
             },
             sass: {
                 files: ['<%= config.resources_dir %>/sass/{,*/}*.{scss,sass}'],
-                tasks: ['sass', 'postcss']
-            }
+                tasks: ['sass', 'postcss'],
+            },
         },
 
         // Compiles Sass to CSS and generates necessary files if requested
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
                 sourceMap: true,
                 sourceMapEmbed: true,
                 sourceMapContents: true,
-                includePaths: ['.']
+                includePaths: ['.'],
             },
             dist: {
                 files: [{
@@ -55,9 +55,9 @@ module.exports = function (grunt) {
                     cwd: '<%= config.resources_dir %>/sass',
                     src: ['*.{scss,sass}'],
                     dest: '.tmp/css',
-                    ext: '.css'
-                }]
-            }
+                    ext: '.css',
+                }],
+            },
         },
 
         postcss: {
@@ -66,19 +66,19 @@ module.exports = function (grunt) {
                 processors: [
                     // Add vendor prefixed styles
                     require('autoprefixer')({
-                        browsers: ['> 1%', 'last 3 versions', 'Firefox ESR', 'Opera 12.1']
-                    })
-                ]
+                        browsers: ['> 1%', 'last 3 versions', 'Firefox ESR', 'Opera 12.1'],
+                    }),
+                ],
             },
             dist: {
                 files: [{
                     expand: true,
                     cwd: '.tmp/css/',
                     src: '{,*/}*.css',
-                    dest: '<%= config.public_dir %>/css'
-                }]
-            }
-        }
+                    dest: '<%= config.public_dir %>/css',
+                }],
+            },
+        },
     });
 
     grunt.registerTask('serve', 'Start the server and preview your app', function () {
@@ -86,11 +86,11 @@ module.exports = function (grunt) {
             'lockfile',
             'sass:dist',
             'postcss',
-            'watch'
+            'watch',
         ]);
     });
 
     grunt.registerTask('default', [
-        'serve'
+        'serve',
     ]);
 };
