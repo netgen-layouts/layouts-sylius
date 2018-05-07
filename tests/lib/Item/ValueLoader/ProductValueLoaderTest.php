@@ -88,41 +88,41 @@ final class ProductValueLoaderTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->equalTo('abc'))
             ->will($this->returnValue($product));
 
-        $this->assertEquals($product, $this->valueLoader->load(42));
+        $this->assertEquals($product, $this->valueLoader->loadByRemoteId('abc'));
     }
 
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
      * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
-     * @expectedExceptionMessage Value with (remote) ID 42 does not exist.
+     * @expectedExceptionMessage Value with (remote) ID abc does not exist.
      */
     public function testLoadByRemoteIdThrowsItemExceptionWithNoProduct(): void
     {
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->equalTo('abc'))
             ->will($this->returnValue(null));
 
-        $this->valueLoader->load(42);
+        $this->valueLoader->loadByRemoteId('abc');
     }
 
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
      * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
-     * @expectedExceptionMessage Value with (remote) ID 42 does not exist.
+     * @expectedExceptionMessage Value with (remote) ID abc does not exist.
      */
     public function testLoadByRemoteIdThrowsItemExceptionWithRepositoryException(): void
     {
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->equalTo('abc'))
             ->will($this->throwException(new Exception()));
 
-        $this->valueLoader->load(42);
+        $this->valueLoader->loadByRemoteId('abc');
     }
 }
