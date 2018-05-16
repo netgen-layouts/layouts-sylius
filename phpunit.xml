@@ -12,7 +12,6 @@
     forceCoversAnnotation="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutTestSize="true"
     beStrictAboutChangesToGlobalState="true"
 >
     <testsuites>
@@ -30,6 +29,8 @@
             <directory suffix=".php">bundle</directory>
             <exclude>
                 <file>bundle/NetgenSyliusBlockManagerBundle.php</file>
+            </exclude>
+            <exclude>
                 <directory>bundle/Resources</directory>
             </exclude>
         </whitelist>
