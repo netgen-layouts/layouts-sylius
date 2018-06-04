@@ -40,7 +40,7 @@ final class TaxonValidator extends ConstraintValidator
         $taxon = $this->taxonRepository->find($value);
         if (!$taxon instanceof TaxonInterface) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('%taxonId%', $value)
+                ->setParameter('%taxonId%', (string) $value)
                 ->addViolation();
         }
     }

@@ -40,7 +40,7 @@ final class ProductValidator extends ConstraintValidator
         $product = $this->productRepository->find($value);
         if (!$product instanceof ProductInterface) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('%productId%', $value)
+                ->setParameter('%productId%', (string) $value)
                 ->addViolation();
         }
     }
