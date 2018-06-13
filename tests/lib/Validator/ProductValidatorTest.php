@@ -49,9 +49,9 @@ final class ProductValidatorTest extends ValidatorTestCase
                 ->with($this->equalTo($productId))
                 ->will(
                     $this->returnCallback(
-                        function () use ($productId) {
+                        function () use ($productId): ?ProductStub {
                             if (!is_int($productId) || $productId <= 0 || $productId > 20) {
-                                return;
+                                return null;
                             }
 
                             return new ProductStub($productId);

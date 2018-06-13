@@ -57,9 +57,9 @@ final class TaxonProductTest extends TestCase
                 ->with($this->equalTo($value))
                 ->will(
                     $this->returnCallback(
-                        function () use ($value) {
+                        function () use ($value): ?TaxonStub {
                             if (!is_int($value) || $value > 20) {
-                                return;
+                                return null;
                             }
 
                             return new TaxonStub($value);

@@ -55,9 +55,9 @@ final class ProductTest extends TestCase
                 ->with($this->equalTo($value))
                 ->will(
                     $this->returnCallback(
-                        function () use ($value) {
+                        function () use ($value): ?ProductStub {
                             if (!is_int($value) || $value > 20) {
-                                return;
+                                return null;
                             }
 
                             return new ProductStub($value);
