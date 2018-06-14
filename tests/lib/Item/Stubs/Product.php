@@ -10,9 +10,7 @@ use Sylius\Component\Product\Model\ProductInterface;
 final class Product extends BaseProduct implements ProductInterface
 {
     /**
-     * Constructor.
-     *
-     * @param int $id
+     * @param int|string $id
      * @param string $name
      * @param string|null $slug
      */

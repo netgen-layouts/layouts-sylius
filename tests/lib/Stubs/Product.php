@@ -9,7 +9,7 @@ use Sylius\Component\Core\Model\Product as BaseProduct;
 final class Product extends BaseProduct
 {
     /**
-     * @param int $id
+     * @param int|string $id
      */
     public function __construct($id)
     {

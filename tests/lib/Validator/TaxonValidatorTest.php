@@ -33,34 +33,46 @@ final class TaxonValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @param int|null $taxonId
-     * @param bool $isValid
-     *
      * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::__construct
      * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::validate
-     * @dataProvider validateDataProvider
      */
-    public function testValidate($taxonId, bool $isValid): void
+    public function testValidateValid(): void
     {
-        if ($taxonId !== null) {
-            $this->repositoryMock
-                ->expects($this->once())
-                ->method('find')
-                ->with($this->equalTo($taxonId))
-                ->will(
-                    $this->returnCallback(
-                        function () use ($taxonId): ?TaxonStub {
-                            if (!is_int($taxonId) || $taxonId <= 0 || $taxonId > 20) {
-                                return null;
-                            }
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with($this->equalTo(42))
+            ->will($this->returnValue(new TaxonStub(42)));
 
-                            return new TaxonStub($taxonId);
-                        }
-                    )
-                );
-        }
+        $this->assertValid(true, 42);
+    }
 
-        $this->assertValid($isValid, $taxonId);
+    /**
+     * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::__construct
+     * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::validate
+     */
+    public function testValidateNull(): void
+    {
+        $this->repositoryMock
+            ->expects($this->never())
+            ->method('find');
+
+        $this->assertValid(true, null);
+    }
+
+    /**
+     * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::__construct
+     * @covers \Netgen\BlockManager\Sylius\Validator\TaxonValidator::validate
+     */
+    public function testValidateInvalid(): void
+    {
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with($this->equalTo(42))
+            ->will($this->returnValue(null));
+
+        $this->assertValid(false, 42);
     }
 
     /**
@@ -82,17 +94,5 @@ final class TaxonValidatorTest extends ValidatorTestCase
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
         $this->assertValid(true, []);
-    }
-
-    public function validateDataProvider(): array
-    {
-        return [
-            [12, true],
-            [25, false],
-            [-12, false],
-            [0, false],
-            ['12', false],
-            [null, true],
-        ];
     }
 }

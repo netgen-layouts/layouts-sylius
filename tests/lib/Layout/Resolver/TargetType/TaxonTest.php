@@ -40,38 +40,41 @@ final class TaxonTest extends TestCase
     }
 
     /**
-     * @param mixed $value
-     * @param bool $isValid
-     *
      * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
-     * @dataProvider validationProvider
      */
-    public function testValidation($value, bool $isValid): void
+    public function testValidationValid(): void
     {
-        if ($value !== null) {
-            $this->repositoryMock
-                ->expects($this->once())
-                ->method('find')
-                ->with($this->equalTo($value))
-                ->will(
-                    $this->returnCallback(
-                        function () use ($value): ?TaxonStub {
-                            if (!is_int($value) || $value > 20) {
-                                return null;
-                            }
-
-                            return new TaxonStub($value);
-                        }
-                    )
-                );
-        }
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with($this->equalTo(42))
+            ->will($this->returnValue(new TaxonStub(42)));
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
-        $errors = $validator->validate($value, $this->targetType->getConstraints());
-        $this->assertEquals($isValid, $errors->count() === 0);
+        $errors = $validator->validate(42, $this->targetType->getConstraints());
+        $this->assertTrue($errors->count() === 0);
+    }
+
+    /**
+     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
+     */
+    public function testValidationInvalid(): void
+    {
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with($this->equalTo(42))
+            ->will($this->returnValue(null));
+
+        $validator = Validation::createValidatorBuilder()
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->getValidator();
+
+        $errors = $validator->validate(42, $this->targetType->getConstraints());
+        $this->assertFalse($errors->count() === 0);
     }
 
     /**
@@ -96,18 +99,5 @@ final class TaxonTest extends TestCase
         $request = Request::create('/');
 
         $this->assertNull($this->targetType->provideValue($request));
-    }
-
-    public function validationProvider(): array
-    {
-        return [
-            [12, true],
-            [24, false],
-            [-12, false],
-            [0, false],
-            ['12', false],
-            ['', false],
-            [null, false],
-        ];
     }
 }

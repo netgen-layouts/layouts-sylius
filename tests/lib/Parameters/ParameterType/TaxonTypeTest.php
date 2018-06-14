@@ -85,60 +85,61 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @param mixed $value
-     * @param bool $required
-     * @param bool $isValid
-     *
      * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
-     * @dataProvider validationProvider
      */
-    public function testValidation($value, bool $required, bool $isValid): void
+    public function testValidationValid(): void
     {
-        if ($value !== null) {
-            $this->repositoryMock
+        $this->repositoryMock
                 ->expects($this->once())
                 ->method('find')
-                ->with($this->equalTo($value))
-                ->will(
-                    $this->returnCallback(
-                        function () use ($value): ?TaxonStub {
-                            if (!is_int($value) || $value <= 0 || $value > 20) {
-                                return null;
-                            }
+                ->with($this->equalTo(42))
+                ->will($this->returnValue(new TaxonStub(42)));
 
-                            return new TaxonStub($value);
-                        }
-                    )
-                );
-        }
-
-        $parameter = $this->getParameterDefinition([], $required);
+        $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
-        $errors = $validator->validate($value, $this->type->getConstraints($parameter, $value));
-        $this->assertEquals($isValid, $errors->count() === 0);
+        $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
+        $this->assertTrue($errors->count() === 0);
     }
 
-    public function validationProvider(): array
+    /**
+     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
+     */
+    public function testValidationValidWithNonRequiredValue(): void
     {
-        return [
-            [12, false, true],
-            [24, false, false],
-            [-12, false, false],
-            [0, false, false],
-            ['12', false, false],
-            ['', false, false],
-            [null, false, true],
-            [12, true, true],
-            [24, true, false],
-            [-12, true, false],
-            [0, true, false],
-            ['12', true, false],
-            ['', true, false],
-            [null, true, false],
-        ];
+        $this->repositoryMock
+                ->expects($this->never())
+                ->method('find');
+
+        $parameter = $this->getParameterDefinition([], false);
+        $validator = Validation::createValidatorBuilder()
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->getValidator();
+
+        $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
+        $this->assertTrue($errors->count() === 0);
+    }
+
+    /**
+     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
+     */
+    public function testValidationInvalid(): void
+    {
+        $this->repositoryMock
+                ->expects($this->once())
+                ->method('find')
+                ->with($this->equalTo(42))
+                ->will($this->returnValue(null));
+
+        $parameter = $this->getParameterDefinition([], true);
+        $validator = Validation::createValidatorBuilder()
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->getValidator();
+
+        $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
+        $this->assertFalse($errors->count() === 0);
     }
 
     /**
