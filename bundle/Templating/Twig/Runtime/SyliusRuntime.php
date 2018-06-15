@@ -33,6 +33,8 @@ final class SyliusRuntime
      * Returns the product name.
      *
      * @param int|string $productId
+     *
+     * @return string|null
      */
     public function getProductName($productId): ?string
     {
@@ -48,6 +50,8 @@ final class SyliusRuntime
      * Returns the taxon path.
      *
      * @param int|string $taxonId
+     *
+     * @return array|null
      */
     public function getTaxonPath($taxonId): ?array
     {
