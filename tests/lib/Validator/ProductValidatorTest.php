@@ -10,6 +10,7 @@ use Netgen\BlockManager\Sylius\Validator\ProductValidator;
 use Netgen\BlockManager\Tests\TestCase\ValidatorTestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\ConstraintValidatorInterface;
 
 final class ProductValidatorTest extends ValidatorTestCase
 {
@@ -25,7 +26,7 @@ final class ProductValidatorTest extends ValidatorTestCase
         $this->constraint = new Product();
     }
 
-    public function getValidator(): ProductValidator
+    public function getValidator(): ConstraintValidatorInterface
     {
         $this->repositoryMock = $this->createMock(ProductRepositoryInterface::class);
 

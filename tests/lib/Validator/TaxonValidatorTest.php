@@ -10,6 +10,7 @@ use Netgen\BlockManager\Sylius\Validator\TaxonValidator;
 use Netgen\BlockManager\Tests\TestCase\ValidatorTestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\ConstraintValidatorInterface;
 
 final class TaxonValidatorTest extends ValidatorTestCase
 {
@@ -25,7 +26,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->constraint = new Taxon();
     }
 
-    public function getValidator(): TaxonValidator
+    public function getValidator(): ConstraintValidatorInterface
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 
