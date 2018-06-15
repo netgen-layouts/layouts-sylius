@@ -33,7 +33,7 @@ final class TaxonTest extends AbstractTargetHandlerTest
         return new Taxon();
     }
 
-    protected function insertDatabaseFixtures($fixturesPath): void
+    protected function insertDatabaseFixtures(string $fixturesPath): void
     {
         parent::insertDatabaseFixtures(__DIR__ . '/../../../../../_fixtures');
     }

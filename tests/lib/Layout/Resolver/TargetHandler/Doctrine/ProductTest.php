@@ -33,7 +33,7 @@ final class ProductTest extends AbstractTargetHandlerTest
         return new Product();
     }
 
-    protected function insertDatabaseFixtures($fixturesPath): void
+    protected function insertDatabaseFixtures(string $fixturesPath): void
     {
         parent::insertDatabaseFixtures(__DIR__ . '/../../../../../_fixtures');
     }
