@@ -1,10 +1,10 @@
-Netgen Block Manager & Sylius eCommerce integration installation instructions
-=============================================================================
+Netgen Layouts & Sylius eCommerce integration installation instructions
+=======================================================================
 
 Use Composer to install the integration
 ---------------------------------------
 
-Run the following command to install Netgen Block Manager & Sylius eCommerce
+Run the following command to install Netgen Layouts & Sylius eCommerce
 integration:
 
 ```
@@ -14,9 +14,9 @@ composer require netgen/block-manager-standard:^1.0 netgen/block-manager-sylius:
 Activating integration bundle
 -----------------------------
 
-After completing standard Block Manager install instructions, you also need to
+After completing standard Layouts install instructions, you also need to
 activate `NetgenSyliusBlockManagerBundle`. Make sure it is activated after all
-other Block Manager bundles:
+other Layouts bundles:
 
 ```
 ...

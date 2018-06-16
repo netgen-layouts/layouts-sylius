@@ -1,5 +1,5 @@
-Netgen Block Manager & Sylius eCommerce integration
-===================================================
+Netgen Layouts & Sylius eCommerce integration
+=============================================
 
 # Installation instructions
 
