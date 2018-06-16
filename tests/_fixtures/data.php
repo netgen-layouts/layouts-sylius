@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'ngbm_rule' => [
         ['id' => 1, 'status' => 1, 'layout_id' => 1, 'comment' => null],
