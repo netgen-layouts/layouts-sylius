@@ -140,7 +140,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
 
     private function getParentTaxon(Query $query): ?TaxonInterface
     {
-        if ($query->getParameter('use_current_taxon')->getValue()) {
+        if ($query->getParameter('use_current_taxon')->getValue() === true) {
             $currentRequest = $this->requestStack->getCurrentRequest();
             if (!$currentRequest instanceof Request) {
                 return null;
