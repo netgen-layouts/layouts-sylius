@@ -46,7 +46,7 @@ final class ProductShowListenerTest extends TestCase
     {
         $this->assertEquals(
             ['sylius.product.show' => 'onProductShow'],
-            $this->listener->getSubscribedEvents()
+            $this->listener::getSubscribedEvents()
         );
     }
 

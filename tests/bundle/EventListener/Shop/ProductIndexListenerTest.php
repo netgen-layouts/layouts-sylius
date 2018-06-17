@@ -69,7 +69,7 @@ final class ProductIndexListenerTest extends TestCase
     {
         $this->assertEquals(
             ['sylius.product.index' => 'onProductIndex'],
-            $this->listener->getSubscribedEvents()
+            $this->listener::getSubscribedEvents()
         );
     }
 

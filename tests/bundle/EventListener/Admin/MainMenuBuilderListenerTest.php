@@ -39,7 +39,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         $this->assertEquals(
             [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'],
-            $this->listener->getSubscribedEvents()
+            $this->listener::getSubscribedEvents()
         );
     }
 
