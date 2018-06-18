@@ -36,7 +36,7 @@ final class ProductTest extends TestCase
      */
     public function testGetType(): void
     {
-        $this->assertEquals('sylius_product', $this->targetType->getType());
+        $this->assertSame('sylius_product', $this->targetType->getType());
     }
 
     /**
@@ -85,7 +85,7 @@ final class ProductTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('ngbm_sylius_product', new ProductStub(42));
 
-        $this->assertEquals(42, $this->targetType->provideValue($request));
+        $this->assertSame(42, $this->targetType->provideValue($request));
     }
 
     /**

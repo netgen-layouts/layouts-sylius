@@ -43,7 +43,7 @@ final class ProductValueLoaderTest extends TestCase
             ->with($this->equalTo(42))
             ->will($this->returnValue($product));
 
-        $this->assertEquals($product, $this->valueLoader->load(42));
+        $this->assertSame($product, $this->valueLoader->load(42));
     }
 
     /**
@@ -91,7 +91,7 @@ final class ProductValueLoaderTest extends TestCase
             ->with($this->equalTo('abc'))
             ->will($this->returnValue($product));
 
-        $this->assertEquals($product, $this->valueLoader->loadByRemoteId('abc'));
+        $this->assertSame($product, $this->valueLoader->loadByRemoteId('abc'));
     }
 
     /**

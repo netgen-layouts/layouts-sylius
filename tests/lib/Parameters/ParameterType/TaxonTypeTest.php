@@ -34,7 +34,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testGetIdentifier(): void
     {
-        $this->assertEquals('sylius_taxon', $this->type->getIdentifier());
+        $this->assertSame('sylius_taxon', $this->type->getIdentifier());
     }
 
     /**
@@ -44,7 +44,7 @@ final class TaxonTypeTest extends TestCase
     public function testValidOptions(array $options, array $resolvedOptions): void
     {
         $parameter = $this->getParameterDefinition($options);
-        $this->assertEquals($resolvedOptions, $parameter->getOptions());
+        $this->assertSame($resolvedOptions, $parameter->getOptions());
     }
 
     /**
@@ -151,7 +151,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testIsValueEmpty($value, bool $isEmpty): void
     {
-        $this->assertEquals($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
+        $this->assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
     public function emptyProvider(): array

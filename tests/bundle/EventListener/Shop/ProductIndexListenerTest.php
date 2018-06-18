@@ -67,7 +67,7 @@ final class ProductIndexListenerTest extends TestCase
      */
     public function testGetSubscribedEvents(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             ['sylius.product.index' => 'onProductIndex'],
             $this->listener::getSubscribedEvents()
         );
@@ -94,10 +94,10 @@ final class ProductIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        $this->assertEquals($taxon, $request->attributes->get('ngbm_sylius_taxon'));
+        $this->assertSame($taxon, $request->attributes->get('ngbm_sylius_taxon'));
 
         $this->assertTrue($this->context->has('sylius_taxon_id'));
-        $this->assertEquals(42, $this->context->get('sylius_taxon_id'));
+        $this->assertSame(42, $this->context->get('sylius_taxon_id'));
     }
 
     /**

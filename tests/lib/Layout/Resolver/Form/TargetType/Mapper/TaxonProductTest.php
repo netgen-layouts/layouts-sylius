@@ -25,7 +25,7 @@ final class TaxonProductTest extends TestCase
      */
     public function testGetFormType(): void
     {
-        $this->assertEquals(ContentBrowserType::class, $this->mapper->getFormType());
+        $this->assertSame(ContentBrowserType::class, $this->mapper->getFormType());
     }
 
     /**
@@ -33,7 +33,7 @@ final class TaxonProductTest extends TestCase
      */
     public function testGetFormOptions(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             [
                 'item_type' => 'sylius_taxon',
             ],

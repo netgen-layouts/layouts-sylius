@@ -15,6 +15,6 @@ final class TaxonTest extends TestCase
     public function testValidatedBy(): void
     {
         $constraint = new Taxon();
-        $this->assertEquals('ngbm_sylius_taxon', $constraint->validatedBy());
+        $this->assertSame('ngbm_sylius_taxon', $constraint->validatedBy());
     }
 }

@@ -55,7 +55,7 @@ final class SyliusRuntimeTest extends TestCase
             ->with($this->equalTo(42))
             ->will($this->returnValue($product));
 
-        $this->assertEquals('Product name', $this->runtime->getProductName(42));
+        $this->assertSame('Product name', $this->runtime->getProductName(42));
     }
 
     /**
@@ -99,7 +99,7 @@ final class SyliusRuntimeTest extends TestCase
             ->with($this->equalTo(42))
             ->will($this->returnValue($taxon1));
 
-        $this->assertEquals(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
+        $this->assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
     }
 
     /**

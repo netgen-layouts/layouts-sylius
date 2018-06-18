@@ -36,7 +36,7 @@ final class TaxonTest extends TestCase
      */
     public function testGetType(): void
     {
-        $this->assertEquals('sylius_taxon', $this->targetType->getType());
+        $this->assertSame('sylius_taxon', $this->targetType->getType());
     }
 
     /**
@@ -88,7 +88,7 @@ final class TaxonTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('ngbm_sylius_taxon', $taxon);
 
-        $this->assertEquals([42, 24], $this->targetType->provideValue($request));
+        $this->assertSame([42, 24], $this->targetType->provideValue($request));
     }
 
     /**

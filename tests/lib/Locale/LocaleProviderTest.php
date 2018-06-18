@@ -41,8 +41,8 @@ final class LocaleProviderTest extends TestCase
 
         $availableLocales = $this->localeProvider->getAvailableLocales();
 
-        $this->assertEquals(['hr', 'en', 'de'], array_keys($availableLocales));
-        $this->assertEquals(['Croatian', 'English', 'German'], array_values($availableLocales));
+        $this->assertSame(['hr', 'en', 'de'], array_keys($availableLocales));
+        $this->assertSame(['Croatian', 'English', 'German'], array_values($availableLocales));
     }
 
     /**
@@ -55,6 +55,6 @@ final class LocaleProviderTest extends TestCase
 
         $requestLocales = $this->localeProvider->getRequestLocales($request);
 
-        $this->assertEquals(['hr'], $requestLocales);
+        $this->assertSame(['hr'], $requestLocales);
     }
 }

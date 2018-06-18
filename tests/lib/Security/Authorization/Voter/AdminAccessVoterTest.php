@@ -32,7 +32,7 @@ final class AdminAccessVoterTest extends TestCase
             ->method('getUser')
             ->will($this->returnValue(new AdminUser()));
 
-        $this->assertEquals(1, $this->voter->vote($token, null, []));
+        $this->assertSame(1, $this->voter->vote($token, null, []));
     }
 
     /**
@@ -45,6 +45,6 @@ final class AdminAccessVoterTest extends TestCase
             ->method('getUser')
             ->will($this->returnValue(new User()));
 
-        $this->assertEquals(0, $this->voter->vote($token, null, []));
+        $this->assertSame(0, $this->voter->vote($token, null, []));
     }
 }

@@ -36,7 +36,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetValueType(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             'sylius_product',
             $this->valueConverter->getValueType(
                 new Product()
@@ -49,7 +49,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetId(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             42,
             $this->valueConverter->getId(
                 new ProductStub(42, 'Product name')
@@ -62,7 +62,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetRemoteId(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             42,
             $this->valueConverter->getRemoteId(
                 new ProductStub(42, 'Product name')
@@ -75,7 +75,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetName(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             'Product name',
             $this->valueConverter->getName(
                 new ProductStub(42, 'Product name')
@@ -102,6 +102,6 @@ final class ProductValueConverterTest extends TestCase
     {
         $product = new ProductStub(42, 'Product name');
 
-        $this->assertEquals($product, $this->valueConverter->getObject($product));
+        $this->assertSame($product, $this->valueConverter->getObject($product));
     }
 }

@@ -45,7 +45,7 @@ final class ProductValueUrlGeneratorTest extends TestCase
             )
             ->will($this->returnValue('/products/product-name'));
 
-        $this->assertEquals(
+        $this->assertSame(
             '/products/product-name',
             $this->urlGenerator->generate(new Product(42, 'Product name', 'product-name'))
         );

@@ -20,7 +20,7 @@ final class ProductTest extends AbstractTargetHandlerTest
         $rules = $this->handler->matchRules($this->getTargetIdentifier(), 72);
 
         $this->assertCount(1, $rules);
-        $this->assertEquals(1, $rules[0]->id);
+        $this->assertSame(1, $rules[0]->id);
     }
 
     protected function getTargetIdentifier(): string
