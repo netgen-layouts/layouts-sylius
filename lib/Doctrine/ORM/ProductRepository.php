@@ -19,7 +19,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
         int $count,
         array $sorting = []
     ): array {
-        if (!$taxon) {
+        if (!$taxon instanceof TaxonInterface) {
             return [];
         }
 
@@ -49,7 +49,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
 
     public function countByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int
     {
-        if (!$taxon) {
+        if (!$taxon instanceof TaxonInterface) {
             return 0;
         }
 
@@ -104,7 +104,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
             ->setParameter('channel', $channel)
         ;
 
-        if ($taxon) {
+        if ($taxon instanceof TaxonInterface) {
             $queryBuilder
                 ->innerJoin('o.productTaxons', 'productTaxon')
                 ->andWhere('productTaxon.taxon = :taxon')
