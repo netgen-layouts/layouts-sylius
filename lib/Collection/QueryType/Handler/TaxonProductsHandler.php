@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class TaxonProductsHandler implements QueryTypeHandlerInterface
 {
+    private const DEFAULT_LIMIT = 12;
+
     /**
      * @var \Netgen\BlockManager\Sylius\Doctrine\ORM\ProductRepositoryInterface
      */
@@ -112,7 +114,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
             $parentTaxon,
             $currentRequest->getLocale(),
             $offset,
-            $limit,
+            $limit ?? self::DEFAULT_LIMIT,
             [$sortType => $sortDirection]
         );
     }

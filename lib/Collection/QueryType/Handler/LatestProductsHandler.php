@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class LatestProductsHandler implements QueryTypeHandlerInterface
 {
+    private const DEFAULT_LIMIT = 12;
+
     /**
      * @var \Netgen\BlockManager\Sylius\Doctrine\ORM\ProductRepositoryInterface
      */
@@ -78,7 +80,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             $this->getParentTaxon($query),
             $currentRequest->getLocale(),
             $offset,
-            $limit
+            $limit ?? self::DEFAULT_LIMIT
         );
     }
 

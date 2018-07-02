@@ -101,7 +101,7 @@ final class TaxonTypeTest extends TestCase
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
-        $this->assertTrue($errors->count() === 0);
+        $this->assertCount(0, $errors);
     }
 
     /**
@@ -119,7 +119,7 @@ final class TaxonTypeTest extends TestCase
             ->getValidator();
 
         $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
-        $this->assertTrue($errors->count() === 0);
+        $this->assertCount(0, $errors);
     }
 
     /**
@@ -139,7 +139,7 @@ final class TaxonTypeTest extends TestCase
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
-        $this->assertFalse($errors->count() === 0);
+        $this->assertNotCount(0, $errors);
     }
 
     /**
