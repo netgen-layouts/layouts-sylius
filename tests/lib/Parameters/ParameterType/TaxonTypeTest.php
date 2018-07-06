@@ -92,7 +92,7 @@ final class TaxonTypeTest extends TestCase
         $this->repositoryMock
                 ->expects($this->once())
                 ->method('find')
-                ->with($this->equalTo(42))
+                ->with($this->identicalTo(42))
                 ->will($this->returnValue(new TaxonStub(42)));
 
         $parameter = $this->getParameterDefinition([], true);
@@ -130,7 +130,7 @@ final class TaxonTypeTest extends TestCase
         $this->repositoryMock
                 ->expects($this->once())
                 ->method('find')
-                ->with($this->equalTo(42))
+                ->with($this->identicalTo(42))
                 ->will($this->returnValue(null));
 
         $parameter = $this->getParameterDefinition([], true);

@@ -53,7 +53,7 @@ final class MainMenuBuilderListenerTest extends TestCase
         $this->authCheckerMock
             ->expects($this->any())
             ->method('isGranted')
-            ->with($this->equalTo('ROLE_NGBM_ADMIN'))
+            ->with($this->identicalTo('ROLE_NGBM_ADMIN'))
             ->will($this->returnValue(true));
 
         $factory = new MenuFactory();
@@ -79,7 +79,7 @@ final class MainMenuBuilderListenerTest extends TestCase
         $this->authCheckerMock
             ->expects($this->any())
             ->method('isGranted')
-            ->with($this->equalTo('ROLE_NGBM_ADMIN'))
+            ->with($this->identicalTo('ROLE_NGBM_ADMIN'))
             ->will($this->returnValue(true));
 
         $factory = new MenuFactory();
@@ -103,7 +103,7 @@ final class MainMenuBuilderListenerTest extends TestCase
         $this->authCheckerMock
             ->expects($this->any())
             ->method('isGranted')
-            ->with($this->equalTo('ROLE_NGBM_ADMIN'))
+            ->with($this->identicalTo('ROLE_NGBM_ADMIN'))
             ->will($this->returnValue(false));
 
         $factory = new MenuFactory();

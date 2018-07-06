@@ -88,7 +88,7 @@ final class ProductIndexListenerTest extends TestCase
         $this->taxonRepositoryMock
             ->expects($this->once())
             ->method('findOneBySlug')
-            ->with($this->equalTo('mugs'), $this->equalTo('en'))
+            ->with($this->identicalTo('mugs'), $this->identicalTo('en'))
             ->will($this->returnValue($taxon));
 
         $event = new ResourceControllerEvent();
@@ -147,7 +147,7 @@ final class ProductIndexListenerTest extends TestCase
         $this->taxonRepositoryMock
             ->expects($this->once())
             ->method('findOneBySlug')
-            ->with($this->equalTo('unknown'), $this->equalTo('en'))
+            ->with($this->identicalTo('unknown'), $this->identicalTo('en'))
             ->will($this->returnValue(null));
 
         $event = new ResourceControllerEvent();

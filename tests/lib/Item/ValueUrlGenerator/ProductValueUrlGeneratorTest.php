@@ -38,10 +38,8 @@ final class ProductValueUrlGeneratorTest extends TestCase
             ->expects($this->once())
             ->method('generate')
             ->with(
-                $this->equalTo('sylius_shop_product_show'),
-                [
-                    'slug' => 'product-name',
-                ]
+                $this->identicalTo('sylius_shop_product_show'),
+                $this->identicalTo(['slug' => 'product-name'])
             )
             ->will($this->returnValue('/products/product-name'));
 

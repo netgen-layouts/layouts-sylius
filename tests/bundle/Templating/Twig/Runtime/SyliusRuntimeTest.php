@@ -52,7 +52,7 @@ final class SyliusRuntimeTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->once())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue($product));
 
         $this->assertSame('Product name', $this->runtime->getProductName(42));
@@ -66,7 +66,7 @@ final class SyliusRuntimeTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->once())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue(null));
 
         $this->assertNull($this->runtime->getProductName(42));
@@ -96,7 +96,7 @@ final class SyliusRuntimeTest extends TestCase
         $this->taxonRepositoryMock
             ->expects($this->once())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue($taxon1));
 
         $this->assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
@@ -110,7 +110,7 @@ final class SyliusRuntimeTest extends TestCase
         $this->taxonRepositoryMock
             ->expects($this->once())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue(null));
 
         $this->assertNull($this->runtime->getTaxonPath(42));

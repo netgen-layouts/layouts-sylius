@@ -40,7 +40,7 @@ final class ProductValueLoaderTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue($product));
 
         $this->assertSame($product, $this->valueLoader->load(42));
@@ -56,7 +56,7 @@ final class ProductValueLoaderTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue(null));
 
         $this->valueLoader->load(42);
@@ -72,7 +72,7 @@ final class ProductValueLoaderTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->throwException(new Exception()));
 
         $this->valueLoader->load(42);
@@ -88,7 +88,7 @@ final class ProductValueLoaderTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo('abc'))
+            ->with($this->identicalTo('abc'))
             ->will($this->returnValue($product));
 
         $this->assertSame($product, $this->valueLoader->loadByRemoteId('abc'));
@@ -104,7 +104,7 @@ final class ProductValueLoaderTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo('abc'))
+            ->with($this->identicalTo('abc'))
             ->will($this->returnValue(null));
 
         $this->valueLoader->loadByRemoteId('abc');
@@ -120,7 +120,7 @@ final class ProductValueLoaderTest extends TestCase
         $this->productRepositoryMock
             ->expects($this->any())
             ->method('find')
-            ->with($this->equalTo('abc'))
+            ->with($this->identicalTo('abc'))
             ->will($this->throwException(new Exception()));
 
         $this->valueLoader->loadByRemoteId('abc');

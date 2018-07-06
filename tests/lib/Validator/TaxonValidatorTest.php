@@ -42,7 +42,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->repositoryMock
             ->expects($this->once())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue(new TaxonStub(42)));
 
         $this->assertValid(true, 42);
@@ -70,7 +70,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->repositoryMock
             ->expects($this->once())
             ->method('find')
-            ->with($this->equalTo(42))
+            ->with($this->identicalTo(42))
             ->will($this->returnValue(null));
 
         $this->assertValid(false, 42);
