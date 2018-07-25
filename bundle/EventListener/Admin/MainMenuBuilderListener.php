@@ -76,7 +76,7 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
         $menuOrder = array_keys($menu->getChildren());
         $configMenuIndex = array_search('configuration', $menuOrder, true);
         if ($configMenuIndex !== false) {
-            array_splice($menuOrder, (int) $configMenuIndex, 0, ['nglayouts']);
+            array_splice($menuOrder, $configMenuIndex, 0, ['nglayouts']);
 
             return $menuOrder;
         }
