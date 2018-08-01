@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Netgen\BlockManager\Sylius\Item\ValueLoader;
 
-use Exception;
-use Netgen\BlockManager\Exception\Item\ItemException;
 use Netgen\BlockManager\Item\ValueLoaderInterface;
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
+use Throwable;
 
 final class ProductValueLoader implements ValueLoaderInterface
 {
@@ -26,15 +25,11 @@ final class ProductValueLoader implements ValueLoaderInterface
     {
         try {
             $product = $this->productRepository->find($id);
-        } catch (Exception $e) {
-            throw ItemException::noValue($id);
+        } catch (Throwable $t) {
+            return null;
         }
 
-        if (!$product instanceof ProductInterface) {
-            throw ItemException::noValue($id);
-        }
-
-        return $product;
+        return $product instanceof ProductInterface ? $product : null;
     }
 
     public function loadByRemoteId($remoteId)

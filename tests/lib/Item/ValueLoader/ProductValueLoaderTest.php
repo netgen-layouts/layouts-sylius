@@ -25,7 +25,6 @@ final class ProductValueLoaderTest extends TestCase
     public function setUp(): void
     {
         $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
-
         $this->valueLoader = new ProductValueLoader($this->productRepositoryMock);
     }
 
@@ -48,10 +47,8 @@ final class ProductValueLoaderTest extends TestCase
 
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
-     * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
-     * @expectedExceptionMessage Value with (remote) ID 42 does not exist.
      */
-    public function testLoadThrowsItemExceptionWithNoProduct(): void
+    public function testLoadWithNoProduct(): void
     {
         $this->productRepositoryMock
             ->expects($this->any())
@@ -59,15 +56,13 @@ final class ProductValueLoaderTest extends TestCase
             ->with($this->identicalTo(42))
             ->will($this->returnValue(null));
 
-        $this->valueLoader->load(42);
+        $this->assertNull($this->valueLoader->load(42));
     }
 
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
-     * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
-     * @expectedExceptionMessage Value with (remote) ID 42 does not exist.
      */
-    public function testLoadThrowsItemExceptionWithRepositoryException(): void
+    public function testLoadWithRepositoryException(): void
     {
         $this->productRepositoryMock
             ->expects($this->any())
@@ -75,7 +70,7 @@ final class ProductValueLoaderTest extends TestCase
             ->with($this->identicalTo(42))
             ->will($this->throwException(new Exception()));
 
-        $this->valueLoader->load(42);
+        $this->assertNull($this->valueLoader->load(42));
     }
 
     /**
@@ -96,10 +91,8 @@ final class ProductValueLoaderTest extends TestCase
 
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
-     * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
-     * @expectedExceptionMessage Value with (remote) ID abc does not exist.
      */
-    public function testLoadByRemoteIdThrowsItemExceptionWithNoProduct(): void
+    public function testLoadByRemoteIdWithNoProduct(): void
     {
         $this->productRepositoryMock
             ->expects($this->any())
@@ -107,15 +100,13 @@ final class ProductValueLoaderTest extends TestCase
             ->with($this->identicalTo('abc'))
             ->will($this->returnValue(null));
 
-        $this->valueLoader->loadByRemoteId('abc');
+        $this->assertNull($this->valueLoader->loadByRemoteId('abc'));
     }
 
     /**
      * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
-     * @expectedException \Netgen\BlockManager\Exception\Item\ItemException
-     * @expectedExceptionMessage Value with (remote) ID abc does not exist.
      */
-    public function testLoadByRemoteIdThrowsItemExceptionWithRepositoryException(): void
+    public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->productRepositoryMock
             ->expects($this->any())
@@ -123,6 +114,6 @@ final class ProductValueLoaderTest extends TestCase
             ->with($this->identicalTo('abc'))
             ->will($this->throwException(new Exception()));
 
-        $this->valueLoader->loadByRemoteId('abc');
+        $this->assertNull($this->valueLoader->loadByRemoteId('abc'));
     }
 }
