@@ -34,7 +34,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testGetIdentifier(): void
     {
-        $this->assertSame('sylius_taxon', $this->type->getIdentifier());
+        $this->assertSame('sylius_taxon', $this->type::getIdentifier());
     }
 
     /**

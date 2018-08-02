@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints;
  */
 final class TaxonType extends ParameterType
 {
-    public function getIdentifier(): string
+    public static function getIdentifier(): string
     {
         return 'sylius_taxon';
     }
