@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints;
 
 final class Product implements TargetTypeInterface
 {
-    public function getType(): string
+    public static function getType(): string
     {
         return 'sylius_product';
     }

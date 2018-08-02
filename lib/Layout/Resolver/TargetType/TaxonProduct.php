@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints;
 
 final class TaxonProduct implements TargetTypeInterface
 {
-    public function getType(): string
+    public static function getType(): string
     {
         return 'sylius_taxon_product';
     }

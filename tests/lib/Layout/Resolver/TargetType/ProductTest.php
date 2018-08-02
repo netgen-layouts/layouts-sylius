@@ -36,7 +36,7 @@ final class ProductTest extends TestCase
      */
     public function testGetType(): void
     {
-        $this->assertSame('sylius_product', $this->targetType->getType());
+        $this->assertSame('sylius_product', $this->targetType::getType());
     }
 
     /**

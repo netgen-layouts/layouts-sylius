@@ -38,7 +38,7 @@ final class TaxonProductTest extends TestCase
      */
     public function testGetType(): void
     {
-        $this->assertSame('sylius_taxon_product', $this->targetType->getType());
+        $this->assertSame('sylius_taxon_product', $this->targetType::getType());
     }
 
     /**
