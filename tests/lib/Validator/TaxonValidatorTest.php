@@ -40,12 +40,12 @@ final class TaxonValidatorTest extends ValidatorTestCase
     public function testValidateValid(): void
     {
         $this->repositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue(new TaxonStub(42)));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue(new TaxonStub(42)));
 
-        $this->assertValid(true, 42);
+        self::assertValid(true, 42);
     }
 
     /**
@@ -55,10 +55,10 @@ final class TaxonValidatorTest extends ValidatorTestCase
     public function testValidateNull(): void
     {
         $this->repositoryMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('find');
 
-        $this->assertValid(true, null);
+        self::assertValid(true, null);
     }
 
     /**
@@ -68,12 +68,12 @@ final class TaxonValidatorTest extends ValidatorTestCase
     public function testValidateInvalid(): void
     {
         $this->repositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue(null));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue(null));
 
-        $this->assertValid(false, 42);
+        self::assertValid(false, 42);
     }
 
     /**
@@ -84,7 +84,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->constraint = new NotBlank();
-        $this->assertValid(true, 'value');
+        self::assertValid(true, 'value');
     }
 
     /**
@@ -94,6 +94,6 @@ final class TaxonValidatorTest extends ValidatorTestCase
      */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
-        $this->assertValid(true, []);
+        self::assertValid(true, []);
     }
 }

@@ -49,9 +49,9 @@ final class ProductIndexListenerTest extends TestCase
         $this->context = new Context();
 
         $this->localeContextMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('getLocaleCode')
-            ->will($this->returnValue('en'));
+            ->will(self::returnValue('en'));
 
         $this->listener = new ProductIndexListener(
             $this->taxonRepositoryMock,
@@ -67,7 +67,7 @@ final class ProductIndexListenerTest extends TestCase
      */
     public function testGetSubscribedEvents(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['sylius.product.index' => 'onProductIndex'],
             $this->listener::getSubscribedEvents()
         );
@@ -86,18 +86,18 @@ final class ProductIndexListenerTest extends TestCase
         $taxon = new Taxon(42);
 
         $this->taxonRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('findOneBySlug')
-            ->with($this->identicalTo('mugs'), $this->identicalTo('en'))
-            ->will($this->returnValue($taxon));
+            ->with(self::identicalTo('mugs'), self::identicalTo('en'))
+            ->will(self::returnValue($taxon));
 
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        $this->assertSame($taxon, $request->attributes->get('ngbm_sylius_taxon'));
+        self::assertSame($taxon, $request->attributes->get('ngbm_sylius_taxon'));
 
-        $this->assertTrue($this->context->has('sylius_taxon_id'));
-        $this->assertSame(42, $this->context->get('sylius_taxon_id'));
+        self::assertTrue($this->context->has('sylius_taxon_id'));
+        self::assertSame(42, $this->context->get('sylius_taxon_id'));
     }
 
     /**
@@ -106,13 +106,13 @@ final class ProductIndexListenerTest extends TestCase
     public function testOnProductIndexWithoutRequest(): void
     {
         $this->taxonRepositoryMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('findOneBySlug');
 
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        $this->assertFalse($this->context->has('sylius_taxon_id'));
+        self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 
     /**
@@ -124,14 +124,14 @@ final class ProductIndexListenerTest extends TestCase
         $this->requestStack->push($request);
 
         $this->taxonRepositoryMock
-            ->expects($this->never())
+            ->expects(self::never())
             ->method('findOneBySlug');
 
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        $this->assertFalse($request->attributes->has('ngbm_sylius_taxon'));
-        $this->assertFalse($this->context->has('sylius_taxon_id'));
+        self::assertFalse($request->attributes->has('ngbm_sylius_taxon'));
+        self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 
     /**
@@ -145,15 +145,15 @@ final class ProductIndexListenerTest extends TestCase
         $this->requestStack->push($request);
 
         $this->taxonRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('findOneBySlug')
-            ->with($this->identicalTo('unknown'), $this->identicalTo('en'))
-            ->will($this->returnValue(null));
+            ->with(self::identicalTo('unknown'), self::identicalTo('en'))
+            ->will(self::returnValue(null));
 
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        $this->assertFalse($request->attributes->has('ngbm_sylius_taxon'));
-        $this->assertFalse($this->context->has('sylius_taxon_id'));
+        self::assertFalse($request->attributes->has('ngbm_sylius_taxon'));
+        self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 }

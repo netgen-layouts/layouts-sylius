@@ -35,15 +35,15 @@ final class ProductValueUrlGeneratorTest extends TestCase
     public function testGenerate(): void
     {
         $this->urlGeneratorMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('generate')
             ->with(
-                $this->identicalTo('sylius_shop_product_show'),
-                $this->identicalTo(['slug' => 'product-name'])
+                self::identicalTo('sylius_shop_product_show'),
+                self::identicalTo(['slug' => 'product-name'])
             )
-            ->will($this->returnValue('/products/product-name'));
+            ->will(self::returnValue('/products/product-name'));
 
-        $this->assertSame(
+        self::assertSame(
             '/products/product-name',
             $this->urlGenerator->generate(new Product(42, 'Product name', 'product-name'))
         );

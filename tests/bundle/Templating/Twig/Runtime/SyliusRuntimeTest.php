@@ -50,12 +50,12 @@ final class SyliusRuntimeTest extends TestCase
         $product->setName('Product name');
 
         $this->productRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue($product));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue($product));
 
-        $this->assertSame('Product name', $this->runtime->getProductName(42));
+        self::assertSame('Product name', $this->runtime->getProductName(42));
     }
 
     /**
@@ -64,12 +64,12 @@ final class SyliusRuntimeTest extends TestCase
     public function testGetProductNameWithoutProduct(): void
     {
         $this->productRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue(null));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue(null));
 
-        $this->assertNull($this->runtime->getProductName(42));
+        self::assertNull($this->runtime->getProductName(42));
     }
 
     /**
@@ -94,12 +94,12 @@ final class SyliusRuntimeTest extends TestCase
         $taxon2->setParent($taxon3);
 
         $this->taxonRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue($taxon1));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue($taxon1));
 
-        $this->assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
+        self::assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
     }
 
     /**
@@ -108,11 +108,11 @@ final class SyliusRuntimeTest extends TestCase
     public function testGetTaxonPathWithoutTaxon(): void
     {
         $this->taxonRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue(null));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue(null));
 
-        $this->assertNull($this->runtime->getTaxonPath(42));
+        self::assertNull($this->runtime->getTaxonPath(42));
     }
 }

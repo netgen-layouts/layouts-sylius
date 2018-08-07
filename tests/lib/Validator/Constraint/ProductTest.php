@@ -15,6 +15,6 @@ final class ProductTest extends TestCase
     public function testValidatedBy(): void
     {
         $constraint = new Product();
-        $this->assertSame('ngbm_sylius_product', $constraint->validatedBy());
+        self::assertSame('ngbm_sylius_product', $constraint->validatedBy());
     }
 }

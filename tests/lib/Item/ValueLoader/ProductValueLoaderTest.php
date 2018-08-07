@@ -37,12 +37,12 @@ final class ProductValueLoaderTest extends TestCase
         $product = new Product(42, 'Product name');
 
         $this->productRepositoryMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue($product));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue($product));
 
-        $this->assertSame($product, $this->valueLoader->load(42));
+        self::assertSame($product, $this->valueLoader->load(42));
     }
 
     /**
@@ -51,12 +51,12 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadWithNoProduct(): void
     {
         $this->productRepositoryMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue(null));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue(null));
 
-        $this->assertNull($this->valueLoader->load(42));
+        self::assertNull($this->valueLoader->load(42));
     }
 
     /**
@@ -65,12 +65,12 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadWithRepositoryException(): void
     {
         $this->productRepositoryMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->throwException(new Exception()));
+            ->with(self::identicalTo(42))
+            ->will(self::throwException(new Exception()));
 
-        $this->assertNull($this->valueLoader->load(42));
+        self::assertNull($this->valueLoader->load(42));
     }
 
     /**
@@ -81,12 +81,12 @@ final class ProductValueLoaderTest extends TestCase
         $product = new Product(42, 'Product name');
 
         $this->productRepositoryMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('find')
-            ->with($this->identicalTo('abc'))
-            ->will($this->returnValue($product));
+            ->with(self::identicalTo('abc'))
+            ->will(self::returnValue($product));
 
-        $this->assertSame($product, $this->valueLoader->loadByRemoteId('abc'));
+        self::assertSame($product, $this->valueLoader->loadByRemoteId('abc'));
     }
 
     /**
@@ -95,12 +95,12 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithNoProduct(): void
     {
         $this->productRepositoryMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('find')
-            ->with($this->identicalTo('abc'))
-            ->will($this->returnValue(null));
+            ->with(self::identicalTo('abc'))
+            ->will(self::returnValue(null));
 
-        $this->assertNull($this->valueLoader->loadByRemoteId('abc'));
+        self::assertNull($this->valueLoader->loadByRemoteId('abc'));
     }
 
     /**
@@ -109,11 +109,11 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->productRepositoryMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('find')
-            ->with($this->identicalTo('abc'))
-            ->will($this->throwException(new Exception()));
+            ->with(self::identicalTo('abc'))
+            ->will(self::throwException(new Exception()));
 
-        $this->assertNull($this->valueLoader->loadByRemoteId('abc'));
+        self::assertNull($this->valueLoader->loadByRemoteId('abc'));
     }
 }

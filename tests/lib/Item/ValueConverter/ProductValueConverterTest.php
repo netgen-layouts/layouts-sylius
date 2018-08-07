@@ -27,8 +27,8 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testSupports(): void
     {
-        $this->assertTrue($this->valueConverter->supports(new Product()));
-        $this->assertFalse($this->valueConverter->supports(new Taxon()));
+        self::assertTrue($this->valueConverter->supports(new Product()));
+        self::assertFalse($this->valueConverter->supports(new Taxon()));
     }
 
     /**
@@ -36,7 +36,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetValueType(): void
     {
-        $this->assertSame(
+        self::assertSame(
             'sylius_product',
             $this->valueConverter->getValueType(
                 new Product()
@@ -49,7 +49,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetId(): void
     {
-        $this->assertSame(
+        self::assertSame(
             42,
             $this->valueConverter->getId(
                 new ProductStub(42, 'Product name')
@@ -62,7 +62,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetRemoteId(): void
     {
-        $this->assertSame(
+        self::assertSame(
             42,
             $this->valueConverter->getRemoteId(
                 new ProductStub(42, 'Product name')
@@ -75,7 +75,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetName(): void
     {
-        $this->assertSame(
+        self::assertSame(
             'Product name',
             $this->valueConverter->getName(
                 new ProductStub(42, 'Product name')
@@ -88,7 +88,7 @@ final class ProductValueConverterTest extends TestCase
      */
     public function testGetIsVisible(): void
     {
-        $this->assertTrue(
+        self::assertTrue(
             $this->valueConverter->getIsVisible(
                 new ProductStub(42, 'Product name')
             )
@@ -102,6 +102,6 @@ final class ProductValueConverterTest extends TestCase
     {
         $product = new ProductStub(42, 'Product name');
 
-        $this->assertSame($product, $this->valueConverter->getObject($product));
+        self::assertSame($product, $this->valueConverter->getObject($product));
     }
 }

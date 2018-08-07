@@ -27,7 +27,7 @@ final class TaxonMapperTest extends TestCase
      */
     public function testGetFormType(): void
     {
-        $this->assertSame(ContentBrowserType::class, $this->mapper->getFormType());
+        self::assertSame(ContentBrowserType::class, $this->mapper->getFormType());
     }
 
     /**
@@ -35,7 +35,7 @@ final class TaxonMapperTest extends TestCase
      */
     public function testMapOptions(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [
                 'item_type' => 'sylius_taxon',
                 'required' => false,

@@ -44,7 +44,7 @@ final class ProductShowListenerTest extends TestCase
      */
     public function testGetSubscribedEvents(): void
     {
-        $this->assertSame(
+        self::assertSame(
             ['sylius.product.show' => 'onProductShow'],
             $this->listener::getSubscribedEvents()
         );
@@ -62,10 +62,10 @@ final class ProductShowListenerTest extends TestCase
         $event = new ResourceControllerEvent($product);
         $this->listener->onProductShow($event);
 
-        $this->assertSame($product, $request->attributes->get('ngbm_sylius_product'));
+        self::assertSame($product, $request->attributes->get('ngbm_sylius_product'));
 
-        $this->assertTrue($this->context->has('sylius_product_id'));
-        $this->assertSame(42, $this->context->get('sylius_product_id'));
+        self::assertTrue($this->context->has('sylius_product_id'));
+        self::assertSame(42, $this->context->get('sylius_product_id'));
     }
 
     /**
@@ -80,7 +80,7 @@ final class ProductShowListenerTest extends TestCase
         $event = new ResourceControllerEvent($taxon);
         $this->listener->onProductShow($event);
 
-        $this->assertFalse($request->attributes->has('ngbm_sylius_product'));
-        $this->assertFalse($this->context->has('sylius_product_id'));
+        self::assertFalse($request->attributes->has('ngbm_sylius_product'));
+        self::assertFalse($this->context->has('sylius_product_id'));
     }
 }

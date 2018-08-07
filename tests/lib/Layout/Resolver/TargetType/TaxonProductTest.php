@@ -38,7 +38,7 @@ final class TaxonProductTest extends TestCase
      */
     public function testGetType(): void
     {
-        $this->assertSame('sylius_taxon_product', $this->targetType::getType());
+        self::assertSame('sylius_taxon_product', $this->targetType::getType());
     }
 
     /**
@@ -47,17 +47,17 @@ final class TaxonProductTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue(new TaxonStub(42)));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue(new TaxonStub(42)));
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
-        $this->assertCount(0, $errors);
+        self::assertCount(0, $errors);
     }
 
     /**
@@ -66,17 +66,17 @@ final class TaxonProductTest extends TestCase
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('find')
-            ->with($this->identicalTo(42))
-            ->will($this->returnValue(null));
+            ->with(self::identicalTo(42))
+            ->will(self::returnValue(null));
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
-        $this->assertNotCount(0, $errors);
+        self::assertNotCount(0, $errors);
     }
 
     /**
@@ -95,7 +95,7 @@ final class TaxonProductTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('ngbm_sylius_product', $product);
 
-        $this->assertSame([12, 13], $this->targetType->provideValue($request));
+        self::assertSame([12, 13], $this->targetType->provideValue($request));
     }
 
     /**
@@ -105,6 +105,6 @@ final class TaxonProductTest extends TestCase
     {
         $request = Request::create('/');
 
-        $this->assertNull($this->targetType->provideValue($request));
+        self::assertNull($this->targetType->provideValue($request));
     }
 }

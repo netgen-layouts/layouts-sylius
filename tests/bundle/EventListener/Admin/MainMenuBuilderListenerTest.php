@@ -37,7 +37,7 @@ final class MainMenuBuilderListenerTest extends TestCase
      */
     public function testGetSubscribedEvents(): void
     {
-        $this->assertSame(
+        self::assertSame(
             [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'],
             $this->listener::getSubscribedEvents()
         );
@@ -51,19 +51,19 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testOnMainMenuBuild(): void
     {
         $this->authCheckerMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('isGranted')
-            ->with($this->identicalTo('ROLE_NGBM_ADMIN'))
-            ->will($this->returnValue(true));
+            ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
+            ->will(self::returnValue(true));
 
         $factory = new MenuFactory();
         $menuItem = new MenuItem('root', $factory);
         $event = new MenuBuilderEvent($factory, $menuItem);
         $this->listener->onMainMenuBuild($event);
 
-        $this->assertArrayHasKey('nglayouts', $menuItem);
+        self::assertArrayHasKey('nglayouts', $menuItem);
 
-        $this->assertSame(
+        self::assertSame(
             ['layout_resolver', 'layouts', 'shared_layouts'],
             array_keys($menuItem['nglayouts']->getChildren())
         );
@@ -77,10 +77,10 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testOnMainMenuBuildPlacedBeforeConfiguration(): void
     {
         $this->authCheckerMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('isGranted')
-            ->with($this->identicalTo('ROLE_NGBM_ADMIN'))
-            ->will($this->returnValue(true));
+            ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
+            ->will(self::returnValue(true));
 
         $factory = new MenuFactory();
         $menuItem = new MenuItem('root', $factory);
@@ -89,7 +89,7 @@ final class MainMenuBuilderListenerTest extends TestCase
         $event = new MenuBuilderEvent($factory, $menuItem);
         $this->listener->onMainMenuBuild($event);
 
-        $this->assertSame(
+        self::assertSame(
             ['nglayouts', 'configuration'],
             array_keys($menuItem->getChildren())
         );
@@ -101,16 +101,16 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testOnMainMenuBuildWithNoAccess(): void
     {
         $this->authCheckerMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('isGranted')
-            ->with($this->identicalTo('ROLE_NGBM_ADMIN'))
-            ->will($this->returnValue(false));
+            ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
+            ->will(self::returnValue(false));
 
         $factory = new MenuFactory();
         $menuItem = new MenuItem('root', $factory);
         $event = new MenuBuilderEvent($factory, $menuItem);
         $this->listener->onMainMenuBuild($event);
 
-        $this->assertArrayNotHasKey('nglayouts', $menuItem);
+        self::assertArrayNotHasKey('nglayouts', $menuItem);
     }
 }

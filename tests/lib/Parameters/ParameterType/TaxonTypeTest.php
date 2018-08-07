@@ -34,7 +34,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testGetIdentifier(): void
     {
-        $this->assertSame('sylius_taxon', $this->type::getIdentifier());
+        self::assertSame('sylius_taxon', $this->type::getIdentifier());
     }
 
     /**
@@ -44,7 +44,7 @@ final class TaxonTypeTest extends TestCase
     public function testValidOptions(array $options, array $resolvedOptions): void
     {
         $parameter = $this->getParameterDefinition($options);
-        $this->assertSame($resolvedOptions, $parameter->getOptions());
+        self::assertSame($resolvedOptions, $parameter->getOptions());
     }
 
     /**
@@ -90,10 +90,10 @@ final class TaxonTypeTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-                ->expects($this->once())
+                ->expects(self::once())
                 ->method('find')
-                ->with($this->identicalTo(42))
-                ->will($this->returnValue(new TaxonStub(42)));
+                ->with(self::identicalTo(42))
+                ->will(self::returnValue(new TaxonStub(42)));
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
@@ -101,7 +101,7 @@ final class TaxonTypeTest extends TestCase
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
-        $this->assertCount(0, $errors);
+        self::assertCount(0, $errors);
     }
 
     /**
@@ -110,7 +110,7 @@ final class TaxonTypeTest extends TestCase
     public function testValidationValidWithNonRequiredValue(): void
     {
         $this->repositoryMock
-                ->expects($this->never())
+                ->expects(self::never())
                 ->method('find');
 
         $parameter = $this->getParameterDefinition([], false);
@@ -119,7 +119,7 @@ final class TaxonTypeTest extends TestCase
             ->getValidator();
 
         $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
-        $this->assertCount(0, $errors);
+        self::assertCount(0, $errors);
     }
 
     /**
@@ -128,10 +128,10 @@ final class TaxonTypeTest extends TestCase
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
-                ->expects($this->once())
+                ->expects(self::once())
                 ->method('find')
-                ->with($this->identicalTo(42))
-                ->will($this->returnValue(null));
+                ->with(self::identicalTo(42))
+                ->will(self::returnValue(null));
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
@@ -139,7 +139,7 @@ final class TaxonTypeTest extends TestCase
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
-        $this->assertNotCount(0, $errors);
+        self::assertNotCount(0, $errors);
     }
 
     /**
@@ -151,7 +151,7 @@ final class TaxonTypeTest extends TestCase
      */
     public function testIsValueEmpty($value, bool $isEmpty): void
     {
-        $this->assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
+        self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
     public function emptyProvider(): array

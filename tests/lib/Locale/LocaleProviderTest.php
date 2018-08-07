@@ -35,14 +35,14 @@ final class LocaleProviderTest extends TestCase
     public function testGetAvailableLocales(): void
     {
         $this->syliusLocaleProviderMock
-            ->expects($this->any())
+            ->expects(self::any())
             ->method('getAvailableLocalesCodes')
-            ->will($this->returnValue(['en', 'de', 'hr']));
+            ->will(self::returnValue(['en', 'de', 'hr']));
 
         $availableLocales = $this->localeProvider->getAvailableLocales();
 
-        $this->assertSame(['hr', 'en', 'de'], array_keys($availableLocales));
-        $this->assertSame(['Croatian', 'English', 'German'], array_values($availableLocales));
+        self::assertSame(['hr', 'en', 'de'], array_keys($availableLocales));
+        self::assertSame(['Croatian', 'English', 'German'], array_values($availableLocales));
     }
 
     /**
@@ -55,6 +55,6 @@ final class LocaleProviderTest extends TestCase
 
         $requestLocales = $this->localeProvider->getRequestLocales($request);
 
-        $this->assertSame(['hr'], $requestLocales);
+        self::assertSame(['hr'], $requestLocales);
     }
 }
