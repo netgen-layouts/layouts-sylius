@@ -8,20 +8,21 @@ Run the following command to install Netgen Layouts & Sylius eCommerce
 integration:
 
 ```
-composer require netgen/block-manager-standard:^1.0 netgen/block-manager-sylius:^1.0
+composer require netgen/layouts-standard netgen/layouts-sylius
 ```
 
-Activating integration bundle
------------------------------
+Activating integration bundles
+------------------------------
 
 After completing standard Layouts install instructions, you also need to
-activate `NetgenSyliusBlockManagerBundle`. Make sure it is activated after all
-other Layouts bundles:
+activate `NetgenSyliusBlockManagerBundle` and `NetgenContentBrowserSyliusBundle`.
+Make sure they are activated after all other Netgen Layouts and Content Browser bundles:
 
 ```
 ...
 
 $bundles[] = new Netgen\Bundle\SyliusBlockManagerBundle\NetgenSyliusBlockManagerBundle();
+$bundles[] = new Netgen\Bundle\ContentBrowserSyliusBundle\NetgenContentBrowserSyliusBundle();
 
 return $bundles;
 ```
