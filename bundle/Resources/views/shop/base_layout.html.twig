@@ -13,12 +13,17 @@
     {% endblock %}
 
     {% block stylesheets %}
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
         {% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'assets/shop/css/style.css'} %}
+        {% include '@NetgenBlockManager/stylesheets.html.twig' %}
+        {% include '@NetgenBlockManagerStandard/stylesheets.html.twig' %}
 
         {{ sonata_block_render_event('sylius.shop.layout.stylesheets') }}
     {% endblock %}
-
-    {% include '@NetgenBlockManager/page_head.html.twig' %}
 
     {{ sonata_block_render_event('sylius.shop.layout.head') }}
 </head>
@@ -52,7 +57,7 @@
             </header>
         {% endblock %}
 
-        {% include '@SyliusUi/_flashes.html.twig' %}
+        {% include '@SyliusShop/_flashes.html.twig' %}
 
         {{ sonata_block_render_event('sylius.shop.layout.before_content') }}
 
@@ -71,6 +76,8 @@
 
 {% block javascripts %}
     {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'assets/shop/js/app.js'} %}
+    {% include '@NetgenBlockManager/javascripts.html.twig' %}
+    {% include '@NetgenBlockManagerStandard/javascripts.html.twig' %}
 
     {{ sonata_block_render_event('sylius.shop.layout.javascripts') }}
 {% endblock %}
