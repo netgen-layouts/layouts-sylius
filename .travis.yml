@@ -1,0 +1,61 @@
+dist: trusty
+sudo: required
+
+language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+matrix:
+  fast_finish: true
+  include:
+    # PHP 7.1
+    - php: 7.1
+      env: PHPUNIT_CONFIG="phpunit.xml" SYMFONY_VERSION="~3.4.0"
+    - php: 7.1
+      env: PHPUNIT_CONFIG="phpunit.xml" SYMFONY_VERSION="~3.4.0" DEPS="low"
+    - php: 7.1
+      env: PHPUNIT_CONFIG="phpunit.xml" SYMFONY_VERSION="~4.1.0"
+    # PHP 7.2
+    - php: 7.2
+      env: PHPUNIT_CONFIG="phpunit.xml" SYMFONY_VERSION="~3.4.0"
+    - php: 7.2
+      env: PHPUNIT_CONFIG="phpunit.xml" SYMFONY_VERSION="dev-master"
+    - php: 7.2
+      env: PHPUNIT_CONFIG="phpunit.xml" SYMFONY_VERSION="~4.1.0"
+    # PHPStan
+    - php: 7.2
+      env: RUN_PHPSTAN="yes" SYMFONY_VERSION="~4.1.0"
+
+branches:
+  only:
+    - master
+    - /^\d.\d+-release$/
+
+before_script:
+  - phpenv config-rm xdebug.ini
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
+  # Read-only OAuth token to work around GitHub API rate limits
+  - composer config -g github-oauth.github.com "4b3b0a83ea27d9544d3608a384c7a14625a98804"
+
+  - if [ "$SYMFONY_VERSION" != "" ] ; then composer require --no-update symfony/symfony:$SYMFONY_VERSION ; fi
+
+  - |
+    if [ "$DEPS" = "low" ] ; then
+      composer update --prefer-dist --prefer-lowest --prefer-stable
+    else
+      composer update --prefer-dist
+    fi
+
+script:
+  - if [ "$PHPUNIT_CONFIG" != "" ] ; then vendor/bin/phpunit -c $PHPUNIT_CONFIG ; fi
+  - if [ "$RUN_PHPSTAN" != "" ] ; then composer phpstan ; fi
+  - if [ "$RUN_PHPSTAN" != "" ] ; then composer phpstan-tests ; fi
+
+notifications:
+  email: false
+
+git:
+  depth: 30
