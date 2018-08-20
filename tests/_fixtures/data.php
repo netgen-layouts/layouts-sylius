@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 return [
     'ngbm_rule' => [
-        ['id' => 1, 'status' => 1, 'layout_id' => 1, 'comment' => null],
-        ['id' => 2, 'status' => 0, 'layout_id' => 2, 'comment' => null],
-        ['id' => 3, 'status' => 1, 'layout_id' => 3, 'comment' => null],
-        ['id' => 4, 'status' => 1, 'layout_id' => 4, 'comment' => null],
-        ['id' => 5, 'status' => 1, 'layout_id' => 5, 'comment' => null],
-        ['id' => 6, 'status' => 1, 'layout_id' => 4, 'comment' => null],
-        ['id' => 7, 'status' => 1, 'layout_id' => 5, 'comment' => null],
+        ['id' => 1, 'status' => 1, 'layout_id' => 1, 'comment' => ''],
+        ['id' => 2, 'status' => 0, 'layout_id' => 2, 'comment' => ''],
+        ['id' => 3, 'status' => 1, 'layout_id' => 3, 'comment' => ''],
+        ['id' => 4, 'status' => 1, 'layout_id' => 4, 'comment' => ''],
+        ['id' => 5, 'status' => 1, 'layout_id' => 5, 'comment' => ''],
+        ['id' => 6, 'status' => 1, 'layout_id' => 4, 'comment' => ''],
+        ['id' => 7, 'status' => 1, 'layout_id' => 5, 'comment' => ''],
     ],
     'ngbm_rule_data' => [
         ['rule_id' => 1, 'enabled' => 1, 'priority' => 7],
