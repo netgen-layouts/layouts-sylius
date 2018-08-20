@@ -1,16 +1,16 @@
 services:
-    netgen_block_manager.validator.sylius_product:
-        class: Netgen\BlockManager\Sylius\Validator\ProductValidator
+    netgen_layouts.sylius.validator.product:
+        class: Netgen\Layouts\Sylius\Validator\ProductValidator
         public: false
         arguments:
             - "@sylius.repository.product"
         tags:
-            - { name: validator.constraint_validator, alias: ngbm_sylius_product }
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_product }
 
-    netgen_block_manager.validator.sylius_taxon:
-        class: Netgen\BlockManager\Sylius\Validator\TaxonValidator
+    netgen_layouts.sylius.validator.taxon:
+        class: Netgen\Layouts\Sylius\Validator\TaxonValidator
         public: false
         arguments:
             - "@sylius.repository.taxon"
         tags:
-            - { name: validator.constraint_validator, alias: ngbm_sylius_taxon }
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_taxon }

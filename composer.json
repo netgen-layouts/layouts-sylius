@@ -29,8 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Netgen\\BlockManager\\Sylius\\": "lib/",
-            "Netgen\\Bundle\\SyliusBlockManagerBundle\\": "bundle/"
+            "Netgen\\Layouts\\Sylius\\": "lib/",
+            "Netgen\\Bundle\\LayoutsSyliusBundle\\": "bundle/"
         }
     },
     "autoload-dev": {
@@ -38,8 +38,8 @@
             "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
         ],
         "psr-4": {
-            "Netgen\\BlockManager\\Sylius\\Tests\\": "tests/lib/",
-            "Netgen\\Bundle\\SyliusBlockManagerBundle\\Tests\\": "tests/bundle/",
+            "Netgen\\Layouts\\Sylius\\Tests\\": "tests/lib/",
+            "Netgen\\Bundle\\LayoutsSyliusBundle\\Tests\\": "tests/bundle/",
             "Netgen\\BlockManager\\Tests\\": "vendor/netgen/layouts-core/tests/lib"
         }
     },

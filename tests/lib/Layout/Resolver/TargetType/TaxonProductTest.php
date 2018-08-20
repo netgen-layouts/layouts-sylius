@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 
-use Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Product as ProductStub;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon as TaxonStub;
-use Netgen\BlockManager\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct;
+use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
+use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
+use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Core\Model\ProductTaxon;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
@@ -22,7 +22,7 @@ final class TaxonProductTest extends TestCase
     private $repositoryMock;
 
     /**
-     * @var \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct
+     * @var \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct
      */
     private $targetType;
 
@@ -34,7 +34,7 @@ final class TaxonProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::getType
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::getType
      */
     public function testGetType(): void
     {
@@ -42,7 +42,7 @@ final class TaxonProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::getConstraints
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::getConstraints
      */
     public function testValidationValid(): void
     {
@@ -61,7 +61,7 @@ final class TaxonProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::getConstraints
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::getConstraints
      */
     public function testValidationInvalid(): void
     {
@@ -80,7 +80,7 @@ final class TaxonProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
      */
     public function testProvideValue(): void
     {
@@ -93,13 +93,13 @@ final class TaxonProductTest extends TestCase
         }
 
         $request = Request::create('/');
-        $request->attributes->set('ngbm_sylius_product', $product);
+        $request->attributes->set('nglayouts_sylius_product', $product);
 
         self::assertSame([12, 13], $this->targetType->provideValue($request));
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
      */
     public function testProvideValueWithNoTaxon(): void
     {

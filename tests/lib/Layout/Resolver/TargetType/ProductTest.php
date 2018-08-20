@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 
-use Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Product as ProductStub;
-use Netgen\BlockManager\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product;
+use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
+use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,7 @@ final class ProductTest extends TestCase
     private $repositoryMock;
 
     /**
-     * @var \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product
+     * @var \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product
      */
     private $targetType;
 
@@ -32,7 +32,7 @@ final class ProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::getType
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::getType
      */
     public function testGetType(): void
     {
@@ -40,7 +40,7 @@ final class ProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::getConstraints
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::getConstraints
      */
     public function testValidationValid(): void
     {
@@ -59,7 +59,7 @@ final class ProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::getConstraints
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::getConstraints
      */
     public function testValidationInvalid(): void
     {
@@ -78,18 +78,18 @@ final class ProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::provideValue
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::provideValue
      */
     public function testProvideValue(): void
     {
         $request = Request::create('/');
-        $request->attributes->set('ngbm_sylius_product', new ProductStub(42));
+        $request->attributes->set('nglayouts_sylius_product', new ProductStub(42));
 
         self::assertSame(42, $this->targetType->provideValue($request));
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Product::provideValue
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::provideValue
      */
     public function testProvideValueWithNoProduct(): void
     {

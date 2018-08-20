@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Parameters\Form\Mapper;
+namespace Netgen\Layouts\Sylius\Parameters\Form\Mapper;
 
 use Netgen\BlockManager\Parameters\Form\Mapper;
 use Netgen\BlockManager\Parameters\ParameterDefinition;

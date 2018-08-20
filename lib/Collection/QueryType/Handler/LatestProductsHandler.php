@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Collection\QueryType\Handler;
+namespace Netgen\Layouts\Sylius\Collection\QueryType\Handler;
 
 use Netgen\BlockManager\API\Values\Collection\Query;
 use Netgen\BlockManager\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\BlockManager\Parameters\ParameterBuilderInterface;
 use Netgen\BlockManager\Parameters\ParameterType;
-use Netgen\BlockManager\Sylius\Doctrine\ORM\ProductRepositoryInterface;
-use Netgen\BlockManager\Sylius\Parameters\ParameterType as SyliusParameterType;
+use Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepositoryInterface;
+use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
@@ -21,7 +21,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
     private const DEFAULT_LIMIT = 12;
 
     /**
-     * @var \Netgen\BlockManager\Sylius\Doctrine\ORM\ProductRepositoryInterface
+     * @var \Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepositoryInterface
      */
     private $productRepository;
 

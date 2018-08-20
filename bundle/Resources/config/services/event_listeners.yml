@@ -1,22 +1,22 @@
 services:
-    netgen_block_manager.sylius.event_listener.admin.main_menu_builder:
-        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener
+    netgen_layouts.sylius.event_listener.admin.main_menu_builder:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener
         public: false
         arguments:
             - "@security.authorization_checker"
         tags:
             - { name: kernel.event_subscriber }
 
-    netgen_block_manager.sylius.event_listener.admin.set_page_layout:
-        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener
+    netgen_layouts.sylius.event_listener.admin.set_page_layout:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener
         public: false
         arguments:
-            - "%netgen_block_manager.sylius.admin.pagelayout%"
+            - "%netgen_layouts.sylius.admin.pagelayout%"
         tags:
             - { name: kernel.event_subscriber }
 
-    netgen_block_manager.sylius.event_listener.shop.product_show:
-        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductShowListener
+    netgen_layouts.sylius.event_listener.shop.product_show:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener
         public: false
         arguments:
             - "@request_stack"
@@ -24,8 +24,8 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    netgen_block_manager.sylius.event_listener.shop.product_index:
-        class: Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener
+    netgen_layouts.sylius.event_listener.shop.product_index:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener
         public: false
         arguments:
             - "@sylius.repository.taxon"

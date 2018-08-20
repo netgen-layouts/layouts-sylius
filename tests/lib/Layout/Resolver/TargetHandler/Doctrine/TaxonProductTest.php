@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetHandler\Doctrine;
+namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetHandler\Doctrine;
 
 use Netgen\BlockManager\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
-use Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\TaxonProduct;
 use Netgen\BlockManager\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
+use Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\TaxonProduct;
 
 final class TaxonProductTest extends AbstractTargetHandlerTest
 {
     /**
      * @covers \Netgen\BlockManager\Persistence\Doctrine\Handler\LayoutResolverHandler::matchRules
      * @covers \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolverQueryHandler::matchRules
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetHandler\Doctrine\TaxonProduct::handleQuery
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\TaxonProduct::handleQuery
      */
     public function testMatchRules(): void
     {

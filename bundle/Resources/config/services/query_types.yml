@@ -1,25 +1,25 @@
 services:
-    netgen_block_manager.sylius.product_repository:
-        class: Netgen\BlockManager\Sylius\Doctrine\ORM\ProductRepository
+    netgen_layouts.sylius.product_repository:
+        class: Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepository
         public: false
         parent: sylius.repository.product
 
-    netgen_block_manager.collection.query_type.handler.sylius_latest_products:
-        class: Netgen\BlockManager\Sylius\Collection\QueryType\Handler\LatestProductsHandler
+    netgen_layouts.sylius.query_type_handler.latest_products:
+        class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\LatestProductsHandler
         public: false
         arguments:
-            - "@netgen_block_manager.sylius.product_repository"
+            - "@netgen_layouts.sylius.product_repository"
             - "@sylius.repository.taxon"
             - "@sylius.context.channel"
             - "@request_stack"
         tags:
             - { name: netgen_block_manager.collection.query_type_handler, type: sylius_latest_products }
 
-    netgen_block_manager.collection.query_type.handler.sylius_taxon_products:
-        class: Netgen\BlockManager\Sylius\Collection\QueryType\Handler\TaxonProductsHandler
+    netgen_layouts.sylius.query_type_handler.taxon_products:
+        class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\TaxonProductsHandler
         public: false
         arguments:
-            - "@netgen_block_manager.sylius.product_repository"
+            - "@netgen_layouts.sylius.product_repository"
             - "@sylius.repository.taxon"
             - "@sylius.context.channel"
             - "@request_stack"

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin;
+namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin;
 
 use Knp\Menu\ItemInterface;
 use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Validator;
+namespace Netgen\Layouts\Sylius\Tests\Validator;
 
-use Netgen\BlockManager\Sylius\Tests\Stubs\Product as ProductStub;
-use Netgen\BlockManager\Sylius\Validator\Constraint\Product;
-use Netgen\BlockManager\Sylius\Validator\ProductValidator;
 use Netgen\BlockManager\Tests\TestCase\ValidatorTestCase;
+use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
+use Netgen\Layouts\Sylius\Validator\Constraint\Product;
+use Netgen\Layouts\Sylius\Validator\ProductValidator;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
@@ -34,8 +34,8 @@ final class ProductValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::__construct
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::validate
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::__construct
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::validate
      */
     public function testValidateValid(): void
     {
@@ -49,8 +49,8 @@ final class ProductValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::__construct
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::validate
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::__construct
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::validate
      */
     public function testValidateNull(): void
     {
@@ -62,8 +62,8 @@ final class ProductValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::__construct
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::validate
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::__construct
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::validate
      */
     public function testValidateInvalid(): void
     {
@@ -77,9 +77,9 @@ final class ProductValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::validate
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::validate
      * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
-     * @expectedExceptionMessage Expected argument of type "Netgen\BlockManager\Sylius\Validator\Constraint\Product", "Symfony\Component\Validator\Constraints\NotBlank" given
+     * @expectedExceptionMessage Expected argument of type "Netgen\Layouts\Sylius\Validator\Constraint\Product", "Symfony\Component\Validator\Constraints\NotBlank" given
      */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
@@ -88,7 +88,7 @@ final class ProductValidatorTest extends ValidatorTestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Validator\ProductValidator::validate
+     * @covers \Netgen\Layouts\Sylius\Validator\ProductValidator::validate
      * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
      * @expectedExceptionMessage Expected argument of type "scalar", "array" given
      */

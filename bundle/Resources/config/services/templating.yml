@@ -1,12 +1,12 @@
 services:
-    netgen_block_manager.sylius.templating.twig.extension.sylius:
-        class: Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension
+    netgen_layouts.sylius.templating.twig.extension.sylius:
+        class: Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Extension\SyliusExtension
         public: false
         tags:
             - { name: twig.extension }
 
-    netgen_block_manager.sylius.templating.twig.runtime.sylius:
-        class: Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime
+    netgen_layouts.sylius.templating.twig.runtime.sylius:
+        class: Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime
         public: false
         arguments:
             - "@sylius.repository.product"

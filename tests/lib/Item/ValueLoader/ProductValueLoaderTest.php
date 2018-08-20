@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Item\ValueLoader;
+namespace Netgen\Layouts\Sylius\Tests\Item\ValueLoader;
 
 use Exception;
-use Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader;
-use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
+use Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader;
+use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
@@ -18,7 +18,7 @@ final class ProductValueLoaderTest extends TestCase
     private $productRepositoryMock;
 
     /**
-     * @var \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader
+     * @var \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader
      */
     private $valueLoader;
 
@@ -29,8 +29,8 @@ final class ProductValueLoaderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::__construct
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
+     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::__construct
+     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::load
      */
     public function testLoad(): void
     {
@@ -46,7 +46,7 @@ final class ProductValueLoaderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
+     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::load
      */
     public function testLoadWithNoProduct(): void
     {
@@ -60,7 +60,7 @@ final class ProductValueLoaderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::load
+     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::load
      */
     public function testLoadWithRepositoryException(): void
     {
@@ -74,7 +74,7 @@ final class ProductValueLoaderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
+     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
      */
     public function testLoadByRemoteId(): void
     {
@@ -90,7 +90,7 @@ final class ProductValueLoaderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
+     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
      */
     public function testLoadByRemoteIdWithNoProduct(): void
     {
@@ -104,7 +104,7 @@ final class ProductValueLoaderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
+     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
      */
     public function testLoadByRemoteIdWithRepositoryException(): void
     {

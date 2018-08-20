@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Item\ValueConverter;
+namespace Netgen\Layouts\Sylius\Item\ValueConverter;
 
 use Netgen\BlockManager\Item\ValueConverterInterface;
 use Sylius\Component\Product\Model\ProductInterface;

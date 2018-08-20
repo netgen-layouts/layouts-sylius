@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Stubs;
+namespace Netgen\Layouts\Sylius\Tests\Stubs;
 
 use Sylius\Component\Core\Model\Taxon as BaseTaxon;
 

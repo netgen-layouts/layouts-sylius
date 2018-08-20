@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Validator\Constraint;
+namespace Netgen\Layouts\Sylius\Tests\Validator\Constraint;
 
-use Netgen\BlockManager\Sylius\Validator\Constraint\Taxon;
+use Netgen\Layouts\Sylius\Validator\Constraint\Taxon;
 use PHPUnit\Framework\TestCase;
 
 final class TaxonTest extends TestCase
 {
     /**
-     * @covers \Netgen\BlockManager\Sylius\Validator\Constraint\Taxon::validatedBy
+     * @covers \Netgen\Layouts\Sylius\Validator\Constraint\Taxon::validatedBy
      */
     public function testValidatedBy(): void
     {
         $constraint = new Taxon();
-        self::assertSame('ngbm_sylius_taxon', $constraint->validatedBy());
+        self::assertSame('nglayouts_sylius_taxon', $constraint->validatedBy());
     }
 }

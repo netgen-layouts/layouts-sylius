@@ -15,10 +15,10 @@
     beStrictAboutChangesToGlobalState="true"
 >
     <testsuites>
-        <testsuite name="Netgen\BlockManager\Sylius">
+        <testsuite name="Netgen\Layouts\Sylius">
             <directory>tests/lib</directory>
         </testsuite>
-        <testsuite name="Netgen\Bundle\SyliusBlockManagerBundle">
+        <testsuite name="Netgen\Bundle\LayoutsSyliusBundle">
             <directory>tests/bundle</directory>
         </testsuite>
     </testsuites>
@@ -28,8 +28,8 @@
             <directory suffix=".php">lib</directory>
             <directory suffix=".php">bundle</directory>
             <exclude>
-                <file>bundle/NetgenSyliusBlockManagerBundle.php</file>
-                <file>bundle/DependencyInjection/NetgenSyliusBlockManagerExtension.php</file>
+                <file>bundle/NetgenLayoutsSyliusBundle.php</file>
+                <file>bundle/DependencyInjection/NetgenLayoutsSyliusExtension.php</file>
             </exclude>
             <exclude>
                 <directory>bundle/Resources</directory>

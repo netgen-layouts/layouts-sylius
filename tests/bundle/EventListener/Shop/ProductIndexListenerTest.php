@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Shop;
+namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Shop;
 
 use Netgen\BlockManager\Context\Context;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon;
-use Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener;
+use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener;
+use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 final class ProductIndexListenerTest extends TestCase
 {
     /**
-     * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener
+     * @var \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener
      */
     private $listener;
 
@@ -62,8 +62,8 @@ final class ProductIndexListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::__construct
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::getSubscribedEvents
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::getSubscribedEvents
      */
     public function testGetSubscribedEvents(): void
     {
@@ -74,7 +74,7 @@ final class ProductIndexListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
     public function testOnProductIndex(): void
     {
@@ -94,14 +94,14 @@ final class ProductIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        self::assertSame($taxon, $request->attributes->get('ngbm_sylius_taxon'));
+        self::assertSame($taxon, $request->attributes->get('nglayouts_sylius_taxon'));
 
         self::assertTrue($this->context->has('sylius_taxon_id'));
         self::assertSame(42, $this->context->get('sylius_taxon_id'));
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
     public function testOnProductIndexWithoutRequest(): void
     {
@@ -116,7 +116,7 @@ final class ProductIndexListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
     public function testOnProductIndexWithoutSlug(): void
     {
@@ -130,12 +130,12 @@ final class ProductIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        self::assertFalse($request->attributes->has('ngbm_sylius_taxon'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_taxon'));
         self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop\ProductIndexListener::onProductIndex
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
      */
     public function testOnProductIndexWithNonExistingTaxon(): void
     {
@@ -153,7 +153,7 @@ final class ProductIndexListenerTest extends TestCase
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
 
-        self::assertFalse($request->attributes->has('ngbm_sylius_taxon'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_taxon'));
         self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 }

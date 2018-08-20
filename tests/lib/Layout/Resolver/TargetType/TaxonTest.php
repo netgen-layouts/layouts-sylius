@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 
-use Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon as TaxonStub;
-use Netgen\BlockManager\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon;
+use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
+use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,7 @@ final class TaxonTest extends TestCase
     private $repositoryMock;
 
     /**
-     * @var \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon
+     * @var \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon
      */
     private $targetType;
 
@@ -32,7 +32,7 @@ final class TaxonTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::getType
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::getType
      */
     public function testGetType(): void
     {
@@ -40,7 +40,7 @@ final class TaxonTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
      */
     public function testValidationValid(): void
     {
@@ -59,7 +59,7 @@ final class TaxonTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
      */
     public function testValidationInvalid(): void
     {
@@ -78,7 +78,7 @@ final class TaxonTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
      */
     public function testProvideValue(): void
     {
@@ -86,13 +86,13 @@ final class TaxonTest extends TestCase
         $taxon->setParent(new TaxonStub(24));
 
         $request = Request::create('/');
-        $request->attributes->set('ngbm_sylius_taxon', $taxon);
+        $request->attributes->set('nglayouts_sylius_taxon', $taxon);
 
         self::assertSame([42, 24], $this->targetType->provideValue($request));
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
      */
     public function testProvideValueWithNoTaxon(): void
     {

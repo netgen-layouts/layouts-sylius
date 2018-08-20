@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
-use Netgen\BlockManager\Sylius\Validator\Constraint as SyliusConstraints;
+use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Product\Model\ProductInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
@@ -29,7 +29,7 @@ final class Product implements TargetTypeInterface
 
     public function provideValue(Request $request)
     {
-        $product = $request->attributes->get('ngbm_sylius_product');
+        $product = $request->attributes->get('nglayouts_sylius_product');
 
         return $product instanceof ProductInterface ? $product->getId() : null;
     }

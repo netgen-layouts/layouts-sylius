@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Item\ValueLoader;
+namespace Netgen\Layouts\Sylius\Item\ValueLoader;
 
 use Netgen\BlockManager\Item\ValueLoaderInterface;
 use Sylius\Component\Product\Model\ProductInterface;

@@ -15,13 +15,13 @@ Activating integration bundles
 ------------------------------
 
 After completing standard Layouts install instructions, you also need to
-activate `NetgenSyliusBlockManagerBundle` and `NetgenContentBrowserSyliusBundle`.
+activate `NetgenLayoutsSyliusBundle` and `NetgenContentBrowserSyliusBundle`.
 Make sure they are activated after all other Netgen Layouts and Content Browser bundles:
 
 ```
 ...
 
-$bundles[] = new Netgen\Bundle\SyliusBlockManagerBundle\NetgenSyliusBlockManagerBundle();
+$bundles[] = new Netgen\Bundle\LayoutsSyliusBundle\NetgenLayoutsSyliusBundle();
 $bundles[] = new Netgen\Bundle\ContentBrowserSyliusBundle\NetgenContentBrowserSyliusBundle();
 
 return $bundles;

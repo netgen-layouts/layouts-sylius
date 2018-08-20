@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
+namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
-use Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
+use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product;
 use PHPUnit\Framework\TestCase;
 
 final class ProductTest extends TestCase
@@ -21,7 +21,7 @@ final class ProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product::getFormType
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product::getFormType
      */
     public function testGetFormType(): void
     {
@@ -29,7 +29,7 @@ final class ProductTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product::getFormOptions
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product::getFormOptions
      */
     public function testGetFormOptions(): void
     {

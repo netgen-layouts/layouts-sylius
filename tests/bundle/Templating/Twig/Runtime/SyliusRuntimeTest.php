@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\Templating\Twig\Runtime;
+namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Runtime;
 
-use Netgen\BlockManager\Sylius\Tests\Stubs\Product;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon;
-use Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime;
+use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime;
+use Netgen\Layouts\Sylius\Tests\Stubs\Product;
+use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
@@ -24,7 +24,7 @@ final class SyliusRuntimeTest extends TestCase
     private $taxonRepositoryMock;
 
     /**
-     * @var \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime
+     * @var \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime
      */
     private $runtime;
 
@@ -40,8 +40,8 @@ final class SyliusRuntimeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
      */
     public function testGetProductName(): void
     {
@@ -59,7 +59,7 @@ final class SyliusRuntimeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
      */
     public function testGetProductNameWithoutProduct(): void
     {
@@ -73,8 +73,8 @@ final class SyliusRuntimeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
      */
     public function testGetTaxonPath(): void
     {
@@ -103,7 +103,7 @@ final class SyliusRuntimeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
      */
     public function testGetTaxonPathWithoutTaxon(): void
     {

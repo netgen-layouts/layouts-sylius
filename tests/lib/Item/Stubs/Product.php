@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Item\Stubs;
+namespace Netgen\Layouts\Sylius\Tests\Item\Stubs;
 
 use Sylius\Component\Product\Model\Product as BaseProduct;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin;
+namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin;
 
 use Netgen\Bundle\BlockManagerAdminBundle\Event\AdminMatchEvent;
 use Netgen\Bundle\BlockManagerAdminBundle\Event\BlockManagerAdminEvents;

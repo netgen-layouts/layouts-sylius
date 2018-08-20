@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Locale;
+namespace Netgen\Layouts\Sylius\Tests\Locale;
 
-use Netgen\BlockManager\Sylius\Locale\LocaleProvider;
+use Netgen\Layouts\Sylius\Locale\LocaleProvider;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +17,7 @@ final class LocaleProviderTest extends TestCase
     private $syliusLocaleProviderMock;
 
     /**
-     * @var \Netgen\BlockManager\Sylius\Locale\LocaleProvider
+     * @var \Netgen\Layouts\Sylius\Locale\LocaleProvider
      */
     private $localeProvider;
 
@@ -29,8 +29,8 @@ final class LocaleProviderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::__construct
-     * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::getAvailableLocales
+     * @covers \Netgen\Layouts\Sylius\Locale\LocaleProvider::__construct
+     * @covers \Netgen\Layouts\Sylius\Locale\LocaleProvider::getAvailableLocales
      */
     public function testGetAvailableLocales(): void
     {
@@ -46,7 +46,7 @@ final class LocaleProviderTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Locale\LocaleProvider::getRequestLocales
+     * @covers \Netgen\Layouts\Sylius\Locale\LocaleProvider::getRequestLocales
      */
     public function testGetRequestLocales(): void
     {

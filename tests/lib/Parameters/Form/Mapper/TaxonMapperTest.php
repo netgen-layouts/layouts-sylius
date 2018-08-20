@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Parameters\Form\Mapper;
+namespace Netgen\Layouts\Sylius\Tests\Parameters\Form\Mapper;
 
 use Netgen\BlockManager\Parameters\ParameterDefinition;
-use Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper;
-use Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType as ParameterType;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
+use Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper;
+use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType as ParameterType;
 use PHPUnit\Framework\TestCase;
 
 final class TaxonMapperTest extends TestCase
 {
     /**
-     * @var \Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper
+     * @var \Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper
      */
     private $mapper;
 
@@ -23,7 +23,7 @@ final class TaxonMapperTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper::getFormType
+     * @covers \Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper::getFormType
      */
     public function testGetFormType(): void
     {
@@ -31,7 +31,7 @@ final class TaxonMapperTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\Form\Mapper\TaxonMapper::mapOptions
+     * @covers \Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper::mapOptions
      */
     public function testMapOptions(): void
     {

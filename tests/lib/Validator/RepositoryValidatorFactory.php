@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Validator;
+namespace Netgen\Layouts\Sylius\Tests\Validator;
 
-use Netgen\BlockManager\Sylius\Validator\ProductValidator;
-use Netgen\BlockManager\Sylius\Validator\TaxonValidator;
+use Netgen\Layouts\Sylius\Validator\ProductValidator;
+use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
@@ -36,11 +36,11 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
     {
         $name = $constraint->validatedBy();
 
-        if ($name === 'ngbm_sylius_product' && $this->repository instanceof ProductRepositoryInterface) {
+        if ($name === 'nglayouts_sylius_product' && $this->repository instanceof ProductRepositoryInterface) {
             return new ProductValidator($this->repository);
         }
 
-        if ($name === 'ngbm_sylius_taxon' && $this->repository instanceof TaxonRepositoryInterface) {
+        if ($name === 'nglayouts_sylius_taxon' && $this->repository instanceof TaxonRepositoryInterface) {
             return new TaxonValidator($this->repository);
         }
 

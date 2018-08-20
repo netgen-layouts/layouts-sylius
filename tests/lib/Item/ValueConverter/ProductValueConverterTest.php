@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Item\ValueConverter;
+namespace Netgen\Layouts\Sylius\Tests\Item\ValueConverter;
 
-use Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter;
-use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product as ProductStub;
+use Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter;
+use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product as ProductStub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Model\Product;
 use Sylius\Component\Taxonomy\Model\Taxon;
@@ -13,7 +13,7 @@ use Sylius\Component\Taxonomy\Model\Taxon;
 final class ProductValueConverterTest extends TestCase
 {
     /**
-     * @var \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter
+     * @var \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter
      */
     private $valueConverter;
 
@@ -23,7 +23,7 @@ final class ProductValueConverterTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::supports
+     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::supports
      */
     public function testSupports(): void
     {
@@ -32,7 +32,7 @@ final class ProductValueConverterTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getValueType
+     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getValueType
      */
     public function testGetValueType(): void
     {
@@ -45,7 +45,7 @@ final class ProductValueConverterTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getId
+     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getId
      */
     public function testGetId(): void
     {
@@ -58,7 +58,7 @@ final class ProductValueConverterTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getRemoteId
+     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getRemoteId
      */
     public function testGetRemoteId(): void
     {
@@ -71,7 +71,7 @@ final class ProductValueConverterTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getName
+     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getName
      */
     public function testGetName(): void
     {
@@ -84,7 +84,7 @@ final class ProductValueConverterTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getIsVisible
+     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getIsVisible
      */
     public function testGetIsVisible(): void
     {
@@ -96,7 +96,7 @@ final class ProductValueConverterTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueConverter\ProductValueConverter::getObject
+     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getObject
      */
     public function testGetObject(): void
     {

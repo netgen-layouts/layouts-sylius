@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
-use Netgen\BlockManager\Sylius\Validator\Constraint as SyliusConstraints;
+use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
@@ -29,7 +29,7 @@ final class Taxon implements TargetTypeInterface
 
     public function provideValue(Request $request)
     {
-        $taxon = $request->attributes->get('ngbm_sylius_taxon');
+        $taxon = $request->attributes->get('nglayouts_sylius_taxon');
         if (!$taxon instanceof TaxonInterface) {
             return null;
         }

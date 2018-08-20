@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Parameters\ParameterType;
+namespace Netgen\Layouts\Sylius\Parameters\ParameterType;
 
 use Netgen\BlockManager\Parameters\ParameterDefinition;
 use Netgen\BlockManager\Parameters\ParameterType;
-use Netgen\BlockManager\Sylius\Validator\Constraint as SyliusConstraints;
+use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Symfony\Component\Validator\Constraints;
 
 /**

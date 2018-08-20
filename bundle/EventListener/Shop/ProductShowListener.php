@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Shop;
+namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop;
 
 use Netgen\BlockManager\Context\ContextInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
@@ -47,7 +47,7 @@ final class ProductShowListener implements EventSubscriberInterface
 
         $currentRequest = $this->requestStack->getCurrentRequest();
         if ($currentRequest instanceof Request) {
-            $currentRequest->attributes->set('ngbm_sylius_product', $product);
+            $currentRequest->attributes->set('nglayouts_sylius_product', $product);
             // We set context here instead in a ContextProvider, since sylius.product.show
             // event happens too late, after onKernelRequest event has already been executed
             $this->context->set('sylius_product_id', (int) $product->getId());

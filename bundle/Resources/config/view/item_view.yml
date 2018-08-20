@@ -12,6 +12,6 @@ view:
                     item\value_type: sylius_product
         api:
             sylius_product:
-                template: "@NetgenSyliusBlockManager/api/item/view/sylius_product.html.twig"
+                template: "@NetgenLayoutsSylius/api/item/view/sylius_product.html.twig"
                 match:
                     item\value_type: sylius_product

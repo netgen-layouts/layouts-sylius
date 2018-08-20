@@ -1,2 +1,2 @@
 parameters:
-    netgen_block_manager.sylius.admin.pagelayout: '@@NetgenSyliusBlockManager/admin/pagelayout.html.twig'
+    netgen_layouts.sylius.admin.pagelayout: '@@NetgenLayoutsSylius/admin/pagelayout.html.twig'

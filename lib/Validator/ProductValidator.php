@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Validator;
+namespace Netgen\Layouts\Sylius\Validator;
 
-use Netgen\BlockManager\Sylius\Validator\Constraint\Product;
+use Netgen\Layouts\Sylius\Validator\Constraint\Product;
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraint;

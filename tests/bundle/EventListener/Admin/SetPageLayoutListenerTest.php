@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Admin;
+namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Admin;
 
 use Netgen\Bundle\BlockManagerAdminBundle\Event\AdminMatchEvent;
 use Netgen\Bundle\BlockManagerAdminBundle\Event\BlockManagerAdminEvents;
-use Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener;
+use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 final class SetPageLayoutListenerTest extends TestCase
 {
     /**
-     * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener
+     * @var \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener
      */
     private $listener;
 
@@ -24,8 +24,8 @@ final class SetPageLayoutListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener::__construct
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener::getSubscribedEvents
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener::getSubscribedEvents
      */
     public function testGetSubscribedEvents(): void
     {
@@ -36,7 +36,7 @@ final class SetPageLayoutListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener::onAdminMatch
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener::onAdminMatch
      */
     public function testOnAdminMatch(): void
     {
@@ -48,7 +48,7 @@ final class SetPageLayoutListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\SetPageLayoutListener::onAdminMatch
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener::onAdminMatch
      */
     public function testOnAdminMatchWithExistingPageLayout(): void
     {

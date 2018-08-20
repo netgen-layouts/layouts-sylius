@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Item\ValueUrlGenerator;
+namespace Netgen\Layouts\Sylius\Tests\Item\ValueUrlGenerator;
 
-use Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator;
-use Netgen\BlockManager\Sylius\Tests\Item\Stubs\Product;
+use Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator;
+use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -17,7 +17,7 @@ final class ProductValueUrlGeneratorTest extends TestCase
     private $urlGeneratorMock;
 
     /**
-     * @var \Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator
+     * @var \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator
      */
     private $urlGenerator;
 
@@ -29,8 +29,8 @@ final class ProductValueUrlGeneratorTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::__construct
-     * @covers \Netgen\BlockManager\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generate
+     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::__construct
+     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generate
      */
     public function testGenerate(): void
     {

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\Templating\Twig\Extension;
+namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Extension;
 
-use Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension;
+use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Extension\SyliusExtension;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
 final class SyliusExtensionTest extends TestCase
 {
     /**
-     * @var \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension
+     * @var \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Extension\SyliusExtension
      */
     private $extension;
 
@@ -21,7 +21,7 @@ final class SyliusExtensionTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Extension\SyliusExtension::getFunctions
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Extension\SyliusExtension::getFunctions
      */
     public function testGetFunctions(): void
     {

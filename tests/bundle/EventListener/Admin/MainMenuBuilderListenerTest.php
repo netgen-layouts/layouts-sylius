@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\Tests\EventListener\Admin;
+namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Admin;
 
 use Knp\Menu\MenuFactory;
 use Knp\Menu\MenuItem;
-use Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener;
+use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 final class MainMenuBuilderListenerTest extends TestCase
 {
     /**
-     * @var \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener
+     * @var \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener
      */
     private $listener;
 
@@ -32,8 +32,8 @@ final class MainMenuBuilderListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::__construct
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getSubscribedEvents
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::getSubscribedEvents
      */
     public function testGetSubscribedEvents(): void
     {
@@ -44,9 +44,9 @@ final class MainMenuBuilderListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
     public function testOnMainMenuBuild(): void
     {
@@ -70,9 +70,9 @@ final class MainMenuBuilderListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
     public function testOnMainMenuBuildPlacedBeforeConfiguration(): void
     {
@@ -96,7 +96,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Bundle\SyliusBlockManagerBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
      */
     public function testOnMainMenuBuildWithNoAccess(): void
     {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Parameters\ParameterType;
+namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 
 use Netgen\BlockManager\Parameters\ParameterDefinition;
-use Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType;
-use Netgen\BlockManager\Sylius\Tests\Stubs\Taxon as TaxonStub;
-use Netgen\BlockManager\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\BlockManager\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
+use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType;
+use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
+use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Validation;
@@ -30,7 +30,7 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getIdentifier
+     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getIdentifier
      */
     public function testGetIdentifier(): void
     {
@@ -38,7 +38,7 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::configureOptions
+     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::configureOptions
      * @dataProvider validOptionsProvider
      */
     public function testValidOptions(array $options, array $resolvedOptions): void
@@ -48,7 +48,7 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::configureOptions
+     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::configureOptions
      * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidArgumentException
      * @dataProvider invalidOptionsProvider
      */
@@ -85,7 +85,7 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
+     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
      */
     public function testValidationValid(): void
     {
@@ -105,7 +105,7 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
+     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
      */
     public function testValidationValidWithNonRequiredValue(): void
     {
@@ -123,7 +123,7 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
+     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
      */
     public function testValidationInvalid(): void
     {
@@ -146,7 +146,7 @@ final class TaxonTypeTest extends TestCase
      * @param mixed $value
      * @param bool $isEmpty
      *
-     * @covers \Netgen\BlockManager\Sylius\Parameters\ParameterType\TaxonType::isValueEmpty
+     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::isValueEmpty
      * @dataProvider emptyProvider
      */
     public function testIsValueEmpty($value, bool $isEmpty): void

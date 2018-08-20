@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Locale;
+namespace Netgen\Layouts\Sylius\Locale;
 
 use Netgen\BlockManager\Locale\LocaleProviderInterface;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface as SyliusLocaleProviderInterface;

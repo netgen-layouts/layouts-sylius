@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Layout\Resolver\TargetType;
+namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\BlockManager\Layout\Resolver\TargetTypeInterface;
-use Netgen\BlockManager\Sylius\Validator\Constraint as SyliusConstraints;
+use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +30,7 @@ final class TaxonProduct implements TargetTypeInterface
 
     public function provideValue(Request $request)
     {
-        $product = $request->attributes->get('ngbm_sylius_product');
+        $product = $request->attributes->get('nglayouts_sylius_product');
         if (!$product instanceof ProductInterface) {
             return null;
         }

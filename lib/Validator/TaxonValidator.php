@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Validator;
+namespace Netgen\Layouts\Sylius\Validator;
 
-use Netgen\BlockManager\Sylius\Validator\Constraint\Taxon;
+use Netgen\Layouts\Sylius\Validator\Constraint\Taxon;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraint;

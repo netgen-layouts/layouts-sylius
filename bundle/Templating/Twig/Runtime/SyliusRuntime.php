@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\SyliusBlockManagerBundle\Templating\Twig\Runtime;
+namespace Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime;
 
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;

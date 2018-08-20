@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\BlockManager\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
+namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
-use Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
+use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon;
 use PHPUnit\Framework\TestCase;
 
 final class TaxonTest extends TestCase
@@ -21,7 +21,7 @@ final class TaxonTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon::getFormType
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon::getFormType
      */
     public function testGetFormType(): void
     {
@@ -29,7 +29,7 @@ final class TaxonTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\BlockManager\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon::getFormOptions
+     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon::getFormOptions
      */
     public function testGetFormOptions(): void
     {
