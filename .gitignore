@@ -12,3 +12,4 @@ grunt.lock
 package-lock.json
 phpunit.phar
 studio.json
+yarn.lock
