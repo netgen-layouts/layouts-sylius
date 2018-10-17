@@ -5,6 +5,7 @@ language: php
 
 php:
   - 7.2
+  - 7.3
 
 cache:
   directories:
@@ -38,7 +39,7 @@ branches:
     - /^\d.\d+$/
 
 before_script:
-  - phpenv config-rm xdebug.ini
+  - phpenv config-rm xdebug.ini || true
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
   # Read-only OAuth token to work around GitHub API rate limits
