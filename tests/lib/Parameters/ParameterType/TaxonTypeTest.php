@@ -11,6 +11,7 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
+use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Validator\Validation;
 
 final class TaxonTypeTest extends TestCase
@@ -49,11 +50,12 @@ final class TaxonTypeTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::configureOptions
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidArgumentException
      * @dataProvider invalidOptionsProvider
      */
     public function testInvalidOptions(array $options): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $this->getParameterDefinition($options);
     }
 

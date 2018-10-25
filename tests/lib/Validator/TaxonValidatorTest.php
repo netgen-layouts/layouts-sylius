@@ -11,6 +11,7 @@ use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
+use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class TaxonValidatorTest extends ValidatorTestCase
 {
@@ -78,22 +79,24 @@ final class TaxonValidatorTest extends ValidatorTestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::validate
-     * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
-     * @expectedExceptionMessage Expected argument of type "Netgen\Layouts\Sylius\Validator\Constraint\Taxon", "Symfony\Component\Validator\Constraints\NotBlank" given
      */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
+        $this->expectException(UnexpectedTypeException::class);
+        $this->expectExceptionMessage('Expected argument of type "Netgen\\Layouts\\Sylius\\Validator\\Constraint\\Taxon", "Symfony\\Component\\Validator\\Constraints\\NotBlank" given');
+
         $this->constraint = new NotBlank();
         self::assertValid(true, 'value');
     }
 
     /**
      * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::validate
-     * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
-     * @expectedExceptionMessage Expected argument of type "scalar", "array" given
      */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
+        $this->expectException(UnexpectedTypeException::class);
+        $this->expectExceptionMessage('Expected argument of type "scalar", "array" given');
+
         self::assertValid(true, []);
     }
 }
