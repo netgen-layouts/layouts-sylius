@@ -1,7 +1,7 @@
 {
     "name": "netgen/layouts-sylius",
     "description": "Netgen Layouts & Sylius eCommerce integration",
-    "license": "GPL-2.0-or-later",
+    "license": "MIT",
     "type": "symfony-bundle",
     "authors": [
         {
