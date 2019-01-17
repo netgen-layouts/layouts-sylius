@@ -19,16 +19,29 @@ final class ProductValueConverter implements ValueConverterInterface
         return 'sylius_product';
     }
 
+    /**
+     * @param \Sylius\Component\Product\Model\ProductInterface $object
+     *
+     * @return int|string
+     */
     public function getId($object)
     {
         return $object->getId();
     }
 
+    /**
+     * @param \Sylius\Component\Product\Model\ProductInterface $object
+     *
+     * @return int|string
+     */
     public function getRemoteId($object)
     {
         return $object->getId();
     }
 
+    /**
+     * @param \Sylius\Component\Product\Model\ProductInterface $object
+     */
     public function getName($object): string
     {
         return (string) $object->getName();
