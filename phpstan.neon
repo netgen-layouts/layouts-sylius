@@ -1,3 +1,6 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+
 parameters:
     ignoreErrors:
         # Sylius core/component differences
@@ -5,3 +8,11 @@ parameters:
         - '#LatestProductsHandler::getParentTaxon\(\) should return#'
         - '#ProductRepositoryInterface::(\w+)\(\) expects Sylius\\Component\\Core\\Model\\(\w+)Interface, Sylius\\Component\\(\w+)\\Model\\(\w+)Interface given.#'
         - '#ProductRepositoryInterface::(\w+)\(\) expects Sylius\\Component\\Core\\Model\\(\w+)Interface\|null, Sylius\\Component\\(\w+)\\Model\\(\w+)Interface\|null given.#'
+
+        -
+            message: '#Call to an undefined method object::getSlug\(\).#'
+            path: lib/Item/ValueUrlGenerator/ProductValueUrlGenerator.php
+
+        -
+            message: '#should be contravariant with parameter \$object#'
+            path: lib/Item/ValueConverter/ProductValueConverter.php

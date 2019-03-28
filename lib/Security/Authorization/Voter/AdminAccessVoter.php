@@ -14,6 +14,13 @@ use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
  */
 final class AdminAccessVoter implements VoterInterface
 {
+    /**
+     * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
+     * @param mixed $object
+     * @param array $attributes
+     *
+     * @return int
+     */
     public function vote(TokenInterface $token, $object, array $attributes): int
     {
         if ($token->getUser() instanceof AdminUserInterface) {
