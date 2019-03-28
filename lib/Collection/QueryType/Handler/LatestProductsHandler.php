@@ -112,7 +112,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             }
 
             $taxonSlug = $currentRequest->attributes->get('slug');
-            if (empty($taxonSlug)) {
+            if (trim($taxonSlug ?? '') === '') {
                 return null;
             }
 
@@ -120,7 +120,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
         }
 
         $parentTaxonId = $query->getParameter('parent_taxon_id')->getValue();
-        if (empty($parentTaxonId)) {
+        if (trim($parentTaxonId ?? '') === '') {
             return null;
         }
 
