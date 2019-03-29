@@ -1,11 +1,10 @@
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-doctrine/extension.neon
 
 parameters:
     ignoreErrors:
         # Sylius core/component differences
-        - '#TaxonProductsHandler::getParentTaxon\(\) should return#'
-        - '#LatestProductsHandler::getParentTaxon\(\) should return#'
         - '#ProductRepositoryInterface::(\w+)\(\) expects Sylius\\Component\\Core\\Model\\(\w+)Interface, Sylius\\Component\\(\w+)\\Model\\(\w+)Interface given.#'
         - '#ProductRepositoryInterface::(\w+)\(\) expects Sylius\\Component\\Core\\Model\\(\w+)Interface\|null, Sylius\\Component\\(\w+)\\Model\\(\w+)Interface\|null given.#'
 

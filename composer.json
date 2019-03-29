@@ -20,6 +20,7 @@
         "symfony/var-dumper": "^3.4 || ^4.2",
         "phpstan/phpstan": "^0.11",
         "phpstan/phpstan-strict-rules": "^0.11",
+        "phpstan/phpstan-doctrine": "^0.11",
         "phpstan/phpstan-phpunit": "^0.11",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "franzl/studio": "*"

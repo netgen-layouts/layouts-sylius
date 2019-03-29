@@ -11,7 +11,7 @@ use Netgen\BlockManager\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
