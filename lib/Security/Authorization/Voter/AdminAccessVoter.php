@@ -17,7 +17,7 @@ final class AdminAccessVoter implements VoterInterface
     /**
      * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
      * @param mixed $object
-     * @param array $attributes
+     * @param mixed[] $attributes
      *
      * @return int
      */

@@ -51,7 +51,7 @@ final class SyliusRuntime
      *
      * @param int|string $taxonId
      *
-     * @return array|null
+     * @return array<string|null>|null
      */
     public function getTaxonPath($taxonId): ?array
     {
