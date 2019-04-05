@@ -49,6 +49,7 @@ final class ProductIndexListenerTest extends TestCase
         $this->context = new Context();
 
         $this->localeContextMock
+            ->expects(self::any())
             ->method('getLocaleCode')
             ->willReturn('en');
 
