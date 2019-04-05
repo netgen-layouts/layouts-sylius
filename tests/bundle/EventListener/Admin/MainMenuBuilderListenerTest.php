@@ -51,7 +51,6 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testOnMainMenuBuild(): void
     {
         $this->authCheckerMock
-            ->expects(self::any())
             ->method('isGranted')
             ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
             ->willReturn(true);
@@ -77,7 +76,6 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testOnMainMenuBuildPlacedBeforeConfiguration(): void
     {
         $this->authCheckerMock
-            ->expects(self::any())
             ->method('isGranted')
             ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
             ->willReturn(true);
@@ -101,7 +99,6 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testOnMainMenuBuildWithNoAccess(): void
     {
         $this->authCheckerMock
-            ->expects(self::any())
             ->method('isGranted')
             ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
             ->willReturn(false);
