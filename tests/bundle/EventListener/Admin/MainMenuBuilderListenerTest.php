@@ -54,7 +54,7 @@ final class MainMenuBuilderListenerTest extends TestCase
             ->expects(self::any())
             ->method('isGranted')
             ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
-            ->will(self::returnValue(true));
+            ->willReturn(true);
 
         $factory = new MenuFactory();
         $menuItem = new MenuItem('root', $factory);
@@ -80,7 +80,7 @@ final class MainMenuBuilderListenerTest extends TestCase
             ->expects(self::any())
             ->method('isGranted')
             ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
-            ->will(self::returnValue(true));
+            ->willReturn(true);
 
         $factory = new MenuFactory();
         $menuItem = new MenuItem('root', $factory);
@@ -104,7 +104,7 @@ final class MainMenuBuilderListenerTest extends TestCase
             ->expects(self::any())
             ->method('isGranted')
             ->with(self::identicalTo('ROLE_NGBM_ADMIN'))
-            ->will(self::returnValue(false));
+            ->willReturn(false);
 
         $factory = new MenuFactory();
         $menuItem = new MenuItem('root', $factory);

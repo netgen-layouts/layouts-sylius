@@ -48,7 +48,7 @@ final class ProductTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(new ProductStub(42)));
+            ->willReturn(new ProductStub(42));
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
@@ -67,7 +67,7 @@ final class ProductTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))

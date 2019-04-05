@@ -51,7 +51,7 @@ final class ProductIndexListenerTest extends TestCase
         $this->localeContextMock
             ->expects(self::any())
             ->method('getLocaleCode')
-            ->will(self::returnValue('en'));
+            ->willReturn('en');
 
         $this->listener = new ProductIndexListener(
             $this->taxonRepositoryMock,
@@ -89,7 +89,7 @@ final class ProductIndexListenerTest extends TestCase
             ->expects(self::once())
             ->method('findOneBySlug')
             ->with(self::identicalTo('mugs'), self::identicalTo('en'))
-            ->will(self::returnValue($taxon));
+            ->willReturn($taxon);
 
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);
@@ -148,7 +148,7 @@ final class ProductIndexListenerTest extends TestCase
             ->expects(self::once())
             ->method('findOneBySlug')
             ->with(self::identicalTo('unknown'), self::identicalTo('en'))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         $event = new ResourceControllerEvent();
         $this->listener->onProductIndex($event);

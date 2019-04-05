@@ -41,7 +41,7 @@ final class ProductValueUrlGeneratorTest extends TestCase
                 self::identicalTo('sylius_shop_product_show'),
                 self::identicalTo(['slug' => 'product-name'])
             )
-            ->will(self::returnValue('/products/product-name'));
+            ->willReturn('/products/product-name');
 
         self::assertSame(
             '/products/product-name',

@@ -53,7 +53,7 @@ final class SyliusRuntimeTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue($product));
+            ->willReturn($product);
 
         self::assertSame('Product name', $this->runtime->getProductName(42));
     }
@@ -67,7 +67,7 @@ final class SyliusRuntimeTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         self::assertNull($this->runtime->getProductName(42));
     }
@@ -97,7 +97,7 @@ final class SyliusRuntimeTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue($taxon1));
+            ->willReturn($taxon1);
 
         self::assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
     }
@@ -111,7 +111,7 @@ final class SyliusRuntimeTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         self::assertNull($this->runtime->getTaxonPath(42));
     }

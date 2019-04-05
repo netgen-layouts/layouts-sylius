@@ -37,7 +37,7 @@ final class LocaleProviderTest extends TestCase
         $this->syliusLocaleProviderMock
             ->expects(self::any())
             ->method('getAvailableLocalesCodes')
-            ->will(self::returnValue(['en', 'de', 'hr']));
+            ->willReturn(['en', 'de', 'hr']);
 
         $availableLocales = $this->localeProvider->getAvailableLocales();
 

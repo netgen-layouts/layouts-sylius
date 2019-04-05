@@ -40,7 +40,7 @@ final class ProductValueLoaderTest extends TestCase
             ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue($product));
+            ->willReturn($product);
 
         self::assertSame($product, $this->valueLoader->load(42));
     }
@@ -54,7 +54,7 @@ final class ProductValueLoaderTest extends TestCase
             ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         self::assertNull($this->valueLoader->load(42));
     }
@@ -68,7 +68,7 @@ final class ProductValueLoaderTest extends TestCase
             ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::throwException(new Exception()));
+            ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->load(42));
     }
@@ -84,7 +84,7 @@ final class ProductValueLoaderTest extends TestCase
             ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo('abc'))
-            ->will(self::returnValue($product));
+            ->willReturn($product);
 
         self::assertSame($product, $this->valueLoader->loadByRemoteId('abc'));
     }
@@ -98,7 +98,7 @@ final class ProductValueLoaderTest extends TestCase
             ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo('abc'))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         self::assertNull($this->valueLoader->loadByRemoteId('abc'));
     }
@@ -112,7 +112,7 @@ final class ProductValueLoaderTest extends TestCase
             ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo('abc'))
-            ->will(self::throwException(new Exception()));
+            ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->loadByRemoteId('abc'));
     }

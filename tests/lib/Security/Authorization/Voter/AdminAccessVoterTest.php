@@ -30,7 +30,7 @@ final class AdminAccessVoterTest extends TestCase
         $token = $this->createMock(TokenInterface::class);
         $token->expects(self::any())
             ->method('getUser')
-            ->will(self::returnValue(new AdminUser()));
+            ->willReturn(new AdminUser());
 
         self::assertSame(1, $this->voter->vote($token, null, []));
     }
@@ -43,7 +43,7 @@ final class AdminAccessVoterTest extends TestCase
         $token = $this->createMock(TokenInterface::class);
         $token->expects(self::any())
             ->method('getUser')
-            ->will(self::returnValue(new User()));
+            ->willReturn(new User());
 
         self::assertSame(0, $this->voter->vote($token, null, []));
     }

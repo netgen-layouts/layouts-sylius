@@ -48,7 +48,7 @@ final class TaxonTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(new TaxonStub(42)));
+            ->willReturn(new TaxonStub(42));
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
@@ -67,7 +67,7 @@ final class TaxonTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))

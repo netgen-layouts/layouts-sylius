@@ -44,7 +44,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(new TaxonStub(42)));
+            ->willReturn(new TaxonStub(42));
 
         self::assertValid(true, 42);
     }
@@ -72,7 +72,7 @@ final class TaxonValidatorTest extends ValidatorTestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->will(self::returnValue(null));
+            ->willReturn(null);
 
         self::assertValid(false, 42);
     }
