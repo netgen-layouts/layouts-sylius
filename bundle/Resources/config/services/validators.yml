@@ -1,7 +1,6 @@
 services:
     netgen_layouts.sylius.validator.product:
         class: Netgen\Layouts\Sylius\Validator\ProductValidator
-        public: false
         arguments:
             - "@sylius.repository.product"
         tags:
@@ -9,7 +8,6 @@ services:
 
     netgen_layouts.sylius.validator.taxon:
         class: Netgen\Layouts\Sylius\Validator\TaxonValidator
-        public: false
         arguments:
             - "@sylius.repository.taxon"
         tags:

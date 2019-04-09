@@ -1,7 +1,6 @@
 services:
     netgen_layouts.sylius.event_listener.admin.main_menu_builder:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener
-        public: false
         arguments:
             - "@security.authorization_checker"
         tags:
@@ -9,7 +8,6 @@ services:
 
     netgen_layouts.sylius.event_listener.admin.set_page_layout:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener
-        public: false
         arguments:
             - "%netgen_layouts.sylius.admin.pagelayout%"
         tags:
@@ -17,7 +15,6 @@ services:
 
     netgen_layouts.sylius.event_listener.shop.product_show:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener
-        public: false
         arguments:
             - "@request_stack"
             - "@netgen_block_manager.context"
@@ -26,7 +23,6 @@ services:
 
     netgen_layouts.sylius.event_listener.shop.product_index:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener
-        public: false
         arguments:
             - "@sylius.repository.taxon"
             - "@sylius.context.locale"

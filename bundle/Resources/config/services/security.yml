@@ -1,6 +1,5 @@
 services:
     netgen_layouts.sylius.security.admin_access_voter:
         class: Netgen\Layouts\Sylius\Security\Authorization\Voter\AdminAccessVoter
-        public: false
         tags:
             - { name: security.voter }

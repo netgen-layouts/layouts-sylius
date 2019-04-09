@@ -1,12 +1,10 @@
 services:
     netgen_layouts.sylius.product_repository:
         class: Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepository
-        public: false
         parent: sylius.repository.product
 
     netgen_layouts.sylius.query_type_handler.latest_products:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\LatestProductsHandler
-        public: false
         arguments:
             - "@netgen_layouts.sylius.product_repository"
             - "@sylius.repository.taxon"
@@ -17,7 +15,6 @@ services:
 
     netgen_layouts.sylius.query_type_handler.taxon_products:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\TaxonProductsHandler
-        public: false
         arguments:
             - "@netgen_layouts.sylius.product_repository"
             - "@sylius.repository.taxon"

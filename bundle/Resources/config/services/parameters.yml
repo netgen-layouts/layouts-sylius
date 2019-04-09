@@ -1,12 +1,10 @@
 services:
     netgen_layouts.sylius.parameters.parameter_type.taxon:
         class: Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType
-        public: false
         tags:
             - { name: netgen_block_manager.parameters.parameter_type }
 
     netgen_layouts.sylius.parameters.form.mapper.taxon:
         class: Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper
-        public: false
         tags:
             - { name: netgen_block_manager.parameters.form.mapper, type: sylius_taxon }
