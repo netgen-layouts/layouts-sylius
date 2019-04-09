@@ -9,12 +9,12 @@ use Sylius\Component\Product\Model\ProductInterface;
 
 final class ProductValueConverter implements ValueConverterInterface
 {
-    public function supports($object): bool
+    public function supports(object $object): bool
     {
         return $object instanceof ProductInterface;
     }
 
-    public function getValueType($object): string
+    public function getValueType(object $object): string
     {
         return 'sylius_product';
     }
@@ -24,7 +24,7 @@ final class ProductValueConverter implements ValueConverterInterface
      *
      * @return int|string
      */
-    public function getId($object)
+    public function getId(object $object)
     {
         return $object->getId();
     }
@@ -34,7 +34,7 @@ final class ProductValueConverter implements ValueConverterInterface
      *
      * @return int|string
      */
-    public function getRemoteId($object)
+    public function getRemoteId(object $object)
     {
         return $object->getId();
     }
@@ -42,17 +42,17 @@ final class ProductValueConverter implements ValueConverterInterface
     /**
      * @param \Sylius\Component\Product\Model\ProductInterface $object
      */
-    public function getName($object): string
+    public function getName(object $object): string
     {
         return (string) $object->getName();
     }
 
-    public function getIsVisible($object): bool
+    public function getIsVisible(object $object): bool
     {
         return true;
     }
 
-    public function getObject($object)
+    public function getObject(object $object): object
     {
         return $object;
     }

@@ -19,7 +19,7 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function generate($object): ?string
+    public function generate(object $object): ?string
     {
         return $this->urlGenerator->generate(
             'sylius_shop_product_show',
