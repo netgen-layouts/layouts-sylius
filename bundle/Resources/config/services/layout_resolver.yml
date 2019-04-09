@@ -1,45 +1,45 @@
 services:
-    netgen_layouts.sylius.layout.resolver.target_type.product:
+    netgen_layouts.sylius.layout_resolver.target_type.product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product
         tags:
             - { name: netgen_block_manager.layout.resolver.target_type, priority: 170 }
 
-    netgen_layouts.sylius.layout.resolver.form.target_type.mapper.product:
+    netgen_layouts.sylius.layout_resolver.target_type.form_mapper.product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product
         tags:
             - { name: netgen_block_manager.layout.resolver.form.target_type.mapper, target_type: sylius_product }
 
-    netgen_layouts.sylius.layout.resolver.target_handler.doctrine.sylius_product:
+    netgen_layouts.sylius.layout_resolver.target_handler.doctrine.sylius_product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Product
         tags:
             - { name: netgen_block_manager.layout.resolver.target_handler.doctrine, target_type: sylius_product }
 
-    netgen_layouts.sylius.layout.resolver.target_type.taxon_product:
+    netgen_layouts.sylius.layout_resolver.target_type.taxon_product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct
         tags:
             - { name: netgen_block_manager.layout.resolver.target_type, priority: 160 }
 
-    netgen_layouts.sylius.layout.resolver.form.target_type.mapper.taxon_product:
+    netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon_product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct
         tags:
             - { name: netgen_block_manager.layout.resolver.form.target_type.mapper, target_type: sylius_taxon_product }
 
-    netgen_layouts.sylius.layout.resolver.target_handler.doctrine.sylius_taxon_product:
+    netgen_layouts.sylius.layout_resolver.target_handler.doctrine.sylius_taxon_product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\TaxonProduct
         tags:
             - { name: netgen_block_manager.layout.resolver.target_handler.doctrine, target_type: sylius_taxon_product }
 
-    netgen_layouts.sylius.layout.resolver.target_type.taxon:
+    netgen_layouts.sylius.layout_resolver.target_type.taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon
         tags:
             - { name: netgen_block_manager.layout.resolver.target_type, priority: 150 }
 
-    netgen_layouts.sylius.layout.resolver.form.target_type.mapper.taxon:
+    netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon
         tags:
             - { name: netgen_block_manager.layout.resolver.form.target_type.mapper, target_type: sylius_taxon }
 
-    netgen_layouts.sylius.layout.resolver.target_handler.doctrine.sylius_taxon:
+    netgen_layouts.sylius.layout_resolver.target_handler.doctrine.sylius_taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon
         tags:
             - { name: netgen_block_manager.layout.resolver.target_handler.doctrine, target_type: sylius_taxon }

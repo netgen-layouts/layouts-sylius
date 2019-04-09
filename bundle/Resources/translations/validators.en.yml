@@ -1,2 +1,2 @@
-netgen_layouts.sylius_product.product_not_found: 'Product with ID %productId% does not exist.'
-netgen_layouts.sylius_taxon.taxon_not_found: 'Taxon with ID %taxonId% does not exist.'
+netgen_layouts.sylius.product.product_not_found: 'Product with ID %productId% does not exist.'
+netgen_layouts.sylius.taxon.taxon_not_found: 'Taxon with ID %taxonId% does not exist.'

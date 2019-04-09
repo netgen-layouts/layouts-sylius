@@ -4,7 +4,7 @@ services:
         tags:
             - { name: netgen_block_manager.parameters.parameter_type }
 
-    netgen_layouts.sylius.parameters.form.mapper.taxon:
+    netgen_layouts.sylius.parameters.form_mapper.taxon:
         class: Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper
         tags:
             - { name: netgen_block_manager.parameters.form.mapper, type: sylius_taxon }

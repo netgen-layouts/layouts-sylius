@@ -11,7 +11,7 @@ final class Product extends Constraint
     /**
      * @var string
      */
-    public $message = 'netgen_layouts.sylius_product.product_not_found';
+    public $message = 'netgen_layouts.sylius.product.product_not_found';
 
     public function validatedBy(): string
     {
