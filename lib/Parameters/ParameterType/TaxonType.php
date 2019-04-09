@@ -19,11 +19,6 @@ final class TaxonType extends ParameterType
         return 'sylius_taxon';
     }
 
-    public function isValueEmpty(ParameterDefinition $parameterDefinition, $value): bool
-    {
-        return $value === null;
-    }
-
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value): array
     {
         return [
