@@ -16,12 +16,12 @@ final class AdminAccessVoter implements VoterInterface
 {
     /**
      * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
-     * @param mixed $object
+     * @param mixed $subject
      * @param mixed[] $attributes
      *
      * @return int
      */
-    public function vote(TokenInterface $token, $object, array $attributes): int
+    public function vote(TokenInterface $token, $subject, array $attributes): int
     {
         if ($token->getUser() instanceof AdminUserInterface) {
             return self::ACCESS_GRANTED;
