@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Admin;
 
-use Netgen\Bundle\BlockManagerAdminBundle\Event\AdminMatchEvent;
-use Netgen\Bundle\BlockManagerAdminBundle\Event\BlockManagerAdminEvents;
+use Netgen\Bundle\LayoutsAdminBundle\Event\AdminMatchEvent;
+use Netgen\Bundle\LayoutsAdminBundle\Event\LayoutsAdminEvents;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +30,7 @@ final class SetPageLayoutListenerTest extends TestCase
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
-            [BlockManagerAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]],
+            [LayoutsAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]],
             $this->listener::getSubscribedEvents()
         );
     }

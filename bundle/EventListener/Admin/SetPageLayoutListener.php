@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin;
 
-use Netgen\Bundle\BlockManagerAdminBundle\Event\AdminMatchEvent;
-use Netgen\Bundle\BlockManagerAdminBundle\Event\BlockManagerAdminEvents;
+use Netgen\Bundle\LayoutsAdminBundle\Event\AdminMatchEvent;
+use Netgen\Bundle\LayoutsAdminBundle\Event\LayoutsAdminEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class SetPageLayoutListener implements EventSubscriberInterface
@@ -22,7 +22,7 @@ final class SetPageLayoutListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        return [BlockManagerAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]];
+        return [LayoutsAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]];
     }
 
     /**
