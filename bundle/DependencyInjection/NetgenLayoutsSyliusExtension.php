@@ -38,11 +38,11 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
     {
         $prependConfigs = [
             'liip_imagine.yml' => 'liip_imagine',
-            'design.yml' => 'netgen_block_manager',
-            'value_types.yml' => 'netgen_block_manager',
-            'query_types.yml' => 'netgen_block_manager',
-            'view/item_view.yml' => 'netgen_block_manager',
-            'view/rule_target_view.yml' => 'netgen_block_manager',
+            'design.yml' => 'netgen_layouts',
+            'value_types.yml' => 'netgen_layouts',
+            'query_types.yml' => 'netgen_layouts',
+            'view/item_view.yml' => 'netgen_layouts',
+            'view/rule_target_view.yml' => 'netgen_layouts',
         ];
 
         foreach ($prependConfigs as $configFile => $prependConfig) {

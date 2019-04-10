@@ -64,7 +64,7 @@ Add the following to your `app/config/config.yml` file to configure the layout
 and specify the default design for block and layout templates:
 
 ```
-netgen_block_manager:
+netgen_layouts:
     pagelayout: '@MyShop/layout.html.twig'
     design: sylius
 ```

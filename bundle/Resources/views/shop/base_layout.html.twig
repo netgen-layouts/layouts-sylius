@@ -19,7 +19,7 @@
         <![endif]-->
 
         {% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'assets/shop/css/style.css'} %}
-        {% include '@NetgenBlockManager/stylesheets.html.twig' %}
+        {% include '@NetgenLayouts/stylesheets.html.twig' %}
         {% include '@NetgenLayoutsStandard/stylesheets.html.twig' %}
 
         {{ sonata_block_render_event('sylius.shop.layout.stylesheets') }}
@@ -76,7 +76,7 @@
 
 {% block javascripts %}
     {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'assets/shop/js/app.js'} %}
-    {% include '@NetgenBlockManager/javascripts.html.twig' %}
+    {% include '@NetgenLayouts/javascripts.html.twig' %}
     {% include '@NetgenLayoutsStandard/javascripts.html.twig' %}
 
     {{ sonata_block_render_event('sylius.shop.layout.javascripts') }}
