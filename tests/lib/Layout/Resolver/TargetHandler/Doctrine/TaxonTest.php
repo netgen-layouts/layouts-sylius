@@ -11,8 +11,6 @@ use Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon;
 final class TaxonTest extends AbstractTargetHandlerTest
 {
     /**
-     * @covers \Netgen\BlockManager\Persistence\Doctrine\Handler\LayoutResolverHandler::matchRules
-     * @covers \Netgen\BlockManager\Persistence\Doctrine\QueryHandler\LayoutResolverQueryHandler::matchRules
      * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon::handleQuery
      */
     public function testMatchRules(): void
