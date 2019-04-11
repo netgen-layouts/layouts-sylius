@@ -3,58 +3,40 @@
 {% block layout %}
 <div class="zone-layout-layout5">
 
-    {% if ngbm.layout.zone('header') is not empty or ngbm.layout.zone('post_header') is not empty %}
-        <div class="top-content-block">
-            {% if ngbm.layout.zone('header') is not empty %}
-                <section class="zone zone-header">
-                    {% ngbm_render_zone ngbm.layout.zone('header') %}
-                </section>
-            {% endif %}
+    <div class="top-content-block">
+        <section class="zone zone-header">
+            {% ngbm_render_zone 'header' %}
+        </section>
 
-            {% if ngbm.layout.zone('post_header') is not empty %}
-                <section class="zone zone-post_header">
-                    {% ngbm_render_zone ngbm.layout.zone('post_header') %}
-                </section>
-            {% endif %}
-        </div>
-    {% endif %}
+        <section class="zone zone-post_header">
+            {% ngbm_render_zone 'post_header' %}
+        </section>
+    </div>
 
-    {% if ngbm.layout.zone('left') is not empty or ngbm.layout.zone('right') is not empty %}
-        <div class="main-content-block">
-            <div class="ui two column stackable grid">
-                <div class="eight wide column">
-                    {% if ngbm.layout.zone('left') is not empty %}
-                        <section class="zone zone-left">
-                            {% ngbm_render_zone ngbm.layout.zone('left') %}
-                        </section>
-                    {% endif %}
-                </div>
-                <div class="eight wide column">
-                    {% if ngbm.layout.zone('right') is not empty %}
-                        <section class="zone zone-right">
-                            {% ngbm_render_zone ngbm.layout.zone('right') %}
-                        </section>
-                    {% endif %}
-                </div>
+    <div class="main-content-block">
+        <div class="ui two column stackable grid">
+            <div class="eight wide column">
+                <section class="zone zone-left">
+                    {% ngbm_render_zone 'left' %}
+                </section>
+            </div>
+            <div class="eight wide column">
+                <section class="zone zone-right">
+                    {% ngbm_render_zone 'right' %}
+                </section>
             </div>
         </div>
-    {% endif %}
+    </div>
 
-    {% if ngbm.layout.zone('pre_footer') is not empty or ngbm.layout.zone('footer') is not empty %}
-        <div class="bottom-content-block">
-            {% if ngbm.layout.zone('pre_footer') is not empty %}
-                <section class="zone zone-pre_footer">
-                    {% ngbm_render_zone ngbm.layout.zone('pre_footer') %}
-                </section>
-            {% endif %}
+    <div class="bottom-content-block">
+        <section class="zone zone-pre_footer">
+            {% ngbm_render_zone 'pre_footer' %}
+        </section>
 
-            {% if ngbm.layout.zone('footer') is not empty %}
-                <section class="zone zone-footer">
-                    {% ngbm_render_zone ngbm.layout.zone('footer') %}
-                </section>
-            {% endif %}
-        </div>
-    {% endif %}
+        <section class="zone zone-footer">
+            {% ngbm_render_zone 'footer' %}
+        </section>
+    </div>
 
 </div>
 {% endblock %}
