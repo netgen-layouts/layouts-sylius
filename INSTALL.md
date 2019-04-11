@@ -45,7 +45,7 @@ All full view templates (those that are rendered directly by controllers), need
 to extend `ngbm.layoutTemplate` instead of your original layout:
 
 ```
-{% extends ngbm.LayoutTemplate %}
+{% extends ngbm.layoutTemplate %}
 
 {% block content %}
 
