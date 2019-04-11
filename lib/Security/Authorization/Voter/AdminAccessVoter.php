@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
 /**
- * Votes on Netgen Layouts attributes (ROLE_NGBM_*) by matching corresponding access
+ * Votes on Netgen Layouts attributes (ROLE_NGLAYOUTS_*) by matching corresponding access
  * rights in Sylius eCommerce.
  */
 final class AdminAccessVoter implements VoterInterface
