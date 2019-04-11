@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 final class TaxonTest extends TestCase
 {
     /**
-     * @var \Netgen\BlockManager\Layout\Resolver\Form\TargetType\MapperInterface
+     * @var \Netgen\Layouts\Layout\Resolver\Form\TargetType\MapperInterface
      */
     private $mapper;
 

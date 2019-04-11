@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Item\ValueConverter;
 
-use Netgen\BlockManager\Item\ValueConverterInterface;
+use Netgen\Layouts\Item\ValueConverterInterface;
 use Sylius\Component\Product\Model\ProductInterface;
 
 final class ProductValueConverter implements ValueConverterInterface

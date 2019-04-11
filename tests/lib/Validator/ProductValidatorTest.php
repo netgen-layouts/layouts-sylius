@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Validator;
 
-use Netgen\BlockManager\Tests\TestCase\ValidatorTestCase;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Validator\Constraint\Product;
 use Netgen\Layouts\Sylius\Validator\ProductValidator;
+use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;

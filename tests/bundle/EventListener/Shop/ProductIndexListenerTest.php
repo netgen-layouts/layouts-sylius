@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Shop;
 
-use Netgen\BlockManager\Context\Context;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener;
+use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
@@ -37,7 +37,7 @@ final class ProductIndexListenerTest extends TestCase
     private $requestStack;
 
     /**
-     * @var \Netgen\BlockManager\Context\Context
+     * @var \Netgen\Layouts\Context\Context
      */
     private $context;
 

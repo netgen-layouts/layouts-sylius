@@ -44,7 +44,7 @@
         "psr-4": {
             "Netgen\\Layouts\\Sylius\\Tests\\": "tests/lib/",
             "Netgen\\Bundle\\LayoutsSyliusBundle\\Tests\\": "tests/bundle/",
-            "Netgen\\BlockManager\\Tests\\": "vendor/netgen/layouts-core/tests/lib"
+            "Netgen\\Layouts\\Tests\\": "vendor/netgen/layouts-core/tests/lib"
         }
     },
     "minimum-stability": "dev",

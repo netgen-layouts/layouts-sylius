@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Parameters\Form\Mapper;
 
-use Netgen\BlockManager\Parameters\ParameterDefinition;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
+use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType as ParameterType;
 use PHPUnit\Framework\TestCase;

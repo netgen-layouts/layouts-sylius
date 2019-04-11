@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Locale;
 
-use Netgen\BlockManager\Locale\LocaleProviderInterface;
-use Netgen\BlockManager\Utils\BackwardsCompatibility\Locales;
+use Netgen\Layouts\Locale\LocaleProviderInterface;
+use Netgen\Layouts\Utils\BackwardsCompatibility\Locales;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface as SyliusLocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 

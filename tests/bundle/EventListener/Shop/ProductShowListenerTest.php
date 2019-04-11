@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Shop;
 
-use Netgen\BlockManager\Context\Context;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener;
+use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\TestCase;
@@ -26,7 +26,7 @@ final class ProductShowListenerTest extends TestCase
     private $requestStack;
 
     /**
-     * @var \Netgen\BlockManager\Context\Context
+     * @var \Netgen\Layouts\Context\Context
      */
     private $context;
 
