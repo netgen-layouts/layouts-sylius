@@ -90,5 +90,5 @@ Netgen Layouts admin routes:
 
 ```
 parameters:
-    sylius.security.admin_regex: "^(/admin|/bm/app|/bm/api|/bm/admin|/cb)"
+    sylius.security.admin_regex: "^(/admin|/nglayouts/app|/nglayouts/api|/nglayouts/admin|/cb)"
 ```
