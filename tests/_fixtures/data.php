@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'ngbm_rule' => [
+    'nglayouts_rule' => [
         ['id' => 1, 'status' => 1, 'layout_id' => 1, 'comment' => ''],
         ['id' => 2, 'status' => 0, 'layout_id' => 2, 'comment' => ''],
         ['id' => 3, 'status' => 1, 'layout_id' => 3, 'comment' => ''],
@@ -12,7 +12,7 @@ return [
         ['id' => 6, 'status' => 1, 'layout_id' => 4, 'comment' => ''],
         ['id' => 7, 'status' => 1, 'layout_id' => 5, 'comment' => ''],
     ],
-    'ngbm_rule_data' => [
+    'nglayouts_rule_data' => [
         ['rule_id' => 1, 'enabled' => 1, 'priority' => 7],
         ['rule_id' => 2, 'enabled' => 1, 'priority' => 6],
         ['rule_id' => 3, 'enabled' => 1, 'priority' => 5],
@@ -21,7 +21,7 @@ return [
         ['rule_id' => 6, 'enabled' => 1, 'priority' => 2],
         ['rule_id' => 7, 'enabled' => 1, 'priority' => 1],
     ],
-    'ngbm_rule_target' => [
+    'nglayouts_rule_target' => [
         ['id' => 1, 'status' => 1, 'rule_id' => 1, 'type' => 'sylius_product', 'value' => 72],
         ['id' => 2, 'status' => 1, 'rule_id' => 1, 'type' => 'sylius_product', 'value' => 73],
         ['id' => 3, 'status' => 0, 'rule_id' => 2, 'type' => 'sylius_product', 'value' => 74],
