@@ -11,7 +11,7 @@ services:
             - "@sylius.context.channel"
             - "@request_stack"
         tags:
-            - { name: netgen_block_manager.collection.query_type_handler, type: sylius_latest_products }
+            - { name: netgen_layouts.query_type_handler, type: sylius_latest_products }
 
     netgen_layouts.sylius.query_type_handler.taxon_products:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\TaxonProductsHandler
@@ -21,4 +21,4 @@ services:
             - "@sylius.context.channel"
             - "@request_stack"
         tags:
-            - { name: netgen_block_manager.collection.query_type_handler, type: sylius_taxon_products }
+            - { name: netgen_layouts.query_type_handler, type: sylius_taxon_products }

@@ -2,18 +2,18 @@ services:
     netgen_layouts.sylius.item.value_converter.product:
         class: Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter
         tags:
-            - { name: netgen_block_manager.item.value_converter }
+            - { name: netgen_layouts.cms_value_converter }
 
     netgen_layouts.sylius.item.value_loader.product:
         class: Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader
         arguments:
             - "@sylius.repository.product"
         tags:
-            - { name: netgen_block_manager.item.value_loader, value_type: sylius_product }
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_product }
 
     netgen_layouts.sylius.item.value_url_generator.product:
         class: Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator
         arguments:
             - "@router"
         tags:
-            - { name: netgen_block_manager.item.value_url_generator, value_type: sylius_product }
+            - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_product }
