@@ -2,12 +2,12 @@ view:
     item_view:
         default:
             sylius_product:
-                template: "@ngbm/item/sylius_product.html.twig"
+                template: "@nglayouts/item/sylius_product.html.twig"
                 match:
                     item\value_type: sylius_product
         ajax:
             sylius_product:
-                template: "@ngbm/item/sylius_product.html.twig"
+                template: "@nglayouts/item/sylius_product.html.twig"
                 match:
                     item\value_type: sylius_product
         api:

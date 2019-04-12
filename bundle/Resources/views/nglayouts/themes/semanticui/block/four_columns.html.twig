@@ -1,12 +1,15 @@
-{% extends '@ngbm/block/block.html.twig' %}
+{% extends '@nglayouts/block/block.html.twig' %}
 
 {% block content %}
     <div class="ui twelve column stackable grid">
         <div class="three wide column">
             {{ nglayouts_render_placeholder(block, 'left') }}
         </div>
-        <div class="six wide column">
-            {{ nglayouts_render_placeholder(block, 'center') }}
+        <div class="three wide column">
+            {{ nglayouts_render_placeholder(block, 'center_left') }}
+        </div>
+        <div class="three wide column">
+            {{ nglayouts_render_placeholder(block, 'center_right') }}
         </div>
         <div class="three wide column">
             {{ nglayouts_render_placeholder(block, 'right') }}
