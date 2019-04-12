@@ -42,10 +42,10 @@ Due to how Netgen Layouts works, your main layout template needs to wrap the
 ```
 
 All full view templates (those that are rendered directly by controllers), need
-to extend `ngbm.layoutTemplate` instead of your original layout:
+to extend `nglayouts.layoutTemplate` instead of your original layout:
 
 ```
-{% extends ngbm.layoutTemplate %}
+{% extends nglayouts.layoutTemplate %}
 
 {% block content %}
 
