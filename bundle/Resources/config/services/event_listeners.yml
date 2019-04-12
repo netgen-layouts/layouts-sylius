@@ -17,7 +17,7 @@ services:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener
         arguments:
             - "@request_stack"
-            - "@netgen_block_manager.context"
+            - "@netgen_layouts.context"
         tags:
             - { name: kernel.event_subscriber }
 
@@ -27,6 +27,6 @@ services:
             - "@sylius.repository.taxon"
             - "@sylius.context.locale"
             - "@request_stack"
-            - "@netgen_block_manager.context"
+            - "@netgen_layouts.context"
         tags:
             - { name: kernel.event_subscriber }

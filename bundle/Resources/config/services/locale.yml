@@ -1,5 +1,5 @@
 services:
-    netgen_block_manager.locale.provider:
+    netgen_layouts.locale.provider:
         alias: netgen_layouts.sylius.locale.provider
 
     netgen_layouts.sylius.locale.provider:
