@@ -4,7 +4,7 @@
 <div class="ui {{ number_of_columns_class_map[number_of_columns] }} column stackable grid">
     {% for result in collection %}
         <div class="column">
-            {{ ngbm_render_item(result.item, block.itemViewType, {}, 'default') }}
+            {{ nglayouts_render_item(result.item, block.itemViewType, {}, 'default') }}
         </div>
     {% endfor %}
 </div>

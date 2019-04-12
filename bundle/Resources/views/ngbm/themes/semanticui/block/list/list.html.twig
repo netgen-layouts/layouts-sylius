@@ -5,7 +5,7 @@
 {% set collection_html %}
     {% for result in collections[collection_identifier] %}
         <div class="column">
-            {{ ngbm_render_item(result.item, block.itemViewType) }}
+            {{ nglayouts_render_item(result.item, block.itemViewType) }}
         </div>
     {% endfor %}
 {% endset %}
