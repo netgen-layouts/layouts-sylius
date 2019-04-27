@@ -23,7 +23,7 @@ final class TaxonTypeTest extends TestCase
      */
     private $repositoryMock;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 

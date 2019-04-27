@@ -17,7 +17,7 @@ final class AdminAccessVoterTest extends TestCase
      */
     private $voter;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->voter = new AdminAccessVoter();
     }

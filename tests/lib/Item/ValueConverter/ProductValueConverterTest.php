@@ -17,7 +17,7 @@ final class ProductValueConverterTest extends TestCase
      */
     private $valueConverter;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->valueConverter = new ProductValueConverter();
     }

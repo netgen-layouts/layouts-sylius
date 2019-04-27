@@ -22,7 +22,7 @@ final class ProductValueLoaderTest extends TestCase
      */
     private $valueLoader;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->valueLoader = new ProductValueLoader($this->productRepositoryMock);

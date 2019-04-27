@@ -24,7 +24,7 @@ final class MainMenuBuilderListenerTest extends TestCase
      */
     private $authCheckerMock;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->authCheckerMock = $this->createMock(AuthorizationCheckerInterface::class);
 

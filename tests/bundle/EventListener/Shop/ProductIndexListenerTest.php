@@ -41,7 +41,7 @@ final class ProductIndexListenerTest extends TestCase
      */
     private $context;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
         $this->localeContextMock = $this->createMock(LocaleContextInterface::class);

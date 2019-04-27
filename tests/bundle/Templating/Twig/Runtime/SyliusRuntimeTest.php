@@ -28,7 +28,7 @@ final class SyliusRuntimeTest extends TestCase
      */
     private $runtime;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);

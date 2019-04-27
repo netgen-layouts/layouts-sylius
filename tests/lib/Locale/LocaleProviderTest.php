@@ -21,7 +21,7 @@ final class LocaleProviderTest extends TestCase
      */
     private $localeProvider;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->syliusLocaleProviderMock = $this->createMock(LocaleProviderInterface::class);
 
