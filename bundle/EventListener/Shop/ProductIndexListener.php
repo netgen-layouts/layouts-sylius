@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop;
 
-use Netgen\Layouts\Context\ContextInterface;
+use Netgen\Layouts\Context\Context;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
@@ -31,7 +31,7 @@ final class ProductIndexListener implements EventSubscriberInterface
     private $requestStack;
 
     /**
-     * @var \Netgen\Layouts\Context\ContextInterface
+     * @var \Netgen\Layouts\Context\Context
      */
     private $context;
 
@@ -39,7 +39,7 @@ final class ProductIndexListener implements EventSubscriberInterface
         TaxonRepositoryInterface $taxonRepository,
         LocaleContextInterface $localeContext,
         RequestStack $requestStack,
-        ContextInterface $context
+        Context $context
     ) {
         $this->taxonRepository = $taxonRepository;
         $this->localeContext = $localeContext;

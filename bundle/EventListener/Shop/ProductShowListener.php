@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop;
 
-use Netgen\Layouts\Context\ContextInterface;
+use Netgen\Layouts\Context\Context;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Product\Model\ProductInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -19,11 +19,11 @@ final class ProductShowListener implements EventSubscriberInterface
     private $requestStack;
 
     /**
-     * @var \Netgen\Layouts\Context\ContextInterface
+     * @var \Netgen\Layouts\Context\Context
      */
     private $context;
 
-    public function __construct(RequestStack $requestStack, ContextInterface $context)
+    public function __construct(RequestStack $requestStack, Context $context)
     {
         $this->requestStack = $requestStack;
         $this->context = $context;
