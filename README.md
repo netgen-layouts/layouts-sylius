@@ -1,11 +1,10 @@
-Netgen Layouts & Sylius eCommerce integration
-=============================================
+# Netgen Layouts & Sylius eCommerce integration
 
-# Installation instructions
+## Installation instructions
 
 [INSTALL.md](INSTALL.md)
 
-# Running tests
+## Running tests
 
 Running tests requires that you have complete vendors installed, so run
 `composer install` before running the tests.
