@@ -1,8 +1,6 @@
-Netgen Layouts & Sylius eCommerce integration installation instructions
-=======================================================================
+# Netgen Layouts & Sylius eCommerce integration installation instructions
 
-Use Composer to install the integration
----------------------------------------
+## Use Composer to install the integration
 
 Run the following command to install Netgen Layouts & Sylius eCommerce
 integration:
@@ -11,8 +9,7 @@ integration:
 composer require netgen/layouts-standard netgen/layouts-sylius
 ```
 
-Activating integration bundles
-------------------------------
+## Activating integration bundles
 
 After completing standard Layouts install instructions, you also need to
 activate `NetgenLayoutsSyliusBundle` and `NetgenContentBrowserSyliusBundle`.
@@ -27,8 +24,7 @@ $bundles[] = new Netgen\Bundle\ContentBrowserSyliusBundle\NetgenContentBrowserSy
 return $bundles;
 ```
 
-Configure the main layout and design
-------------------------------------
+## Configure the main layout and design
 
 Due to how Netgen Layouts works, your main layout template needs to wrap the
 `content` block inside a new `layout` block:
@@ -69,8 +65,7 @@ netgen_layouts:
     design: sylius
 ```
 
-Activate ESI and fragments support
-----------------------------------
+## Activate ESI and fragments support
 
 Netgen Layouts requires that ESI and fragments support is activated in Symfony.
 Add the following to your `app/config/config.yml` file:
@@ -81,8 +76,7 @@ framework:
     fragments: ~
 ```
 
-Update security rules for admin UI integration
-----------------------------------------------
+## Update security rules for admin UI integration
 
 To properly integrate Netgen Layouts and Sylius admin interfaces, you need to
 update admin regex parameter in your `app/config/security.yml` file to include
