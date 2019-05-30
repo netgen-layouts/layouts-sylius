@@ -1,5 +1,7 @@
 .ng-layouts-app {
-  background-color: #f9fafb; }
-  .ng-layouts-app .layouts-content {
-    background: #f9fafb; }
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL2J1bmRsZS9SZXNvdXJjZXMvc2Fzcy9fYmFzZS5zY3NzIiwiLi4vLi4vLi4vLi4vYnVuZGxlL1Jlc291cmNlcy9zYXNzL192YXJpYWJsZXMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDBCQ0RhLEVETWhCO0VBTkQ7SUFJUSxvQkNKUyxFREtaIiwiZmlsZSI6InN0eWxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uZy1sYXlvdXRzLWFwcCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjokYmdDb2xvcjtcblxuICAgIC5sYXlvdXRzLWNvbnRlbnQge1xuICAgICAgICBiYWNrZ3JvdW5kOiRiZ0NvbG9yO1xuICAgIH1cbn1cbiIsIiRiZ0NvbG9yOiAjZjlmYWZiO1xuXG4kZ3V0dGVyOiAxNXB4O1xuIl19 */
+  background-color: #f9fafb;
+}
+
+.ng-layouts-app .layouts-content {
+background: #f9fafb;
+}

@@ -23,14 +23,6 @@ matrix:
     -
       php: 7.3
       env: RUN_PHPSTAN="yes"
-    -
-      env: ~
-      php: ~
-      cache: ~
-      language: node_js
-      node_js: node
-      before_script: npm install -g grunt-cli
-      script: grunt build
 
 branches:
   only:
