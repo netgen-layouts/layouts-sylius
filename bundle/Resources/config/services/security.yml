@@ -2,4 +2,4 @@ services:
     netgen_layouts.sylius.security.voter.admin_access:
         class: Netgen\Layouts\Sylius\Security\Authorization\Voter\AdminAccessVoter
         tags:
-            - { name: security.voter }
+            - { name: security.voter, priority: 0 }
