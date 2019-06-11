@@ -10,8 +10,8 @@ view:
                 template: "@nglayouts/item/sylius_product.html.twig"
                 match:
                     item\value_type: sylius_product
-        api:
+        app:
             sylius_product:
-                template: "@NetgenLayoutsSylius/api/item/view/sylius_product.html.twig"
+                template: "@NetgenLayoutsSylius/app/item/view/sylius_product.html.twig"
                 match:
                     item\value_type: sylius_product
