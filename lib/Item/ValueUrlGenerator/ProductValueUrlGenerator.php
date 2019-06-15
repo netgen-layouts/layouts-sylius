@@ -19,6 +19,9 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
         $this->urlGenerator = $urlGenerator;
     }
 
+    /**
+     * @param \Sylius\Component\Product\Model\ProductInterface $object
+     */
     public function generate(object $object): ?string
     {
         return $this->urlGenerator->generate(

@@ -6,8 +6,8 @@ namespace Netgen\Layouts\Sylius\Doctrine\ORM;
 
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductRepository;
-use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Component\Channel\Model\ChannelInterface;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
 final class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {

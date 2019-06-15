@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Doctrine\ORM;
 
-use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface as BaseProductRepositoryInterface;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {
