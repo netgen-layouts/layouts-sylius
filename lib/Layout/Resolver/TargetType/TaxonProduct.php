@@ -36,7 +36,7 @@ final class TaxonProduct implements TargetTypeInterface
         }
 
         return array_map(
-            static function (TaxonInterface $taxon) {
+            static function (TaxonInterface $taxon): int {
                 return $taxon->getId();
             },
             $product->getTaxons()->getValues()

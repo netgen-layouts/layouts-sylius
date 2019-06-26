@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="bundle" />
+        <directory name="lib" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <!-- Doctrine ORM -->
+
+        <MoreSpecificReturnType>
+            <errorLevel type="suppress">
+                <directory name="lib/Collection/QueryType/Handler" />
+            </errorLevel>
+        </MoreSpecificReturnType>
+
+        <LessSpecificReturnStatement>
+            <errorLevel type="suppress">
+                <directory name="lib/Collection/QueryType/Handler" />
+            </errorLevel>
+        </LessSpecificReturnStatement>
+
+        <!-- Sylius specifics -->
+
+        <PossiblyInvalidMethodCall>
+            <errorLevel type="suppress">
+                <file name="lib/Layout/Resolver/TargetType/TaxonProduct.php" />
+            </errorLevel>
+        </PossiblyInvalidMethodCall>
+
+        <!-- Netgen Layouts specifics -->
+
+        <MoreSpecificImplementedParamType>
+            <errorLevel type="suppress">
+                <directory name="lib/Item/ValueConverter" />
+                <directory name="lib/Item/ValueUrlGenerator" />
+            </errorLevel>
+        </MoreSpecificImplementedParamType>
+
+        <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
+
+        <PropertyNotSetInConstructor errorLevel="info" />
+    </issueHandlers>
+</psalm>

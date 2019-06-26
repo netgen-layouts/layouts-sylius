@@ -10,6 +10,9 @@ use Twig\TwigFunction;
 
 final class SyliusExtension extends AbstractExtension
 {
+    /**
+     * @return \Twig\TwigFunction[]
+     */
     public function getFunctions(): array
     {
         return [

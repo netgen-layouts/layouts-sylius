@@ -61,10 +61,11 @@ final class SyliusRuntime
         }
 
         $parts = [$taxon->getName()];
-        while ($taxon->getParent() instanceof TaxonInterface) {
-            $taxon = $taxon->getParent();
 
-            $parts[] = $taxon->getName();
+        $parentTaxon = $taxon->getParent();
+        while ($parentTaxon instanceof TaxonInterface) {
+            $parts[] = $parentTaxon->getName();
+            $parentTaxon = $parentTaxon->getParent();
         }
 
         return array_reverse($parts);
