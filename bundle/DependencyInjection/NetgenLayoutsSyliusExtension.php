@@ -30,19 +30,19 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             )
         );
 
-        $loader->load('services/**/*.yml', 'glob');
-        $loader->load('default_settings.yml');
+        $loader->load('services/**/*.yaml', 'glob');
+        $loader->load('default_settings.yaml');
     }
 
     public function prepend(ContainerBuilder $container): void
     {
         $prependConfigs = [
-            'liip_imagine.yml' => 'liip_imagine',
-            'design.yml' => 'netgen_layouts',
-            'value_types.yml' => 'netgen_layouts',
-            'query_types.yml' => 'netgen_layouts',
-            'view/item_view.yml' => 'netgen_layouts',
-            'view/rule_target_view.yml' => 'netgen_layouts',
+            'liip_imagine.yaml' => 'liip_imagine',
+            'design.yaml' => 'netgen_layouts',
+            'value_types.yaml' => 'netgen_layouts',
+            'query_types.yaml' => 'netgen_layouts',
+            'view/item_view.yaml' => 'netgen_layouts',
+            'view/rule_target_view.yaml' => 'netgen_layouts',
         ];
 
         foreach ($prependConfigs as $configFile => $prependConfig) {
