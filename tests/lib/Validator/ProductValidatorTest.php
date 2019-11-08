@@ -46,7 +46,7 @@ final class ProductValidatorTest extends ValidatorTestCase
             ->with(self::identicalTo(42))
             ->willReturn(new ProductStub(42));
 
-        self::assertValid(true, 42);
+        $this->assertValid(true, 42);
     }
 
     /**
@@ -59,7 +59,7 @@ final class ProductValidatorTest extends ValidatorTestCase
             ->expects(self::never())
             ->method('find');
 
-        self::assertValid(true, null);
+        $this->assertValid(true, null);
     }
 
     /**
@@ -74,7 +74,7 @@ final class ProductValidatorTest extends ValidatorTestCase
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
-        self::assertValid(false, 42);
+        $this->assertValid(false, 42);
     }
 
     /**
@@ -86,7 +86,7 @@ final class ProductValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "Netgen\\Layouts\\Sylius\\Validator\\Constraint\\Product", "Symfony\\Component\\Validator\\Constraints\\NotBlank" given');
 
         $this->constraint = new NotBlank();
-        self::assertValid(true, 'value');
+        $this->assertValid(true, 'value');
     }
 
     /**
@@ -97,6 +97,6 @@ final class ProductValidatorTest extends ValidatorTestCase
         $this->expectException(UnexpectedTypeException::class);
         $this->expectExceptionMessage('Expected argument of type "scalar", "array" given');
 
-        self::assertValid(true, []);
+        $this->assertValid(true, []);
     }
 }
