@@ -39,8 +39,11 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
+     * @param mixed[] $options
+     * @param mixed[] $resolvedOptions
+     *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::configureOptions
-     * @dataProvider validOptionsProvider
+     * @dataProvider validOptionsDataProvider
      */
     public function testValidOptions(array $options, array $resolvedOptions): void
     {
@@ -49,8 +52,10 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
+     * @param mixed[] $options
+     *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::configureOptions
-     * @dataProvider invalidOptionsProvider
+     * @dataProvider invalidOptionsDataProvider
      */
     public function testInvalidOptions(array $options): void
     {
@@ -62,7 +67,7 @@ final class TaxonTypeTest extends TestCase
     /**
      * Provider for testing valid parameter attributes.
      */
-    public function validOptionsProvider(): array
+    public function validOptionsDataProvider(): array
     {
         return [
             [
@@ -75,7 +80,7 @@ final class TaxonTypeTest extends TestCase
     /**
      * Provider for testing invalid parameter attributes.
      */
-    public function invalidOptionsProvider(): array
+    public function invalidOptionsDataProvider(): array
     {
         return [
             [
@@ -149,14 +154,14 @@ final class TaxonTypeTest extends TestCase
      * @param bool $isEmpty
      *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::isValueEmpty
-     * @dataProvider emptyProvider
+     * @dataProvider emptyDataProvider
      */
     public function testIsValueEmpty($value, bool $isEmpty): void
     {
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
-    public function emptyProvider(): array
+    public function emptyDataProvider(): array
     {
         return [
             [null, true],

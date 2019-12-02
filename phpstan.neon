@@ -4,6 +4,11 @@ includes:
 
 parameters:
     ignoreErrors:
+        # Disable errors about missing value types in various Symfony based classes
+
+        - '#Method .+Listener::getSubscribedEvents\(\) return type has no value type specified in iterable type array.#'
+        - '#has parameter \$menu with no value type specified in iterable type Knp\\Menu\\ItemInterface.#'
+
         # Integration specifics
         -
             message: '#should be contravariant with parameter \$object#'

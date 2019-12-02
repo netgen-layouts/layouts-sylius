@@ -70,6 +70,8 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
 
     /**
      * Returns the new menu order.
+     *
+     * @return string[]
      */
     private function getNewMenuOrder(ItemInterface $menu): array
     {

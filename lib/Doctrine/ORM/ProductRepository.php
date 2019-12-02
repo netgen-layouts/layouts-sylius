@@ -89,6 +89,9 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
             ->getSingleScalarResult();
     }
 
+    /**
+     * @param array<string, string> $sorting
+     */
     public function createByTaxonQueryBuilder(
         ChannelInterface $channel,
         ?TaxonInterface $taxon,

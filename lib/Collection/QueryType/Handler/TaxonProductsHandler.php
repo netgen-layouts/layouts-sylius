@@ -106,7 +106,9 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
 
         $parentTaxon = $this->getParentTaxon($query);
 
+        /** @var string $sortType */
         $sortType = $query->getParameter('sort_type')->getValue();
+        /** @var string $sortDirection */
         $sortDirection = $query->getParameter('sort_direction')->getValue();
 
         return $this->productRepository->findByTaxon(
