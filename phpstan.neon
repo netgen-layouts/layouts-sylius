@@ -4,7 +4,8 @@ includes:
 
 parameters:
     ignoreErrors:
-        # Disable errors about missing value types in various Symfony based classes
+        # Disable errors about missing value types in various vendor classes
 
+        - '#no value type specified in iterable type Knp\\Menu\\ItemInterface.#'
+        - '#no value type specified in iterable type Sylius\\Bundle\\ResourceBundle\\Event\\ResourceControllerEvent.#'
         - '#Method .+Listener::getSubscribedEvents\(\) return type has no value type specified in iterable type array.#'
-        - '#has parameter \$menu with no value type specified in iterable type Knp\\Menu\\ItemInterface.#'
