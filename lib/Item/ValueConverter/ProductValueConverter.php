@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\Item\ValueConverter;
 use Netgen\Layouts\Item\ValueConverterInterface;
 use Sylius\Component\Product\Model\ProductInterface;
 
+/**
+ * @implements \Netgen\Layouts\Item\ValueConverterInterface<\Sylius\Component\Product\Model\ProductInterface>
+ */
 final class ProductValueConverter implements ValueConverterInterface
 {
     public function supports(object $object): bool
@@ -19,29 +22,16 @@ final class ProductValueConverter implements ValueConverterInterface
         return 'sylius_product';
     }
 
-    /**
-     * @param \Sylius\Component\Product\Model\ProductInterface $object
-     *
-     * @return int|string
-     */
     public function getId(object $object)
     {
         return $object->getId();
     }
 
-    /**
-     * @param \Sylius\Component\Product\Model\ProductInterface $object
-     *
-     * @return int|string
-     */
     public function getRemoteId(object $object)
     {
         return $object->getId();
     }
 
-    /**
-     * @param \Sylius\Component\Product\Model\ProductInterface $object
-     */
     public function getName(object $object): string
     {
         return (string) $object->getName();

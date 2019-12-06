@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\Item\ValueUrlGenerator;
 use Netgen\Layouts\Item\ValueUrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+/**
+ * @implements \Netgen\Layouts\Item\ValueUrlGeneratorInterface<\Sylius\Component\Product\Model\ProductInterface>
+ */
 final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
 {
     /**
@@ -19,9 +22,6 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    /**
-     * @param \Sylius\Component\Product\Model\ProductInterface $object
-     */
     public function generate(object $object): ?string
     {
         return $this->urlGenerator->generate(

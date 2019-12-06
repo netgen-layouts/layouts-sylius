@@ -8,12 +8,3 @@ parameters:
 
         - '#Method .+Listener::getSubscribedEvents\(\) return type has no value type specified in iterable type array.#'
         - '#has parameter \$menu with no value type specified in iterable type Knp\\Menu\\ItemInterface.#'
-
-        # Integration specifics
-        -
-            message: '#should be contravariant with parameter \$object#'
-            path: lib/Item/ValueUrlGenerator/ProductValueUrlGenerator.php
-
-        -
-            message: '#should be contravariant with parameter \$object#'
-            path: lib/Item/ValueConverter/ProductValueConverter.php
