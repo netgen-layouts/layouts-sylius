@@ -23,6 +23,8 @@ matrix:
       env: RUN_PHPSTAN="yes"
     - php: 7.4
       env: RUN_PSALM="yes"
+  allow_failures:
+    - php: 7.4
   fast_finish: true
 
 branches:
