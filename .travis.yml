@@ -19,9 +19,9 @@ matrix:
   include:
     - php: 7.2
       env: PHPUNIT_CONFIG="phpunit.xml" SYMFONY_VERSION="~3.4.0" DEPS="low"
-    - php: 7.4
+    - php: 7.3
       env: RUN_PHPSTAN="yes"
-    - php: 7.4
+    - php: 7.3
       env: RUN_PSALM="yes"
   allow_failures:
     - php: 7.4
