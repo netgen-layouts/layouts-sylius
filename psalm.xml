@@ -27,6 +27,14 @@
             </errorLevel>
         </LessSpecificReturnStatement>
 
+        <!-- Deprecations -->
+
+        <DeprecatedInterface>
+            <errorLevel type="suppress">
+                <referencedClass name="Doctrine\Common\Persistence\ObjectRepository" />
+            </errorLevel>
+        </DeprecatedInterface>
+
         <!-- Sylius specifics -->
 
         <PossiblyInvalidMethodCall>
