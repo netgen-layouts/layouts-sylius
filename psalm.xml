@@ -43,16 +43,7 @@
             </errorLevel>
         </PossiblyInvalidMethodCall>
 
-        <!-- Netgen Layouts specifics -->
-
-        <MoreSpecificImplementedParamType>
-            <errorLevel type="suppress">
-                <directory name="lib/Item/ValueConverter" />
-                <directory name="lib/Item/ValueUrlGenerator" />
-            </errorLevel>
-        </MoreSpecificImplementedParamType>
-
-        <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
+        <!-- level 3 issues - slightly lazy code writing, but probably low false-negatives -->
 
         <PropertyNotSetInConstructor errorLevel="info" />
     </issueHandlers>
