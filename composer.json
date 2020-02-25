@@ -22,7 +22,7 @@
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpstan/phpstan-doctrine": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
-        "vimeo/psalm": "^3.7",
+        "vimeo/psalm": "^3.9",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1"
     },
     "scripts": {
