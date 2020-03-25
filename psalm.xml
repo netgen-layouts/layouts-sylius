@@ -27,22 +27,6 @@
             </errorLevel>
         </LessSpecificReturnStatement>
 
-        <!-- Deprecations -->
-
-        <DeprecatedInterface>
-            <errorLevel type="suppress">
-                <referencedClass name="Doctrine\Common\Persistence\ObjectRepository" />
-            </errorLevel>
-        </DeprecatedInterface>
-
-        <!-- Sylius specifics -->
-
-        <PossiblyInvalidMethodCall>
-            <errorLevel type="suppress">
-                <file name="lib/Layout/Resolver/TargetType/TaxonProduct.php" />
-            </errorLevel>
-        </PossiblyInvalidMethodCall>
-
         <!-- level 3 issues - slightly lazy code writing, but probably low false-negatives -->
 
         <PropertyNotSetInConstructor errorLevel="info" />

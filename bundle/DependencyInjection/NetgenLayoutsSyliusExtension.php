@@ -44,6 +44,7 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             'design.yaml' => 'netgen_layouts',
             'value_types.yaml' => 'netgen_layouts',
             'query_types.yaml' => 'netgen_layouts',
+            'sylius_ui.yaml' => 'sylius_ui',
             'view/item_view.yaml' => 'netgen_layouts',
             'view/rule_target_view.yaml' => 'netgen_layouts',
         ];

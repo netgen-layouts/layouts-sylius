@@ -1,0 +1,16 @@
+events:
+    sylius.shop.layout.stylesheets:
+        blocks:
+            netgen_layouts: '@NetgenLayouts/stylesheets.html.twig'
+            netgen_layouts_standard:
+                template: '@NetgenLayoutsStandard/stylesheets.html.twig'
+                context:
+                    full: true
+
+    sylius.shop.layout.javascripts:
+        blocks:
+            netgen_layouts: '@NetgenLayouts/javascripts.html.twig'
+            netgen_layouts_standard:
+                template: '@NetgenLayoutsStandard/javascripts.html.twig'
+                context:
+                    full: true

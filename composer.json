@@ -12,17 +12,17 @@
     "require": {
         "netgen/layouts-core": "~1.2.0",
         "netgen/content-browser-sylius": "^1.2",
-        "sylius/sylius": "^1.6"
+        "sylius/sylius": "^1.7"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.0",
         "symfony/phpunit-bridge": "^5.0",
-        "symfony/var-dumper": "^3.4 || ^4.4",
+        "symfony/var-dumper": "^4.4",
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpstan/phpstan-doctrine": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
-        "vimeo/psalm": "^3.9",
+        "vimeo/psalm": "^3.10",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1"
     },
     "scripts": {
