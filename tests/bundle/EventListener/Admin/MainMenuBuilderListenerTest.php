@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use function array_keys;
 
 final class MainMenuBuilderListenerTest extends TestCase
 {

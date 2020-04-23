@@ -9,6 +9,9 @@ use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use function array_keys;
+use function array_search;
+use function array_splice;
 
 final class MainMenuBuilderListener implements EventSubscriberInterface
 {

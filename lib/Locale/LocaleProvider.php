@@ -8,6 +8,7 @@ use Netgen\Layouts\Locale\LocaleProviderInterface;
 use Netgen\Layouts\Utils\BackwardsCompatibility\Locales;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface as SyliusLocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use function asort;
 
 /**
  * Sylius specific locale provider that provides the existing locales

@@ -8,6 +8,8 @@ use Netgen\Layouts\Sylius\Locale\LocaleProvider;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use function array_keys;
+use function array_values;
 
 final class LocaleProviderTest extends TestCase
 {
