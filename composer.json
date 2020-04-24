@@ -40,9 +40,6 @@
         }
     },
     "autoload-dev": {
-        "files": [
-            "vendor/symfony/var-dumper/Resources/functions/dump.php"
-        ],
         "psr-4": {
             "Netgen\\Layouts\\Sylius\\Tests\\": "tests/lib/",
             "Netgen\\Bundle\\LayoutsSyliusBundle\\Tests\\": "tests/bundle/",
