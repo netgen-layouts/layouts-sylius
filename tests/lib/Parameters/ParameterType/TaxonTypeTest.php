@@ -151,7 +151,6 @@ final class TaxonTypeTest extends TestCase
 
     /**
      * @param mixed $value
-     * @param bool $isEmpty
      *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::isValueEmpty
      * @dataProvider emptyDataProvider

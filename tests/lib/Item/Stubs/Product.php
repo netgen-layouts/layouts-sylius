@@ -10,8 +10,6 @@ final class Product extends BaseProduct
 {
     /**
      * @param int|string $id
-     * @param string $name
-     * @param string|null $slug
      */
     public function __construct($id, string $name, ?string $slug = null)
     {

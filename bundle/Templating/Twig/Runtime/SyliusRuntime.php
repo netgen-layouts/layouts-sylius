@@ -34,8 +34,6 @@ final class SyliusRuntime
      * Returns the product name.
      *
      * @param int|string $productId
-     *
-     * @return string|null
      */
     public function getProductName($productId): ?string
     {
