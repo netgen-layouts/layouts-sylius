@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
-use Netgen\Layouts\Layout\Resolver\TargetTypeInterface;
+use Netgen\Layouts\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
-final class Taxon implements TargetTypeInterface
+final class Taxon extends TargetType
 {
     public static function getType(): string
     {

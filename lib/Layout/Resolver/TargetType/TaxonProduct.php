@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
-use Netgen\Layouts\Layout\Resolver\TargetTypeInterface;
+use Netgen\Layouts\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 use function array_map;
 
-final class TaxonProduct implements TargetTypeInterface
+final class TaxonProduct extends TargetType
 {
     public static function getType(): string
     {
