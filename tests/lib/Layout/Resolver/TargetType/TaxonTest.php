@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Validation;
 final class TaxonTest extends TestCase
 {
     /**
-     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface&\PHPUnit\Framework\MockObject\MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
      */
     private $repositoryMock;
 

@@ -19,7 +19,7 @@ final class TaxonTypeTest extends TestCase
     use ParameterTypeTestTrait;
 
     /**
-     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface&\PHPUnit\Framework\MockObject\MockObject
+     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
      */
     private $repositoryMock;
 
