@@ -65,7 +65,7 @@ final class MainMenuBuilderListenerTest extends TestCase
         self::assertArrayHasKey('nglayouts', $menuItem);
 
         self::assertSame(
-            ['layout_resolver', 'layouts', 'shared_layouts'],
+            ['layout_resolver', 'layouts', 'shared_layouts', 'transfer'],
             array_keys($menuItem['nglayouts']->getChildren())
         );
     }

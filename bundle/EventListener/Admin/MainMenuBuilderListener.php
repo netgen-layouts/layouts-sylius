@@ -68,6 +68,11 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
             ->setLabel('sylius.menu.admin.main.nglayouts.shared_layouts')
             ->setLabelAttribute('icon', 'list layout');
 
+        $layouts
+            ->addChild('transfer', ['route' => 'nglayouts_admin_transfer_index'])
+            ->setLabel('sylius.menu.admin.main.nglayouts.transfer')
+            ->setLabelAttribute('icon', 'arrow circle up');
+
         $menu->reorderChildren($menuOrder);
     }
 
