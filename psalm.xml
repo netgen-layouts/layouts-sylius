@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <psalm
+    errorLevel="3"
+    resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
@@ -26,9 +28,5 @@
                 <directory name="lib/Collection/QueryType/Handler" />
             </errorLevel>
         </LessSpecificReturnStatement>
-
-        <!-- level 3 issues - slightly lazy code writing, but probably low false-negatives -->
-
-        <PropertyNotSetInConstructor errorLevel="info" />
     </issueHandlers>
 </psalm>
