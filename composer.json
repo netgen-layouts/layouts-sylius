@@ -16,15 +16,15 @@
     },
     "require-dev": {
         "netgen/layouts-coding-standard": "^1.0",
-        "phpunit/phpunit": "^9.3",
+        "phpunit/phpunit": "^9.5",
         "symfony/phpunit-bridge": "^5.2",
         "symfony/var-dumper": "^4.4 || ^5.2",
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpstan/phpstan-doctrine": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
-        "vimeo/psalm": "^3.10",
-        "matthiasnoback/symfony-dependency-injection-test": "^4.1"
+        "vimeo/psalm": "^4.4",
+        "matthiasnoback/symfony-dependency-injection-test": "^4.2"
     },
     "scripts": {
         "test": "@php vendor/bin/phpunit --colors=always",
