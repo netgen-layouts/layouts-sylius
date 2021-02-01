@@ -112,8 +112,8 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
                 return null;
             }
 
-            $taxonSlug = $currentRequest->attributes->get('slug');
-            if (trim($taxonSlug ?? '') === '') {
+            $taxonSlug = trim($currentRequest->attributes->get('slug') ?? '');
+            if ($taxonSlug === '') {
                 return null;
             }
 
