@@ -3,6 +3,12 @@
 declare(strict_types=1);
 
 return [
+    'nglayouts_rule_group' => [
+        ['id' => 1, 'status' => 1, 'uuid' => '00000000-0000-0000-0000-000000000000', 'depth' => 0, 'path' => '/1/', 'parent_id' => null, 'comment' => 'My comment'],
+    ],
+    'nglayouts_rule_group_data' => [
+        ['rule_group_id' => 1, 'enabled' => 1, 'priority' => 0],
+    ],
     'nglayouts_rule' => [
         ['id' => 1, 'status' => 1, 'uuid' => '38203a0a-a801-4974-ba05-4856a36b5f3b', 'rule_group_id' => 1, 'layout_uuid' => '81168ed3-86f9-55ea-b153-101f96f2c136', 'comment' => ''],
         ['id' => 2, 'status' => 0, 'uuid' => '4936c777-d9a2-4c2b-bb24-84dc8850fd8b', 'rule_group_id' => 1, 'layout_uuid' => '71cbe281-430c-51d5-8e21-c3cc4e656dac', 'comment' => ''],
