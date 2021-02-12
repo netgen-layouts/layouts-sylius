@@ -18,7 +18,7 @@ final class ProductValueLoader implements ValueLoaderInterface
         $this->productRepository = $productRepository;
     }
 
-    public function load($id): ?object
+    public function load($id): ?ProductInterface
     {
         try {
             $product = $this->productRepository->find($id);
@@ -29,7 +29,7 @@ final class ProductValueLoader implements ValueLoaderInterface
         return $product instanceof ProductInterface ? $product : null;
     }
 
-    public function loadByRemoteId($remoteId): ?object
+    public function loadByRemoteId($remoteId): ?ProductInterface
     {
         return $this->load($remoteId);
     }

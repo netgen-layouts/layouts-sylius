@@ -22,12 +22,12 @@ final class ProductValueConverter implements ValueConverterInterface
         return 'sylius_product';
     }
 
-    public function getId(object $object)
+    public function getId(object $object): int
     {
         return $object->getId();
     }
 
-    public function getRemoteId(object $object)
+    public function getRemoteId(object $object): int
     {
         return $object->getId();
     }
@@ -42,7 +42,7 @@ final class ProductValueConverter implements ValueConverterInterface
         return true;
     }
 
-    public function getObject(object $object): object
+    public function getObject(object $object): ProductInterface
     {
         return $object;
     }

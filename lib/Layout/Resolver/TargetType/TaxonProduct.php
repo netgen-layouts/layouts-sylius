@@ -29,7 +29,10 @@ final class TaxonProduct extends TargetType
         ];
     }
 
-    public function provideValue(Request $request)
+    /**
+     * @return int[]|null
+     */
+    public function provideValue(Request $request): ?array
     {
         $product = $request->attributes->get('nglayouts_sylius_product');
         if (!$product instanceof ProductInterface) {

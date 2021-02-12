@@ -27,7 +27,10 @@ final class Taxon extends TargetType
         ];
     }
 
-    public function provideValue(Request $request)
+    /**
+     * @return int[]|null
+     */
+    public function provideValue(Request $request): ?array
     {
         $taxon = $request->attributes->get('nglayouts_sylius_taxon');
         if (!$taxon instanceof TaxonInterface) {
@@ -36,7 +39,7 @@ final class Taxon extends TargetType
 
         $taxonIds = [];
         do {
-            $taxonIds[] = $taxon->getId();
+            $taxonIds[] = (int) $taxon->getId();
             $taxon = $taxon->getParent();
         } while ($taxon instanceof TaxonInterface);
 
