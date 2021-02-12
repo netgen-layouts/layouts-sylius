@@ -15,25 +15,13 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ProductIndexListener implements EventSubscriberInterface
 {
-    /**
-     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
-     */
-    private $taxonRepository;
+    private TaxonRepositoryInterface $taxonRepository;
 
-    /**
-     * @var \Sylius\Component\Locale\Context\LocaleContextInterface
-     */
-    private $localeContext;
+    private LocaleContextInterface $localeContext;
 
-    /**
-     * @var \Symfony\Component\HttpFoundation\RequestStack
-     */
-    private $requestStack;
+    private RequestStack $requestStack;
 
-    /**
-     * @var \Netgen\Layouts\Context\Context
-     */
-    private $context;
+    private Context $context;
 
     public function __construct(
         TaxonRepositoryInterface $taxonRepository,

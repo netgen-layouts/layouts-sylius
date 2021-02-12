@@ -13,15 +13,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ProductShowListener implements EventSubscriberInterface
 {
-    /**
-     * @var \Symfony\Component\HttpFoundation\RequestStack
-     */
-    private $requestStack;
+    private RequestStack $requestStack;
 
-    /**
-     * @var \Netgen\Layouts\Context\Context
-     */
-    private $context;
+    private Context $context;
 
     public function __construct(RequestStack $requestStack, Context $context)
     {

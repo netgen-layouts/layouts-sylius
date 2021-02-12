@@ -10,10 +10,7 @@ use Twig\TwigFunction;
 
 final class SyliusExtensionTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Extension\SyliusExtension
-     */
-    private $extension;
+    private SyliusExtension $extension;
 
     protected function setUp(): void
     {

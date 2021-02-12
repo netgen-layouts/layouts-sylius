@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +18,9 @@ final class TaxonTest extends TestCase
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
      */
-    private $repositoryMock;
+    private MockObject $repositoryMock;
 
-    /**
-     * @var \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon
-     */
-    private $targetType;
+    private Taxon $targetType;
 
     protected function setUp(): void
     {

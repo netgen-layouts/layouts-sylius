@@ -12,15 +12,9 @@ use function array_reverse;
 
 final class SyliusRuntime
 {
-    /**
-     * @var \Sylius\Component\Product\Repository\ProductRepositoryInterface
-     */
-    private $productRepository;
+    private ProductRepositoryInterface $productRepository;
 
-    /**
-     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
-     */
-    private $taxonRepository;
+    private TaxonRepositoryInterface $taxonRepository;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,

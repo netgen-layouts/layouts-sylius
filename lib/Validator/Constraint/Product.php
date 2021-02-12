@@ -8,10 +8,7 @@ use Symfony\Component\Validator\Constraint;
 
 final class Product extends Constraint
 {
-    /**
-     * @var string
-     */
-    public $message = 'netgen_layouts.sylius.product.product_not_found';
+    public string $message = 'netgen_layouts.sylius.product.product_not_found';
 
     public function validatedBy(): string
     {

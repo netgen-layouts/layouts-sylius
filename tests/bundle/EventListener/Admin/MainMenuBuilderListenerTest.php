@@ -7,6 +7,7 @@ namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Admin;
 use Knp\Menu\MenuFactory;
 use Knp\Menu\MenuItem;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
@@ -15,15 +16,9 @@ use function array_keys;
 
 final class MainMenuBuilderListenerTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener
-     */
-    private $listener;
+    private MainMenuBuilderListener $listener;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $authCheckerMock;
+    private MockObject $authCheckerMock;
 
     protected function setUp(): void
     {

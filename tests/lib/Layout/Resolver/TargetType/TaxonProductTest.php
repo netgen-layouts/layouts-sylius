@@ -8,6 +8,7 @@ use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Core\Model\ProductTaxon;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
@@ -19,12 +20,9 @@ final class TaxonProductTest extends TestCase
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
      */
-    private $repositoryMock;
+    private MockObject $repositoryMock;
 
-    /**
-     * @var \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct
-     */
-    private $targetType;
+    private TaxonProduct $targetType;
 
     protected function setUp(): void
     {

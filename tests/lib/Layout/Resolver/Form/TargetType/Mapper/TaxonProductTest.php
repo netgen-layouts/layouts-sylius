@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class TaxonProductTest extends TestCase
 {
-    /**
-     * @var \Netgen\Layouts\Layout\Resolver\Form\TargetType\MapperInterface
-     */
-    private $mapper;
+    private TaxonProduct $mapper;
 
     protected function setUp(): void
     {

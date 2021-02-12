@@ -12,10 +12,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 final class AdminAccessVoterTest extends TestCase
 {
-    /**
-     * @var \Netgen\Layouts\Sylius\Security\Authorization\Voter\AdminAccessVoter
-     */
-    private $voter;
+    private AdminAccessVoter $voter;
 
     protected function setUp(): void
     {

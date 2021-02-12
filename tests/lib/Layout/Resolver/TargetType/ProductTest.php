@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +18,9 @@ final class ProductTest extends TestCase
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Product\Repository\ProductRepositoryInterface
      */
-    private $repositoryMock;
+    private MockObject $repositoryMock;
 
-    /**
-     * @var \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product
-     */
-    private $targetType;
+    private Product $targetType;
 
     protected function setUp(): void
     {

@@ -15,20 +15,11 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ProductShowListenerTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener
-     */
-    private $listener;
+    private ProductShowListener $listener;
 
-    /**
-     * @var \Symfony\Component\HttpFoundation\RequestStack
-     */
-    private $requestStack;
+    private RequestStack $requestStack;
 
-    /**
-     * @var \Netgen\Layouts\Context\Context
-     */
-    private $context;
+    private Context $context;
 
     protected function setUp(): void
     {

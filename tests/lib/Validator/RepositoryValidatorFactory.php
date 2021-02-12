@@ -16,15 +16,9 @@ use Symfony\Component\Validator\ConstraintValidatorInterface;
 
 final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
 {
-    /**
-     * @var \Sylius\Component\Resource\Repository\RepositoryInterface
-     */
-    private $repository;
+    private RepositoryInterface $repository;
 
-    /**
-     * @var \Symfony\Component\Validator\ConstraintValidatorFactoryInterface
-     */
-    private $baseValidatorFactory;
+    private ConstraintValidatorFactory $baseValidatorFactory;
 
     public function __construct(RepositoryInterface $repository)
     {

@@ -12,10 +12,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
 {
-    /**
-     * @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface
-     */
-    private $urlGenerator;
+    private UrlGeneratorInterface $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {

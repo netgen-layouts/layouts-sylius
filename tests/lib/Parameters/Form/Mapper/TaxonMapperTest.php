@@ -12,10 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class TaxonMapperTest extends TestCase
 {
-    /**
-     * @var \Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper
-     */
-    private $mapper;
+    private TaxonMapper $mapper;
 
     protected function setUp(): void
     {

@@ -7,26 +7,18 @@ namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Runtime;
 use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 final class SyliusRuntimeTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $productRepositoryMock;
+    private MockObject $productRepositoryMock;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $taxonRepositoryMock;
+    private MockObject $taxonRepositoryMock;
 
-    /**
-     * @var \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime
-     */
-    private $runtime;
+    private SyliusRuntime $runtime;
 
     protected function setUp(): void
     {

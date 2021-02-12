@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ProductTest extends TestCase
 {
-    /**
-     * @var \Netgen\Layouts\Layout\Resolver\Form\TargetType\MapperInterface
-     */
-    private $mapper;
+    private Product $mapper;
 
     protected function setUp(): void
     {

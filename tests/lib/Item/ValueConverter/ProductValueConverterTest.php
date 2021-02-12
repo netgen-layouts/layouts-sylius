@@ -12,10 +12,7 @@ use Sylius\Component\Taxonomy\Model\Taxon;
 
 final class ProductValueConverterTest extends TestCase
 {
-    /**
-     * @var \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter
-     */
-    private $valueConverter;
+    private ProductValueConverter $valueConverter;
 
     protected function setUp(): void
     {

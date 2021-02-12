@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Locale;
 
 use Netgen\Layouts\Sylius\Locale\LocaleProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,15 +14,9 @@ use function array_values;
 
 final class LocaleProviderTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $syliusLocaleProviderMock;
+    private MockObject $syliusLocaleProviderMock;
 
-    /**
-     * @var \Netgen\Layouts\Sylius\Locale\LocaleProvider
-     */
-    private $localeProvider;
+    private LocaleProvider $localeProvider;
 
     protected function setUp(): void
     {

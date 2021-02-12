@@ -14,10 +14,7 @@ use function is_scalar;
 
 final class TaxonValidator extends ConstraintValidator
 {
-    /**
-     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
-     */
-    private $taxonRepository;
+    private TaxonRepositoryInterface $taxonRepository;
 
     public function __construct(TaxonRepositoryInterface $taxonRepository)
     {

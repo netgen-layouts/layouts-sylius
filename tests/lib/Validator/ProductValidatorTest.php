@@ -8,6 +8,7 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Validator\Constraint\Product;
 use Netgen\Layouts\Sylius\Validator\ProductValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
@@ -15,10 +16,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class ProductValidatorTest extends ValidatorTestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $repositoryMock;
+    private MockObject $repositoryMock;
 
     protected function setUp(): void
     {

@@ -6,20 +6,15 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueUrlGenerator;
 
 use Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ProductValueUrlGeneratorTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $urlGeneratorMock;
+    private MockObject $urlGeneratorMock;
 
-    /**
-     * @var \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator
-     */
-    private $urlGenerator;
+    private ProductValueUrlGenerator $urlGenerator;
 
     protected function setUp(): void
     {

@@ -7,20 +7,15 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueLoader;
 use Exception;
 use Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 final class ProductValueLoaderTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $productRepositoryMock;
+    private MockObject $productRepositoryMock;
 
-    /**
-     * @var \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader
-     */
-    private $valueLoader;
+    private ProductValueLoader $valueLoader;
 
     protected function setUp(): void
     {

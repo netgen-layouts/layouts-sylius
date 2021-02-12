@@ -13,10 +13,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 final class SetPageLayoutListenerTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener
-     */
-    private $listener;
+    private SetPageLayoutListener $listener;
 
     protected function setUp(): void
     {

@@ -16,10 +16,7 @@ use function asort;
  */
 final class LocaleProvider implements LocaleProviderInterface
 {
-    /**
-     * @var \Sylius\Component\Locale\Provider\LocaleProviderInterface
-     */
-    private $syliusLocaleProvider;
+    private SyliusLocaleProviderInterface $syliusLocaleProvider;
 
     public function __construct(SyliusLocaleProviderInterface $syliusLocaleProvider)
     {

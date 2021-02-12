@@ -7,6 +7,7 @@ namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Shop;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener;
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -16,30 +17,15 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ProductIndexListenerTest extends TestCase
 {
-    /**
-     * @var \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener
-     */
-    private $listener;
+    private ProductIndexListener $listener;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $taxonRepositoryMock;
+    private MockObject $taxonRepositoryMock;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
-     */
-    private $localeContextMock;
+    private MockObject $localeContextMock;
 
-    /**
-     * @var \Symfony\Component\HttpFoundation\RequestStack
-     */
-    private $requestStack;
+    private RequestStack $requestStack;
 
-    /**
-     * @var \Netgen\Layouts\Context\Context
-     */
-    private $context;
+    private Context $context;
 
     protected function setUp(): void
     {

@@ -21,25 +21,13 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
 {
     private const DEFAULT_LIMIT = 12;
 
-    /**
-     * @var \Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepositoryInterface
-     */
-    private $productRepository;
+    private ProductRepositoryInterface $productRepository;
 
-    /**
-     * @var \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
-     */
-    private $taxonRepository;
+    private TaxonRepositoryInterface $taxonRepository;
 
-    /**
-     * @var \Sylius\Component\Channel\Context\ChannelContextInterface
-     */
-    private $channelContext;
+    private ChannelContextInterface $channelContext;
 
-    /**
-     * @var \Symfony\Component\HttpFoundation\RequestStack
-     */
-    private $requestStack;
+    private RequestStack $requestStack;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
