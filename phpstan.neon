@@ -1,6 +1,9 @@
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
     - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-doctrine/rules.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-symfony/rules.neon
 
 parameters:
     ignoreErrors:
@@ -8,4 +11,3 @@ parameters:
 
         - '#no value type specified in iterable type Knp\\Menu\\ItemInterface.#'
         - '#no value type specified in iterable type Sylius\\Bundle\\ResourceBundle\\Event\\ResourceControllerEvent.#'
-        - '#Method .+Listener::getSubscribedEvents\(\) return type has no value type specified in iterable type array.#'
