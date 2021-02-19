@@ -4,9 +4,3 @@ includes:
     - vendor/phpstan/phpstan-doctrine/rules.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
     - vendor/phpstan/phpstan-symfony/rules.neon
-
-parameters:
-    ignoreErrors:
-        # Disable errors about missing value types in various vendor classes
-
-        - '#no value type specified in iterable type Sylius\\Bundle\\ResourceBundle\\Event\\ResourceControllerEvent.#'
