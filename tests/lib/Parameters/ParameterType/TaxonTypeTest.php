@@ -67,6 +67,8 @@ final class TaxonTypeTest extends TestCase
 
     /**
      * Provider for testing valid parameter attributes.
+     *
+     * @return mixed[]
      */
     public function validOptionsDataProvider(): array
     {
@@ -80,6 +82,8 @@ final class TaxonTypeTest extends TestCase
 
     /**
      * Provider for testing invalid parameter attributes.
+     *
+     * @return mixed[]
      */
     public function invalidOptionsDataProvider(): array
     {
@@ -161,6 +165,9 @@ final class TaxonTypeTest extends TestCase
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
+    /**
+     * @return mixed[]
+     */
     public function emptyDataProvider(): array
     {
         return [
