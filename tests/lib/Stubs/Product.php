@@ -8,10 +8,7 @@ use Sylius\Component\Core\Model\Product as BaseProduct;
 
 final class Product extends BaseProduct
 {
-    /**
-     * @param int|string $id
-     */
-    public function __construct($id)
+    public function __construct(int $id)
     {
         parent::__construct();
 

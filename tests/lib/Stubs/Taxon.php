@@ -8,10 +8,7 @@ use Sylius\Component\Core\Model\Taxon as BaseTaxon;
 
 final class Taxon extends BaseTaxon
 {
-    /**
-     * @param int|string $id
-     */
-    public function __construct($id)
+    public function __construct(int $id)
     {
         parent::__construct();
 
