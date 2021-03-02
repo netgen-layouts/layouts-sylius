@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 return [
     'nglayouts_rule_group' => [
-        ['id' => 1, 'status' => 1, 'uuid' => '00000000-0000-0000-0000-000000000000', 'depth' => 0, 'path' => '/1/', 'parent_id' => null, 'comment' => 'My comment'],
+        ['id' => 1, 'status' => 1, 'uuid' => '00000000-0000-0000-0000-000000000000', 'depth' => 0, 'path' => '/1/', 'parent_id' => null, 'name' => '', 'description' => ''],
     ],
     'nglayouts_rule_group_data' => [
         ['rule_group_id' => 1, 'enabled' => 1, 'priority' => 0],
     ],
     'nglayouts_rule' => [
-        ['id' => 1, 'status' => 1, 'uuid' => '38203a0a-a801-4974-ba05-4856a36b5f3b', 'rule_group_id' => 1, 'layout_uuid' => '81168ed3-86f9-55ea-b153-101f96f2c136', 'comment' => ''],
-        ['id' => 2, 'status' => 0, 'uuid' => '4936c777-d9a2-4c2b-bb24-84dc8850fd8b', 'rule_group_id' => 1, 'layout_uuid' => '71cbe281-430c-51d5-8e21-c3cc4e656dac', 'comment' => ''],
-        ['id' => 3, 'status' => 1, 'uuid' => 'e07be662-4168-432b-a170-57000c568d60', 'rule_group_id' => 1, 'layout_uuid' => 'd8e55af7-cf62-5f28-ae15-331b457d82e9', 'comment' => ''],
-        ['id' => 4, 'status' => 1, 'uuid' => 'a74c864b-48cf-49a1-af71-8f016c8a78e8', 'rule_group_id' => 1, 'layout_uuid' => '8626a1ca-6413-5f54-acef-de7db06272ce', 'comment' => ''],
-        ['id' => 5, 'status' => 1, 'uuid' => 'a90f576f-072e-464c-892f-0de623520e53', 'rule_group_id' => 1, 'layout_uuid' => '399ad9ac-777a-50ba-945a-06e9f57add12', 'comment' => ''],
-        ['id' => 6, 'status' => 1, 'uuid' => 'fcfb2d79-6d82-4d49-afd6-555e49b53c98', 'rule_group_id' => 1, 'layout_uuid' => '8626a1ca-6413-5f54-acef-de7db06272ce', 'comment' => ''],
-        ['id' => 7, 'status' => 1, 'uuid' => '56fad9c2-b0ea-43d3-af5b-c5fea565f1b5', 'rule_group_id' => 1, 'layout_uuid' => '399ad9ac-777a-50ba-945a-06e9f57add12', 'comment' => ''],
+        ['id' => 1, 'status' => 1, 'uuid' => '38203a0a-a801-4974-ba05-4856a36b5f3b', 'rule_group_id' => 1, 'layout_uuid' => '81168ed3-86f9-55ea-b153-101f96f2c136', 'description' => ''],
+        ['id' => 2, 'status' => 0, 'uuid' => '4936c777-d9a2-4c2b-bb24-84dc8850fd8b', 'rule_group_id' => 1, 'layout_uuid' => '71cbe281-430c-51d5-8e21-c3cc4e656dac', 'description' => ''],
+        ['id' => 3, 'status' => 1, 'uuid' => 'e07be662-4168-432b-a170-57000c568d60', 'rule_group_id' => 1, 'layout_uuid' => 'd8e55af7-cf62-5f28-ae15-331b457d82e9', 'description' => ''],
+        ['id' => 4, 'status' => 1, 'uuid' => 'a74c864b-48cf-49a1-af71-8f016c8a78e8', 'rule_group_id' => 1, 'layout_uuid' => '8626a1ca-6413-5f54-acef-de7db06272ce', 'description' => ''],
+        ['id' => 5, 'status' => 1, 'uuid' => 'a90f576f-072e-464c-892f-0de623520e53', 'rule_group_id' => 1, 'layout_uuid' => '399ad9ac-777a-50ba-945a-06e9f57add12', 'description' => ''],
+        ['id' => 6, 'status' => 1, 'uuid' => 'fcfb2d79-6d82-4d49-afd6-555e49b53c98', 'rule_group_id' => 1, 'layout_uuid' => '8626a1ca-6413-5f54-acef-de7db06272ce', 'description' => ''],
+        ['id' => 7, 'status' => 1, 'uuid' => '56fad9c2-b0ea-43d3-af5b-c5fea565f1b5', 'rule_group_id' => 1, 'layout_uuid' => '399ad9ac-777a-50ba-945a-06e9f57add12', 'description' => ''],
     ],
     'nglayouts_rule_data' => [
         ['rule_id' => 1, 'enabled' => 1, 'priority' => 7],
