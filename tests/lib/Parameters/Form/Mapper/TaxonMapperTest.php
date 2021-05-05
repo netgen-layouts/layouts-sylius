@@ -37,7 +37,7 @@ final class TaxonMapperTest extends TestCase
                 'item_type' => 'sylius_taxon',
                 'required' => false,
             ],
-            $this->mapper->mapOptions(ParameterDefinition::fromArray(['type' => new ParameterType(), 'isRequired' => false]))
+            $this->mapper->mapOptions(ParameterDefinition::fromArray(['type' => new ParameterType(), 'isRequired' => false])),
         );
     }
 }

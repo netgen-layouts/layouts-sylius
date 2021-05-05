@@ -20,7 +20,7 @@ final class ProductTest extends AbstractTargetHandlerTest
         $rules = $this->handler->matchRules(
             $this->handler->loadRuleGroup(RuleGroup::ROOT_UUID, Value::STATUS_PUBLISHED),
             $this->getTargetIdentifier(),
-            72
+            72,
         );
 
         self::assertCount(1, $rules);

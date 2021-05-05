@@ -25,7 +25,7 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
             'sylius_shop_product_show',
             [
                 'slug' => $object->getSlug(),
-            ]
+            ],
         );
     }
 }

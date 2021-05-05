@@ -13,7 +13,7 @@ final class TaxonProduct implements TargetHandlerInterface
     public function handleQuery(QueryBuilder $query, $value): void
     {
         $query->andWhere(
-            $query->expr()->in('rt.value', [':target_value'])
+            $query->expr()->in('rt.value', [':target_value']),
         )
         ->setParameter('target_value', $value, Connection::PARAM_INT_ARRAY);
     }

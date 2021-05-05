@@ -34,7 +34,7 @@ final class ProductTest extends TestCase
             [
                 'item_type' => 'sylius_product',
             ],
-            $this->mapper->getFormOptions()
+            $this->mapper->getFormOptions(),
         );
     }
 }

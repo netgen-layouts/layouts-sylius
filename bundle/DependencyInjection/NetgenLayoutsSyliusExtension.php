@@ -30,8 +30,8 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
                 [
                     new GlobFileLoader($container, $locator),
                     new YamlFileLoader($container, $locator),
-                ]
-            )
+                ],
+            ),
         );
 
         $loader->load('services/**/*.yaml', 'glob');

@@ -48,7 +48,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
             ParameterType\Compound\BooleanType::class,
             [
                 'reverse' => true,
-            ]
+            ],
         );
 
         $builder->get('use_current_taxon')->add(
@@ -56,7 +56,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
             SyliusParameterType\TaxonType::class,
             [
                 'required' => true,
-            ]
+            ],
         );
 
         $builder->add(
@@ -70,7 +70,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
                     'Created' => 'createdAt',
                     'Price' => 'price',
                 ],
-            ]
+            ],
         );
 
         $builder->add(
@@ -82,7 +82,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
                     'Descending' => 'desc',
                     'Ascending' => 'asc',
                 ],
-            ]
+            ],
         );
     }
 
@@ -106,7 +106,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
             $currentRequest->getLocale(),
             $offset,
             $limit ?? self::DEFAULT_LIMIT,
-            [$sortType => $sortDirection]
+            [$sortType => $sortDirection],
         );
     }
 
@@ -122,7 +122,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         return $this->productRepository->countByTaxon(
             $this->channelContext->getChannel(),
             $parentTaxon,
-            $currentRequest->getLocale()
+            $currentRequest->getLocale(),
         );
     }
 

@@ -37,7 +37,7 @@ final class ProductShowListenerTest extends TestCase
     {
         self::assertSame(
             ['sylius.product.show' => 'onProductShow'],
-            $this->listener::getSubscribedEvents()
+            $this->listener::getSubscribedEvents(),
         );
     }
 

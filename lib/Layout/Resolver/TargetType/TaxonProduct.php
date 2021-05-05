@@ -41,7 +41,7 @@ final class TaxonProduct extends TargetType
 
         return array_map(
             static fn (TaxonInterface $taxon): int => $taxon->getId(),
-            $product->getTaxons()->getValues()
+            $product->getTaxons()->getValues(),
         );
     }
 }

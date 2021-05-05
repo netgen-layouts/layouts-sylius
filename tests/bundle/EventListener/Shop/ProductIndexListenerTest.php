@@ -43,7 +43,7 @@ final class ProductIndexListenerTest extends TestCase
             $this->taxonRepositoryMock,
             $this->localeContextMock,
             $this->requestStack,
-            $this->context
+            $this->context,
         );
     }
 
@@ -55,7 +55,7 @@ final class ProductIndexListenerTest extends TestCase
     {
         self::assertSame(
             ['sylius.product.index' => 'onProductIndex'],
-            $this->listener::getSubscribedEvents()
+            $this->listener::getSubscribedEvents(),
         );
     }
 

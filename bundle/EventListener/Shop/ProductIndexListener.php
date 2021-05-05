@@ -58,7 +58,7 @@ final class ProductIndexListener implements EventSubscriberInterface
 
         $taxon = $this->taxonRepository->findOneBySlug(
             $currentRequest->attributes->get('slug'),
-            $this->localeContext->getLocaleCode()
+            $this->localeContext->getLocaleCode(),
         );
 
         if (!$taxon instanceof TaxonInterface) {

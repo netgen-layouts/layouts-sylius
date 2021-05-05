@@ -36,8 +36,8 @@ final class ProductValueConverterTest extends TestCase
         self::assertSame(
             'sylius_product',
             $this->valueConverter->getValueType(
-                new Product()
-            )
+                new Product(),
+            ),
         );
     }
 
@@ -49,8 +49,8 @@ final class ProductValueConverterTest extends TestCase
         self::assertSame(
             42,
             $this->valueConverter->getId(
-                new ProductStub(42, 'Product name')
-            )
+                new ProductStub(42, 'Product name'),
+            ),
         );
     }
 
@@ -62,8 +62,8 @@ final class ProductValueConverterTest extends TestCase
         self::assertSame(
             42,
             $this->valueConverter->getRemoteId(
-                new ProductStub(42, 'Product name')
-            )
+                new ProductStub(42, 'Product name'),
+            ),
         );
     }
 
@@ -75,8 +75,8 @@ final class ProductValueConverterTest extends TestCase
         self::assertSame(
             'Product name',
             $this->valueConverter->getName(
-                new ProductStub(42, 'Product name')
-            )
+                new ProductStub(42, 'Product name'),
+            ),
         );
     }
 
@@ -87,8 +87,8 @@ final class ProductValueConverterTest extends TestCase
     {
         self::assertTrue(
             $this->valueConverter->getIsVisible(
-                new ProductStub(42, 'Product name')
-            )
+                new ProductStub(42, 'Product name'),
+            ),
         );
     }
 

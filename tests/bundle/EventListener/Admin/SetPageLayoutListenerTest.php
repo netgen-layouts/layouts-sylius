@@ -28,7 +28,7 @@ final class SetPageLayoutListenerTest extends TestCase
     {
         self::assertSame(
             [LayoutsAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]],
-            $this->listener::getSubscribedEvents()
+            $this->listener::getSubscribedEvents(),
         );
     }
 

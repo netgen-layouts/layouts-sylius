@@ -35,7 +35,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         self::assertSame(
             [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'],
-            $this->listener::getSubscribedEvents()
+            $this->listener::getSubscribedEvents(),
         );
     }
 
@@ -61,7 +61,7 @@ final class MainMenuBuilderListenerTest extends TestCase
 
         self::assertSame(
             ['layout_resolver', 'layouts', 'shared_layouts', 'transfer'],
-            array_keys($menuItem['nglayouts']->getChildren())
+            array_keys($menuItem['nglayouts']->getChildren()),
         );
     }
 
@@ -87,7 +87,7 @@ final class MainMenuBuilderListenerTest extends TestCase
 
         self::assertSame(
             ['nglayouts', 'configuration'],
-            array_keys($menuItem->getChildren())
+            array_keys($menuItem->getChildren()),
         );
     }
 

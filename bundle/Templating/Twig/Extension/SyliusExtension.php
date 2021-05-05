@@ -18,11 +18,11 @@ final class SyliusExtension extends AbstractExtension
         return [
             new TwigFunction(
                 'nglayouts_sylius_product_name',
-                [SyliusRuntime::class, 'getProductName']
+                [SyliusRuntime::class, 'getProductName'],
             ),
             new TwigFunction(
                 'nglayouts_sylius_taxon_path',
-                [SyliusRuntime::class, 'getTaxonPath']
+                [SyliusRuntime::class, 'getTaxonPath'],
             ),
         ];
     }

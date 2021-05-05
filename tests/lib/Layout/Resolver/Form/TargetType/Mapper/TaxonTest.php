@@ -34,7 +34,7 @@ final class TaxonTest extends TestCase
             [
                 'item_type' => 'sylius_taxon',
             ],
-            $this->mapper->getFormOptions()
+            $this->mapper->getFormOptions(),
         );
     }
 }

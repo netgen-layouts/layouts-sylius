@@ -34,13 +34,13 @@ final class ProductValueUrlGeneratorTest extends TestCase
             ->method('generate')
             ->with(
                 self::identicalTo('sylius_shop_product_show'),
-                self::identicalTo(['slug' => 'product-name'])
+                self::identicalTo(['slug' => 'product-name']),
             )
             ->willReturn('/products/product-name');
 
         self::assertSame(
             '/products/product-name',
-            $this->urlGenerator->generate(new Product(42, 'Product name', 'product-name'))
+            $this->urlGenerator->generate(new Product(42, 'Product name', 'product-name')),
         );
     }
 }

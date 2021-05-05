@@ -48,12 +48,12 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             ParameterType\Compound\BooleanType::class,
             [
                 'reverse' => true,
-            ]
+            ],
         );
 
         $builder->get('use_current_taxon')->add(
             'parent_taxon_id',
-            SyliusParameterType\TaxonType::class
+            SyliusParameterType\TaxonType::class,
         );
     }
 
@@ -69,7 +69,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             $this->getParentTaxon($query),
             $currentRequest->getLocale(),
             $offset,
-            $limit ?? self::DEFAULT_LIMIT
+            $limit ?? self::DEFAULT_LIMIT,
         );
     }
 
@@ -83,7 +83,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
         return $this->productRepository->countLatestByTaxon(
             $this->channelContext->getChannel(),
             $this->getParentTaxon($query),
-            $currentRequest->getLocale()
+            $currentRequest->getLocale(),
         );
     }
 
