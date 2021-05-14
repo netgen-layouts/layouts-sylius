@@ -5,3 +5,18 @@
 .ng-layouts-app .layouts-content {
 background: #f9fafb;
 }
+
+/* fixes for rules */
+
+.selected-items, .selected-items-text {
+    margin-bottom: 0;
+}
+
+.nl-group-details, .nl-rule-body {
+  top: 56px !important;
+  right: 260px !important;
+}
+
+.nl-modal {
+  left: 35% !important;
+}
