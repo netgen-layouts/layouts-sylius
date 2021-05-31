@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Admin;
 
+use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuFactory;
 use Knp\Menu\MenuItem;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener;
@@ -57,11 +58,11 @@ final class MainMenuBuilderListenerTest extends TestCase
         $event = new MenuBuilderEvent($factory, $menuItem);
         $this->listener->onMainMenuBuild($event);
 
-        self::assertArrayHasKey('nglayouts', $menuItem);
+        self::assertInstanceOf(ItemInterface::class, $menuItem->getChild('nglayouts'));
 
         self::assertSame(
             ['layout_resolver', 'layouts', 'shared_layouts', 'transfer'],
-            array_keys($menuItem['nglayouts']->getChildren()),
+            array_keys($menuItem->getChild('nglayouts')->getChildren()),
         );
     }
 
