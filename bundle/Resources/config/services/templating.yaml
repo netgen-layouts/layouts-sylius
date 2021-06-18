@@ -9,5 +9,6 @@ services:
         arguments:
             - "@sylius.repository.product"
             - "@sylius.repository.taxon"
+            - "@sylius.repository.channel"
         tags:
             - { name: twig.runtime }
