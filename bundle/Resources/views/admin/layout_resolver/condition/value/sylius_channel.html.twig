@@ -1,0 +1,9 @@
+{% set channels = condition.value %}
+{% set channel_names = [] %}
+
+{% for channel_id in channels %}
+    {% set name = nglayouts_sylius_channel_name(channel_id) %}
+    {% set channel_names = channel_names|merge([name]) %}
+{% endfor %}
+
+{{ channel_names|join(', ') }}

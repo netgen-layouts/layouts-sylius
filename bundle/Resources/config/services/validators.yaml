@@ -12,3 +12,10 @@ services:
             - "@sylius.repository.taxon"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_taxon }
+
+    netgen_layouts.sylius.validator.channel:
+        class: Netgen\Layouts\Sylius\Validator\ChannelValidator
+        arguments:
+            - "@sylius.repository.channel"
+        tags:
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_channel }
