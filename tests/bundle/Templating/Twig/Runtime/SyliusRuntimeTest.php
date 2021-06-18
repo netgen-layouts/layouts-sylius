@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Runtime;
 
 use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime;
+use Netgen\Layouts\Sylius\Tests\Stubs\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
@@ -18,16 +20,20 @@ final class SyliusRuntimeTest extends TestCase
 
     private MockObject $taxonRepositoryMock;
 
+    private MockObject $channelRepositoryMock;
+
     private SyliusRuntime $runtime;
 
     protected function setUp(): void
     {
         $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
+        $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
 
         $this->runtime = new SyliusRuntime(
             $this->productRepositoryMock,
             $this->taxonRepositoryMock,
+            $this->channelRepositoryMock
         );
     }
 
@@ -106,5 +112,37 @@ final class SyliusRuntimeTest extends TestCase
             ->willReturn(null);
 
         self::assertNull($this->runtime->getTaxonPath(42));
+    }
+
+    /**
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getChannelName
+     */
+    public function testGetChannelName(): void
+    {
+        $channel = new Channel(42, 'webshop');
+        $channel->setName('Webshop');
+
+        $this->channelRepositoryMock
+            ->expects(self::once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn($channel);
+
+        self::assertSame('Webshop', $this->runtime->getChannelName(42));
+    }
+
+    /**
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getChannelName
+     */
+    public function testGetChannelNameWithoutChannel(): void
+    {
+        $this->channelRepositoryMock
+            ->expects(self::once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(null);
+
+        self::assertNull($this->runtime->getChannelName(42));
     }
 }
