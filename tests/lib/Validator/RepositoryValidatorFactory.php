@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Validator;
 
+use Netgen\Layouts\Sylius\Validator\ChannelValidator;
 use Netgen\Layouts\Sylius\Validator\ProductValidator;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
+use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
@@ -36,6 +38,10 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 
         if ($name === 'nglayouts_sylius_taxon' && $this->repository instanceof TaxonRepositoryInterface) {
             return new TaxonValidator($this->repository);
+        }
+
+        if ($name === 'nglayouts_sylius_channel' && $this->repository instanceof ChannelRepositoryInterface) {
+            return new ChannelValidator($this->repository);
         }
 
         return $this->baseValidatorFactory->getInstance($constraint);
