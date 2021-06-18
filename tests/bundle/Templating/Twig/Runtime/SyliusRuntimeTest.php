@@ -33,7 +33,7 @@ final class SyliusRuntimeTest extends TestCase
         $this->runtime = new SyliusRuntime(
             $this->productRepositoryMock,
             $this->taxonRepositoryMock,
-            $this->channelRepositoryMock
+            $this->channelRepositoryMock,
         );
     }
 
