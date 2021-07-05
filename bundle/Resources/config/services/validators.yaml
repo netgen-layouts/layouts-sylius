@@ -23,6 +23,6 @@ services:
     netgen_layouts.sylius.validator.locale:
         class: Netgen\Layouts\Sylius\Validator\LocaleValidator
         arguments:
-            - "@netgen_layouts.locale.provider"
+            - "@sylius.repository.locale"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_locale }

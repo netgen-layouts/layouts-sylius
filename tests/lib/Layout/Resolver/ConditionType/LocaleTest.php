@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\ConditionType;
 
-use Netgen\Layouts\Locale\LocaleProviderInterface;
 use Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale;
-use Netgen\Layouts\Sylius\Tests\Validator\LocaleValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\Stubs\Locale as LocaleStub;
+use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Validation;
@@ -16,17 +17,17 @@ use Symfony\Component\Validator\Validation;
 final class LocaleTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Netgen\Layouts\Locale\LocaleProviderInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface
      */
-    private MockObject $localeProviderMock;
+    private MockObject $localeRepositoryMock;
 
     private Locale $conditionType;
 
     protected function setUp(): void
     {
-        $this->localeProviderMock = $this->createMock(LocaleProviderInterface::class);
+        $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
 
-        $this->conditionType = new Locale($this->localeProviderMock);
+        $this->conditionType = new Locale();
     }
 
     /**
@@ -42,19 +43,16 @@ final class LocaleTest extends TestCase
      */
     public function testValidationValid(): void
     {
-        $locales = [
-            'en_US' => 'English (United States)',
-            'en_UK' => 'English (United Kingdom)',
-            'de_DE' => 'German (Germany)',
-        ];
+        $locale = new LocaleStub(5, 'en_US');
 
-        $this->localeProviderMock
+        $this->localeRepositoryMock
             ->expects(self::once())
-            ->method('getAvailableLocales')
-            ->willReturn($locales);
+            ->method('findOneBy')
+            ->with(self::identicalTo(['code' => 'en_US']))
+            ->willReturn($locale);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new LocaleValidatorFactory($this->localeProviderMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryMock))
             ->getValidator();
 
         $errors = $validator->validate(['en_US'], $this->conditionType->getConstraints());
@@ -66,19 +64,14 @@ final class LocaleTest extends TestCase
      */
     public function testValidationInvalidNoLocale(): void
     {
-        $locales = [
-            'en_US' => 'English (United States)',
-            'en_UK' => 'English (United Kingdom)',
-            'de_DE' => 'German (Germany)',
-        ];
-
-        $this->localeProviderMock
+        $this->localeRepositoryMock
             ->expects(self::once())
-            ->method('getAvailableLocales')
-            ->willReturn($locales);
+            ->method('findOneBy')
+            ->with(self::identicalTo(['code' => 'fr_FR']))
+            ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new LocaleValidatorFactory($this->localeProviderMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryMock))
             ->getValidator();
 
         $errors = $validator->validate(['fr_FR'], $this->conditionType->getConstraints());
@@ -91,7 +84,7 @@ final class LocaleTest extends TestCase
     public function testValidationInvalidValue(): void
     {
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new LocaleValidatorFactory($this->localeProviderMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryMock))
             ->getValidator();
 
         $this->expectException(UnexpectedTypeException::class);
@@ -105,17 +98,7 @@ final class LocaleTest extends TestCase
     public function testMatches(): void
     {
         $request = Request::create('/');
-
-        $locales = [
-            'en_US',
-            'en_UK',
-            'de_DE',
-        ];
-
-        $this->localeProviderMock
-            ->expects(self::exactly(4))
-            ->method('getRequestLocales')
-            ->willReturn($locales);
+        $request->setLocale('en_US');
 
         self::assertTrue($this->conditionType->matches($request, ['en_US']));
         self::assertTrue($this->conditionType->matches($request, ['en_US', 'de_DE']));
