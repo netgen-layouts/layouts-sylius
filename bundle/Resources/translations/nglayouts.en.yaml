@@ -11,3 +11,4 @@ layout_resolver.target.sylius_taxon: 'Sylius taxon'
 layout_resolver.target.sylius_taxon_product: 'Sylius taxon products'
 
 layout_resolver.condition.sylius_channel: 'Sylius channel'
+layout_resolver.condition.sylius_locale: 'Sylius locale'
