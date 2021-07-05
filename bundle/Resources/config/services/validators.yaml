@@ -19,3 +19,10 @@ services:
             - "@sylius.repository.channel"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_channel }
+
+    netgen_layouts.sylius.validator.locale:
+        class: Netgen\Layouts\Sylius\Validator\LocaleValidator
+        arguments:
+            - "@netgen_layouts.locale.provider"
+        tags:
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_locale }
