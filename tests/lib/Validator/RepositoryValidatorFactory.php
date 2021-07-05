@@ -45,7 +45,7 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
             return new ChannelValidator($this->repository);
         }
 
-        if ($name === 'nglayouts_sylius_locale' && $this->repository instanceof RepositoryInterface) {
+        if ($name === 'nglayouts_sylius_locale') {
             return new LocaleValidator($this->repository);
         }
 
