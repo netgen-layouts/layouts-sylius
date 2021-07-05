@@ -38,7 +38,7 @@ final class LocaleValidator extends ConstraintValidator
         $locale = $this->localeRepository->findOneBy(['code' => $value]);
         if (!$locale instanceof LocaleInterface) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('%locale%', (string) $value)
+                ->setParameter('%locale%', $value)
                 ->addViolation();
         }
     }
