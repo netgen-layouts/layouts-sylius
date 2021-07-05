@@ -38,7 +38,7 @@ final class SyliusRuntimeTest extends TestCase
             $this->productRepositoryMock,
             $this->taxonRepositoryMock,
             $this->channelRepositoryMock,
-            $this->localeProviderMock
+            $this->localeProviderMock,
         );
     }
 
