@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime;
 
-use Netgen\Layouts\Locale\LocaleProviderInterface;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
+use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
-use function array_key_exists;
 use function array_reverse;
 
 final class SyliusRuntime
@@ -22,18 +22,18 @@ final class SyliusRuntime
 
     private ChannelRepositoryInterface $channelRepository;
 
-    private LocaleProviderInterface $localeProvider;
+    private RepositoryInterface $localeRepository;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
         TaxonRepositoryInterface $taxonRepository,
         ChannelRepositoryInterface $channelRepository,
-        LocaleProviderInterface $localeProvider
+        RepositoryInterface $localeRepository
     ) {
         $this->productRepository = $productRepository;
         $this->taxonRepository = $taxonRepository;
         $this->channelRepository = $channelRepository;
-        $this->localeProvider = $localeProvider;
+        $this->localeRepository = $localeRepository;
     }
 
     /**
@@ -98,11 +98,11 @@ final class SyliusRuntime
      */
     public function getLocaleName(string $locale): ?string
     {
-        $locales = $this->localeProvider->getAvailableLocales();
-        if (!array_key_exists($locale, $locales)) {
+        $locale = $this->localeRepository->findOneBy(['code' => $locale]);
+        if (!$locale instanceof LocaleInterface) {
             return null;
         }
 
-        return $locales[$locale];
+        return $locale->getName();
     }
 }

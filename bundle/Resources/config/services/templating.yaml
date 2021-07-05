@@ -10,6 +10,6 @@ services:
             - "@sylius.repository.product"
             - "@sylius.repository.taxon"
             - "@sylius.repository.channel"
-            - "@netgen_layouts.locale.provider"
+            - "@sylius.repository.locale"
         tags:
             - { name: twig.runtime }

@@ -60,14 +60,12 @@ services:
 
     netgen_layouts.sylius.layout_resolver.condition_type.locale:
         class: Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale
-        arguments:
-            - "@netgen_layouts.locale.provider"
         tags:
             - { name: netgen_layouts.condition_type }
 
     netgen_layouts.sylius.layout_resolver.condition_type.form_mapper.locale:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Locale
         arguments:
-            - "@netgen_layouts.locale.provider"
+            - "@sylius.repository.locale"
         tags:
             - { name: netgen_layouts.condition_type.form_mapper, condition_type: sylius_locale }

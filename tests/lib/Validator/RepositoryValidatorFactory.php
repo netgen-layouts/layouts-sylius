@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Validator;
 
 use Netgen\Layouts\Sylius\Validator\ChannelValidator;
+use Netgen\Layouts\Sylius\Validator\LocaleValidator;
 use Netgen\Layouts\Sylius\Validator\ProductValidator;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
@@ -42,6 +43,10 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 
         if ($name === 'nglayouts_sylius_channel' && $this->repository instanceof ChannelRepositoryInterface) {
             return new ChannelValidator($this->repository);
+        }
+
+        if ($name === 'nglayouts_sylius_locale' && $this->repository instanceof RepositoryInterface) {
+            return new LocaleValidator($this->repository);
         }
 
         return $this->baseValidatorFactory->getInstance($constraint);

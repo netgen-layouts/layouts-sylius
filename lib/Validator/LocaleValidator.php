@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Validator;
 
-use Netgen\Layouts\Locale\LocaleProviderInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint\Locale;
+use Sylius\Component\Locale\Model\LocaleInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
-use function array_key_exists;
 use function is_string;
 
 final class LocaleValidator extends ConstraintValidator
 {
-    private LocaleProviderInterface $localeProvider;
+    private RepositoryInterface $localeRepository;
 
-    public function __construct(LocaleProviderInterface $localeProvider)
+    public function __construct(RepositoryInterface $localeRepository)
     {
-        $this->localeProvider = $localeProvider;
+        $this->localeRepository = $localeRepository;
     }
 
     public function validate($value, Constraint $constraint): void
@@ -35,9 +35,8 @@ final class LocaleValidator extends ConstraintValidator
             throw new UnexpectedTypeException($value, 'string');
         }
 
-        $locales = $this->localeProvider->getAvailableLocales();
-
-        if (!array_key_exists($value, $locales)) {
+        $locale = $this->localeRepository->findOneBy(['code' => $value]);
+        if (!$locale instanceof LocaleInterface) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('%locale%', (string) $value)
                 ->addViolation();

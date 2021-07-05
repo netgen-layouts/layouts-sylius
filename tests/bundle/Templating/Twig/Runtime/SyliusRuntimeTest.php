@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Runtime;
 
 use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime;
-use Netgen\Layouts\Locale\LocaleProviderInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel;
+use Netgen\Layouts\Sylius\Tests\Stubs\Locale;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
+use Symfony\Component\Intl\Locales;
 
 final class SyliusRuntimeTest extends TestCase
 {
@@ -23,7 +25,7 @@ final class SyliusRuntimeTest extends TestCase
 
     private MockObject $channelRepositoryMock;
 
-    private MockObject $localeProviderMock;
+    private MockObject $localeRepositoryMock;
 
     private SyliusRuntime $runtime;
 
@@ -32,13 +34,13 @@ final class SyliusRuntimeTest extends TestCase
         $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
         $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
-        $this->localeProviderMock = $this->createMock(LocaleProviderInterface::class);
+        $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
 
         $this->runtime = new SyliusRuntime(
             $this->productRepositoryMock,
             $this->taxonRepositoryMock,
             $this->channelRepositoryMock,
-            $this->localeProviderMock,
+            $this->localeRepositoryMock,
         );
     }
 
@@ -156,18 +158,15 @@ final class SyliusRuntimeTest extends TestCase
      */
     public function testGetLocaleName(): void
     {
-        $locales = [
-            'en_US' => 'English (United States)',
-            'en_UK' => 'English (United Kingdom)',
-            'de_DE' => 'German (Germany)',
-        ];
+        $locale = new Locale(5, 'en_US');
 
-        $this->localeProviderMock
+        $this->localeRepositoryMock
             ->expects(self::once())
-            ->method('getAvailableLocales')
-            ->willReturn($locales);
+            ->method('findOneBy')
+            ->with(self::identicalTo(['code' => 'en_US']))
+            ->willReturn($locale);
 
-        self::assertSame('English (United States)', $this->runtime->getLocaleName('en_US'));
+        self::assertSame(Locales::getName('en_US'), $this->runtime->getLocaleName('en_US'));
     }
 
     /**
@@ -175,16 +174,11 @@ final class SyliusRuntimeTest extends TestCase
      */
     public function testGetLocaleNameWithoutLocale(): void
     {
-        $locales = [
-            'en_US' => 'English (United States)',
-            'en_UK' => 'English (United Kingdom)',
-            'de_DE' => 'German (Germany)',
-        ];
-
-        $this->localeProviderMock
+        $this->localeRepositoryMock
             ->expects(self::once())
-            ->method('getAvailableLocales')
-            ->willReturn($locales);
+            ->method('findOneBy')
+            ->with(self::identicalTo(['code' => 'fr_FR']))
+            ->willReturn(null);
 
         self::assertNull($this->runtime->getLocaleName('fr_FR'));
     }
