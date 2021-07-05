@@ -32,6 +32,9 @@ final class Channel extends Mapper
         ];
     }
 
+    /**
+     * @return array<string, int>
+     */
     private function getChannelList(): array
     {
         $channels = $this->channelRepository->findAll();
