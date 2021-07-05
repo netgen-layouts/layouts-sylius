@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime;
 
+use Netgen\Layouts\Locale\LocaleProviderInterface;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Product\Model\ProductInterface;
@@ -20,14 +21,18 @@ final class SyliusRuntime
 
     private ChannelRepositoryInterface $channelRepository;
 
+    private LocaleProviderInterface $localeProvider;
+
     public function __construct(
         ProductRepositoryInterface $productRepository,
         TaxonRepositoryInterface $taxonRepository,
-        ChannelRepositoryInterface $channelRepository
+        ChannelRepositoryInterface $channelRepository,
+        LocaleProviderInterface $localeProvider
     ) {
         $this->productRepository = $productRepository;
         $this->taxonRepository = $taxonRepository;
         $this->channelRepository = $channelRepository;
+        $this->localeProvider = $localeProvider;
     }
 
     /**
@@ -83,5 +88,20 @@ final class SyliusRuntime
         }
 
         return $channel->getName();
+    }
+
+    /**
+     * Returns the locale name.
+     *
+     * @param string $locale
+     */
+    public function getLocaleName(string $locale): ?string
+    {
+        $locales = $this->localeProvider->getAvailableLocales();
+        if (!array_key_exists($locale, $locales)) {
+            return null;
+        }
+
+        return $locales[$locale];
     }
 }
