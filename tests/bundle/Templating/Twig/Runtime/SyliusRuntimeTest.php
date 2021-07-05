@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Runtime;
 
 use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime;
+use Netgen\Layouts\Locale\LocaleProviderInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
@@ -22,6 +23,8 @@ final class SyliusRuntimeTest extends TestCase
 
     private MockObject $channelRepositoryMock;
 
+    private MockObject $localeProviderMock;
+
     private SyliusRuntime $runtime;
 
     protected function setUp(): void
@@ -29,11 +32,13 @@ final class SyliusRuntimeTest extends TestCase
         $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
         $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
+        $this->localeProviderMock = $this->createMock(LocaleProviderInterface::class);
 
         $this->runtime = new SyliusRuntime(
             $this->productRepositoryMock,
             $this->taxonRepositoryMock,
             $this->channelRepositoryMock,
+            $this->localeProviderMock
         );
     }
 
@@ -120,8 +125,7 @@ final class SyliusRuntimeTest extends TestCase
      */
     public function testGetChannelName(): void
     {
-        $channel = new Channel(42, 'webshop');
-        $channel->setName('Webshop');
+        $channel = new Channel(42, 'WEBSHOP', 'Webshop');
 
         $this->channelRepositoryMock
             ->expects(self::once())
@@ -144,5 +148,44 @@ final class SyliusRuntimeTest extends TestCase
             ->willReturn(null);
 
         self::assertNull($this->runtime->getChannelName(42));
+    }
+
+    /**
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getLocaleName
+     */
+    public function testGetLocaleName(): void
+    {
+        $locales = [
+            'en_US' => 'English (United States)',
+            'en_UK' => 'English (United Kingdom)',
+            'de_DE' => 'German (Germany)',
+        ];
+
+        $this->localeProviderMock
+            ->expects(self::once())
+            ->method('getAvailableLocales')
+            ->willReturn($locales);
+
+        self::assertSame('English (United States)', $this->runtime->getLocaleName('en_US'));
+    }
+
+    /**
+     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getLocaleName
+     */
+    public function testGetLocaleNameWithoutLocale(): void
+    {
+        $locales = [
+            'en_US' => 'English (United States)',
+            'en_UK' => 'English (United Kingdom)',
+            'de_DE' => 'German (Germany)',
+        ];
+
+        $this->localeProviderMock
+            ->expects(self::once())
+            ->method('getAvailableLocales')
+            ->willReturn($locales);
+
+        self::assertNull($this->runtime->getLocaleName('fr_FR'));
     }
 }
