@@ -55,7 +55,7 @@ final class ChannelTest extends TestCase
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->willReturn(new ChannelStub(42, 'webshop'));
+            ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
 
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->channelRepositoryMock))
@@ -108,7 +108,7 @@ final class ChannelTest extends TestCase
         $this->channelContextMock
             ->expects(self::exactly(2))
             ->method('getChannel')
-            ->willReturn(new ChannelStub(42, 'webshop'));
+            ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
 
         self::assertTrue($this->conditionType->matches($request, [42]));
         self::assertTrue($this->conditionType->matches($request, [42, 43, 44]));
