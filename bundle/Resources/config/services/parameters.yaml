@@ -8,3 +8,15 @@ services:
         class: Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper
         tags:
             - { name: netgen_layouts.parameter_type.form_mapper, type: sylius_taxon }
+
+    netgen_layouts.sylius.parameters.parameter_type.channel:
+        class: Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType
+        tags:
+            - { name: netgen_layouts.parameter_type }
+
+    netgen_layouts.sylius.parameters.form_mapper.channel:
+        class: Netgen\Layouts\Sylius\Parameters\Form\Mapper\ChannelMapper
+        arguments:
+            - "@sylius.repository.channel"
+        tags:
+            - { name: netgen_layouts.parameter_type.form_mapper, type: sylius_channel }
