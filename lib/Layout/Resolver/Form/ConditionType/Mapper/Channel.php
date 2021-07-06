@@ -42,6 +42,10 @@ final class Channel extends Mapper
 
         /** @var \Sylius\Component\Channel\Model\ChannelInterface $channel */
         foreach ($channels as $channel) {
+            if (!is_int($channel->getId()) || !is_string($channel->getName())) {
+                continue;
+            }
+
             $channelList[$channel->getName()] = $channel->getId();
         }
 
