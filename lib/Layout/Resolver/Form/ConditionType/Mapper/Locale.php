@@ -7,7 +7,6 @@ namespace Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper;
 use Netgen\Layouts\Layout\Resolver\Form\ConditionType\Mapper;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use function is_string;
 
 final class Locale extends Mapper
 {
