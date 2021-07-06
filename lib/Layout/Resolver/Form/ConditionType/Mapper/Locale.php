@@ -43,11 +43,7 @@ final class Locale extends Mapper
 
         /** @var \Sylius\Component\Locale\Model\Locale $locale */
         foreach ($locales as $locale) {
-            if (!is_string($locale->getCode()) || !is_string($locale->getName())) {
-                continue;
-            }
-
-            $localeList[$locale->getName()] = $locale->getCode();
+            $localeList[(string) $locale->getName()] = (string) $locale->getCode();
         }
 
         return $localeList;
