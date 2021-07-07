@@ -20,11 +20,6 @@ final class ChannelType extends ParameterType
         return 'sylius_channel';
     }
 
-    /**
-     * Configures the options for this parameter.
-     *
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $optionsResolver
-     */
     public function configureOptions(OptionsResolver $optionsResolver): void
     {
         $optionsResolver->setDefault('multiple', false);
