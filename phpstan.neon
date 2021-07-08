@@ -4,3 +4,9 @@ includes:
     - vendor/phpstan/phpstan-doctrine/rules.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
     - vendor/phpstan/phpstan-symfony/rules.neon
+
+parameters:
+    ignoreErrors:
+        # Doctrine issues
+
+        - '#getParentTaxon\(\) should return Sylius\\Component\\Taxonomy\\Model\\TaxonInterface\|null but returns object\|null#'
