@@ -39,6 +39,7 @@ final class ChannelMapper extends Mapper
         $channels = $this->channelRepository->findAll();
         $channelList = [];
 
+        /** @var \Sylius\Component\Channel\Model\ChannelInterface $channel */
         foreach ($channels as $channel) {
             $channelList[(string) $channel->getName()] = (int) $channel->getId();
         }
