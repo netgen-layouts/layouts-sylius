@@ -43,3 +43,29 @@ services:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon
         tags:
             - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_taxon }
+
+    netgen_layouts.sylius.layout_resolver.condition_type.channel:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel
+        arguments:
+            - "@sylius.context.channel"
+        tags:
+            - { name: netgen_layouts.condition_type }
+
+    netgen_layouts.sylius.layout_resolver.condition_type.form_mapper.channel:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel
+        arguments:
+            - "@sylius.repository.channel"
+        tags:
+            - { name: netgen_layouts.condition_type.form_mapper, condition_type: sylius_channel }
+
+    netgen_layouts.sylius.layout_resolver.condition_type.locale:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale
+        tags:
+            - { name: netgen_layouts.condition_type }
+
+    netgen_layouts.sylius.layout_resolver.condition_type.form_mapper.locale:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Locale
+        arguments:
+            - "@sylius.repository.locale"
+        tags:
+            - { name: netgen_layouts.condition_type.form_mapper, condition_type: sylius_locale }

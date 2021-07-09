@@ -24,6 +24,14 @@ final class SyliusExtension extends AbstractExtension
                 'nglayouts_sylius_taxon_path',
                 [SyliusRuntime::class, 'getTaxonPath'],
             ),
+            new TwigFunction(
+                'nglayouts_sylius_channel_name',
+                [SyliusRuntime::class, 'getChannelName'],
+            ),
+            new TwigFunction(
+                'nglayouts_sylius_locale_name',
+                [SyliusRuntime::class, 'getLocaleName'],
+            ),
         ];
     }
 }

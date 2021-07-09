@@ -1,2 +1,4 @@
 netgen_layouts.sylius.product.product_not_found: 'Product with ID %productId% does not exist.'
 netgen_layouts.sylius.taxon.taxon_not_found: 'Taxon with ID %taxonId% does not exist.'
+netgen_layouts.sylius.channel.channel_not_found: 'Channel %channel% does not exist.'
+netgen_layouts.sylius.locale.locale_not_found: 'Locale %locale% does not exist.'

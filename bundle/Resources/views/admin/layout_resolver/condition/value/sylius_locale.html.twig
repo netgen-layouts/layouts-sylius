@@ -1,0 +1,9 @@
+{% set locales = condition.value %}
+{% set locale_names = [] %}
+
+{% for locale in locales %}
+    {% set name = nglayouts_sylius_locale_name(locale) %}
+    {% set locale_names = locale_names|merge([name]) %}
+{% endfor %}
+
+{{ locale_names|join(', ') }}
