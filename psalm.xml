@@ -19,6 +19,7 @@
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
                 <referencedProperty name="Symfony\Component\Validator\ConstraintValidator::$context" />
+                <referencedProperty name="Symfony\Component\Validator\Constraint::$groups" />
             </errorLevel>
         </PropertyNotSetInConstructor>
 
