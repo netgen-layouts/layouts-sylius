@@ -10,8 +10,8 @@
         }
     ],
     "require": {
-        "netgen/layouts-core": "~1.3.0",
-        "netgen/content-browser-sylius": "^1.3",
+        "netgen/layouts-core": "~1.4.0",
+        "netgen/content-browser-sylius": "^1.4",
         "sylius/sylius": "^1.9"
     },
     "require-dev": {
@@ -51,7 +51,7 @@
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "dev-master": "1.3.x-dev"
+            "dev-master": "1.4.x-dev"
         }
     }
 }
