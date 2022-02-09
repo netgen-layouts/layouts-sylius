@@ -97,6 +97,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
 
         /** @var string $sortType */
         $sortType = $query->getParameter('sort_type')->getValue();
+
         /** @var string $sortDirection */
         $sortDirection = $query->getParameter('sort_direction')->getValue();
 
