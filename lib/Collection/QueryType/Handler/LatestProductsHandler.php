@@ -64,7 +64,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             return [];
         }
 
-        return $this->productRepository->findLatestByTaxon(
+        return $this->productRepository->findLatestByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $this->getParentTaxon($query),
             $currentRequest->getLocale(),
@@ -80,7 +80,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             return 0;
         }
 
-        return $this->productRepository->countLatestByTaxon(
+        return $this->productRepository->countLatestByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $this->getParentTaxon($query),
             $currentRequest->getLocale(),
