@@ -101,7 +101,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         /** @var string $sortDirection */
         $sortDirection = $query->getParameter('sort_direction')->getValue();
 
-        return $this->productRepository->findByTaxon(
+        return $this->productRepository->findByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $parentTaxon,
             $currentRequest->getLocale(),
@@ -120,7 +120,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
 
         $parentTaxon = $this->getParentTaxon($query);
 
-        return $this->productRepository->countByTaxon(
+        return $this->productRepository->countByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $parentTaxon,
             $currentRequest->getLocale(),

@@ -15,14 +15,14 @@ interface ProductRepositoryInterface extends BaseProductRepositoryInterface
      *
      * @return \Sylius\Component\Product\Model\ProductInterface[]
      */
-    public function findByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale, int $offset, int $count, array $sorting = []): array;
+    public function findByChannelAndTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale, int $offset, int $count, array $sorting = []): array;
 
-    public function countByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int;
+    public function countByChannelAndTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int;
 
     /**
      * @return \Sylius\Component\Product\Model\ProductInterface[]
      */
-    public function findLatestByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale, int $offset, int $count): array;
+    public function findLatestByChannelAndTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale, int $offset, int $count): array;
 
-    public function countLatestByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int;
+    public function countLatestByChannelAndTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int;
 }

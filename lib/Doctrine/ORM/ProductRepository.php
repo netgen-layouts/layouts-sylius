@@ -11,7 +11,7 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
 final class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {
-    public function findByTaxon(
+    public function findByChannelAndTaxon(
         ChannelInterface $channel,
         ?TaxonInterface $taxon,
         string $locale,
@@ -47,7 +47,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
         return $queryBuilder->getQuery()->getResult();
     }
 
-    public function countByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int
+    public function countByChannelAndTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int
     {
         if (!$taxon instanceof TaxonInterface) {
             return 0;
@@ -61,7 +61,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
             ->getSingleScalarResult();
     }
 
-    public function findLatestByTaxon(
+    public function findLatestByChannelAndTaxon(
         ChannelInterface $channel,
         ?TaxonInterface $taxon,
         string $locale,
@@ -79,7 +79,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
             ->getResult();
     }
 
-    public function countLatestByTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int
+    public function countLatestByChannelAndTaxon(ChannelInterface $channel, ?TaxonInterface $taxon, string $locale): int
     {
         $queryBuilder = $this->createByTaxonQueryBuilder($channel, $taxon, $locale);
 
