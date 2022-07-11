@@ -1,8 +1,8 @@
 (function() {
-    var layoutContent = $('.ng-layouts-app .layouts-content');
-    var mainContent = $('#content');
-    var newHeight = window.innerHeight - layoutContent.offset().top;
-    newHeight = newHeight - (mainContent.innerWidth() - mainContent.width())/2;
-
-    layoutContent.css('min-height', newHeight + 'px');
+    if(document.querySelector('.ng-layouts-app')) {
+        const layoutApp = document.querySelector('.ng-layouts-app');
+        const layoutContent = layoutApp.querySelector('.layouts-content');
+        let newHeight = window.innerHeight - layoutContent.getBoundingClientRect().top;
+        layoutContent.style.minHeight = newHeight + 'px';
+    }
 })();
