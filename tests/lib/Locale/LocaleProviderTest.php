@@ -9,6 +9,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+
 use function array_keys;
 use function array_values;
 

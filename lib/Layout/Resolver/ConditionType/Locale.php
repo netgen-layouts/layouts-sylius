@@ -8,6 +8,7 @@ use Netgen\Layouts\Layout\Resolver\ConditionType;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
+
 use function in_array;
 
 final class Locale extends ConditionType

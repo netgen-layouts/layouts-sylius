@@ -10,6 +10,7 @@ use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
+
 use function is_numeric;
 
 final class ChannelValidator extends ConstraintValidator

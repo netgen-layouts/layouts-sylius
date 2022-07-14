@@ -10,6 +10,7 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
+
 use function is_scalar;
 
 final class ProductValidator extends ConstraintValidator

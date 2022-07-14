@@ -10,6 +10,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
+
 use function array_map;
 
 final class TaxonProduct extends TargetType

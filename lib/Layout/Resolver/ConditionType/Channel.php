@@ -10,6 +10,7 @@ use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Channel\Context\ChannelNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
+
 use function count;
 use function in_array;
 use function is_array;
