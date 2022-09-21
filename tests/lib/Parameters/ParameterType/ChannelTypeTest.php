@@ -44,6 +44,7 @@ final class ChannelTypeTest extends TestCase
      * @param mixed[] $resolvedOptions
      *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType::configureOptions
+     *
      * @dataProvider validOptionsDataProvider
      */
     public function testValidOptions(array $options, array $resolvedOptions): void
@@ -56,6 +57,7 @@ final class ChannelTypeTest extends TestCase
      * @param mixed[] $options
      *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType::configureOptions
+     *
      * @dataProvider invalidOptionsDataProvider
      */
     public function testInvalidOptions(array $options): void
@@ -179,6 +181,7 @@ final class ChannelTypeTest extends TestCase
      * @param mixed $value
      *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType::isValueEmpty
+     *
      * @dataProvider emptyDataProvider
      */
     public function testIsValueEmpty($value, bool $isEmpty): void
