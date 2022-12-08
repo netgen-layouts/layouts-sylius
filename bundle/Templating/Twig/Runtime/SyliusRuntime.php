@@ -23,8 +23,14 @@ final class SyliusRuntime
 
     private ChannelRepositoryInterface $channelRepository;
 
+    /**
+     * @var \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
+     */
     private RepositoryInterface $localeRepository;
 
+    /**
+     * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
+     */
     public function __construct(
         ProductRepositoryInterface $productRepository,
         TaxonRepositoryInterface $taxonRepository,

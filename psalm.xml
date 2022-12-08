@@ -36,5 +36,13 @@
                 <directory name="lib/Collection/QueryType/Handler" />
             </errorLevel>
         </LessSpecificReturnStatement>
+
+        <!-- Psalm specific -->
+
+        <LessSpecificImplementedReturnType>
+            <errorLevel type="suppress">
+                <file name="lib/Security/Authorization/Voter/AdminAccessVoter.php" />
+            </errorLevel>
+        </LessSpecificImplementedReturnType>
     </issueHandlers>
 </psalm>

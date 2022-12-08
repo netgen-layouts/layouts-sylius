@@ -6,3 +6,11 @@ includes:
     - vendor/phpstan/phpstan-symfony/rules.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-phpunit/rules.neon
+
+parameters:
+    treatPhpDocTypesAsCertain: false
+
+    ignoreErrors:
+        -
+            message: '#RepositoryInterface (but )?does not specify its types#'
+            path: tests/lib/Validator/RepositoryValidatorFactory.php

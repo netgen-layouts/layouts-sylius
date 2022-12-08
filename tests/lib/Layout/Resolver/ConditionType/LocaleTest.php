@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Validation;
 final class LocaleTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
      */
     private MockObject $localeRepositoryMock;
 

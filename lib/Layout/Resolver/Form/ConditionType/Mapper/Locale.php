@@ -10,8 +10,14 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 final class Locale extends Mapper
 {
+    /**
+     * @var \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
+     */
     private RepositoryInterface $localeRepository;
 
+    /**
+     * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
+     */
     public function __construct(RepositoryInterface $localeRepository)
     {
         $this->localeRepository = $localeRepository;

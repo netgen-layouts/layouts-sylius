@@ -9,4 +9,4 @@ parameters:
     ignoreErrors:
         # Doctrine issues
 
-        - '#getParentTaxon\(\) should return Sylius\\Component\\Taxonomy\\Model\\TaxonInterface\|null but returns object\|null#'
+        - '#getParentTaxon\(\) should return Sylius\\Component\\Taxonomy\\Model\\TaxonInterface\|null but returns Sylius\\Component\\Resource\\Model\\ResourceInterface\|null#'
