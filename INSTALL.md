@@ -79,8 +79,8 @@ framework:
 ## Update security rules for admin UI integration
 
 To properly integrate Netgen Layouts and Sylius admin interfaces, you need to
-update admin regex parameter in your `app/config/security.yml` file to include
-Netgen Layouts admin routes:
+update (or add, if missing) admin regex parameter in your
+`app/config/security.yml` file to allow access to Netgen Layouts admin routes:
 
 ```
 parameters:
