@@ -12,6 +12,6 @@ view:
                     item\value_type: sylius_product
         app:
             sylius_product:
-                template: "@NetgenLayoutsSylius/app/item/view/sylius_product.html.twig"
+                template: "@nglayouts_admin/app/item/sylius_product.html.twig"
                 match:
                     item\value_type: sylius_product
