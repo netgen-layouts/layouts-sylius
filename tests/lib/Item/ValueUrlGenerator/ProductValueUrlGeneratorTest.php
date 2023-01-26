@@ -25,6 +25,46 @@ final class ProductValueUrlGeneratorTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::__construct
+     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generateDefaultUrl
+     */
+    public function testGenerateDefaultUrl(): void
+    {
+        $this->urlGeneratorMock
+            ->expects(self::once())
+            ->method('generate')
+            ->with(
+                self::identicalTo('sylius_shop_product_show'),
+                self::identicalTo(['slug' => 'product-name']),
+            )
+            ->willReturn('/products/product-name');
+
+        self::assertSame(
+            '/products/product-name',
+            $this->urlGenerator->generateDefaultUrl(new Product(42, 'Product name', 'product-name')),
+        );
+    }
+
+    /**
+     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generateAdminUrl
+     */
+    public function testGenerateAdminUrl(): void
+    {
+        $this->urlGeneratorMock
+            ->expects(self::once())
+            ->method('generate')
+            ->with(
+                self::identicalTo('sylius_admin_product_show'),
+                self::identicalTo(['id' => 42]),
+            )
+            ->willReturn('/admin/products/42');
+
+        self::assertSame(
+            '/admin/products/42',
+            $this->urlGenerator->generateAdminUrl(new Product(42, 'Product name', 'product-name')),
+        );
+    }
+
+    /**
      * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generate
      */
     public function testGenerate(): void

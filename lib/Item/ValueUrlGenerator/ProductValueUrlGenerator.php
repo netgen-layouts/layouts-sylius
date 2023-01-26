@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Item\ValueUrlGenerator;
 
-use Netgen\Layouts\Item\ValueUrlGeneratorInterface;
+use Netgen\Layouts\Item\ExtendedValueUrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @implements \Netgen\Layouts\Item\ValueUrlGeneratorInterface<\Sylius\Component\Product\Model\ProductInterface>
+ * @implements \Netgen\Layouts\Item\ExtendedValueUrlGeneratorInterface<\Sylius\Component\Product\Model\ProductInterface>
  */
-final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
+final class ProductValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
 {
     private UrlGeneratorInterface $urlGenerator;
 
@@ -19,7 +19,7 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function generate(object $object): ?string
+    public function generateDefaultUrl(object $object): ?string
     {
         return $this->urlGenerator->generate(
             'sylius_shop_product_show',
@@ -27,5 +27,20 @@ final class ProductValueUrlGenerator implements ValueUrlGeneratorInterface
                 'slug' => $object->getSlug(),
             ],
         );
+    }
+
+    public function generateAdminUrl(object $object): ?string
+    {
+        return $this->urlGenerator->generate(
+            'sylius_admin_product_show',
+            [
+                'id' => $object->getId(),
+            ],
+        );
+    }
+
+    public function generate(object $object): ?string
+    {
+        return $this->generateDefaultUrl($object);
     }
 }
