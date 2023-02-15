@@ -37,6 +37,12 @@
             </errorLevel>
         </LessSpecificReturnStatement>
 
+        <DeprecatedConstant>
+            <errorLevel type="suppress">
+                <directory name="lib/Layout/Resolver/TargetHandler/Doctrine/" />
+            </errorLevel>
+        </DeprecatedConstant>
+
         <!-- Psalm specific -->
 
         <LessSpecificImplementedReturnType>
