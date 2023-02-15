@@ -72,7 +72,7 @@ final class ChannelTypeTest extends TestCase
      *
      * @return mixed[]
      */
-    public function validOptionsDataProvider(): array
+    public static function validOptionsDataProvider(): array
     {
         return [
             [
@@ -105,7 +105,7 @@ final class ChannelTypeTest extends TestCase
      *
      * @return mixed[]
      */
-    public function invalidOptionsDataProvider(): array
+    public static function invalidOptionsDataProvider(): array
     {
         return [
             [
@@ -192,7 +192,7 @@ final class ChannelTypeTest extends TestCase
     /**
      * @return mixed[]
      */
-    public function emptyDataProvider(): array
+    public static function emptyDataProvider(): array
     {
         return [
             [null, true],
