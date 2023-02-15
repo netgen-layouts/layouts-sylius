@@ -1,4 +1,5 @@
 .idea/
+.phpunit.cache/
 coverage/
 vendor/
 .php-cs-fixer.cache
