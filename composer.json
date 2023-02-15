@@ -27,6 +27,9 @@
         "vimeo/psalm": "^5.4",
         "matthiasnoback/symfony-dependency-injection-test": "^4.3"
     },
+    "config": {
+        "allow-plugins": false
+    },
     "scripts": {
         "test": "@php vendor/bin/phpunit --colors=always",
         "coverage": "@php -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --coverage-html=coverage --colors=always",
