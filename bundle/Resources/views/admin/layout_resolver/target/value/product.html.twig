@@ -1,3 +1,1 @@
-{% set product_name = nglayouts_sylius_product_name(target.value) %}
-
-{{ product_name != null ? product_name : '(INVALID PRODUCT)' }}
+{{ nglayouts_sylius_product_name(target.value) ?? '(INVALID PRODUCT)' }}
