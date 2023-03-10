@@ -8,9 +8,9 @@ use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
 use Netgen\Layouts\Persistence\Values\Value;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon;
-use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
+use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerTestBase;
 
-final class TaxonTest extends AbstractTargetHandlerTest
+final class TaxonTest extends TargetHandlerTestBase
 {
     /**
      * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon::handleQuery
