@@ -17,38 +17,21 @@ use function array_reverse;
 
 final class SyliusRuntime
 {
-    private ProductRepositoryInterface $productRepository;
-
-    private TaxonRepositoryInterface $taxonRepository;
-
-    private ChannelRepositoryInterface $channelRepository;
-
-    /**
-     * @var \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
-     */
-    private RepositoryInterface $localeRepository;
-
     /**
      * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
      */
     public function __construct(
-        ProductRepositoryInterface $productRepository,
-        TaxonRepositoryInterface $taxonRepository,
-        ChannelRepositoryInterface $channelRepository,
-        RepositoryInterface $localeRepository
+        private ProductRepositoryInterface $productRepository,
+        private TaxonRepositoryInterface $taxonRepository,
+        private ChannelRepositoryInterface $channelRepository,
+        private RepositoryInterface $localeRepository,
     ) {
-        $this->productRepository = $productRepository;
-        $this->taxonRepository = $taxonRepository;
-        $this->channelRepository = $channelRepository;
-        $this->localeRepository = $localeRepository;
     }
 
     /**
      * Returns the product name.
-     *
-     * @param int|string $productId
      */
-    public function getProductName($productId): ?string
+    public function getProductName(int|string $productId): ?string
     {
         $product = $this->productRepository->find($productId);
         if (!$product instanceof ProductInterface) {
@@ -61,11 +44,9 @@ final class SyliusRuntime
     /**
      * Returns the taxon path.
      *
-     * @param int|string $taxonId
-     *
      * @return array<string|null>|null
      */
-    public function getTaxonPath($taxonId): ?array
+    public function getTaxonPath(int|string $taxonId): ?array
     {
         $taxon = $this->taxonRepository->find($taxonId);
         if (!$taxon instanceof TaxonInterface) {
@@ -85,10 +66,8 @@ final class SyliusRuntime
 
     /**
      * Returns the channel name.
-     *
-     * @param int|string $channelId
      */
-    public function getChannelName($channelId): ?string
+    public function getChannelName(int|string $channelId): ?string
     {
         $channel = $this->channelRepository->find($channelId);
         if (!$channel instanceof ChannelInterface) {
@@ -100,8 +79,6 @@ final class SyliusRuntime
 
     /**
      * Returns the locale name.
-     *
-     * @param string $locale
      */
     public function getLocaleName(string $locale): ?string
     {

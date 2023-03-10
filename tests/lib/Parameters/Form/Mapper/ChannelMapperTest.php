@@ -17,10 +17,7 @@ final class ChannelMapperTest extends TestCase
 {
     private ChannelMapper $mapper;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface
-     */
-    private MockObject $repositoryMock;
+    private MockObject&ChannelRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {

@@ -11,11 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 final class ChannelMapper extends Mapper
 {
-    private ChannelRepositoryInterface $channelRepository;
-
-    public function __construct(ChannelRepositoryInterface $channelRepository)
+    public function __construct(private ChannelRepositoryInterface $channelRepository)
     {
-        $this->channelRepository = $channelRepository;
     }
 
     public function getFormType(): string

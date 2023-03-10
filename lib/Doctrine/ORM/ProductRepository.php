@@ -17,7 +17,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
         string $locale,
         int $offset,
         int $count,
-        array $sorting = []
+        array $sorting = [],
     ): array {
         if (!$taxon instanceof TaxonInterface) {
             return [];
@@ -66,7 +66,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
         ?TaxonInterface $taxon,
         string $locale,
         int $offset,
-        int $count
+        int $count,
     ): array {
         $queryBuilder = $this->createByTaxonQueryBuilder($channel, $taxon, $locale);
 
@@ -96,7 +96,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
         ChannelInterface $channel,
         ?TaxonInterface $taxon,
         string $locale,
-        array $sorting = []
+        array $sorting = [],
     ): QueryBuilder {
         $queryBuilder = $this->createQueryBuilder('o')
             ->addSelect('translation')

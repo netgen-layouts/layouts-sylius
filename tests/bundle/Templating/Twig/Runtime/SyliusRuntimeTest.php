@@ -19,13 +19,16 @@ use Symfony\Component\Intl\Locales;
 
 final class SyliusRuntimeTest extends TestCase
 {
-    private MockObject $productRepositoryMock;
+    private MockObject&ProductRepositoryInterface $productRepositoryMock;
 
-    private MockObject $taxonRepositoryMock;
+    private MockObject&TaxonRepositoryInterface $taxonRepositoryMock;
 
-    private MockObject $channelRepositoryMock;
+    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
 
-    private MockObject $localeRepositoryMock;
+    /**
+     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
+     */
+    private MockObject&RepositoryInterface $localeRepositoryMock;
 
     private SyliusRuntime $runtime;
 

@@ -19,7 +19,7 @@ final class ProductType extends ParameterType
         return 'sylius_product';
     }
 
-    protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value): array
+    protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
         return [
             new Constraints\Type(['type' => 'numeric']),

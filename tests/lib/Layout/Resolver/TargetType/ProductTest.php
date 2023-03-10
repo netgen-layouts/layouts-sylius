@@ -15,10 +15,7 @@ use Symfony\Component\Validator\Validation;
 
 final class ProductTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Product\Repository\ProductRepositoryInterface
-     */
-    private MockObject $repositoryMock;
+    private MockObject&ProductRepositoryInterface $repositoryMock;
 
     private Product $targetType;
 

@@ -11,18 +11,15 @@ use Throwable;
 
 final class ProductValueLoader implements ValueLoaderInterface
 {
-    private ProductRepositoryInterface $productRepository;
-
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(private ProductRepositoryInterface $productRepository)
     {
-        $this->productRepository = $productRepository;
     }
 
     public function load($id): ?ProductInterface
     {
         try {
             $product = $this->productRepository->find($id);
-        } catch (Throwable $t) {
+        } catch (Throwable) {
             return null;
         }
 

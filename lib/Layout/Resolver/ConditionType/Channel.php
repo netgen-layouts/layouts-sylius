@@ -17,11 +17,8 @@ use function is_array;
 
 final class Channel extends ConditionType
 {
-    private ChannelContextInterface $channelContext;
-
-    public function __construct(ChannelContextInterface $channelContext)
+    public function __construct(private ChannelContextInterface $channelContext)
     {
-        $this->channelContext = $channelContext;
     }
 
     public static function getType(): string
@@ -45,11 +42,11 @@ final class Channel extends ConditionType
         ];
     }
 
-    public function matches(Request $request, $value): bool
+    public function matches(Request $request, mixed $value): bool
     {
         try {
             $channel = $this->channelContext->getChannel();
-        } catch (ChannelNotFoundException $e) {
+        } catch (ChannelNotFoundException) {
             return false;
         }
 

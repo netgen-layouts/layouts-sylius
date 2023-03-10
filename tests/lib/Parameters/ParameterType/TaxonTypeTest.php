@@ -19,10 +19,7 @@ final class TaxonTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface
-     */
-    private MockObject $repositoryMock;
+    private MockObject&TaxonRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {
@@ -157,13 +154,11 @@ final class TaxonTypeTest extends TestCase
     }
 
     /**
-     * @param mixed $value
-     *
      * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::isValueEmpty
      *
      * @dataProvider emptyDataProvider
      */
-    public function testIsValueEmpty($value, bool $isEmpty): void
+    public function testIsValueEmpty(mixed $value, bool $isEmpty): void
     {
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }

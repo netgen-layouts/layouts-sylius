@@ -20,7 +20,7 @@ final class MainMenuBuilderListenerTest extends TestCase
 {
     private MainMenuBuilderListener $listener;
 
-    private MockObject $authCheckerMock;
+    private MockObject&AuthorizationCheckerInterface $authCheckerMock;
 
     protected function setUp(): void
     {

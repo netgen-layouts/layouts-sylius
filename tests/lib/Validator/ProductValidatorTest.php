@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class ProductValidatorTest extends ValidatorTestCase
 {
-    private MockObject $repositoryMock;
+    private MockObject&ProductRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {

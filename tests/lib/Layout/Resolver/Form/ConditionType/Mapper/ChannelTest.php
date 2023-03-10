@@ -13,10 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 final class ChannelTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface
-     */
-    private MockObject $channelRepository;
+    private MockObject&ChannelRepositoryInterface $channelRepository;
 
     private Channel $mapper;
 

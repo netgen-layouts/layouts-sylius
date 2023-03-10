@@ -15,7 +15,7 @@ use function array_values;
 
 final class LocaleProviderTest extends TestCase
 {
-    private MockObject $syliusLocaleProviderMock;
+    private MockObject&LocaleProviderInterface $syliusLocaleProviderMock;
 
     private LocaleProvider $localeProvider;
 

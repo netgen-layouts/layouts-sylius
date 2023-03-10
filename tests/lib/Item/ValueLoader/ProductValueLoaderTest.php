@@ -13,7 +13,7 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 final class ProductValueLoaderTest extends TestCase
 {
-    private MockObject $productRepositoryMock;
+    private MockObject&ProductRepositoryInterface $productRepositoryMock;
 
     private ProductValueLoader $valueLoader;
 

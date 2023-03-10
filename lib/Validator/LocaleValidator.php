@@ -16,22 +16,13 @@ use function is_string;
 final class LocaleValidator extends ConstraintValidator
 {
     /**
-     * @var \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
-     */
-    private RepositoryInterface $localeRepository;
-
-    /**
      * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
      */
-    public function __construct(RepositoryInterface $localeRepository)
+    public function __construct(private RepositoryInterface $localeRepository)
     {
-        $this->localeRepository = $localeRepository;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function validate($value, Constraint $constraint): void
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if ($value === null) {
             return;

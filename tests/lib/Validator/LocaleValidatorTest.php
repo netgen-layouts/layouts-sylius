@@ -16,7 +16,10 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class LocaleValidatorTest extends ValidatorTestCase
 {
-    private MockObject $localeRepositoryMock;
+    /**
+     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
+     */
+    private MockObject&RepositoryInterface $localeRepositoryMock;
 
     protected function setUp(): void
     {

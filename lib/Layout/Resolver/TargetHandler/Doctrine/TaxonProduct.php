@@ -10,7 +10,7 @@ use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 
 final class TaxonProduct implements TargetHandlerInterface
 {
-    public function handleQuery(QueryBuilder $query, $value): void
+    public function handleQuery(QueryBuilder $query, mixed $value): void
     {
         $query->andWhere(
             $query->expr()->in('rt.value', [':target_value']),

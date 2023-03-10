@@ -18,15 +18,9 @@ use Symfony\Component\Validator\Validation;
 
 final class ChannelTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Channel\Context\ChannelContextInterface
-     */
-    private MockObject $channelContextMock;
+    private MockObject&ChannelContextInterface $channelContextMock;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface
-     */
-    private MockObject $channelRepositoryMock;
+    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
 
     private Channel $conditionType;
 

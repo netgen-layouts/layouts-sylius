@@ -27,7 +27,7 @@ final class ChannelType extends ParameterType
         $optionsResolver->setAllowedTypes('multiple', 'bool');
     }
 
-    protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value): array
+    protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
         return [
             new Constraints\All(

@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class ChannelValidatorTest extends ValidatorTestCase
 {
-    private MockObject $repositoryMock;
+    private MockObject&ChannelRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {

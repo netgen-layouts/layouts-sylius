@@ -15,10 +15,9 @@ use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 final class AdminAccessVoter implements VoterInterface
 {
     /**
-     * @param mixed $subject
      * @param mixed[] $attributes
      */
-    public function vote(TokenInterface $token, $subject, array $attributes): int
+    public function vote(TokenInterface $token, mixed $subject, array $attributes): int
     {
         if ($token->getUser() instanceof AdminUserInterface) {
             return self::ACCESS_GRANTED;

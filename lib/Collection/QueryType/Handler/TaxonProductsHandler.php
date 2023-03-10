@@ -22,24 +22,12 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
 {
     private const DEFAULT_LIMIT = 12;
 
-    private ProductRepositoryInterface $productRepository;
-
-    private TaxonRepositoryInterface $taxonRepository;
-
-    private ChannelContextInterface $channelContext;
-
-    private RequestStack $requestStack;
-
     public function __construct(
-        ProductRepositoryInterface $productRepository,
-        TaxonRepositoryInterface $taxonRepository,
-        ChannelContextInterface $channelContext,
-        RequestStack $requestStack
+        private ProductRepositoryInterface $productRepository,
+        private TaxonRepositoryInterface $taxonRepository,
+        private ChannelContextInterface $channelContext,
+        private RequestStack $requestStack,
     ) {
-        $this->productRepository = $productRepository;
-        $this->taxonRepository = $taxonRepository;
-        $this->channelContext = $channelContext;
-        $this->requestStack = $requestStack;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void

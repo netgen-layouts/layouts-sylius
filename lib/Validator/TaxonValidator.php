@@ -15,17 +15,11 @@ use function is_scalar;
 
 final class TaxonValidator extends ConstraintValidator
 {
-    private TaxonRepositoryInterface $taxonRepository;
-
-    public function __construct(TaxonRepositoryInterface $taxonRepository)
+    public function __construct(private TaxonRepositoryInterface $taxonRepository)
     {
-        $this->taxonRepository = $taxonRepository;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function validate($value, Constraint $constraint): void
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if ($value === null) {
             return;

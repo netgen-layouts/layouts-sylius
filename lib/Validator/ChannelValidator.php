@@ -15,17 +15,11 @@ use function is_numeric;
 
 final class ChannelValidator extends ConstraintValidator
 {
-    private ChannelRepositoryInterface $channelRepository;
-
-    public function __construct(ChannelRepositoryInterface $channelRepository)
+    public function __construct(private ChannelRepositoryInterface $channelRepository)
     {
-        $this->channelRepository = $channelRepository;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function validate($value, Constraint $constraint): void
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if ($value === null) {
             return;

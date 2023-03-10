@@ -15,17 +15,11 @@ use function is_scalar;
 
 final class ProductValidator extends ConstraintValidator
 {
-    private ProductRepositoryInterface $productRepository;
-
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(private ProductRepositoryInterface $productRepository)
     {
-        $this->productRepository = $productRepository;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function validate($value, Constraint $constraint): void
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if ($value === null) {
             return;
