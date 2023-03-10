@@ -6,11 +6,13 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\ConditionType\Mapper;
 
 use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+#[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
     private MockObject&ChannelRepositoryInterface $channelRepository;
@@ -26,18 +28,11 @@ final class ChannelTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel::getFormType
-     */
     public function testGetFormType(): void
     {
         self::assertSame(ChoiceType::class, $this->mapper->getFormType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel::getChannelList
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel::getFormOptions
-     */
     public function testGetFormOptions(): void
     {
         $channels = [

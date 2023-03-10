@@ -9,6 +9,7 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Locale;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
@@ -17,6 +18,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Intl\Locales;
 
+#[CoversClass(SyliusRuntime::class)]
 final class SyliusRuntimeTest extends TestCase
 {
     private MockObject&ProductRepositoryInterface $productRepositoryMock;
@@ -47,10 +49,6 @@ final class SyliusRuntimeTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
-     */
     public function testGetProductName(): void
     {
         $product = new Product(42);
@@ -66,9 +64,6 @@ final class SyliusRuntimeTest extends TestCase
         self::assertSame('Product name', $this->runtime->getProductName(42));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getProductName
-     */
     public function testGetProductNameWithoutProduct(): void
     {
         $this->productRepositoryMock
@@ -80,10 +75,6 @@ final class SyliusRuntimeTest extends TestCase
         self::assertNull($this->runtime->getProductName(42));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
-     */
     public function testGetTaxonPath(): void
     {
         $taxon1 = new Taxon(42);
@@ -110,9 +101,6 @@ final class SyliusRuntimeTest extends TestCase
         self::assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getTaxonPath
-     */
     public function testGetTaxonPathWithoutTaxon(): void
     {
         $this->taxonRepositoryMock
@@ -124,10 +112,6 @@ final class SyliusRuntimeTest extends TestCase
         self::assertNull($this->runtime->getTaxonPath(42));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getChannelName
-     */
     public function testGetChannelName(): void
     {
         $channel = new Channel(42, 'WEBSHOP', 'Webshop');
@@ -141,9 +125,6 @@ final class SyliusRuntimeTest extends TestCase
         self::assertSame('Webshop', $this->runtime->getChannelName(42));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getChannelName
-     */
     public function testGetChannelNameWithoutChannel(): void
     {
         $this->channelRepositoryMock
@@ -155,10 +136,6 @@ final class SyliusRuntimeTest extends TestCase
         self::assertNull($this->runtime->getChannelName(42));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getLocaleName
-     */
     public function testGetLocaleName(): void
     {
         $locale = new Locale(5, 'en_US');
@@ -172,9 +149,6 @@ final class SyliusRuntimeTest extends TestCase
         self::assertSame(Locales::getName('en_US'), $this->runtime->getLocaleName('en_US'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime::getLocaleName
-     */
     public function testGetLocaleNameWithoutLocale(): void
     {
         $this->localeRepositoryMock

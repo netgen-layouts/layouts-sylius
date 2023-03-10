@@ -6,10 +6,12 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueConverter;
 
 use Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product as ProductStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Model\Product;
 use Sylius\Component\Taxonomy\Model\Taxon;
 
+#[CoversClass(ProductValueConverter::class)]
 final class ProductValueConverterTest extends TestCase
 {
     private ProductValueConverter $valueConverter;
@@ -19,18 +21,12 @@ final class ProductValueConverterTest extends TestCase
         $this->valueConverter = new ProductValueConverter();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::supports
-     */
     public function testSupports(): void
     {
         self::assertTrue($this->valueConverter->supports(new Product()));
         self::assertFalse($this->valueConverter->supports(new Taxon()));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getValueType
-     */
     public function testGetValueType(): void
     {
         self::assertSame(
@@ -41,9 +37,6 @@ final class ProductValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getId
-     */
     public function testGetId(): void
     {
         self::assertSame(
@@ -54,9 +47,6 @@ final class ProductValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getRemoteId
-     */
     public function testGetRemoteId(): void
     {
         self::assertSame(
@@ -67,9 +57,6 @@ final class ProductValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getName
-     */
     public function testGetName(): void
     {
         self::assertSame(
@@ -80,9 +67,6 @@ final class ProductValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getIsVisible
-     */
     public function testGetIsVisible(): void
     {
         self::assertTrue(
@@ -92,9 +76,6 @@ final class ProductValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueConverter\ProductValueConverter::getObject
-     */
     public function testGetObject(): void
     {
         $product = new ProductStub(42, 'Product name');

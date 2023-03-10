@@ -8,12 +8,14 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Locale as LocaleStub;
 use Netgen\Layouts\Sylius\Validator\Constraint\Locale;
 use Netgen\Layouts\Sylius\Validator\LocaleValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+#[CoversClass(LocaleValidator::class)]
 final class LocaleValidatorTest extends ValidatorTestCase
 {
     /**
@@ -35,10 +37,6 @@ final class LocaleValidatorTest extends ValidatorTestCase
         return new LocaleValidator($this->localeRepositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::validate
-     */
     public function testValidateValid(): void
     {
         $locale = new LocaleStub(1, 'en_US');
@@ -52,10 +50,6 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 'en_US');
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::validate
-     */
     public function testValidateNull(): void
     {
         $this->localeRepositoryMock
@@ -65,10 +59,6 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $this->assertValid(true, null);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::validate
-     */
     public function testValidateInvalid(): void
     {
         $this->localeRepositoryMock
@@ -80,9 +70,6 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $this->assertValid(false, 'fr_FR');
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
@@ -92,9 +79,6 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 'value');
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\LocaleValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
         $this->expectException(UnexpectedTypeException::class);

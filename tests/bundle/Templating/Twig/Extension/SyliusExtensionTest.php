@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Extension;
 
 use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Extension\SyliusExtension;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFunction;
 
+#[CoversClass(SyliusExtension::class)]
 final class SyliusExtensionTest extends TestCase
 {
     private SyliusExtension $extension;
@@ -17,9 +19,6 @@ final class SyliusExtensionTest extends TestCase
         $this->extension = new SyliusExtension();
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Extension\SyliusExtension::getFunctions
-     */
     public function testGetFunctions(): void
     {
         self::assertNotEmpty($this->extension->getFunctions());

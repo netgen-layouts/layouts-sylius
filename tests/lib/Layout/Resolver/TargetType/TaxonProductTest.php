@@ -8,6 +8,7 @@ use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Core\Model\ProductTaxon;
@@ -15,6 +16,7 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(TaxonProduct::class)]
 final class TaxonProductTest extends TestCase
 {
     private MockObject&TaxonRepositoryInterface $repositoryMock;
@@ -28,17 +30,11 @@ final class TaxonProductTest extends TestCase
         $this->targetType = new TaxonProduct();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('sylius_taxon_product', $this->targetType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::getConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -55,9 +51,6 @@ final class TaxonProductTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::getConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -74,9 +67,6 @@ final class TaxonProductTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
-     */
     public function testProvideValue(): void
     {
         $product = new ProductStub(42);
@@ -93,9 +83,6 @@ final class TaxonProductTest extends TestCase
         self::assertSame([12, 13], $this->targetType->provideValue($request));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct::provideValue
-     */
     public function testProvideValueWithNoTaxon(): void
     {
         $request = Request::create('/');

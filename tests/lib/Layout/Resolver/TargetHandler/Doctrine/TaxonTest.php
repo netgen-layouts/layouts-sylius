@@ -9,12 +9,11 @@ use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
 use Netgen\Layouts\Persistence\Values\Value;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon;
 use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerTestBase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(Taxon::class)]
 final class TaxonTest extends TargetHandlerTestBase
 {
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon::handleQuery
-     */
     public function testMatchRules(): void
     {
         $rules = $this->handler->matchRules(

@@ -8,12 +8,14 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
 use Netgen\Layouts\Sylius\Validator\ChannelValidator;
 use Netgen\Layouts\Sylius\Validator\Constraint\Channel;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+#[CoversClass(ChannelValidator::class)]
 final class ChannelValidatorTest extends ValidatorTestCase
 {
     private MockObject&ChannelRepositoryInterface $repositoryMock;
@@ -32,10 +34,6 @@ final class ChannelValidatorTest extends ValidatorTestCase
         return new ChannelValidator($this->repositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::validate
-     */
     public function testValidateValid(): void
     {
         $this->repositoryMock
@@ -47,10 +45,6 @@ final class ChannelValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::validate
-     */
     public function testValidateNull(): void
     {
         $this->repositoryMock
@@ -60,10 +54,6 @@ final class ChannelValidatorTest extends ValidatorTestCase
         $this->assertValid(true, null);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::validate
-     */
     public function testValidateInvalid(): void
     {
         $this->repositoryMock
@@ -75,9 +65,6 @@ final class ChannelValidatorTest extends ValidatorTestCase
         $this->assertValid(false, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
@@ -87,9 +74,6 @@ final class ChannelValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 'value');
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\ChannelValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
         $this->expectException(UnexpectedTypeException::class);

@@ -8,11 +8,13 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\Form\Mapper\ChannelMapper;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType as ParameterType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+#[CoversClass(ChannelMapper::class)]
 final class ChannelMapperTest extends TestCase
 {
     private ChannelMapper $mapper;
@@ -26,17 +28,11 @@ final class ChannelMapperTest extends TestCase
         $this->mapper = new ChannelMapper($this->repositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\Form\Mapper\ChannelMapper::getFormType
-     */
     public function testGetFormType(): void
     {
         self::assertSame(ChoiceType::class, $this->mapper->getFormType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\Form\Mapper\ChannelMapper::mapOptions
-     */
     public function testMapOptions(): void
     {
         $channels = [

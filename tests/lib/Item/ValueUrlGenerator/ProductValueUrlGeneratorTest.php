@@ -6,10 +6,12 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueUrlGenerator;
 
 use Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+#[CoversClass(ProductValueUrlGenerator::class)]
 final class ProductValueUrlGeneratorTest extends TestCase
 {
     private MockObject&UrlGeneratorInterface $urlGeneratorMock;
@@ -23,10 +25,6 @@ final class ProductValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new ProductValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::__construct
-     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generateDefaultUrl
-     */
     public function testGenerateDefaultUrl(): void
     {
         $this->urlGeneratorMock
@@ -44,9 +42,6 @@ final class ProductValueUrlGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generateAdminUrl
-     */
     public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
@@ -64,9 +59,6 @@ final class ProductValueUrlGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueUrlGenerator\ProductValueUrlGenerator::generate
-     */
     public function testGenerate(): void
     {
         $this->urlGeneratorMock

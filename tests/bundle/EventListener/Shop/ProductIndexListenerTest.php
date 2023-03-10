@@ -7,6 +7,7 @@ namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Shop;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener;
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
@@ -15,6 +16,7 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+#[CoversClass(ProductIndexListener::class)]
 final class ProductIndexListenerTest extends TestCase
 {
     private ProductIndexListener $listener;
@@ -47,10 +49,6 @@ final class ProductIndexListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::getSubscribedEvents
-     */
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
@@ -59,9 +57,6 @@ final class ProductIndexListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
-     */
     public function testOnProductIndex(): void
     {
         $request = Request::create('/');
@@ -86,9 +81,6 @@ final class ProductIndexListenerTest extends TestCase
         self::assertSame(42, $this->context->get('sylius_taxon_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
-     */
     public function testOnProductIndexWithoutRequest(): void
     {
         $this->taxonRepositoryMock
@@ -101,9 +93,6 @@ final class ProductIndexListenerTest extends TestCase
         self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
-     */
     public function testOnProductIndexWithoutSlug(): void
     {
         $request = Request::create('/');
@@ -120,9 +109,6 @@ final class ProductIndexListenerTest extends TestCase
         self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductIndexListener::onProductIndex
-     */
     public function testOnProductIndexWithNonExistingTaxon(): void
     {
         $request = Request::create('/');

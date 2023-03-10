@@ -7,10 +7,12 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueLoader;
 use Exception;
 use Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
+#[CoversClass(ProductValueLoader::class)]
 final class ProductValueLoaderTest extends TestCase
 {
     private MockObject&ProductRepositoryInterface $productRepositoryMock;
@@ -23,10 +25,6 @@ final class ProductValueLoaderTest extends TestCase
         $this->valueLoader = new ProductValueLoader($this->productRepositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::__construct
-     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::load
-     */
     public function testLoad(): void
     {
         $product = new Product(42, 'Product name');
@@ -40,9 +38,6 @@ final class ProductValueLoaderTest extends TestCase
         self::assertSame($product, $this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::load
-     */
     public function testLoadWithNoProduct(): void
     {
         $this->productRepositoryMock
@@ -54,9 +49,6 @@ final class ProductValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::load
-     */
     public function testLoadWithRepositoryException(): void
     {
         $this->productRepositoryMock
@@ -68,9 +60,6 @@ final class ProductValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteId(): void
     {
         $product = new Product(42, 'Product name');
@@ -84,9 +73,6 @@ final class ProductValueLoaderTest extends TestCase
         self::assertSame($product, $this->valueLoader->loadByRemoteId('abc'));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteIdWithNoProduct(): void
     {
         $this->productRepositoryMock
@@ -98,9 +84,6 @@ final class ProductValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->loadByRemoteId('abc'));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->productRepositoryMock

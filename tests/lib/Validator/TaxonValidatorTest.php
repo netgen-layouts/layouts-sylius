@@ -8,12 +8,14 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Validator\Constraint\Taxon;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+#[CoversClass(TaxonValidator::class)]
 final class TaxonValidatorTest extends ValidatorTestCase
 {
     private MockObject&TaxonRepositoryInterface $repositoryMock;
@@ -32,10 +34,6 @@ final class TaxonValidatorTest extends ValidatorTestCase
         return new TaxonValidator($this->repositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::validate
-     */
     public function testValidateValid(): void
     {
         $this->repositoryMock
@@ -47,10 +45,6 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::validate
-     */
     public function testValidateNull(): void
     {
         $this->repositoryMock
@@ -60,10 +54,6 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->assertValid(true, null);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::validate
-     */
     public function testValidateInvalid(): void
     {
         $this->repositoryMock
@@ -75,9 +65,6 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->assertValid(false, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
@@ -87,9 +74,6 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 'value');
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Validator\TaxonValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
         $this->expectException(UnexpectedTypeException::class);

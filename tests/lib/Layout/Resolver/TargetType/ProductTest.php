@@ -7,12 +7,14 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(Product::class)]
 final class ProductTest extends TestCase
 {
     private MockObject&ProductRepositoryInterface $repositoryMock;
@@ -26,17 +28,11 @@ final class ProductTest extends TestCase
         $this->targetType = new Product();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('sylius_product', $this->targetType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::getConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -53,9 +49,6 @@ final class ProductTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::getConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -72,9 +65,6 @@ final class ProductTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::provideValue
-     */
     public function testProvideValue(): void
     {
         $request = Request::create('/');
@@ -83,9 +73,6 @@ final class ProductTest extends TestCase
         self::assertSame(42, $this->targetType->provideValue($request));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product::provideValue
-     */
     public function testProvideValueWithNoProduct(): void
     {
         $request = Request::create('/');

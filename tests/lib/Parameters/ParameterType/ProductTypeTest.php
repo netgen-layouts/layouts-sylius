@@ -9,12 +9,15 @@ use Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(ProductType::class)]
 final class ProductTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
@@ -28,9 +31,6 @@ final class ProductTypeTest extends TestCase
         $this->type = new ProductType();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType::getIdentifier
-     */
     public function testGetIdentifier(): void
     {
         self::assertSame('sylius_product', $this->type::getIdentifier());
@@ -39,11 +39,8 @@ final class ProductTypeTest extends TestCase
     /**
      * @param mixed[] $options
      * @param mixed[] $resolvedOptions
-     *
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType::configureOptions
-     *
-     * @dataProvider validOptionsDataProvider
      */
+    #[DataProvider('validOptionsDataProvider')]
     public function testValidOptions(array $options, array $resolvedOptions): void
     {
         $parameter = $this->getParameterDefinition($options);
@@ -52,11 +49,8 @@ final class ProductTypeTest extends TestCase
 
     /**
      * @param mixed[] $options
-     *
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType::configureOptions
-     *
-     * @dataProvider invalidOptionsDataProvider
      */
+    #[DataProvider('invalidOptionsDataProvider')]
     public function testInvalidOptions(array $options): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -95,9 +89,6 @@ final class ProductTypeTest extends TestCase
         ];
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType::getValueConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -115,9 +106,6 @@ final class ProductTypeTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType::getValueConstraints
-     */
     public function testValidationValidWithNonRequiredValue(): void
     {
         $this->repositoryMock
@@ -133,9 +121,6 @@ final class ProductTypeTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType::getValueConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -153,11 +138,7 @@ final class ProductTypeTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType::isValueEmpty
-     *
-     * @dataProvider emptyDataProvider
-     */
+    #[DataProvider('emptyDataProvider')]
     public function testIsValueEmpty(mixed $value, bool $isEmpty): void
     {
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));

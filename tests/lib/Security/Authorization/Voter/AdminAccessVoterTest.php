@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Security\Authorization\Voter;
 
 use Netgen\Layouts\Sylius\Security\Authorization\Voter\AdminAccessVoter;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Core\Model\AdminUser;
 use Sylius\Component\User\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
+#[CoversClass(AdminAccessVoter::class)]
 final class AdminAccessVoterTest extends TestCase
 {
     private AdminAccessVoter $voter;
@@ -19,9 +21,6 @@ final class AdminAccessVoterTest extends TestCase
         $this->voter = new AdminAccessVoter();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Security\Authorization\Voter\AdminAccessVoter::vote
-     */
     public function testVote(): void
     {
         $token = $this->createMock(TokenInterface::class);
@@ -33,9 +32,6 @@ final class AdminAccessVoterTest extends TestCase
         self::assertSame(1, $this->voter->vote($token, null, []));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Security\Authorization\Voter\AdminAccessVoter::vote
-     */
     public function testVoteWithoutAdminUser(): void
     {
         $token = $this->createMock(TokenInterface::class);

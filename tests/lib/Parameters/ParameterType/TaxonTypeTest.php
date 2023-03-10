@@ -9,12 +9,15 @@ use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(TaxonType::class)]
 final class TaxonTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
@@ -28,9 +31,6 @@ final class TaxonTypeTest extends TestCase
         $this->type = new TaxonType();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getIdentifier
-     */
     public function testGetIdentifier(): void
     {
         self::assertSame('sylius_taxon', $this->type::getIdentifier());
@@ -39,11 +39,8 @@ final class TaxonTypeTest extends TestCase
     /**
      * @param mixed[] $options
      * @param mixed[] $resolvedOptions
-     *
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::configureOptions
-     *
-     * @dataProvider validOptionsDataProvider
      */
+    #[DataProvider('validOptionsDataProvider')]
     public function testValidOptions(array $options, array $resolvedOptions): void
     {
         $parameter = $this->getParameterDefinition($options);
@@ -52,11 +49,8 @@ final class TaxonTypeTest extends TestCase
 
     /**
      * @param mixed[] $options
-     *
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::configureOptions
-     *
-     * @dataProvider invalidOptionsDataProvider
      */
+    #[DataProvider('invalidOptionsDataProvider')]
     public function testInvalidOptions(array $options): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -95,9 +89,6 @@ final class TaxonTypeTest extends TestCase
         ];
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -115,9 +106,6 @@ final class TaxonTypeTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
-     */
     public function testValidationValidWithNonRequiredValue(): void
     {
         $this->repositoryMock
@@ -133,9 +121,6 @@ final class TaxonTypeTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::getValueConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -153,11 +138,7 @@ final class TaxonTypeTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType::isValueEmpty
-     *
-     * @dataProvider emptyDataProvider
-     */
+    #[DataProvider('emptyDataProvider')]
     public function testIsValueEmpty(mixed $value, bool $isEmpty): void
     {
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));

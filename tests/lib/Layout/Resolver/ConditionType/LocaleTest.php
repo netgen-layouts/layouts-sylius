@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\ConditionType;
 use Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale;
 use Netgen\Layouts\Sylius\Tests\Stubs\Locale as LocaleStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -14,11 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(Locale::class)]
 final class LocaleTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
-     */
     private MockObject&RepositoryInterface $localeRepositoryMock;
 
     private Locale $conditionType;
@@ -30,17 +29,11 @@ final class LocaleTest extends TestCase
         $this->conditionType = new Locale();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('sylius_locale', $this->conditionType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale::getConstraints
-     */
     public function testValidationValid(): void
     {
         $locale = new LocaleStub(5, 'en_US');
@@ -59,9 +52,6 @@ final class LocaleTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale::getConstraints
-     */
     public function testValidationInvalidNoLocale(): void
     {
         $this->localeRepositoryMock
@@ -78,9 +68,6 @@ final class LocaleTest extends TestCase
         self::assertCount(1, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale::getConstraints
-     */
     public function testValidationInvalidValue(): void
     {
         $validator = Validation::createValidatorBuilder()
@@ -92,9 +79,6 @@ final class LocaleTest extends TestCase
         $validator->validate([5], $this->conditionType->getConstraints());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale::matches
-     */
     public function testMatches(): void
     {
         $request = Request::create('/');

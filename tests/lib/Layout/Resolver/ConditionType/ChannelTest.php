@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\ConditionType;
 use Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
@@ -16,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
     private MockObject&ChannelContextInterface $channelContextMock;
@@ -32,17 +34,11 @@ final class ChannelTest extends TestCase
         $this->conditionType = new Channel($this->channelContextMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('sylius_channel', $this->conditionType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel::getConstraints
-     */
     public function testValidationValid(): void
     {
         $this->channelRepositoryMock
@@ -59,9 +55,6 @@ final class ChannelTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel::getConstraints
-     */
     public function testValidationInvalidNoChannel(): void
     {
         $this->channelRepositoryMock
@@ -78,9 +71,6 @@ final class ChannelTest extends TestCase
         self::assertCount(1, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel::getConstraints
-     */
     public function testValidationInvalidValue(): void
     {
         $validator = Validation::createValidatorBuilder()
@@ -92,9 +82,6 @@ final class ChannelTest extends TestCase
         $validator->validate(['webshop'], $this->conditionType->getConstraints());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel::matches
-     */
     public function testMatches(): void
     {
         $request = Request::create('/');
@@ -108,9 +95,6 @@ final class ChannelTest extends TestCase
         self::assertTrue($this->conditionType->matches($request, [42, 43, 44]));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel::matches
-     */
     public function testMatchesWithNoChannel(): void
     {
         $request = Request::create('/');

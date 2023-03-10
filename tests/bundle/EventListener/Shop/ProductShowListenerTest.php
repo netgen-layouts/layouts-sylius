@@ -8,11 +8,13 @@ use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener;
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+#[CoversClass(ProductShowListener::class)]
 final class ProductShowListenerTest extends TestCase
 {
     private ProductShowListener $listener;
@@ -29,10 +31,6 @@ final class ProductShowListenerTest extends TestCase
         $this->listener = new ProductShowListener($this->requestStack, $this->context);
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener::getSubscribedEvents
-     */
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
@@ -41,9 +39,6 @@ final class ProductShowListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener::onProductShow
-     */
     public function testOnProductShow(): void
     {
         $request = Request::create('/');
@@ -59,9 +54,6 @@ final class ProductShowListenerTest extends TestCase
         self::assertSame(42, $this->context->get('sylius_product_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ProductShowListener::onProductShow
-     */
     public function testOnProductShowWithoutProduct(): void
     {
         $request = Request::create('/');

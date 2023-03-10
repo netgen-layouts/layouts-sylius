@@ -7,12 +7,14 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(Taxon::class)]
 final class TaxonTest extends TestCase
 {
     private MockObject&TaxonRepositoryInterface $repositoryMock;
@@ -26,17 +28,11 @@ final class TaxonTest extends TestCase
         $this->targetType = new Taxon();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('sylius_taxon', $this->targetType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -53,9 +49,6 @@ final class TaxonTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::getConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -72,9 +65,6 @@ final class TaxonTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
-     */
     public function testProvideValue(): void
     {
         $taxon = new TaxonStub(42);
@@ -86,9 +76,6 @@ final class TaxonTest extends TestCase
         self::assertSame([42, 24], $this->targetType->provideValue($request));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon::provideValue
-     */
     public function testProvideValueWithNoTaxon(): void
     {
         $request = Request::create('/');

@@ -8,6 +8,7 @@ use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuFactory;
 use Knp\Menu\MenuItem;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
@@ -16,6 +17,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 use function array_keys;
 
+#[CoversClass(MainMenuBuilderListener::class)]
 final class MainMenuBuilderListenerTest extends TestCase
 {
     private MainMenuBuilderListener $listener;
@@ -29,10 +31,6 @@ final class MainMenuBuilderListenerTest extends TestCase
         $this->listener = new MainMenuBuilderListener($this->authCheckerMock);
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::getSubscribedEvents
-     */
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
@@ -41,11 +39,6 @@ final class MainMenuBuilderListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
-     */
     public function testOnMainMenuBuild(): void
     {
         $this->authCheckerMock
@@ -67,11 +60,6 @@ final class MainMenuBuilderListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::addLayoutsSubMenu
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::getNewMenuOrder
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
-     */
     public function testOnMainMenuBuildPlacedBeforeConfiguration(): void
     {
         $this->authCheckerMock
@@ -93,9 +81,6 @@ final class MainMenuBuilderListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener::onMainMenuBuild
-     */
     public function testOnMainMenuBuildWithNoAccess(): void
     {
         $this->authCheckerMock

@@ -6,8 +6,10 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(TaxonProduct::class)]
 final class TaxonProductTest extends TestCase
 {
     private TaxonProduct $mapper;
@@ -17,17 +19,11 @@ final class TaxonProductTest extends TestCase
         $this->mapper = new TaxonProduct();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct::getFormType
-     */
     public function testGetFormType(): void
     {
         self::assertSame(ContentBrowserType::class, $this->mapper->getFormType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct::getFormOptions
-     */
     public function testGetFormOptions(): void
     {
         self::assertSame(
