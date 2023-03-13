@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": "^8.1",
         "netgen/layouts-core": "~1.4.3",
         "netgen/content-browser-sylius": "^1.4",
         "sylius/sylius": "^1.11.6"
