@@ -80,9 +80,9 @@ final class SyliusRuntime
     /**
      * Returns the locale name.
      */
-    public function getLocaleName(string $locale): ?string
+    public function getLocaleName(string $code): ?string
     {
-        $locale = $this->localeRepository->findOneBy(['code' => $locale]);
+        $locale = $this->localeRepository->findOneBy(['code' => $code]);
         if (!$locale instanceof LocaleInterface) {
             return null;
         }
