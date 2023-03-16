@@ -104,14 +104,14 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
             ->andWhere(':channel MEMBER OF o.channels')
             ->andWhere('o.enabled = true')
             ->setParameter('locale', $locale)
-            ->setParameter('channel', $channel)
+            ->setParameter('channel', $channel->getId())
         ;
 
         if ($taxon instanceof TaxonInterface) {
             $queryBuilder
                 ->innerJoin('o.productTaxons', 'productTaxon')
                 ->andWhere('productTaxon.taxon = :taxon')
-                ->setParameter('taxon', $taxon);
+                ->setParameter('taxon', $taxon->getId());
         }
 
         // Grid hack, we do not need to join these if we don't sort by price

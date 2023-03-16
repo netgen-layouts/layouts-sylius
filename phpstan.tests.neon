@@ -8,8 +8,6 @@ includes:
     - vendor/phpstan/phpstan-phpunit/rules.neon
 
 parameters:
-    treatPhpDocTypesAsCertain: false
-
     ignoreErrors:
         -
             message: '#RepositoryInterface (but )?does not specify its types#'

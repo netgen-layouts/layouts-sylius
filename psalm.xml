@@ -14,15 +14,6 @@
     </projectFiles>
 
     <issueHandlers>
-        <!-- Symfony -->
-
-        <PropertyNotSetInConstructor>
-            <errorLevel type="suppress">
-                <referencedProperty name="Symfony\Component\Validator\ConstraintValidator::$context" />
-                <referencedProperty name="Symfony\Component\Validator\Constraint::$groups" />
-            </errorLevel>
-        </PropertyNotSetInConstructor>
-
         <!-- Doctrine ORM -->
 
         <MoreSpecificReturnType>
@@ -51,4 +42,8 @@
             </errorLevel>
         </LessSpecificImplementedReturnType>
     </issueHandlers>
+
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin" />
+    </plugins>
 </psalm>
