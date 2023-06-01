@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
     bootstrap="vendor/autoload.php"
     colors="true"
     requireCoverageMetadata="true"
@@ -21,7 +21,7 @@
         </testsuite>
     </testsuites>
 
-    <coverage>
+    <source>
         <include>
             <directory suffix=".php">lib</directory>
             <directory suffix=".php">bundle</directory>
@@ -31,5 +31,5 @@
             <file>bundle/NetgenLayoutsSyliusBundle.php</file>
             <file>bundle/DependencyInjection/NetgenLayoutsSyliusExtension.php</file>
         </exclude>
-    </coverage>
+    </source>
 </phpunit>
