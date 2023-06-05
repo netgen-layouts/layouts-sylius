@@ -30,7 +30,6 @@ final class ProductValueLoaderTest extends TestCase
         $product = new Product(42, 'Product name');
 
         $this->productRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($product);
@@ -41,7 +40,6 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadWithNoProduct(): void
     {
         $this->productRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -52,7 +50,6 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadWithRepositoryException(): void
     {
         $this->productRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -65,7 +62,6 @@ final class ProductValueLoaderTest extends TestCase
         $product = new Product(42, 'Product name');
 
         $this->productRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn($product);
@@ -76,7 +72,6 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithNoProduct(): void
     {
         $this->productRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn(null);
@@ -87,7 +82,6 @@ final class ProductValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->productRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willThrowException(new Exception());

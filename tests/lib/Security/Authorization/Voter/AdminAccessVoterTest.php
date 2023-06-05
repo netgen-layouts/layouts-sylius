@@ -25,7 +25,6 @@ final class AdminAccessVoterTest extends TestCase
     {
         $token = $this->createMock(TokenInterface::class);
         $token
-            ->expects(self::any())
             ->method('getUser')
             ->willReturn(new AdminUser());
 
@@ -36,7 +35,6 @@ final class AdminAccessVoterTest extends TestCase
     {
         $token = $this->createMock(TokenInterface::class);
         $token
-            ->expects(self::any())
             ->method('getUser')
             ->willReturn(new User());
 
