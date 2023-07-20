@@ -42,5 +42,8 @@ return [
         ['id' => 12, 'status' => 1, 'uuid' => 'd2311434-2d52-4c69-b016-ec4d2a8ea073', 'rule_id' => 6, 'type' => 'sylius_taxon_product', 'value' => 43],
         ['id' => 13, 'status' => 1, 'uuid' => 'faad2665-8bba-4751-9ea6-a69a0d5db13f', 'rule_id' => 6, 'type' => 'sylius_taxon_product', 'value' => 5],
         ['id' => 14, 'status' => 1, 'uuid' => '40aadd7e-01ae-49ea-80e2-fa1187b8342e', 'rule_id' => 7, 'type' => 'sylius_taxon_product', 'value' => 13],
+        ['id' => 15, 'status' => 1, 'uuid' => '40aadd7e-01ae-49ea-80e2-fa1187b8342e', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'homepage'],
+        ['id' => 16, 'status' => 1, 'uuid' => '40aadd7e-01ae-49ea-80e2-fa1187b8342e', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'cart_summary'],
+        ['id' => 17, 'status' => 1, 'uuid' => '40aadd7e-01ae-49ea-80e2-fa1187b8342e', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'homepage'],
     ],
 ];
