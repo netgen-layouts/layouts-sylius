@@ -69,3 +69,17 @@ services:
             - "@sylius.repository.locale"
         tags:
             - { name: netgen_layouts.condition_type.form_mapper, condition_type: sylius_locale }
+
+    netgen_layouts.sylius.layout_resolver.condition_type.resource_type:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\ResourceType
+        arguments:
+            - "%netgen_layouts.sylius.condition.resource_types%"
+        tags:
+            - { name: netgen_layouts.condition_type }
+
+    netgen_layouts.sylius.layout_resolver.condition_type.form_mapper.resource_type:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ResourceType
+        arguments:
+            - "%netgen_layouts.sylius.condition.resource_types%"
+        tags:
+            - { name: netgen_layouts.condition_type.form_mapper, condition_type: sylius_resource_type }
