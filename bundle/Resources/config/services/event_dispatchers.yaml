@@ -1,0 +1,7 @@
+services:
+    netgen_layouts.sylius.event_dispatcher.sylius_event_dispatcher:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventDispatcher\SyliusEventDispatcher
+        decorates: sylius.resource_controller.event_dispatcher
+        arguments:
+            - '@.inner'
+            - '@event_dispatcher'
