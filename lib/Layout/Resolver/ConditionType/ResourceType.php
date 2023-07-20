@@ -9,6 +9,7 @@ use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
+use function array_filter;
 use function array_flip;
 use function array_map;
 use function is_a;
@@ -46,7 +47,9 @@ final class ResourceType extends ConditionType
     {
         $resource = $request->attributes->get('nglayouts_sylius_resource');
 
-        $allowedClasses = array_map(fn (string $value): string => array_flip($this->allowedResources)[$value], $value);
+        $allowedClasses = array_filter(
+            array_map(fn (string $type): ?string => array_flip($this->allowedResources)[$type] ?? null, $value),
+        );
 
         foreach ($allowedClasses as $allowedClass) {
             if (is_a($resource, $allowedClass)) {
