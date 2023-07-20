@@ -23,7 +23,7 @@ final class PageTest extends TargetHandlerTestBase
         );
 
         self::assertCount(1, $rules);
-        self::assertSame(15, $rules[0]->id);
+        self::assertSame(7, $rules[0]->id);
     }
 
     protected function getTargetIdentifier(): string
