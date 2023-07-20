@@ -51,6 +51,7 @@ final class ResourceType extends ConditionType
             array_map(fn (string $type): ?string => array_flip($this->allowedResources)[$type] ?? null, $value),
         );
 
+        /** @var class-string $allowedClass */
         foreach ($allowedClasses as $allowedClass) {
             if (is_a($resource, $allowedClass)) {
                 return true;
