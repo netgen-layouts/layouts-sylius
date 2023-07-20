@@ -1,2 +1,4 @@
-parameters:
-    netgen_layouts.sylius.admin.pagelayout: '@@NetgenLayoutsSylius/admin/pagelayout.html.twig'
+resource_type_condition:
+    available_resources:
+        Sylius\Component\Product\Model\Product: product
+        Sylius\Component\Taxonomy\Model\Taxon: taxon
