@@ -36,12 +36,21 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
         );
 
         $loader->load('services/**/*.yaml', 'glob');
-        $loader->load('default_settings.yaml');
+        $loader->load('default_parameters.yaml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter(
+            'netgen_layouts.sylius.condition.resource_types',
+            $config['resource_type_condition']['available_resources'],
+        );
     }
 
     public function prepend(ContainerBuilder $container): void
     {
         $prependConfigs = [
+            'default_settings.yaml' => 'netgen_layouts_sylius',
             'liip_imagine.yaml' => 'liip_imagine',
             'design.yaml' => 'netgen_layouts',
             'value_types.yaml' => 'netgen_layouts',

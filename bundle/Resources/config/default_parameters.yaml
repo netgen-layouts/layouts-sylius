@@ -1,0 +1,2 @@
+parameters:
+    netgen_layouts.sylius.admin.pagelayout: '@@NetgenLayoutsSylius/admin/pagelayout.html.twig'
