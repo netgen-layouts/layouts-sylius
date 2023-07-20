@@ -75,6 +75,7 @@ final class ProductIndexListenerTest extends TestCase
         $this->listener->onProductIndex($event);
 
         self::assertSame($taxon, $request->attributes->get('nglayouts_sylius_taxon'));
+        self::assertSame($taxon, $request->attributes->get('nglayouts_sylius_resource'));
 
         self::assertTrue($this->context->has('sylius_taxon_id'));
         self::assertSame(42, $this->context->get('sylius_taxon_id'));
@@ -105,6 +106,7 @@ final class ProductIndexListenerTest extends TestCase
         $this->listener->onProductIndex($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_taxon'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_resource'));
         self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 
@@ -125,6 +127,7 @@ final class ProductIndexListenerTest extends TestCase
         $this->listener->onProductIndex($event);
 
         self::assertFalse($request->attributes->has('nglayouts_sylius_taxon'));
+        self::assertFalse($request->attributes->has('nglayouts_sylius_resource'));
         self::assertFalse($this->context->has('sylius_taxon_id'));
     }
 }
