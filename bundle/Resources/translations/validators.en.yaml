@@ -3,3 +3,4 @@ netgen_layouts.sylius.taxon.taxon_not_found: 'Taxon with ID %taxonId% does not e
 netgen_layouts.sylius.channel.channel_not_found: 'Channel %channel% does not exist.'
 netgen_layouts.sylius.locale.locale_not_found: 'Locale %locale% does not exist.'
 netgen_layouts.sylius.resource_type.type_not_found: 'Resource type %resource_type% does not exist.'
+netgen_layouts.sylius.page.page_not_found: 'Sylius page %page% does not exist.'
