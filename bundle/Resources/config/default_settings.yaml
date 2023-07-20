@@ -2,3 +2,14 @@ resource_type_condition:
     available_resources:
         Sylius\Component\Product\Model\ProductInterface: product
         Sylius\Component\Taxonomy\Model\TaxonInterface: taxon
+
+page_target:
+    available_pages:
+        sylius_shop_homepage: homepage
+        sylius_shop_cart_summary: cart_summary
+        sylius_shop_order_thank_you: order_thank_you
+        sylius_shop_order_show: order_show
+        sylius_shop_account_dashboard: account_dashboard
+        sylius_shop_account_order_index: account_orders
+        sylius_shop_account_order_show: account_order_show
+        sylius_shop_account_address_book_index: account_address_book

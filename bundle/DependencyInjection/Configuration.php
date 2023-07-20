@@ -17,6 +17,7 @@ final class Configuration implements ConfigurationInterface
         /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
         $this->addResourceTypeConditionConfiguration($rootNode);
+        $this->addPageTargetConfiguration($rootNode);
 
         return $treeBuilder;
     }
@@ -28,6 +29,21 @@ final class Configuration implements ConfigurationInterface
                 ->arrayNode('resource_type_condition')
                     ->children()
                         ->arrayNode('available_resources')
+                            ->prototype('scalar')
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+
+    private function addPageTargetConfiguration(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('page_target')
+                    ->children()
+                        ->arrayNode('available_pages')
                             ->prototype('scalar')
                             ->end()
                         ->end()

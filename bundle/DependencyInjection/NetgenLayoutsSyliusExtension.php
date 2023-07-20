@@ -45,6 +45,11 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             'netgen_layouts.sylius.condition.resource_types',
             $config['resource_type_condition']['available_resources'],
         );
+
+        $container->setParameter(
+            'netgen_layouts.sylius.target.pages',
+            $config['page_target']['available_pages'],
+        );
     }
 
     public function prepend(ContainerBuilder $container): void
