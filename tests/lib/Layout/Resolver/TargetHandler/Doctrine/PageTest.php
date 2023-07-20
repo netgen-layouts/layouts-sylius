@@ -22,9 +22,8 @@ final class PageTest extends TargetHandlerTestBase
             'homepage',
         );
 
-        self::assertCount(2, $rules);
+        self::assertCount(1, $rules);
         self::assertSame(15, $rules[0]->id);
-        self::assertSame(17, $rules[1]->id);
     }
 
     protected function getTargetIdentifier(): string

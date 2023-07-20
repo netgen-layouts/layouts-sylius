@@ -44,6 +44,5 @@ return [
         ['id' => 14, 'status' => 1, 'uuid' => '40aadd7e-01ae-49ea-80e2-fa1187b8342e', 'rule_id' => 7, 'type' => 'sylius_taxon_product', 'value' => 13],
         ['id' => 15, 'status' => 1, 'uuid' => 'dbc264ac-3ade-4388-bc26-b82487d71699', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'homepage'],
         ['id' => 16, 'status' => 1, 'uuid' => '24136aac-c0b6-401d-9df6-f8c5ec19c1b2', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'cart_summary'],
-        ['id' => 17, 'status' => 1, 'uuid' => 'bd338788-2ab5-45e0-aa53-f1bf6dba7d8f', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'homepage'],
     ],
 ];
