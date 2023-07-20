@@ -44,6 +44,25 @@ services:
         tags:
             - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_taxon }
 
+    netgen_layouts.sylius.layout_resolver.target_type.page:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Page
+        arguments:
+            - "%netgen_layouts.sylius.target.pages%"
+        tags:
+            - { name: netgen_layouts.target_type, priority: 170 }
+
+    netgen_layouts.sylius.layout_resolver.target_handler.doctrine.sylius_page:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Page
+        tags:
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_page }
+
+    netgen_layouts.sylius.layout_resolver.target_type.form_mapper.page:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Page
+        arguments:
+            - "%netgen_layouts.sylius.target.pages%"
+        tags:
+            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_page }
+
     netgen_layouts.sylius.layout_resolver.condition_type.channel:
         class: Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel
         arguments:
