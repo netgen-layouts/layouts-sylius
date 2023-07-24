@@ -6,10 +6,27 @@ resource_type_condition:
 page_target:
     available_pages:
         sylius_shop_homepage: homepage
+        sylius_shop_login: login
+        sylius_shop_register: register
+        sylius_shop_register_after_checkout: register_after_checkout
+        sylius_shop_request_password_reset_token: forgotten_password
+        sylius_shop_password_reset: password_reset
+        sylius_shop_contact_request: contact_request
         sylius_shop_cart_summary: cart_summary
         sylius_shop_order_thank_you: order_thank_you
         sylius_shop_order_show: order_show
-        sylius_shop_account_dashboard: account_dashboard
+        sylius_shop_product_review_index: product_reviews
+        sylius_shop_product_review_create: product_review_create
+        sylius_shop_checkout_start: checkout_start
+        sylius_shop_checkout_address: checkout_address
+        sylius_shop_checkout_select_shipping: checkout_select_shipping
+        sylius_shop_checkout_select_payment: checkout_select_payment
+        sylius_shop_checkout_complete: checkout_complete
         sylius_shop_account_order_index: account_orders
         sylius_shop_account_order_show: account_order_show
         sylius_shop_account_address_book_index: account_address_book
+        sylius_shop_account_address_book_create: account_address_book_create
+        sylius_shop_account_address_book_update: account_address_book_update
+        sylius_shop_account_dashboard: account_dashboard
+        sylius_shop_account_profile_update: account_profile_update
+        sylius_shop_account_change_password: account_change_password
