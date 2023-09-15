@@ -20,8 +20,7 @@ final class ProductIndexListener implements EventSubscriberInterface
         private LocaleContextInterface $localeContext,
         private RequestStack $requestStack,
         private Context $context,
-    ) {
-    }
+    ) {}
 
     public static function getSubscribedEvents(): array
     {

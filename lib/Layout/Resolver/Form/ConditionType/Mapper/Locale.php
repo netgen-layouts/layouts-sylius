@@ -13,9 +13,7 @@ final class Locale extends Mapper
     /**
      * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
      */
-    public function __construct(private RepositoryInterface $localeRepository)
-    {
-    }
+    public function __construct(private RepositoryInterface $localeRepository) {}
 
     public function getFormType(): string
     {

@@ -11,9 +11,7 @@ use Throwable;
 
 final class ProductValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private ProductRepositoryInterface $productRepository)
-    {
-    }
+    public function __construct(private ProductRepositoryInterface $productRepository) {}
 
     public function load($id): ?ProductInterface
     {

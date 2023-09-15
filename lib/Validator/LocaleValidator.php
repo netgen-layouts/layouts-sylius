@@ -18,9 +18,7 @@ final class LocaleValidator extends ConstraintValidator
     /**
      * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
      */
-    public function __construct(private RepositoryInterface $localeRepository)
-    {
-    }
+    public function __construct(private RepositoryInterface $localeRepository) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

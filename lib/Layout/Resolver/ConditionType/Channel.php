@@ -17,9 +17,7 @@ use function is_array;
 
 final class Channel extends ConditionType
 {
-    public function __construct(private ChannelContextInterface $channelContext)
-    {
-    }
+    public function __construct(private ChannelContextInterface $channelContext) {}
 
     public static function getType(): string
     {

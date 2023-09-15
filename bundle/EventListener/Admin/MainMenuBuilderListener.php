@@ -16,9 +16,7 @@ use function array_splice;
 
 final class MainMenuBuilderListener implements EventSubscriberInterface
 {
-    public function __construct(private AuthorizationCheckerInterface $authorizationChecker)
-    {
-    }
+    public function __construct(private AuthorizationCheckerInterface $authorizationChecker) {}
 
     public static function getSubscribedEvents(): array
     {

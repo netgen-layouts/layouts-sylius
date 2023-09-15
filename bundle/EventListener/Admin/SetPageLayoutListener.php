@@ -10,9 +10,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class SetPageLayoutListener implements EventSubscriberInterface
 {
-    public function __construct(private string $pageLayoutTemplate)
-    {
-    }
+    public function __construct(private string $pageLayoutTemplate) {}
 
     public static function getSubscribedEvents(): array
     {

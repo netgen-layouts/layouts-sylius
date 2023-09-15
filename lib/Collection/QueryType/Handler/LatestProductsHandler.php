@@ -27,8 +27,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
         private TaxonRepositoryInterface $taxonRepository,
         private ChannelContextInterface $channelContext,
         private RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {

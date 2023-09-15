@@ -15,9 +15,7 @@ use function is_scalar;
 
 final class ProductValidator extends ConstraintValidator
 {
-    public function __construct(private ProductRepositoryInterface $productRepository)
-    {
-    }
+    public function __construct(private ProductRepositoryInterface $productRepository) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

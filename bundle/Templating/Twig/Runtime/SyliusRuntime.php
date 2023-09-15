@@ -25,8 +25,7 @@ final class SyliusRuntime
         private TaxonRepositoryInterface $taxonRepository,
         private ChannelRepositoryInterface $channelRepository,
         private RepositoryInterface $localeRepository,
-    ) {
-    }
+    ) {}
 
     /**
      * Returns the product name.

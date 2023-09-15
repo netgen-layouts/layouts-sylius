@@ -17,9 +17,7 @@ use function asort;
  */
 final class LocaleProvider implements LocaleProviderInterface
 {
-    public function __construct(private SyliusLocaleProviderInterface $syliusLocaleProvider)
-    {
-    }
+    public function __construct(private SyliusLocaleProviderInterface $syliusLocaleProvider) {}
 
     public function getAvailableLocales(): array
     {
