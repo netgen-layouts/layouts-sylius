@@ -1,0 +1,5 @@
+services:
+    netgen_layouts.sylius.view.provider.sylius_resource:
+        class: Netgen\Layouts\Sylius\View\Provider\SyliusResourceViewProvider
+        tags:
+            - { name: netgen_layouts.view_provider, priority: 0 }
