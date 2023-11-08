@@ -22,7 +22,7 @@ final class ChannelTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    private MockObject&ChannelRepositoryInterface $repositoryMock;
+    private ChannelRepositoryInterface&MockObject $repositoryMock;
 
     protected function setUp(): void
     {

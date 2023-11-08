@@ -17,9 +17,7 @@ final class ResourceTypeValidator extends ConstraintValidator
     /**
      * @param array<string, string> $allowedResources
      */
-    public function __construct(private readonly array $allowedResources)
-    {
-    }
+    public function __construct(private readonly array $allowedResources) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

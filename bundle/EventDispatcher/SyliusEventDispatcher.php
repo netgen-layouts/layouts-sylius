@@ -17,8 +17,7 @@ final class SyliusEventDispatcher implements EventDispatcherInterface
     public function __construct(
         private readonly EventDispatcherInterface $innerEventDispatcher,
         private readonly SymfonyEventDispatcherInterface $eventDispatcher,
-    ) {
-    }
+    ) {}
 
     public function dispatch(string $eventName, RequestConfiguration $requestConfiguration, ResourceInterface $resource): ResourceControllerEvent
     {

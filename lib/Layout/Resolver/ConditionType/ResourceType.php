@@ -19,9 +19,7 @@ final class ResourceType extends ConditionType
     /**
      * @param array<string, string> $allowedResources
      */
-    public function __construct(private readonly array $allowedResources)
-    {
-    }
+    public function __construct(private readonly array $allowedResources) {}
 
     public static function getType(): string
     {

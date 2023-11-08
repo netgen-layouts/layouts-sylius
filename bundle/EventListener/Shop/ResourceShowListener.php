@@ -12,9 +12,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ResourceShowListener implements EventSubscriberInterface
 {
-    public function __construct(private RequestStack $requestStack)
-    {
-    }
+    public function __construct(private RequestStack $requestStack) {}
 
     public static function getSubscribedEvents(): array
     {

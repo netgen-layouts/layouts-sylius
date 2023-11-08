@@ -23,7 +23,7 @@ final class ProductIndexListenerTest extends TestCase
 
     private MockObject&TaxonRepositoryInterface $taxonRepositoryMock;
 
-    private MockObject&LocaleContextInterface $localeContextMock;
+    private LocaleContextInterface&MockObject $localeContextMock;
 
     private RequestStack $requestStack;
 
