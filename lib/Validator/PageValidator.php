@@ -17,9 +17,7 @@ final class PageValidator extends ConstraintValidator
     /**
      * @param array<string, string> $allowedPages
      */
-    public function __construct(private readonly array $allowedPages)
-    {
-    }
+    public function __construct(private readonly array $allowedPages) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

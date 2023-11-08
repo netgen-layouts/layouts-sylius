@@ -14,9 +14,7 @@ final class Page extends TargetType
     /**
      * @param array<string, string> $availablePages
      */
-    public function __construct(private readonly array $availablePages)
-    {
-    }
+    public function __construct(private readonly array $availablePages) {}
 
     public static function getType(): string
     {
