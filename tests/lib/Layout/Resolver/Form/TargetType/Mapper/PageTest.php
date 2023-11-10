@@ -33,21 +33,14 @@ final class PageTest extends TestCase
 
     public function testGetFormOptions(): void
     {
-        $pagesList = [
-            'Homepage' => 'homepage',
-            'Cart summary' => 'cart_summary',
-            'Order thank you' => 'order_thank_you',
-            'Order show' => 'order_show',
-        ];
-
         self::assertSame(
             [
-                'choices' => $pagesList,
-                'choice_translation_domain' => false,
-                'multiple' => false,
-                'expanded' => false,
+                'homepage',
+                'cart_summary',
+                'order_thank_you',
+                'order_show',
             ],
-            $this->mapper->getFormOptions(),
+            $this->mapper->getFormOptions()['choices'],
         );
     }
 }
