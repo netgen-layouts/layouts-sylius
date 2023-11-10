@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Validator;
 
+use Netgen\Layouts\Sylius\Validator\PageValidator;
 use Netgen\Layouts\Sylius\Validator\ResourceTypeValidator;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
@@ -26,6 +27,7 @@ final class SettingsValidatorFactory implements ConstraintValidatorFactoryInterf
     {
         return match ($constraint->validatedBy()) {
             'nglayouts_sylius_resource_type' => new ResourceTypeValidator($this->settings),
+            'nglayouts_sylius_page' => new PageValidator($this->settings),
             default => $this->baseValidatorFactory->getInstance($constraint),
         };
     }

@@ -33,3 +33,10 @@ services:
             - "%netgen_layouts.sylius.condition.resource_types%"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_resource_type }
+
+    netgen_layouts.sylius.validator.page:
+        class: Netgen\Layouts\Sylius\Validator\PageValidator
+        arguments:
+            - "%netgen_layouts.sylius.target.pages%"
+        tags:
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_page }
