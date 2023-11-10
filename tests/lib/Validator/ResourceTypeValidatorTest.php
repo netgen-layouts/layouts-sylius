@@ -8,6 +8,8 @@ use Netgen\Layouts\Sylius\Validator\Constraint\ResourceType;
 use Netgen\Layouts\Sylius\Validator\ResourceTypeValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -25,8 +27,8 @@ final class ResourceTypeValidatorTest extends ValidatorTestCase
     public function getValidator(): ConstraintValidatorInterface
     {
         $allowedResources = [
-            'Sylius\Component\Product\Model\ProductInterface' => 'product',
-            'Sylius\Component\Taxonomy\Model\TaxonInterface' => 'taxon',
+            ProductInterface::class => 'product',
+            TaxonInterface::class => 'taxon',
         ];
 
         return new ResourceTypeValidator($allowedResources);

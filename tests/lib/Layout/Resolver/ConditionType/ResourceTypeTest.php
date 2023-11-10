@@ -10,6 +10,8 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use Netgen\Layouts\Sylius\Tests\Validator\SettingsValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Validation;
@@ -25,8 +27,8 @@ final class ResourceTypeTest extends TestCase
     protected function setUp(): void
     {
         $allowedResources = [
-            'Sylius\Component\Product\Model\ProductInterface' => 'product',
-            'Sylius\Component\Taxonomy\Model\TaxonInterface' => 'taxon',
+            ProductInterface::class => 'product',
+            TaxonInterface::class => 'taxon',
         ];
 
         $this->validator = Validation::createValidatorBuilder()

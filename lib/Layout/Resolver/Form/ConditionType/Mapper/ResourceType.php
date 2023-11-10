@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper;
 use Netgen\Layouts\Layout\Resolver\Form\ConditionType\Mapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+use function array_values;
 use function str_replace;
 use function ucfirst;
 
@@ -25,25 +26,12 @@ final class ResourceType extends Mapper
     public function getFormOptions(): array
     {
         return [
-            'choices' => $this->getResourceTypeList(),
+            'choices' => array_values($this->allowedResources),
+            'choice_label' => fn (string $type): string => $this->humanizeType($type),
             'choice_translation_domain' => false,
             'multiple' => true,
             'expanded' => true,
         ];
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    private function getResourceTypeList(): array
-    {
-        $resourceTypeList = [];
-
-        foreach ($this->allowedResources as $type) {
-            $resourceTypeList[$this->humanizeType($type)] = $type;
-        }
-
-        return $resourceTypeList;
     }
 
     private function humanizeType(string $type): string
