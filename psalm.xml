@@ -41,6 +41,18 @@
                 <file name="lib/Security/Authorization/Voter/AdminAccessVoter.php" />
             </errorLevel>
         </LessSpecificImplementedReturnType>
+
+        <PossiblyNullReference>
+            <errorLevel type="suppress">
+                <file name="bundle/DependencyInjection/Configuration.php" />
+            </errorLevel>
+        </PossiblyNullReference>
+
+        <UndefinedInterfaceMethod>
+            <errorLevel type="suppress">
+                <file name="bundle/DependencyInjection/Configuration.php" />
+            </errorLevel>
+        </UndefinedInterfaceMethod>
     </issueHandlers>
 
     <plugins>

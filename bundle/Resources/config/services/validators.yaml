@@ -26,3 +26,10 @@ services:
             - "@sylius.repository.locale"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_locale }
+
+    netgen_layouts.sylius.validator.resource_type:
+        class: Netgen\Layouts\Sylius\Validator\ResourceTypeValidator
+        arguments:
+            - "%netgen_layouts.sylius.condition.resource_types%"
+        tags:
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_resource_type }
