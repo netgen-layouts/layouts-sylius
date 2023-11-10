@@ -16,7 +16,7 @@ final class ResourceType extends Mapper
     /**
      * @param array<string, string> $allowedResources
      */
-    public function __construct(private readonly array $allowedResources) {}
+    public function __construct(private array $allowedResources) {}
 
     public function getFormType(): string
     {

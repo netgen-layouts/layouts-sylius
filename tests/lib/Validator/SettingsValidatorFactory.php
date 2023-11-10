@@ -17,7 +17,7 @@ final class SettingsValidatorFactory implements ConstraintValidatorFactoryInterf
     /**
      * @param array<string, string> $settings
      */
-    public function __construct(private readonly array $settings)
+    public function __construct(private array $settings)
     {
         $this->baseValidatorFactory = new ConstraintValidatorFactory();
     }
