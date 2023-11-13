@@ -17,7 +17,7 @@ use function array_values;
 #[CoversClass(LocaleProvider::class)]
 final class LocaleProviderTest extends TestCase
 {
-    private LocaleProviderInterface&MockObject $syliusLocaleProviderMock;
+    private MockObject&LocaleProviderInterface $syliusLocaleProviderMock;
 
     private LocaleProvider $localeProvider;
 

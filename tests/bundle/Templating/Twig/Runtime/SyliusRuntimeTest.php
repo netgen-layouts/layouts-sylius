@@ -25,7 +25,7 @@ final class SyliusRuntimeTest extends TestCase
 
     private MockObject&TaxonRepositoryInterface $taxonRepositoryMock;
 
-    private ChannelRepositoryInterface&MockObject $channelRepositoryMock;
+    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
 
     /**
      * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>

@@ -19,7 +19,7 @@ final class SyliusEventDispatcherTest extends TestCase
 {
     private SyliusEventDispatcher $dispatcher;
 
-    private EventDispatcherInterface&MockObject $innerEventDispatcherMock;
+    private MockObject&EventDispatcherInterface $innerEventDispatcherMock;
 
     private MockObject&SymfonyEventDispatcherInterface $eventDispatcherMock;
 
