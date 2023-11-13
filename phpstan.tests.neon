@@ -12,3 +12,7 @@ parameters:
         -
             message: '#RepositoryInterface (but )?does not specify its types#'
             path: tests/lib/Validator/RepositoryValidatorFactory.php
+
+        # Disable errors about missing value types in PHPUnit data providers
+
+        - '#Method .+TestCase::\w+DataProvider\(\) return type has no value type specified in iterable type iterable.#'

@@ -60,10 +60,8 @@ final class ChannelTypeTest extends TestCase
 
     /**
      * Provider for testing valid parameter attributes.
-     *
-     * @return mixed[]
      */
-    public static function validOptionsDataProvider(): array
+    public static function validOptionsDataProvider(): iterable
     {
         return [
             [
@@ -93,10 +91,8 @@ final class ChannelTypeTest extends TestCase
 
     /**
      * Provider for testing invalid parameter attributes.
-     *
-     * @return mixed[]
      */
-    public static function invalidOptionsDataProvider(): array
+    public static function invalidOptionsDataProvider(): iterable
     {
         return [
             [
@@ -165,10 +161,7 @@ final class ChannelTypeTest extends TestCase
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
-    /**
-     * @return mixed[]
-     */
-    public static function emptyDataProvider(): array
+    public static function emptyDataProvider(): iterable
     {
         return [
             [null, true],
