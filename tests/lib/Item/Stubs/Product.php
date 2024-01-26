@@ -8,7 +8,7 @@ use Sylius\Component\Product\Model\Product as BaseProduct;
 
 final class Product extends BaseProduct
 {
-    public function __construct(int $id, string $name, ?string $slug = null)
+    public function __construct(int $id, string $name, ?string $slug = null, bool $enabled = true)
     {
         parent::__construct();
 
@@ -16,7 +16,7 @@ final class Product extends BaseProduct
 
         $this->currentLocale = 'en';
         $this->setName($name);
-
         $this->setSlug($slug);
+        $this->setEnabled($enabled);
     }
 }

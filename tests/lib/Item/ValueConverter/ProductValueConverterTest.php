@@ -74,6 +74,12 @@ final class ProductValueConverterTest extends TestCase
                 new ProductStub(42, 'Product name'),
             ),
         );
+
+        self::assertFalse(
+            $this->valueConverter->getIsVisible(
+                new ProductStub(42, 'Product name', null, false),
+            ),
+        );
     }
 
     public function testGetObject(): void
