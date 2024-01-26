@@ -39,7 +39,7 @@ final class ProductValueConverter implements ValueConverterInterface
 
     public function getIsVisible(object $object): bool
     {
-        return true;
+        return $object->isEnabled();
     }
 
     public function getObject(object $object): ProductInterface
