@@ -53,7 +53,6 @@ final class ProductIndexListener implements EventSubscriberInterface
         }
 
         $currentRequest->attributes->set('nglayouts_sylius_taxon', $taxon);
-        $currentRequest->attributes->set('nglayouts_sylius_resource', $taxon);
         // We set context here instead in a ContextProvider, since sylius.taxon.show
         // event happens too late, after onKernelRequest event has already been executed
         $this->context->set('sylius_taxon_id', (int) $taxon->getId());
