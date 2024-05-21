@@ -49,7 +49,7 @@ services:
         arguments:
             - "%netgen_layouts.sylius.target.pages%"
         tags:
-            - { name: netgen_layouts.target_type, priority: 170 }
+            - { name: netgen_layouts.target_type, priority: 140 }
 
     netgen_layouts.sylius.layout_resolver.target_handler.doctrine.sylius_page:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Page
