@@ -16,8 +16,8 @@ class Instance implements MatcherInterface
             return false;
         }
 
-        foreach ($config as $fqcn) {
-            if ($view->getResource() instanceof $fqcn) {
+        foreach ($config as $className) {
+            if ($view->getResource() instanceof $className) {
                 return true;
             }
         }

@@ -7,7 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\ConditionType\Mapper;
 use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ResourceType;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Product\Model\Product;
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Taxonomy\Model\Taxon;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
@@ -22,7 +22,7 @@ final class ResourceTypeTest extends TestCase
     {
         $allowedResources = [
             ProductInterface::class => 'product',
-            Product::class => 'product-test',
+            Product::class => 'product_test',
             TaxonInterface::class => 'taxon',
             Taxon::class => 'taxon_test',
         ];
