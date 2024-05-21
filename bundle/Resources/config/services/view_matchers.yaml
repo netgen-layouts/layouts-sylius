@@ -4,7 +4,7 @@ services:
         tags:
             - { name: netgen_layouts.view_matcher, identifier: sylius_resource\instance }
 
-    netgen_layouts.sylius.view.matcher.sylius_resource.view_type2:
+    netgen_layouts.sylius.view.matcher.sylius_resource.view_type:
         class: Netgen\Layouts\Sylius\View\Matcher\SyliusResource\ViewType
         tags:
             - { name: netgen_layouts.view_matcher, identifier: sylius_resource\view_type }
