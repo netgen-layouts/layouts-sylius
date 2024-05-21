@@ -30,7 +30,7 @@ final class ResourceShowListenerTest extends TestCase
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
-            ['sylius.resource.show' => 'onResourceShow'],
+            ['nglayouts.sylius.resource.show' => 'onResourceShow'],
             $this->listener::getSubscribedEvents(),
         );
     }

@@ -23,7 +23,7 @@ final class SyliusEventDispatcher implements EventDispatcherInterface
     {
         $event = $this->innerEventDispatcher->dispatch($eventName, $requestConfiguration, $resource);
 
-        $this->eventDispatcher->dispatch($event, sprintf('sylius.resource.%s', $eventName));
+        $this->eventDispatcher->dispatch($event, sprintf('nglayouts.sylius.resource.%s', $eventName));
 
         return $event;
     }
@@ -32,7 +32,7 @@ final class SyliusEventDispatcher implements EventDispatcherInterface
     {
         $event = $this->innerEventDispatcher->dispatchMultiple($eventName, $requestConfiguration, $resources);
 
-        $this->eventDispatcher->dispatch($event, sprintf('sylius.resource.%s', $eventName));
+        $this->eventDispatcher->dispatch($event, sprintf('nglayouts.sylius.resource.%s', $eventName));
 
         return $event;
     }
@@ -41,7 +41,7 @@ final class SyliusEventDispatcher implements EventDispatcherInterface
     {
         $event = $this->innerEventDispatcher->dispatchPreEvent($eventName, $requestConfiguration, $resource);
 
-        $this->eventDispatcher->dispatch($event, sprintf('sylius.resource.pre_%s', $eventName));
+        $this->eventDispatcher->dispatch($event, sprintf('nglayouts.sylius.resource.pre_%s', $eventName));
 
         return $event;
     }
@@ -50,7 +50,7 @@ final class SyliusEventDispatcher implements EventDispatcherInterface
     {
         $event = $this->innerEventDispatcher->dispatchPostEvent($eventName, $requestConfiguration, $resource);
 
-        $this->eventDispatcher->dispatch($event, sprintf('sylius.resource.post_%s', $eventName));
+        $this->eventDispatcher->dispatch($event, sprintf('nglayouts.sylius.resource.post_%s', $eventName));
 
         return $event;
     }
@@ -59,7 +59,7 @@ final class SyliusEventDispatcher implements EventDispatcherInterface
     {
         $event = $this->innerEventDispatcher->dispatchInitializeEvent($eventName, $requestConfiguration, $resource);
 
-        $this->eventDispatcher->dispatch($event, sprintf('sylius.resource.initialize_%s', $eventName));
+        $this->eventDispatcher->dispatch($event, sprintf('nglayouts.sylius.resource.initialize_%s', $eventName));
 
         return $event;
     }

@@ -16,7 +16,7 @@ final class ResourceShowListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        return ['sylius.resource.show' => 'onResourceShow'];
+        return ['nglayouts.sylius.resource.show' => 'onResourceShow'];
     }
 
     /**

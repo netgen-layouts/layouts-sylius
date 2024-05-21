@@ -51,7 +51,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $this->eventDispatcherMock
             ->expects(self::once())
             ->method('dispatch')
-            ->with($event, 'sylius.resource.show')
+            ->with($event, 'nglayouts.sylius.resource.show')
             ->willReturn($event);
 
         self::assertSame(
@@ -77,7 +77,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $this->eventDispatcherMock
             ->expects(self::once())
             ->method('dispatch')
-            ->with($event, 'sylius.resource.show')
+            ->with($event, 'nglayouts.sylius.resource.show')
             ->willReturn($event);
 
         self::assertSame(
@@ -103,7 +103,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $this->eventDispatcherMock
             ->expects(self::once())
             ->method('dispatch')
-            ->with($event, 'sylius.resource.pre_show')
+            ->with($event, 'nglayouts.sylius.resource.pre_show')
             ->willReturn($event);
 
         self::assertSame(
@@ -129,7 +129,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $this->eventDispatcherMock
             ->expects(self::once())
             ->method('dispatch')
-            ->with($event, 'sylius.resource.post_show')
+            ->with($event, 'nglayouts.sylius.resource.post_show')
             ->willReturn($event);
 
         self::assertSame(
@@ -155,7 +155,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $this->eventDispatcherMock
             ->expects(self::once())
             ->method('dispatch')
-            ->with($event, 'sylius.resource.initialize_show')
+            ->with($event, 'nglayouts.sylius.resource.initialize_show')
             ->willReturn($event);
 
         self::assertSame(
