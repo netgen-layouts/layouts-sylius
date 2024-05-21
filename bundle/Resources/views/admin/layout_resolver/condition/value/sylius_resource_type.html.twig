@@ -1,7 +1,7 @@
 {% set types = [] %}
 
 {% for type in condition.value %}
-    {% set types = types|merge([type|capitalize|replace({'-': ' ', '_': ' '})]) %}
+    {% set types = types|merge([type|humanize]) %}
 {% endfor %}
 
 {{ types|join(', ') }}
