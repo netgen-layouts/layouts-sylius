@@ -11,6 +11,9 @@ use Throwable;
 
 final class ProductValueLoader implements ValueLoaderInterface
 {
+    /**
+     * @param \Sylius\Component\Core\Repository\ProductRepositoryInterface<\Sylius\Component\Core\Model\ProductInterface> $productRepository
+     */
     public function __construct(private ProductRepositoryInterface $productRepository) {}
 
     public function load($id): ?ProductInterface

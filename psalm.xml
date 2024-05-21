@@ -53,6 +53,12 @@
                 <file name="bundle/DependencyInjection/Configuration.php" />
             </errorLevel>
         </UndefinedInterfaceMethod>
+
+        <InvalidArgument>
+            <errorLevel type="suppress">
+                <file name="bundle/Templating/Twig/Extension/SyliusExtension.php" />
+            </errorLevel>
+        </InvalidArgument>
     </issueHandlers>
 
     <plugins>

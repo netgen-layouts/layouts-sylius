@@ -18,6 +18,9 @@ use function array_reverse;
 final class SyliusRuntime
 {
     /**
+     * @param \Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepositoryInterface<\Sylius\Component\Core\Model\ProductInterface> $productRepository
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Core\Model\TaxonInterface> $taxonRepository
+     * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Core\Model\ChannelInterface> $channelRepository
      * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
      */
     public function __construct(

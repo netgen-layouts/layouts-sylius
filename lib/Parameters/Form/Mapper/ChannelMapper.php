@@ -11,6 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 final class ChannelMapper extends Mapper
 {
+    /**
+     * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Core\Model\ChannelInterface> $channelRepository
+     */
     public function __construct(private ChannelRepositoryInterface $channelRepository) {}
 
     public function getFormType(): string
