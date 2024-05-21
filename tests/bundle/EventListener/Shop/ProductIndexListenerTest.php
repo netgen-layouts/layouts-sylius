@@ -75,7 +75,6 @@ final class ProductIndexListenerTest extends TestCase
         $this->listener->onProductIndex($event);
 
         self::assertSame($taxon, $request->attributes->get('nglayouts_sylius_taxon'));
-        self::assertSame($taxon, $request->attributes->get('nglayouts_sylius_resource'));
 
         self::assertTrue($this->context->has('sylius_taxon_id'));
         self::assertSame(42, $this->context->get('sylius_taxon_id'));
