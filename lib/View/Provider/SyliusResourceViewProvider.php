@@ -7,8 +7,10 @@ namespace Netgen\Layouts\Sylius\View\Provider;
 use Netgen\Layouts\Exception\View\ViewProviderException;
 use Netgen\Layouts\Sylius\View\View\SyliusResourceView;
 use Netgen\Layouts\View\Provider\ViewProviderInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
 use Netgen\Layouts\View\ViewInterface;
+use Sylius\Component\Resource\Model\ResourceInterface;
+
+use function is_string;
 
 class SyliusResourceViewProvider implements ViewProviderInterface
 {

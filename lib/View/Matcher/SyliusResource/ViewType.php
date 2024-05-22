@@ -8,6 +8,8 @@ use Netgen\Layouts\Sylius\View\View\SyliusResourceViewInterface;
 use Netgen\Layouts\View\Matcher\MatcherInterface;
 use Netgen\Layouts\View\ViewInterface;
 
+use function in_array;
+
 final class ViewType implements MatcherInterface
 {
     public function match(ViewInterface $view, array $config): bool
