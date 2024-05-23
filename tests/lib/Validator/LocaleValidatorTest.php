@@ -15,6 +15,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+use function sprintf;
+
 #[CoversClass(LocaleValidator::class)]
 final class LocaleValidatorTest extends ValidatorTestCase
 {
@@ -73,7 +75,7 @@ final class LocaleValidatorTest extends ValidatorTestCase
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
-        $this->expectExceptionMessage('Expected argument of type "Netgen\\Layouts\\Sylius\\Validator\\Constraint\\Locale", "Symfony\\Component\\Validator\\Constraints\\NotBlank" given');
+        $this->expectExceptionMessage(sprintf('Expected argument of type "%s", "%s" given', Locale::class, NotBlank::class));
 
         $this->constraint = new NotBlank();
         $this->assertValid(true, 'value');
