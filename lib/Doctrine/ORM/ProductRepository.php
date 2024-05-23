@@ -9,13 +9,6 @@ use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductReposi
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
-/**
- * @template T of \Sylius\Component\Core\Model\ProductInterface
- *
- * @extends \Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository<T>
- *
- * @implements \Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepositoryInterface<T>
- */
 final class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {
     public function findByChannelAndTaxon(

@@ -7,6 +7,4 @@ includes:
 
 parameters:
     ignoreErrors:
-        # Doctrine issues
-
-        - '#getParentTaxon\(\) should return Sylius\\Component\\Taxonomy\\Model\\TaxonInterface\|null but returns Sylius\\Component\\Resource\\Model\\ResourceInterface\|null#'
+        - '#Class Netgen\\Layouts\\Sylius\\Doctrine\\ORM\\ProductRepository extends generic class Sylius\\Bundle\\CoreBundle\\Doctrine\\ORM\\ProductRepository but does not specify its types: T#'

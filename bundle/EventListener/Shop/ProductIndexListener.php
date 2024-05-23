@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 final class ProductIndexListener implements EventSubscriberInterface
 {
     /**
-     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Core\Model\TaxonInterface> $taxonRepository
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      */
     public function __construct(
         private TaxonRepositoryInterface $taxonRepository,

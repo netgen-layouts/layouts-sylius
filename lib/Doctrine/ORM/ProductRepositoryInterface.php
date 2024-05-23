@@ -9,9 +9,7 @@ use Sylius\Component\Core\Repository\ProductRepositoryInterface as BaseProductRe
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
 /**
- * @template T of \Sylius\Component\Core\Model\ProductInterface
- *
- * @extends \Sylius\Component\Core\Repository\ProductRepositoryInterface<T>
+ * @extends \Sylius\Component\Core\Repository\ProductRepositoryInterface<\Sylius\Component\Core\Model\ProductInterface>
  */
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {

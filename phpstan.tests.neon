@@ -9,9 +9,7 @@ includes:
 
 parameters:
     ignoreErrors:
-        -
-            message: '#RepositoryInterface (but )?does not specify its types#'
-            path: tests/lib/Validator/RepositoryValidatorFactory.php
+        - '#Property .+::\$repositoryMock with generic interface .+ does not specify its types: T#'
 
         # Disable errors about missing value types in PHPUnit data providers
 

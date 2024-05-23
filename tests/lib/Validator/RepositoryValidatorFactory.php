@@ -21,6 +21,9 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 
+    /**
+     * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Resource\Model\ResourceInterface> $repository
+     */
     public function __construct(private RepositoryInterface $repository)
     {
         $this->baseValidatorFactory = new ConstraintValidatorFactory();

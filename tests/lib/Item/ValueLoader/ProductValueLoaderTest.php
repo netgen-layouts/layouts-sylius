@@ -15,7 +15,7 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 #[CoversClass(ProductValueLoader::class)]
 final class ProductValueLoaderTest extends TestCase
 {
-    private MockObject&ProductRepositoryInterface $productRepositoryMock;
+    private MockObject $productRepositoryMock;
 
     private ProductValueLoader $valueLoader;
 

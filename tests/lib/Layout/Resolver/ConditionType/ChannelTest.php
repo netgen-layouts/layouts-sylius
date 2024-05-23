@@ -20,16 +20,16 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
-    private MockObject&ChannelContextInterface $channelContextMock;
+    private MockObject $channelContextMock;
 
-    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
+    private MockObject&ChannelRepositoryInterface $repositoryMock;
 
     private Channel $conditionType;
 
     protected function setUp(): void
     {
         $this->channelContextMock = $this->createMock(ChannelContextInterface::class);
-        $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
+        $this->repositoryMock = $this->createMock(ChannelRepositoryInterface::class);
 
         $this->conditionType = new Channel($this->channelContextMock);
     }
@@ -41,14 +41,14 @@ final class ChannelTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->channelRepositoryMock
+        $this->repositoryMock
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
-            ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
+            ->willReturn(new ChannelStub(42, 'WEB SHOP', 'Web shop'));
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->channelRepositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
         $errors = $validator->validate([42], $this->conditionType->getConstraints());
@@ -57,14 +57,14 @@ final class ChannelTest extends TestCase
 
     public function testValidationInvalidNoChannel(): void
     {
-        $this->channelRepositoryMock
+        $this->repositoryMock
             ->expects(self::once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->channelRepositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
         $errors = $validator->validate([42], $this->conditionType->getConstraints());
@@ -74,12 +74,12 @@ final class ChannelTest extends TestCase
     public function testValidationInvalidValue(): void
     {
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->channelRepositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
 
         $this->expectException(UnexpectedTypeException::class);
 
-        $validator->validate(['webshop'], $this->conditionType->getConstraints());
+        $validator->validate(['web shop'], $this->conditionType->getConstraints());
     }
 
     public function testMatches(): void
@@ -89,7 +89,7 @@ final class ChannelTest extends TestCase
         $this->channelContextMock
             ->expects(self::exactly(2))
             ->method('getChannel')
-            ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
+            ->willReturn(new ChannelStub(42, 'WEB SHOP', 'Web shop'));
 
         self::assertTrue($this->conditionType->matches($request, [42]));
         self::assertTrue($this->conditionType->matches($request, [42, 43, 44]));

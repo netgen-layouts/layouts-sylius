@@ -19,7 +19,7 @@ final class ChannelMapperTest extends TestCase
 {
     private ChannelMapper $mapper;
 
-    private MockObject&ChannelRepositoryInterface $repositoryMock;
+    private MockObject $repositoryMock;
 
     protected function setUp(): void
     {

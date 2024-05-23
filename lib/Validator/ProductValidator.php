@@ -16,7 +16,7 @@ use function is_scalar;
 final class ProductValidator extends ConstraintValidator
 {
     /**
-     * @param \Sylius\Component\Core\Repository\ProductRepositoryInterface<\Sylius\Component\Core\Model\ProductInterface> $productRepository
+     * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface> $productRepository
      */
     public function __construct(private ProductRepositoryInterface $productRepository) {}
 

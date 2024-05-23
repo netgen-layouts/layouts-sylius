@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 #[CoversClass(TaxonValidator::class)]
 final class TaxonValidatorTest extends ValidatorTestCase
 {
-    private MockObject&TaxonRepositoryInterface $repositoryMock;
+    private MockObject $repositoryMock;
 
     protected function setUp(): void
     {

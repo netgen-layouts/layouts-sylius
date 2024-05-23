@@ -23,8 +23,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
     private const DEFAULT_LIMIT = 12;
 
     /**
-     * @param \Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepositoryInterface<\Sylius\Component\Core\Model\ProductInterface> $productRepository
-     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Core\Model\TaxonInterface> $taxonRepository
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      */
     public function __construct(
         private ProductRepositoryInterface $productRepository,

@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 final class Channel extends Mapper
 {
     /**
-     * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Core\Model\ChannelInterface> $channelRepository
+     * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface> $channelRepository
      */
     public function __construct(private ChannelRepositoryInterface $channelRepository) {}
 
