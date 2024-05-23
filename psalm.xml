@@ -16,18 +16,6 @@
     <issueHandlers>
         <!-- Doctrine ORM -->
 
-        <MoreSpecificReturnType>
-            <errorLevel type="suppress">
-                <directory name="lib/Collection/QueryType/Handler" />
-            </errorLevel>
-        </MoreSpecificReturnType>
-
-        <LessSpecificReturnStatement>
-            <errorLevel type="suppress">
-                <directory name="lib/Collection/QueryType/Handler" />
-            </errorLevel>
-        </LessSpecificReturnStatement>
-
         <DeprecatedConstant>
             <errorLevel type="suppress">
                 <directory name="lib/Layout/Resolver/TargetHandler/Doctrine/" />
@@ -59,6 +47,12 @@
                 <file name="bundle/Templating/Twig/Extension/SyliusExtension.php" />
             </errorLevel>
         </InvalidArgument>
+
+        <MissingTemplateParam>
+            <errorLevel type="suppress">
+                <file name="lib/Doctrine/ORM/ProductRepository.php" />
+            </errorLevel>
+        </MissingTemplateParam>
     </issueHandlers>
 
     <plugins>
