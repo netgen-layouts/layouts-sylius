@@ -40,7 +40,7 @@ final class ResourceTypeTest extends TestCase
         self::assertSame(
             [
                 'product',
-                'product-test',
+                'product_test',
                 'taxon',
                 'taxon_test',
             ],
