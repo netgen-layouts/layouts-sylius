@@ -29,7 +29,7 @@ final class Product extends TargetType
 
     public function provideValue(Request $request): ?int
     {
-        $product = $request->attributes->get('nglayouts_sylius_product');
+        $product = $request->attributes->get('nglayouts_sylius_resource');
 
         return $product instanceof ProductInterface ? $product->getId() : null;
     }

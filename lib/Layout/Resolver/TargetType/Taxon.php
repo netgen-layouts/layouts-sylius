@@ -32,7 +32,7 @@ final class Taxon extends TargetType
      */
     public function provideValue(Request $request): ?array
     {
-        $taxon = $request->attributes->get('nglayouts_sylius_taxon');
+        $taxon = $request->attributes->get('nglayouts_sylius_resource');
         if (!$taxon instanceof TaxonInterface) {
             return null;
         }

@@ -68,7 +68,7 @@ final class ProductTest extends TestCase
     public function testProvideValue(): void
     {
         $request = Request::create('/');
-        $request->attributes->set('nglayouts_sylius_product', new ProductStub(42));
+        $request->attributes->set('nglayouts_sylius_resource', new ProductStub(42));
 
         self::assertSame(42, $this->targetType->provideValue($request));
     }

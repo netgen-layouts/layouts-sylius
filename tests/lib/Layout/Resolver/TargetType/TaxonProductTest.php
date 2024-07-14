@@ -78,7 +78,7 @@ final class TaxonProductTest extends TestCase
         }
 
         $request = Request::create('/');
-        $request->attributes->set('nglayouts_sylius_product', $product);
+        $request->attributes->set('nglayouts_sylius_resource', $product);
 
         self::assertSame([12, 13], $this->targetType->provideValue($request));
     }
