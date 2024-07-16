@@ -35,7 +35,7 @@ final class TaxonProduct extends TargetType
      */
     public function provideValue(Request $request): ?array
     {
-        $product = $request->attributes->get('nglayouts_sylius_product');
+        $product = $request->attributes->get('nglayouts_sylius_resource');
         if (!$product instanceof ProductInterface) {
             return null;
         }
