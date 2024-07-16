@@ -12,8 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * @deprecated since 1.4.6 together with nglayouts_sylius_product attribute, use nglayouts_sylius_resource(set by
- * ResourceShowListener) instead
+ * @deprecated since 1.4.6 together with nglayouts_sylius_product attribute, use nglayouts_sylius_resource (set by ResourceShowListener) instead
  */
 final class ProductShowListener implements EventSubscriberInterface
 {
