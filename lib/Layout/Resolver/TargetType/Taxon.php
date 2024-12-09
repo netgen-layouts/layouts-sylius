@@ -10,6 +10,9 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
+/**
+ * @deprecated this class will be renamed to TaxonTree in next major release
+ */
 final class Taxon extends TargetType
 {
     public static function getType(): string

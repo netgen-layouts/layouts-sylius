@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Layout\Resolver\Form\TargetType\Mapper;
 
+/**
+ * @deprecated this class will be renamed to TaxonTree in next major release
+ */
 final class Taxon extends Mapper
 {
     public function getFormType(): string

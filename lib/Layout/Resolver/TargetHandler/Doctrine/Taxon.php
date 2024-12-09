@@ -8,6 +8,9 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 
+/**
+ * @deprecated this class will be renamed to TaxonTree in next major release
+ */
 final class Taxon implements TargetHandlerInterface
 {
     public function handleQuery(QueryBuilder $query, mixed $value): void
