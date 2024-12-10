@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 use function trim;
+use function count;
 
 class TaxonHandler implements QueryTypeHandlerInterface
 {
@@ -43,7 +44,7 @@ class TaxonHandler implements QueryTypeHandlerInterface
     }
 
     /**
-     * @return iterable<mixed, TaxonInterface>|array<mixed, TaxonInterface>
+     * @return iterable<array-key, TaxonInterface>
      */
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
