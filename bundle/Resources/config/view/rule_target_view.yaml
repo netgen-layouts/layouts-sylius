@@ -5,6 +5,10 @@ view:
                 template: "@NetgenLayoutsSylius/admin/layout_resolver/target/value/product.html.twig"
                 match:
                     rule_target\type: sylius_product
+            sylius_single_taxon:
+                template: "@NetgenLayoutsSylius/admin/layout_resolver/target/value/single_taxon.html.twig"
+                match:
+                    rule_target\type: sylius_single_taxon
             sylius_taxon:
                 template: "@NetgenLayoutsSylius/admin/layout_resolver/target/value/taxon.html.twig"
                 match:
