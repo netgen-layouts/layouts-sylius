@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
 /**
- * @deprecated this class will be renamed to TaxonTree in next major release
+ * @deprecated this class will be renamed to TaxonTree in 2.0 release
  */
 final class Taxon extends TargetType
 {

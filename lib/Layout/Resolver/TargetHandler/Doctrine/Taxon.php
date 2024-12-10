@@ -9,7 +9,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 
 /**
- * @deprecated this class will be renamed to TaxonTree in next major release
+ * @deprecated this class will be renamed to TaxonTree in 2.0 release
  */
 final class Taxon implements TargetHandlerInterface
 {

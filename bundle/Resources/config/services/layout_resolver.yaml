@@ -34,25 +34,25 @@ services:
         tags:
             - { name: netgen_layouts.target_type, priority: 140 }
 
-    netgen_layouts.sylius.layout_resolver.target_type.taxon:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon
-        tags:
-            - { name: netgen_layouts.target_type, priority: 150 }
-
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.single_taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\SingleTaxon
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_single_taxon }
 
-    netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon
-        tags:
-            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_taxon }
-
     netgen_layouts.sylius.layout_resolver.target_handler.doctrine.sylius_single_taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\SingleTaxon
         tags:
             - { name: netgen_layouts.target_type.doctrine_handler, target_type: sylius_single_taxon }
+
+    netgen_layouts.sylius.layout_resolver.target_type.taxon:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon
+        tags:
+            - { name: netgen_layouts.target_type, priority: 150 }
+
+    netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon:
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon
+        tags:
+            - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_taxon }
 
     netgen_layouts.sylius.layout_resolver.target_handler.doctrine.sylius_taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Taxon

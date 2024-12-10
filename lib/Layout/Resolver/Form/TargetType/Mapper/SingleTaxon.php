@@ -8,7 +8,7 @@ use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Layout\Resolver\Form\TargetType\Mapper;
 
 /**
- * @deprecated this class will be renamed to simply Taxon in next major release
+ * @deprecated this class will be renamed to simply Taxon in 2.0 release
  */
 final class SingleTaxon extends Mapper
 {

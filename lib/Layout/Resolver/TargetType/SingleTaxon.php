@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
 /**
- * @deprecated this class will be renamed to simply Taxon in next major release
+ * @deprecated this class will be renamed to simply Taxon in 2.0 release
  */
 final class SingleTaxon extends TargetType
 {
@@ -30,9 +30,6 @@ final class SingleTaxon extends TargetType
         ];
     }
 
-    /**
-     * @return int[]|null
-     */
     public function provideValue(Request $request): ?int
     {
         $taxon = $request->attributes->get('nglayouts_sylius_resource');
