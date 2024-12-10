@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\Validator;
 
 use Netgen\Layouts\Sylius\Validator\Constraint\Locale;
 use Sylius\Component\Locale\Model\LocaleInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -16,7 +16,7 @@ use function is_string;
 final class LocaleValidator extends ConstraintValidator
 {
     /**
-     * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Resource\Model\ResourceInterface> $localeRepository
+     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Resource\Model\ResourceInterface> $localeRepository
      */
     public function __construct(private RepositoryInterface $localeRepository) {}
 
