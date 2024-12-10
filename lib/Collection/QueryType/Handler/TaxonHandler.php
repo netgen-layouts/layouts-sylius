@@ -14,8 +14,8 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-use function trim;
 use function count;
+use function trim;
 
 class TaxonHandler implements QueryTypeHandlerInterface
 {
