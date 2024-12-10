@@ -48,9 +48,9 @@ return [
         ['id' => 14, 'status' => 1, 'uuid' => '40aadd7e-01ae-49ea-80e2-fa1187b8342e', 'rule_id' => 7, 'type' => 'sylius_taxon_product', 'value' => 13],
         ['id' => 15, 'status' => 1, 'uuid' => 'dbc264ac-3ade-4388-bc26-b82487d71699', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'homepage'],
         ['id' => 16, 'status' => 1, 'uuid' => '24136aac-c0b6-401d-9df6-f8c5ec19c1b2', 'rule_id' => 7, 'type' => 'sylius_page', 'value' => 'cart_summary'],
-        ['id' => 17, 'status' => 1, 'uuid' => '66dfc4ba-aaac-4a98-b64a-978d88b776ec', 'rule_id' => 8, 'type' => 'sylius_single_taxon', 'value' => 2],
-        ['id' => 18, 'status' => 1, 'uuid' => '5151d29a-9a50-4a70-ad0c-6a08c7d0feb7', 'rule_id' => 8, 'type' => 'sylius_single_taxon', 'value' => 43],
-        ['id' => 19, 'status' => 1, 'uuid' => '69b5c0bd-3275-45dc-8d84-e389f511d1c4', 'rule_id' => 9, 'type' => 'sylius_single_taxon', 'value' => 8],
-        ['id' => 20, 'status' => 1, 'uuid' => '3364f6ab-2774-43bb-b837-3556f348ae34', 'rule_id' => 9, 'type' => 'sylius_single_taxon', 'value' => 13],
+        ['id' => 17, 'status' => 1, 'uuid' => '1c9d74c0-91c6-48d3-aa5c-ad5f2573d6d6', 'rule_id' => 8, 'type' => 'sylius_single_taxon', 'value' => 2],
+        ['id' => 18, 'status' => 1, 'uuid' => '4e9da1f6-1ecc-4ebc-a5df-a7ffb43e0bac', 'rule_id' => 8, 'type' => 'sylius_single_taxon', 'value' => 43],
+        ['id' => 19, 'status' => 1, 'uuid' => '356a79f4-1132-4be9-a3c9-9307d27186a1', 'rule_id' => 9, 'type' => 'sylius_single_taxon', 'value' => 8],
+        ['id' => 20, 'status' => 1, 'uuid' => '05508940-501b-42ed-9e41-0a2c5770696e', 'rule_id' => 9, 'type' => 'sylius_single_taxon', 'value' => 13],
     ],
 ];
