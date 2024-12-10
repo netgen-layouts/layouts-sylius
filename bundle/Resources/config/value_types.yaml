@@ -1,3 +1,5 @@
 value_types:
     sylius_product:
         name: 'Sylius product'
+    sylius_taxon:
+        name: 'Sylius taxon'

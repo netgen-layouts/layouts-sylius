@@ -17,3 +17,15 @@ services:
             - "@router"
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: sylius_product }
+
+    netgen_layouts.sylius.item.value_converter.taxon:
+        class: Netgen\Layouts\Sylius\Item\ValueConverter\TaxonValueConverter
+        tags:
+            - { name: netgen_layouts.cms_value_converter }
+
+    netgen_layouts.sylius.item.value_loader.taxon:
+        class: Netgen\Layouts\Sylius\Item\ValueLoader\TaxonValueLoader
+        arguments:
+            - "@sylius.repository.taxon"
+        tags:
+            - { name: netgen_layouts.cms_value_loader, value_type: sylius_taxon }

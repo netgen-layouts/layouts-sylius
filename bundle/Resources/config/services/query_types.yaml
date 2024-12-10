@@ -22,3 +22,11 @@ services:
             - "@request_stack"
         tags:
             - { name: netgen_layouts.query_type_handler, type: sylius_taxon_products }
+
+    netgen_layouts.sylius.query_type_handler.taxon:
+        class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\TaxonHandler
+        arguments:
+            - "@sylius.repository.taxon"
+            - "@request_stack"
+        tags:
+            - { name: netgen_layouts.query_type_handler, type: sylius_taxon }
