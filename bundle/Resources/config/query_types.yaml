@@ -3,3 +3,5 @@ query_types:
         name: 'Sylius latest products'
     sylius_taxon_products:
         name: 'Sylius taxon products'
+    sylius_taxon:
+        name: 'Sylius taxon'
