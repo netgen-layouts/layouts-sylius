@@ -16,7 +16,7 @@ final class SingleTaxon implements TargetHandlerInterface
     public function handleQuery(QueryBuilder $query, mixed $value): void
     {
         $query->andWhere(
-            $query->expr()->in('rt.value', ':target_value'),
+            $query->expr()->eq('rt.value', ':target_value'),
         )
         ->setParameter('target_value', $value, Types::INTEGER);
     }
