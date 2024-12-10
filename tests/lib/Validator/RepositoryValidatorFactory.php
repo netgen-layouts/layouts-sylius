@@ -10,8 +10,8 @@ use Netgen\Layouts\Sylius\Validator\ProductValidator;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
@@ -22,7 +22,7 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
     private ConstraintValidatorFactory $baseValidatorFactory;
 
     /**
-     * @param \Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Resource\Model\ResourceInterface> $repository
+     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Resource\Model\ResourceInterface> $repository
      */
     public function __construct(private RepositoryInterface $repository)
     {
