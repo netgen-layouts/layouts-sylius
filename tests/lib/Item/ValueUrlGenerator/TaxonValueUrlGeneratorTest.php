@@ -31,13 +31,13 @@ final class TaxonValueUrlGeneratorTest extends TestCase
             ->expects(self::once())
             ->method('generate')
             ->with(
-                self::identicalTo('sylius_shop_taxon_show'),
+                self::identicalTo('sylius_shop_partial_taxon_show_by_slug'),
                 self::identicalTo(['slug' => 'taxon-name']),
             )
-            ->willReturn('/taxons/taxon-name');
+            ->willReturn('/_partial/taxons/by-slug/taxon-name');
 
         self::assertSame(
-            '/taxons/taxon-name',
+            '/_partial/taxons/by-slug/taxon-name',
             $this->urlGenerator->generateDefaultUrl(new Taxon(42, 'Taxon name', 'taxon-name')),
         );
     }
@@ -48,13 +48,13 @@ final class TaxonValueUrlGeneratorTest extends TestCase
             ->expects(self::once())
             ->method('generate')
             ->with(
-                self::identicalTo('sylius_admin_taxon_show'),
+                self::identicalTo('sylius_admin_taxon_update'),
                 self::identicalTo(['id' => 42]),
             )
-            ->willReturn('/admin/taxons/42');
+            ->willReturn('/admin/taxons/42/edit');
 
         self::assertSame(
-            '/admin/taxons/42',
+            '/admin/taxons/42/edit',
             $this->urlGenerator->generateAdminUrl(new Taxon(42, 'Taxon name', 'taxon-name')),
         );
     }
@@ -65,13 +65,13 @@ final class TaxonValueUrlGeneratorTest extends TestCase
             ->expects(self::once())
             ->method('generate')
             ->with(
-                self::identicalTo('sylius_shop_taxon_show'),
+                self::identicalTo('sylius_shop_partial_taxon_show_by_slug'),
                 self::identicalTo(['slug' => 'taxon-name']),
             )
-            ->willReturn('/taxons/taxon-name');
+            ->willReturn('/_partial/taxons/by-slug/taxon-name');
 
         self::assertSame(
-            '/taxons/taxon-name',
+            '/_partial/taxons/by-slug/taxon-name',
             $this->urlGenerator->generate(new Taxon(42, 'Taxon name', 'taxon-name')),
         );
     }
