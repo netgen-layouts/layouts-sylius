@@ -6,8 +6,8 @@ query.sylius_taxon_products.parent_taxon_id: 'Parent taxon'
 query.sylius_taxon_products.sort_type: 'Sort type'
 query.sylius_taxon_products.sort_direction: 'Sort direction'
 
-query.sylius_taxon.use_current_taxon: 'Use current taxon'
-query.sylius_taxon.taxon_id: 'Sylius taxon'
+query.sylius_taxons.use_current_taxon: 'Use current taxon'
+query.sylius_taxons.taxon_id: 'Sylius taxon'
 
 layout_resolver.target.sylius_product: 'Sylius product'
 layout_resolver.target.sylius_single_taxon: 'Sylius taxon'

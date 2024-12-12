@@ -12,9 +12,9 @@ use Throwable;
 final class TaxonValueLoader implements ValueLoaderInterface
 {
     /**
-     * @param TaxonRepositoryInterface<TaxonInterface> $taxonRepository
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      */
-    public function __construct(private readonly TaxonRepositoryInterface $taxonRepository) {}
+    public function __construct(private TaxonRepositoryInterface $taxonRepository) {}
 
     public function load($id): ?TaxonInterface
     {

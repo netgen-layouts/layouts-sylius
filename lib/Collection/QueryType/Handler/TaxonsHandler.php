@@ -17,14 +17,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use function count;
 use function trim;
 
-class TaxonHandler implements QueryTypeHandlerInterface
+final class TaxonsHandler implements QueryTypeHandlerInterface
 {
     /**
-     * @param TaxonRepositoryInterface<TaxonInterface> $taxonRepository
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      */
     public function __construct(
-        private readonly TaxonRepositoryInterface $taxonRepository,
-        private readonly RequestStack $requestStack,
+        private TaxonRepositoryInterface $taxonRepository,
+        private RequestStack $requestStack,
     ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
@@ -43,9 +43,6 @@ class TaxonHandler implements QueryTypeHandlerInterface
         );
     }
 
-    /**
-     * @return iterable<array-key, TaxonInterface>
-     */
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
         $currentRequest = $this->requestStack->getCurrentRequest();
@@ -64,7 +61,7 @@ class TaxonHandler implements QueryTypeHandlerInterface
             return [];
         }
 
-        /** @var TaxonInterface[] $children */
+        /** @var \Sylius\Component\Taxonomy\Model\TaxonInterface[] $children */
         $children = $this->taxonRepository->findChildren($taxonCode);
 
         return $children;

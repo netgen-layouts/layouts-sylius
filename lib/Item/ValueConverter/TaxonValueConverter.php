@@ -8,7 +8,7 @@ use Netgen\Layouts\Item\ValueConverterInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
 /**
- * @implements ValueConverterInterface<TaxonInterface>
+ * @implements \Netgen\Layouts\Item\ValueConverterInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface>
  */
 final class TaxonValueConverter implements ValueConverterInterface
 {
