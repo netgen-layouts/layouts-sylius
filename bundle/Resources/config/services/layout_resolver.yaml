@@ -32,7 +32,7 @@ services:
     netgen_layouts.sylius.layout_resolver.target_type.single_taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\SingleTaxon
         tags:
-            - { name: netgen_layouts.target_type, priority: 140 }
+            - { name: netgen_layouts.target_type, priority: 150 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.single_taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\SingleTaxon
@@ -47,7 +47,7 @@ services:
     netgen_layouts.sylius.layout_resolver.target_type.taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon
         tags:
-            - { name: netgen_layouts.target_type, priority: 150 }
+            - { name: netgen_layouts.target_type, priority: 140 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon
@@ -64,7 +64,7 @@ services:
         arguments:
             - "%netgen_layouts.sylius.target.pages%"
         tags:
-            - { name: netgen_layouts.target_type, priority: 140 }
+            - { name: netgen_layouts.target_type, priority: 130 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.page:
         class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Page
