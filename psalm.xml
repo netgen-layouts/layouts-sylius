@@ -51,6 +51,7 @@
         <MissingTemplateParam>
             <errorLevel type="suppress">
                 <file name="lib/Doctrine/ORM/ProductRepository.php" />
+                <file name="lib/Doctrine/ORM/TaxonRepository.php" />
             </errorLevel>
         </MissingTemplateParam>
     </issueHandlers>
