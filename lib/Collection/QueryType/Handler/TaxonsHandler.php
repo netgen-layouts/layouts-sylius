@@ -39,6 +39,10 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
         );
     }
 
+    /**
+     * @psalm-suppress InvalidReturnType
+     * @psalm-suppress InvalidReturnStatement
+     */
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
         $currentRequest = $this->requestStack->getCurrentRequest();
@@ -57,10 +61,7 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
             return [];
         }
 
-        /** @var \Sylius\Component\Taxonomy\Model\TaxonInterface[] $children */
-        $children = $this->taxonRepository->findChildren($taxonCode);
-
-        return $children;
+        return $this->taxonRepository->findChildren($taxonCode);
     }
 
     public function getCount(Query $query): int
