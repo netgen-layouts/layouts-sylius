@@ -8,9 +8,9 @@ use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterType;
+use Netgen\Layouts\Sylius\Doctrine\ORM\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
-use Netgen\Layouts\Sylius\Doctrine\ORM\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
