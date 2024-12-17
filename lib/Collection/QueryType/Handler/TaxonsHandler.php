@@ -40,8 +40,7 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
     }
 
     /**
-     * @psalm-suppress InvalidReturnType
-     * @psalm-suppress InvalidReturnStatement
+     * @return \Sylius\Component\Taxonomy\Model\TaxonInterface[]
      */
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
