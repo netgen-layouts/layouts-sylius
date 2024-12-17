@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Locale as LocaleStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Intl\Locales;
 
@@ -17,7 +17,7 @@ use Symfony\Component\Intl\Locales;
 final class LocaleTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Component\Resource\Repository\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
+     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
      */
     private MockObject&RepositoryInterface $localeRepositoryMock;
 
