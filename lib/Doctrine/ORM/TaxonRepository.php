@@ -16,7 +16,6 @@ final class TaxonRepository extends BaseTaxonRepository implements TaxonReposito
             ->where('o.parent = :parent')
             ->setParameter('parent', $parent->getId())
             ->getQuery()
-            ->getSingleScalarResult()
-        ;
+            ->getSingleScalarResult();
     }
 }
