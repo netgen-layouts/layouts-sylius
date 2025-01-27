@@ -23,7 +23,7 @@ final class TaxonTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    /** @var TaxonType  */
+    /** @var TaxonType */
     private ParameterTypeInterface $type;
 
     private MockObject&TaxonRepositoryInterface $repositoryMock;

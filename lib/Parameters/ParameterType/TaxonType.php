@@ -13,7 +13,7 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraints;
 
 /**
- * Parameter type used to store and validate an ID of a taxon in Sylius, if needed value object can also be retrieved
+ * Parameter type used to store and validate an ID of a taxon in Sylius, if needed value object can also be retrieved.
  */
 final class TaxonType extends ParameterType implements ValueObjectProviderInterface
 {
