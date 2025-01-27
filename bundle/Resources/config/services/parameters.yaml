@@ -1,6 +1,8 @@
 services:
     netgen_layouts.sylius.parameters.parameter_type.taxon:
         class: Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType
+        arguments:
+            - "@sylius.repository.taxon"
         tags:
             - { name: netgen_layouts.parameter_type }
 
