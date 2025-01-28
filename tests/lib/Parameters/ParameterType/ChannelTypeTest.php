@@ -23,7 +23,7 @@ final class ChannelTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    /** @var ChannelType */
+    /** @var \Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType */
     private ParameterTypeInterface $type;
 
     private MockObject&ChannelRepositoryInterface $repositoryMock;

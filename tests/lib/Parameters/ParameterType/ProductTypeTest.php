@@ -23,7 +23,7 @@ final class ProductTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    /** @var ProductType */
+    /** @var \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType */
     private ParameterTypeInterface $type;
 
     private MockObject&ProductRepositoryInterface $repositoryMock;
