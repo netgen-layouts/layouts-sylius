@@ -19,7 +19,7 @@ final class ChannelMapperTest extends TestCase
 {
     private ChannelMapper $mapper;
 
-    private MockObject $repositoryMock;
+    private MockObject&ChannelRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {
@@ -58,7 +58,7 @@ final class ChannelMapperTest extends TestCase
             $this->mapper->mapOptions(
                 ParameterDefinition::fromArray(
                     [
-                        'type' => new ParameterType(),
+                        'type' => new ParameterType($this->repositoryMock),
                         'options' => [
                             'multiple' => false,
                         ],

@@ -9,15 +9,20 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\Form\Mapper\ProductMapper;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType as ParameterType;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 #[CoversClass(ProductMapper::class)]
 final class ProductMapperTest extends TestCase
 {
     private ProductMapper $mapper;
 
+    private MockObject&ProductRepositoryInterface $repositoryMock;
+
     protected function setUp(): void
     {
+        $this->repositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->mapper = new ProductMapper();
     }
 
@@ -33,7 +38,7 @@ final class ProductMapperTest extends TestCase
                 'item_type' => 'sylius_product',
                 'required' => false,
             ],
-            $this->mapper->mapOptions(ParameterDefinition::fromArray(['type' => new ParameterType(), 'isRequired' => false])),
+            $this->mapper->mapOptions(ParameterDefinition::fromArray(['type' => new ParameterType($this->repositoryMock), 'isRequired' => false])),
         );
     }
 }

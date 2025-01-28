@@ -13,6 +13,8 @@ services:
 
     netgen_layouts.sylius.parameters.parameter_type.product:
         class: Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType
+        arguments:
+            - "@sylius.repository.product"
         tags:
             - { name: netgen_layouts.parameter_type }
 
@@ -23,6 +25,8 @@ services:
 
     netgen_layouts.sylius.parameters.parameter_type.channel:
         class: Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType
+        arguments:
+            - "@sylius.repository.channel"
         tags:
             - { name: netgen_layouts.parameter_type }
 

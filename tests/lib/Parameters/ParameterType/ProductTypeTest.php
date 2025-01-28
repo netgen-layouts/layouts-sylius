@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 
 use Netgen\Layouts\Parameters\ParameterDefinition;
+use Netgen\Layouts\Parameters\ParameterTypeInterface;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
@@ -22,13 +23,16 @@ final class ProductTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
+    /** @var ProductType */
+    private ParameterTypeInterface $type;
+
     private MockObject&ProductRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {
         $this->repositoryMock = $this->createMock(ProductRepositoryInterface::class);
 
-        $this->type = new ProductType();
+        $this->type = new ProductType($this->repositoryMock);
     }
 
     public function testGetIdentifier(): void
@@ -83,6 +87,30 @@ final class ProductTypeTest extends TestCase
                 ],
             ],
         ];
+    }
+
+    public function testValueObjectNull(): void
+    {
+        $this->repositoryMock
+            ->expects(self::once())
+            ->method('find')
+            ->with(self::identicalTo(null))
+            ->willReturn(null);
+
+        self::assertNull($this->type->getValueObject(null));
+    }
+
+    public function testValueObjectIsValidObject(): void
+    {
+        $stub = new ProductStub(1);
+
+        $this->repositoryMock
+            ->expects(self::once())
+            ->method('find')
+            ->with(self::identicalTo(1))
+            ->willReturn($stub);
+
+        self::assertSame($stub, $this->type->getValueObject(1));
     }
 
     public function testValidationValid(): void
