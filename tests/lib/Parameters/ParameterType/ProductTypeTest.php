@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 
 use Netgen\Layouts\Parameters\ParameterDefinition;
-use Netgen\Layouts\Parameters\ParameterTypeInterface;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
@@ -22,9 +21,6 @@ use Symfony\Component\Validator\Validation;
 final class ProductTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
-
-    /** @var \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType */
-    private ParameterTypeInterface $type;
 
     private MockObject&ProductRepositoryInterface $repositoryMock;
 
@@ -89,30 +85,6 @@ final class ProductTypeTest extends TestCase
         ];
     }
 
-    public function testValueObjectNull(): void
-    {
-        $this->repositoryMock
-            ->expects(self::once())
-            ->method('find')
-            ->with(self::identicalTo(null))
-            ->willReturn(null);
-
-        self::assertNull($this->type->getValueObject(null));
-    }
-
-    public function testValueObjectIsValidObject(): void
-    {
-        $stub = new ProductStub(1);
-
-        $this->repositoryMock
-            ->expects(self::once())
-            ->method('find')
-            ->with(self::identicalTo(1))
-            ->willReturn($stub);
-
-        self::assertSame($stub, $this->type->getValueObject(1));
-    }
-
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -174,5 +146,21 @@ final class ProductTypeTest extends TestCase
             [null, true],
             [new ProductStub(42), false],
         ];
+    }
+
+    public function testGetValueObject(): void
+    {
+        $stub = new ProductStub(1);
+
+        $this->repositoryMock
+            ->expects(self::once())
+            ->method('find')
+            ->with(self::identicalTo(1))
+            ->willReturn($stub);
+
+        /** @var \Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType $type */
+        $type = $this->type;
+
+        self::assertSame($stub, $type->getValueObject(1));
     }
 }

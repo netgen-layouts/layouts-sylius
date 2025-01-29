@@ -8,7 +8,6 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
-use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints;
 
@@ -27,7 +26,7 @@ final class ProductType extends ParameterType implements ValueObjectProviderInte
         return 'sylius_product';
     }
 
-    public function getValueObject($value): ?ProductInterface
+    public function getValueObject($value): ?object
     {
         return $this->productRepository->find($value);
     }

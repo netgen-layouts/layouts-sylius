@@ -8,7 +8,6 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
-use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints;
@@ -35,7 +34,7 @@ final class ChannelType extends ParameterType implements ValueObjectProviderInte
         $optionsResolver->setAllowedTypes('multiple', 'bool');
     }
 
-    public function getValueObject($value): ?ChannelInterface
+    public function getValueObject($value): ?object
     {
         return $this->channelRepository->find($value);
     }

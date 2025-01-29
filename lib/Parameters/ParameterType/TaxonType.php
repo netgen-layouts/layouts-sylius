@@ -8,7 +8,6 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
-use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraints;
 
@@ -27,7 +26,7 @@ final class TaxonType extends ParameterType implements ValueObjectProviderInterf
         return 'sylius_taxon';
     }
 
-    public function getValueObject($value): ?TaxonInterface
+    public function getValueObject($value): ?object
     {
         return $this->taxonRepository->find($value);
     }
