@@ -13,10 +13,24 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    netgen_layouts.sylius.bitbag.event_listener.resource_index:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\ResourceIndexListener
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: kernel.event_subscriber }
+
     netgen_layouts.sylius.event_listener.shop.resource_show:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ResourceShowListener
         arguments:
             - "@request_stack"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    netgen_layouts.sylius.event_listener.bitbag.resource_initialize_create:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\ResourceInitializeCreateListener
+        arguments:
+            - '@request_stack'
         tags:
             - { name: kernel.event_subscriber }
 
