@@ -1,0 +1,9 @@
+orm:
+    entity_managers:
+        default:
+            mappings:
+                NetgenLayoutsSyliusBundle:
+                    type: xml
+                    prefix: Netgen\Layouts\Sylius\Component
+                    dir: "%kernel.project_dir%/vendor/netgen/layouts-sylius/bundle/Resources/config/doctrine"
+                    is_bundle: false
