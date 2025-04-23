@@ -18,6 +18,7 @@ final class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
         $this->addResourceTypeConditionConfiguration($rootNode);
         $this->addPageTargetConfiguration($rootNode);
+        $this->addComponentRoutesConfiguration($rootNode);
 
         return $treeBuilder;
     }
@@ -44,6 +45,25 @@ final class Configuration implements ConfigurationInterface
                 ->arrayNode('page_target')
                     ->children()
                         ->arrayNode('available_pages')
+                            ->prototype('scalar')
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+
+    private function addComponentRoutesConfiguration(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('component_routes')
+                    ->children()
+                        ->arrayNode('create')
+                            ->prototype('scalar')
+                            ->end()
+                        ->end()
+                        ->arrayNode('update')
                             ->prototype('scalar')
                             ->end()
                         ->end()
