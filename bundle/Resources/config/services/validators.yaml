@@ -40,3 +40,10 @@ services:
             - "%netgen_layouts.sylius.target.pages%"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_page }
+
+    netgen_layouts.sylius.validator.component:
+        class: Netgen\Layouts\Sylius\Validator\ComponentValidator
+        arguments:
+            - "@netgen_layouts.sylius.component_repository"
+        tags:
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_component }

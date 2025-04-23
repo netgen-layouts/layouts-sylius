@@ -4,3 +4,4 @@ netgen_layouts.sylius.channel.channel_not_found: 'Channel %channel% does not exi
 netgen_layouts.sylius.locale.locale_not_found: 'Locale %locale% does not exist.'
 netgen_layouts.sylius.resource_type.type_not_found: 'Resource type %resource_type% does not exist.'
 netgen_layouts.sylius.page.page_not_found: 'Sylius page %page% does not exist.'
+netgen_layouts.sylius.component.component_not_found: 'Component with identifier %identifier% and ID %id% does not exist.'
