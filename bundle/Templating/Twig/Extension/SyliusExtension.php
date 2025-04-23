@@ -32,6 +32,14 @@ final class SyliusExtension extends AbstractExtension
                 'nglayouts_sylius_locale_name',
                 [SyliusRuntime::class, 'getLocaleName'],
             ),
+            new TwigFunction(
+                'nglayouts_sylius_component_create_route',
+                [SyliusRuntime::class, 'getComponentCreateRoute'],
+            ),
+            new TwigFunction(
+                'nglayouts_sylius_component_update_route',
+                [SyliusRuntime::class, 'getComponentUpdateRoute'],
+            ),
         ];
     }
 }

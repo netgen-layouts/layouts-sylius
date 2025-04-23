@@ -28,6 +28,8 @@ final class SyliusRuntime
         private TaxonRepositoryInterface $taxonRepository,
         private ChannelRepositoryInterface $channelRepository,
         private RepositoryInterface $localeRepository,
+        private array $componentCreateRoutes = [],
+        private array $componentUpdateRoutes = [],
     ) {}
 
     /**
@@ -90,5 +92,15 @@ final class SyliusRuntime
         }
 
         return $locale->getName();
+    }
+
+    public function getComponentCreateRoute(string $componentTypeIdentifier): ?string
+    {
+        return $this->componentCreateRoutes[$componentTypeIdentifier] ?? null;
+    }
+
+    public function getComponentUpdateRoute(string $componentTypeIdentifier): ?string
+    {
+        return $this->componentUpdateRoutes[$componentTypeIdentifier] ?? null;
     }
 }

@@ -50,6 +50,16 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             'netgen_layouts.sylius.target.pages',
             $config['page_target']['available_pages'],
         );
+
+        $container->setParameter(
+            'netgen_layouts.sylius.component_create_routes',
+            $config['component_routes']['create'] ?? [],
+        );
+
+        $container->setParameter(
+            'netgen_layouts.sylius.component_update_routes',
+            $config['component_routes']['update'] ?? [],
+        );
     }
 
     public function prepend(ContainerBuilder $container): void
