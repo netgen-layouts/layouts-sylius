@@ -1,0 +1,13 @@
+item_types:
+    sylius_component:
+        name: item_types.sylius_component
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+        default_columns:
+            - name
