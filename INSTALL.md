@@ -24,6 +24,13 @@ $bundles[] = new Netgen\Bundle\ContentBrowserSyliusBundle\NetgenContentBrowserSy
 return $bundles;
 ```
 
+## Include routing configuration:
+
+```yaml
+layouts_sylius:
+    resource: "@NetgenLayoutsSyliusBundle/Resources/config/routing.yaml"
+```
+
 ## Configure the main layout and design
 
 Due to how Netgen Layouts works, your main layout template needs to wrap the
