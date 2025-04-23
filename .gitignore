@@ -1,10 +1,15 @@
 .idea/
 .phpunit.cache/
+bundle/Resources/public/dev/
 coverage/
+node_modules/
 vendor/
 .php-cs-fixer.cache
 .phpunit.result.cache
 composer.lock
 composer.phar
+package-lock.json
 phpunit.phar
 studio.json
+yarn.lock
+yarn-error.log
