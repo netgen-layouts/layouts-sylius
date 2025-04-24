@@ -38,11 +38,23 @@ final class SyliusRuntimeTest extends TestCase
         $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
         $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
 
+        $createRoutes = [
+            'banner_component' => 'app_banner_component_create',
+            'hero_component' => 'app_hero_component_create',
+        ];
+
+        $updateRoutes = [
+            'banner_component' => 'app_banner_component_update',
+            'hero_component' => 'app_hero_component_update',
+        ];
+
         $this->runtime = new SyliusRuntime(
             $this->productRepositoryMock,
             $this->taxonRepositoryMock,
             $this->channelRepositoryMock,
             $this->localeRepositoryMock,
+            $createRoutes,
+            $updateRoutes,
         );
     }
 
@@ -155,5 +167,19 @@ final class SyliusRuntimeTest extends TestCase
             ->willReturn(null);
 
         self::assertNull($this->runtime->getLocaleName('fr_FR'));
+    }
+
+    public function testGetComponentCreateRoute(): void
+    {
+        self::assertSame('app_banner_component_create', $this->runtime->getComponentCreateRoute('banner_component'));
+        self::assertSame('app_hero_component_create', $this->runtime->getComponentCreateRoute('hero_component'));
+        self::assertNull($this->runtime->getComponentCreateRoute('gallery_component'));
+    }
+
+    public function testGetComponentUpdateRoute(): void
+    {
+        self::assertSame('app_banner_component_update', $this->runtime->getComponentUpdateRoute('banner_component'));
+        self::assertSame('app_hero_component_update', $this->runtime->getComponentUpdateRoute('hero_component'));
+        self::assertNull($this->runtime->getComponentUpdateRoute('gallery_component'));
     }
 }

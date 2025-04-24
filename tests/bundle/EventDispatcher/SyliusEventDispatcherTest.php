@@ -42,7 +42,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $requestConfiguration = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = new ResourceControllerEvent();
+        $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects(self::once())
@@ -68,7 +68,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $requestConfiguration = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = new ResourceControllerEvent();
+        $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects(self::once())
@@ -94,7 +94,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $requestConfiguration = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = new ResourceControllerEvent();
+        $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects(self::once())
@@ -120,7 +120,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $requestConfiguration = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = new ResourceControllerEvent();
+        $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects(self::once())
@@ -146,7 +146,7 @@ final class SyliusEventDispatcherTest extends TestCase
         $requestConfiguration = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = new ResourceControllerEvent();
+        $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects(self::once())
