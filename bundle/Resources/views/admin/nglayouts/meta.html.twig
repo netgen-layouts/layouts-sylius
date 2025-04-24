@@ -1,0 +1,21 @@
+{% include '@NetgenLayoutsAdmin/admin/head.html.twig' %}
+
+{% if app.request.attributes.get('nglayouts_sylius_component_initialize_create_identifier') %}
+    <meta name="nglayouts-sylius-component-initialize-create-identifier" content="{{ app.request.attributes.get('nglayouts_sylius_component_initialize_create_identifier') }}">
+{% endif %}
+
+{% if app.request.attributes.get('nglayouts_sylius_component_index_selected_id') %}
+    <meta name="nglayouts-sylius-component-index-selected-id" content="{{ app.request.attributes.get('nglayouts_sylius_component_index_selected_id') }}">
+{% endif %}
+
+{% if app.request.attributes.get('nglayouts_sylius_component_index_identifier') %}
+    <meta name="nglayouts-sylius-component-index-identifier" content="{{ app.request.attributes.get('nglayouts_sylius_component_index_identifier') }}">
+{% endif %}
+
+{% if app.request.attributes.get('nglayouts_sylius_component_show_id') %}
+    <meta name="nglayouts-sylius-component-show-id" content="{{ app.request.attributes.get('nglayouts_sylius_component_show_id') }}">
+{% endif %}
+
+{% if app.request.attributes.get('nglayouts_sylius_component_show_identifier') %}
+    <meta name="nglayouts-sylius-component-show-identifier" content="{{ app.request.attributes.get('nglayouts_sylius_component_show_identifier') }}">
+{% endif %}
