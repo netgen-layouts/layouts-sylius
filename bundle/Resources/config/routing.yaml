@@ -1,0 +1,8 @@
+nglayouts_sylius_admin_connect_component_content:
+    path: /nglayouts/admin/blocks/{blockId}/{locale}/connect-component-content/{componentIdentifier}/{componentId}
+    controller: netgen_layouts.sylius.controller.connect_component_content
+    methods: [POST]
+    requirements:
+        contentId: \d+
+    defaults:
+        _nglayouts_status: draft
