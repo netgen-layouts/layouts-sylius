@@ -1,0 +1,5 @@
+{% if app.request.attributes.get('_route') starts with 'nglayouts_admin' %}
+    {% include '@NetgenLayoutsAdmin/admin/javascripts.html.twig' %}
+{% endif %}
+
+<script src="{{ asset('bundles/netgenlayoutssylius/js/app/app.js') }}"></script>

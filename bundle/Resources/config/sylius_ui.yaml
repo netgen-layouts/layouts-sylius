@@ -14,3 +14,14 @@ events:
                 template: '@NetgenLayoutsStandard/javascripts.html.twig'
                 context:
                     full: true
+
+    sylius.admin.layout.stylesheets:
+        blocks:
+            layouts_sylius_meta:
+                template: "@NetgenLayoutsSylius/admin/nglayouts/meta.html.twig"
+                priority: 1000
+
+    sylius.admin.layout.javascripts:
+        blocks:
+            layouts_sylius_javascripts:
+                template: "@NetgenLayoutsSylius/admin/nglayouts/javascripts.html.twig"
