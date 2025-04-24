@@ -8,3 +8,8 @@ services:
         class: Netgen\Layouts\Sylius\View\Matcher\SyliusResource\ViewType
         tags:
             - { name: netgen_layouts.view_matcher, identifier: sylius_resource\view_type }
+
+    netgen_layouts.sylius.view.matcher.sylius_resource.sylius_component_identifier:
+        class: Netgen\Layouts\Sylius\View\Matcher\SyliusResource\SyliusComponentIdentifier
+        tags:
+            - { name: netgen_layouts.view_matcher, identifier: sylius_component\identifier }
