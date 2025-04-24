@@ -1,0 +1,2 @@
+form_themes:
+    - "@NetgenLayoutsSylius/app/form/form_div_layout.html.twig"
