@@ -1,0 +1,9 @@
+{% extends '@nglayouts/block/block.html.twig' %}
+
+{% block content %}
+    {% set resource = block.dynamicParameter('resource') %}
+
+    {% if resource %}
+        {{ nglayouts_render_value(resource, {'view_type': block.viewType}) }}
+    {% endif %}
+{% endblock %}

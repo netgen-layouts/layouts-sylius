@@ -1,0 +1,14 @@
+services:
+    netgen_layouts.sylius.block.block_definition_handler.component:
+        class: Netgen\Layouts\Sylius\Block\BlockDefinition\Handler\ComponentHandler
+        arguments:
+            - '@netgen_layouts.sylius.component_repository'
+        tags:
+            - { name: netgen_layouts.block_definition_handler, identifier: sylius_component }
+
+    netgen_layouts.sylius.block.block_definition.config_provider.component:
+        class: Netgen\Layouts\Sylius\Block\BlockDefinition\Configuration\Provider\ComponentConfigProvider
+        arguments:
+            - "@=service('netgen_layouts.configuration').getParameter('view')"
+        tags:
+            - { name: netgen_layouts.block_definition.config_provider, identifier: sylius_component }

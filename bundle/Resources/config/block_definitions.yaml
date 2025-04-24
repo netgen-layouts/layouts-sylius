@@ -1,0 +1,8 @@
+block_definitions:
+    sylius_component:
+        name: 'Sylius component'
+        enabled: true
+        config_provider: sylius_component
+        view_types:
+            standard:
+                name: 'Standard'

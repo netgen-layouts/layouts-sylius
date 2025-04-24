@@ -1,0 +1,12 @@
+view:
+    block_view:
+        default:
+            sylius_component:
+                template: "@nglayouts/block/sylius_component.html.twig"
+                match:
+                    block\definition\prefix: sylius_component
+        app:
+            sylius_component:
+                template: "@nglayouts_admin/app/block/sylius_component.html.twig"
+                match:
+                    block\definition\prefix: sylius_component
