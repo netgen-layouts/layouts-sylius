@@ -18,3 +18,5 @@ layout_resolver.target.sylius_page: 'Sylius page'
 layout_resolver.condition.sylius_channel: 'Sylius channel'
 layout_resolver.condition.sylius_locale: 'Sylius locale'
 layout_resolver.condition.sylius_resource_type: 'Sylius resource type'
+
+block.sylius_component.content: 'Content'

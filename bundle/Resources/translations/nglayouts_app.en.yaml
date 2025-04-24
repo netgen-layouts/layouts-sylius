@@ -1,0 +1,4 @@
+block.sylius_component.edit_component: 'Edit'
+block.sylius_component.create_component: '+ Create new'
+
+block.notice.empty_sylius_component: 'This block is not configured yet. Please define the Sylius resource which will be used to render the block.'

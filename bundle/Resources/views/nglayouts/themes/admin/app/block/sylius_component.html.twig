@@ -1,0 +1,25 @@
+{% extends '@nglayouts_admin/app/block/block.html.twig' %}
+
+{% import '@NetgenLayoutsAdmin/app/parts/macros.html.twig' as macros %}
+
+{% trans_default_domain 'nglayouts_app' %}
+
+{% block content %}
+    {% set resource = block.dynamicParameter('resource') %}
+
+    {% if resource %}
+        <div class="list-row">
+            <div class="list-item">
+                <div class="name">
+                    <p>{{ resource.name }}</p>
+                </div>
+
+                <div class="value-type">
+                    <p>{{ resource.identifier }}</p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {{ macros.notice('block.notice.empty_sylius_component'|trans) }}
+    {% endif %}
+{% endblock %}
