@@ -1,0 +1,15 @@
+services:
+    netgen_layouts.sylius.controller.base:
+        class: Netgen\Bundle\LayoutsSyliusBundle\Controller\Admin\Controller
+        abstract: true
+        calls:
+            - [setContainer, [ "@service_container"]]
+            - [checkPermissions]
+
+    netgen_layouts.sylius.controller.connect_component_content:
+        class: Netgen\Bundle\LayoutsSyliusBundle\Controller\Admin\ConnectComponentContent
+        public: true
+        parent: netgen_layouts.sylius.controller.base
+        arguments:
+            - "@netgen_layouts.api.service.block"
+            - "@netgen_layouts.sylius.component_repository"
