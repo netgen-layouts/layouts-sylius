@@ -17,7 +17,7 @@ final class TaxonValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
     public function generateDefaultUrl(object $object): ?string
     {
         return $this->urlGenerator->generate(
-            'sylius_shop_partial_taxon_show_by_slug',
+            'sylius_shop_product_index',
             [
                 'slug' => $object->getSlug(),
             ],
