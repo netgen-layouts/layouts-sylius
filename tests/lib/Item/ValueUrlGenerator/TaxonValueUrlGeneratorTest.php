@@ -31,7 +31,7 @@ final class TaxonValueUrlGeneratorTest extends TestCase
             ->expects(self::once())
             ->method('generate')
             ->with(
-                self::identicalTo('sylius_shop_partial_taxon_show_by_slug'),
+                self::identicalTo('sylius_shop_product_index'),
                 self::identicalTo(['slug' => 'taxon-name']),
             )
             ->willReturn('/_partial/taxons/by-slug/taxon-name');
@@ -65,7 +65,7 @@ final class TaxonValueUrlGeneratorTest extends TestCase
             ->expects(self::once())
             ->method('generate')
             ->with(
-                self::identicalTo('sylius_shop_partial_taxon_show_by_slug'),
+                self::identicalTo('sylius_shop_product_index'),
                 self::identicalTo(['slug' => 'taxon-name']),
             )
             ->willReturn('/_partial/taxons/by-slug/taxon-name');
