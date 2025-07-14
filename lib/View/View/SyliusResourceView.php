@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\View\View;
 
 use Netgen\Layouts\View\View;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Resource\Model\ResourceInterface;
 
 final class SyliusResourceView extends View implements SyliusResourceViewInterface
 {
