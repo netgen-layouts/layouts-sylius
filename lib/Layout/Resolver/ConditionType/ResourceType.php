@@ -47,6 +47,7 @@ final class ResourceType extends ConditionType
 
         $allowedClasses = array_filter(
             array_map(fn (string $type): ?string => array_flip($this->allowedResources)[$type] ?? null, $value),
+            static fn (?string $value): bool => $value !== null,
         );
 
         /** @var class-string $allowedClass */
