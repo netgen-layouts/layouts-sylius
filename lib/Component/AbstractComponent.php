@@ -6,10 +6,10 @@ namespace Netgen\Layouts\Sylius\Component;
 
 use Netgen\Layouts\Sylius\API\ComponentInterface;
 use Netgen\Layouts\Sylius\API\ComponentTranslationInterface;
-use Sylius\Resource\Model\TimestampableTrait;
-use Sylius\Resource\Model\ToggleableTrait;
-use Sylius\Resource\Model\TranslatableTrait;
-use Sylius\Resource\Model\TranslationInterface;
+use Sylius\Component\Resource\Model\TimestampableTrait;
+use Sylius\Component\Resource\Model\ToggleableTrait;
+use Sylius\Component\Resource\Model\TranslatableTrait;
+use Sylius\Component\Resource\Model\TranslationInterface;
 
 abstract class AbstractComponent implements ComponentInterface
 {

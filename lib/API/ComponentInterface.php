@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\API;
 
-use Sylius\Resource\Model\ResourceInterface;
-use Sylius\Resource\Model\TimestampableInterface;
-use Sylius\Resource\Model\ToggleableInterface;
-use Sylius\Resource\Model\TranslatableInterface;
+use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\TimestampableInterface;
+use Sylius\Component\Resource\Model\ToggleableInterface;
+use Sylius\Component\Resource\Model\TranslatableInterface;
 
 interface ComponentInterface extends ResourceInterface, ToggleableInterface, TimestampableInterface, TranslatableInterface
 {
