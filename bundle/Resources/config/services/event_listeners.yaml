@@ -14,7 +14,7 @@ services:
             - { name: kernel.event_subscriber }
 
     netgen_layouts.sylius.bitbag.event_listener.resource_index:
-        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\ResourceIndexListener
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ResourceIndexListener
         arguments:
             - '@request_stack'
         tags:
@@ -28,7 +28,7 @@ services:
             - { name: kernel.event_subscriber }
 
     netgen_layouts.sylius.event_listener.bitbag.resource_initialize_create:
-        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\ResourceInitializeCreateListener
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ResourceInitializeCreateListener
         arguments:
             - '@request_stack'
         tags:

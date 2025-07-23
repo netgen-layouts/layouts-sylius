@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\API;
 
-use Sylius\Resource\Model\ResourceInterface;
-use Sylius\Resource\Model\TranslationInterface;
+use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\TranslationInterface;
 
 interface ComponentTranslationInterface extends ResourceInterface, TranslationInterface
 {
