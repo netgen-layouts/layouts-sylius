@@ -28,7 +28,7 @@ return $bundles;
 
 ```yaml
 layouts_sylius:
-    resource: "@NetgenLayoutsSyliusBundle/Resources/config/routes.yaml"
+    resource: "@NetgenLayoutsSyliusBundle/Resources/config/routing.yaml"
 ```
 
 ## Configure the main layout and design
