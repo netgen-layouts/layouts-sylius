@@ -3,5 +3,5 @@ services:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventDispatcher\SyliusEventDispatcher
         decorates: sylius.resource_controller.event_dispatcher
         arguments:
-            - '@.inner'
-            - '@event_dispatcher'
+            - "@.inner"
+            - "@event_dispatcher"

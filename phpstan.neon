@@ -9,3 +9,4 @@ parameters:
     ignoreErrors:
         - '#Class Netgen\\Layouts\\Sylius\\Doctrine\\ORM\\ProductRepository extends generic class Sylius\\Bundle\\CoreBundle\\Doctrine\\ORM\\ProductRepository but does not specify its types: T#'
         - '#Class Netgen\\Layouts\\Sylius\\Doctrine\\ORM\\TaxonRepository extends generic class Sylius\\Bundle\\TaxonomyBundle\\Doctrine\\ORM\\TaxonRepository but does not specify its types: T#'
+        - '#Netgen\\Layouts\\Sylius\\Repository\\ComponentRepository::__construct\(\) does not call parent constructor from Doctrine\\ORM\\EntityRepository.#'

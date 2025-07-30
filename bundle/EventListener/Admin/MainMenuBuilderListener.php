@@ -28,7 +28,7 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
      */
     public function onMainMenuBuild(MenuBuilderEvent $event): void
     {
-        if (!$this->authorizationChecker->isGranted('ROLE_NGLAYOUTS_ADMIN')) {
+        if (!$this->authorizationChecker->isGranted('nglayouts:ui:access')) {
             return;
         }
 

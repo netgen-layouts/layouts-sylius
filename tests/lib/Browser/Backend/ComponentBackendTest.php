@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Tests\ContentBrowser\Backend;
+namespace Netgen\Layouts\Sylius\Tests\Browser\Backend;
 
+use ArrayIterator;
 use Netgen\ContentBrowser\Backend\SearchQuery;
 use Netgen\ContentBrowser\Config\Configuration;
 use Netgen\ContentBrowser\Exceptions\NotFoundException;
-use Netgen\Layouts\Browser\Item\Layout\RootLocation;
-use Netgen\Layouts\Sylius\ContentBrowser\Backend\ComponentBackend;
-use Netgen\Layouts\Sylius\ContentBrowser\Item\Component\Item;
+use Netgen\Layouts\Sylius\Browser\Backend\ComponentBackend;
+use Netgen\Layouts\Sylius\Browser\Item\Component\Item;
+use Netgen\Layouts\Sylius\Browser\Item\Component\RootLocation;
+use Netgen\Layouts\Sylius\Component\ComponentId;
 use Netgen\Layouts\Sylius\Repository\ComponentRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Component;
 use Pagerfanta\Adapter\AdapterInterface;
@@ -18,7 +20,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
-use ArrayIterator;
 
 #[CoversClass(ComponentBackend::class)]
 final class ComponentBackendTest extends TestCase
@@ -41,7 +42,7 @@ final class ComponentBackendTest extends TestCase
             'item_types.sylius_component',
             [],
             [
-                'component_type_identifier' => 'component_stub',
+                'component_type' => 'component_stub',
             ],
         );
 
@@ -62,30 +63,34 @@ final class ComponentBackendTest extends TestCase
 
     public function testLoadItem(): void
     {
+        $componentId = new ComponentId('component_stub', 3);
+
         $this->componentRepositoryMock
             ->expects(self::once())
             ->method('load')
-            ->with(self::identicalTo('component_stub'), self::identicalTo(3))
+            ->with(self::equalTo($componentId))
             ->willReturn(new Component(3, 'Info'));
 
-        $item = $this->backend->loadItem('component_stub_3');
+        $item = $this->backend->loadItem('component_stub-3');
 
-        self::assertSame('component_stub_3', $item->getValue());
+        self::assertSame('component_stub-3', $item->getValue());
         self::assertSame('Info', $item->getName());
     }
 
     public function testLoadItemThrowsNotFoundException(): void
     {
         $this->expectException(NotFoundException::class);
-        $this->expectExceptionMessage('Component with identifier "component_stub" and id "3" not found.');
+        $this->expectExceptionMessage('Component with type "component_stub" and id "3" not found.');
+
+        $componentId = new ComponentId('component_stub', 3);
 
         $this->componentRepositoryMock
             ->expects(self::once())
             ->method('load')
-            ->with(self::identicalTo('component_stub'), self::identicalTo(3))
+            ->with(self::equalTo($componentId))
             ->willReturn(null);
 
-        $this->backend->loadItem('component_stub_3');
+        $this->backend->loadItem('component_stub-3');
     }
 
     public function testGetSubLocations(): void

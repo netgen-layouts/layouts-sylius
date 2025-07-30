@@ -4,29 +4,29 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 
-use Netgen\Layouts\Sylius\Repository\ComponentRepositoryInterface;
 use Netgen\Layouts\Parameters\ParameterDefinition;
+use Netgen\Layouts\Parameters\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ComponentType;
+use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
-use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 
 #[CoversClass(ComponentType::class)]
 final class ComponentTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    private MockObject&ComponentRepositoryInterface $repositoryMock;
+    private MockObject&ValueObjectProviderInterface $valueObjectProvider;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(ComponentRepositoryInterface::class);
+        $this->valueObjectProvider = $this->createMock(ValueObjectProviderInterface::class);
 
-        $this->type = new ComponentType();
+        $this->type = new ComponentType($this->valueObjectProvider);
     }
 
     public function testGetIdentifier(): void
@@ -58,29 +58,33 @@ final class ComponentTypeTest extends TestCase
 
     /**
      * Provider for testing valid parameter attributes.
-     *
-     * @return mixed[]
      */
-    public static function validOptionsDataProvider(): array
+    public static function validOptionsDataProvider(): iterable
     {
         return [
             [
                 [
-                    'component_type_identifier' => 'banner_component',
+                    'allow_invalid' => true,
                 ],
                 [
-                    'component_type_identifier' => 'banner_component',
-                ]
+                    'allow_invalid' => true,
+                ],
+            ],
+            [
+                [
+                    'allow_invalid' => false,
+                ],
+                [
+                    'allow_invalid' => false,
+                ],
             ],
         ];
     }
 
     /**
      * Provider for testing invalid parameter attributes.
-     *
-     * @return mixed[]
      */
-    public static function invalidOptionsDataProvider(): array
+    public static function invalidOptionsDataProvider(): iterable
     {
         return [
             [
@@ -99,9 +103,9 @@ final class ComponentTypeTest extends TestCase
     }
 
     /**
-     * @return mixed[]
+     * Provider for testing if the value is empty.
      */
-    public static function emptyDataProvider(): array
+    public static function emptyDataProvider(): iterable
     {
         return [
             [null, true],

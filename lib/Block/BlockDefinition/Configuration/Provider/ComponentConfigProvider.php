@@ -9,7 +9,16 @@ use Netgen\Layouts\Block\BlockDefinition\Configuration\ConfigProviderInterface;
 use Netgen\Layouts\Block\BlockDefinition\Configuration\ItemViewType;
 use Netgen\Layouts\Block\BlockDefinition\Configuration\ViewType;
 
-class ComponentConfigProvider implements ConfigProviderInterface
+use function array_combine;
+use function array_map;
+use function array_unique;
+use function in_array;
+use function mb_strtolower;
+use function preg_replace;
+use function trim;
+use function ucwords;
+
+final class ComponentConfigProvider implements ConfigProviderInterface
 {
     /**
      * @var array<string, \Netgen\Layouts\Block\BlockDefinition\Configuration\ViewType[]>
@@ -19,24 +28,23 @@ class ComponentConfigProvider implements ConfigProviderInterface
     /**
      * @param mixed[] $viewConfig
      */
-    public function __construct
-    (
-        private readonly array $viewConfig,
-    ) {}
+    public function __construct(private array $viewConfig) {}
 
     public function provideViewTypes(?Block $block = null): array
     {
-        if (!$block instanceof Block || !$block->hasParameter('component_type_identifier')) {
+        if (!$block instanceof Block || !$block->hasParameter('component_type')) {
             return [];
         }
 
-        if ($block->getParameter('component_type_identifier')->isEmpty()) {
+        if ($block->getParameter('component_type')->isEmpty()) {
             return [];
         }
 
-        $componentTypeIdentifier = $block->getParameter('component_type_identifier')->getValue();
+        $componentType = $block->getParameter('component_type')->getValue();
 
-        $this->viewTypes[$block->getId()->toString()] ??= $this->buildViewTypes($this->resolveViewTypes($componentTypeIdentifier));
+        $this->viewTypes[$block->getId()->toString()] ??= $this->buildViewTypes(
+            $this->resolveViewTypes($componentType),
+        );
 
         return $this->viewTypes[$block->getId()->toString()];
     }
@@ -44,53 +52,26 @@ class ComponentConfigProvider implements ConfigProviderInterface
     /**
      * @return string[]
      */
-    private function resolveViewTypes(string $componentTypeIdentifier): array
+    private function resolveViewTypes(string $componentType): array
     {
-        $syliusResourceDefaultViewConfig = $this->viewConfig['sylius_resource_view']['default'] ?? [];
+        $defaultViewConfig = $this->viewConfig['sylius_resource_view']['default'] ?? [];
 
         $viewTypes = [];
-        foreach ($syliusResourceDefaultViewConfig as $config) {
-            if (!in_array($componentTypeIdentifier, $this->getConfiguredComponentIdentifiers($config), true)) {
+        foreach ($defaultViewConfig as $config) {
+            if (!in_array($componentType, (array) ($config['match']['sylius_component\identifier'] ?? []), true)) {
                 continue;
             }
 
-            $viewTypes = array_merge($viewTypes, $this->getConfiguredSyliusResourceViewTypes($config));
+            $viewTypes = [...$viewTypes, ...((array) ($config['match']['sylius_resource\view_type'] ?? []))];
         }
 
         return array_unique($viewTypes);
     }
 
     /**
-     * @return string[]
-     */
-    private function getConfiguredComponentIdentifiers(array $config): array
-    {
-        $value = $config['match']['sylius_component\identifier'] ?? [];
-
-        return is_array($value) ? $value : [$value];
-    }
-
-    /**
-     * @return string[]
-     */
-    private function getConfiguredSyliusResourceViewTypes(array $config): array
-    {
-        $value = $config['match']['sylius_resource\view_type'] ?? [];
-
-        return is_array($value) ? $value : [$value];
-    }
-
-    /**
-     * Returns the human-readable version of the provided string.
-     */
-    private function humanize(string $text): string
-    {
-        return ucwords(mb_strtolower(trim(preg_replace(['/([A-Z])/', '/[_\s]+/'], ['_$1', ' '], $text) ?? '')));
-    }
-
-    /**
      * @param string[] $validViews
-     * @return array<string, \Netgen\Layouts\Block\BlockDefinition\Configuration\ViewType[]>
+     *
+     * @return array<string, \Netgen\Layouts\Block\BlockDefinition\Configuration\ViewType>
      */
     private function buildViewTypes(array $validViews): array
     {
@@ -115,5 +96,13 @@ class ComponentConfigProvider implements ConfigProviderInterface
                 $validViews,
             ),
         );
+    }
+
+    /**
+     * Returns the human-readable version of the provided string.
+     */
+    private function humanize(string $text): string
+    {
+        return ucwords(mb_strtolower(trim(preg_replace(['/([A-Z])/', '/[_\s]+/'], ['_$1', ' '], $text) ?? '')));
     }
 }

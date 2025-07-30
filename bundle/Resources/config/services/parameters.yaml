@@ -39,6 +39,8 @@ services:
 
     netgen_layouts.sylius.parameters.parameter_type.component:
         class: Netgen\Layouts\Sylius\Parameters\ParameterType\ComponentType
+        arguments:
+            - "@netgen_layouts.sylius.parameters.value_object_provider.component"
         tags:
             - { name: netgen_layouts.parameter_type }
 
@@ -46,3 +48,8 @@ services:
         class: Netgen\Layouts\Sylius\Parameters\Form\Mapper\ComponentMapper
         tags:
             - { name: netgen_layouts.parameter_type.form_mapper, type: sylius_component }
+
+    netgen_layouts.sylius.parameters.value_object_provider.component:
+        class: Netgen\Layouts\Sylius\Parameters\ValueObjectProvider\ComponentProvider
+        arguments:
+            - "@netgen_layouts.sylius.component_repository"

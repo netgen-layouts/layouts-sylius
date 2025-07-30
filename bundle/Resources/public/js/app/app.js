@@ -7,7 +7,7 @@ const handlePostRequest = async (componentIdentifier, componentId) => {
   const nglayoutsBasePathElement = document.querySelector('[name="nglayouts-base-path"]');
   const nglayoutsBasePath = nglayoutsBasePathElement && nglayoutsBasePathElement.getAttribute('content');
 
-  const url = `${nglayoutsBasePath}admin/blocks/${blockId}/${locale}/connect-component-content/${componentIdentifier}/${componentId}`;
+  const url = `${nglayoutsBasePath}admin/sylius/blocks/${blockId}/${locale}/connect-component/${componentIdentifier}/${componentId}`;
 
   const bc = new BroadcastChannel('publish_content');
 

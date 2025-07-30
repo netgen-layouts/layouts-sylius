@@ -1,6 +1,6 @@
 services:
-    netgen_layouts.sylius.backend.component:
-        class: Netgen\Layouts\Sylius\ContentBrowser\Backend\ComponentBackend
+    netgen_layouts.sylius.browser.backend.component:
+        class: Netgen\Layouts\Sylius\Browser\Backend\ComponentBackend
         arguments:
             - "@netgen_layouts.sylius.component_repository"
             - "@sylius.context.locale"

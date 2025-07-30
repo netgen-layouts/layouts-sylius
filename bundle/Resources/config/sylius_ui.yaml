@@ -19,7 +19,6 @@ events:
         blocks:
             layouts_sylius_meta:
                 template: "@NetgenLayoutsSylius/admin/nglayouts/meta.html.twig"
-                priority: 1000
 
     sylius.admin.layout.javascripts:
         blocks:

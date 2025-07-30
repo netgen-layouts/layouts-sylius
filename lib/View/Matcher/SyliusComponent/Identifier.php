@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\View\Matcher\SyliusResource;
+namespace Netgen\Layouts\Sylius\View\Matcher\SyliusComponent;
 
-use Netgen\Layouts\Sylius\API\ComponentInterface;
+use Netgen\Layouts\Sylius\Component\ComponentInterface;
 use Netgen\Layouts\Sylius\View\View\SyliusResourceViewInterface;
 use Netgen\Layouts\View\Matcher\MatcherInterface;
 use Netgen\Layouts\View\ViewInterface;
 
-class ComponentIdentifier implements MatcherInterface
+use function in_array;
+
+final class Identifier implements MatcherInterface
 {
     public function match(ViewInterface $view, array $config): bool
     {
@@ -22,6 +24,6 @@ class ComponentIdentifier implements MatcherInterface
             return false;
         }
 
-        return in_array($resource->getIdentifier(), $config);
+        return in_array($resource::getIdentifier(), $config, true);
     }
 }

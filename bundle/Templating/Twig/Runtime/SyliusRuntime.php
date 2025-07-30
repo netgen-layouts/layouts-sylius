@@ -22,6 +22,8 @@ final class SyliusRuntime
      * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface> $channelRepository
      * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
+     * @param string[] $componentCreateRoutes
+     * @param string[] $componentUpdateRoutes
      */
     public function __construct(
         private ProductRepositoryInterface $productRepository,
@@ -94,13 +96,13 @@ final class SyliusRuntime
         return $locale->getName();
     }
 
-    public function getComponentCreateRoute(string $componentTypeIdentifier): ?string
+    public function getComponentCreateRoute(string $componentType): ?string
     {
-        return $this->componentCreateRoutes[$componentTypeIdentifier] ?? null;
+        return $this->componentCreateRoutes[$componentType] ?? null;
     }
 
-    public function getComponentUpdateRoute(string $componentTypeIdentifier): ?string
+    public function getComponentUpdateRoute(string $componentType): ?string
     {
-        return $this->componentUpdateRoutes[$componentTypeIdentifier] ?? null;
+        return $this->componentUpdateRoutes[$componentType] ?? null;
     }
 }

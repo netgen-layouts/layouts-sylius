@@ -13,13 +13,6 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    netgen_layouts.sylius.event_listener.shop.resource_index:
-        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ResourceIndexListener
-        arguments:
-            - '@request_stack'
-        tags:
-            - { name: kernel.event_subscriber }
-
     netgen_layouts.sylius.event_listener.shop.resource_show:
         class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ResourceShowListener
         arguments:
@@ -27,10 +20,24 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    netgen_layouts.sylius.event_listener.shop.resource_initialize_create:
-        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ResourceInitializeCreateListener
+    netgen_layouts.sylius.event_listener.shop.component_show:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ComponentShowListener
         arguments:
-            - '@request_stack'
+            - "@request_stack"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    netgen_layouts.sylius.event_listener.shop.component_index:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ComponentIndexListener
+        arguments:
+            - "@request_stack"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    netgen_layouts.sylius.event_listener.shop.component_initialize_create:
+        class: Netgen\Bundle\LayoutsSyliusBundle\EventListener\Shop\ComponentInitializeCreateListener
+        arguments:
+            - "@request_stack"
         tags:
             - { name: kernel.event_subscriber }
 

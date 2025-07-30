@@ -43,7 +43,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         $this->authCheckerMock
             ->method('isGranted')
-            ->with(self::identicalTo('ROLE_NGLAYOUTS_ADMIN'))
+            ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(true);
 
         $factory = new MenuFactory();
@@ -63,7 +63,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         $this->authCheckerMock
             ->method('isGranted')
-            ->with(self::identicalTo('ROLE_NGLAYOUTS_ADMIN'))
+            ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(true);
 
         $factory = new MenuFactory();
@@ -83,7 +83,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         $this->authCheckerMock
             ->method('isGranted')
-            ->with(self::identicalTo('ROLE_NGLAYOUTS_ADMIN'))
+            ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(false);
 
         $factory = new MenuFactory();

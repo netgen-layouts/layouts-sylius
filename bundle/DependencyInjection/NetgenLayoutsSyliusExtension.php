@@ -35,6 +35,7 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             ),
         );
 
+        $loader->load('browser/services.yaml');
         $loader->load('services/**/*.yaml', 'glob');
         $loader->load('default_parameters.yaml');
 
@@ -73,12 +74,12 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             'block_definitions.yaml' => 'netgen_layouts',
             'block_types.yaml' => 'netgen_layouts',
             'sylius_ui.yaml' => 'sylius_ui',
+            'doctrine.yaml' => 'doctrine',
             'view/block_view.yaml' => 'netgen_layouts',
             'view/item_view.yaml' => 'netgen_layouts',
             'view/rule_target_view.yaml' => 'netgen_layouts',
             'view/rule_condition_view.yaml' => 'netgen_layouts',
-            'doctrine.yaml' => 'doctrine',
-            'item_types.yaml' => 'netgen_content_browser',
+            'browser/item_types.yaml' => 'netgen_content_browser',
             'framework/twig.yaml' => 'twig',
         ];
 

@@ -1,5 +1,5 @@
 services:
-    netgen_layouts.sylius.form.extension.component_component:
-        class: Netgen\Layouts\Sylius\Form\Extension\ComponentComponentExtension
+    netgen_layouts.sylius.form.extension.component_content:
+        class: Netgen\Layouts\Sylius\Form\Extension\ComponentContentExtension
         tags:
             - { name: form.type_extension, extended_type: Netgen\ContentBrowser\Form\Type\ContentBrowserType }

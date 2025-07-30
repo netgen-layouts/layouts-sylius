@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\ContentBrowser\Backend;
+namespace Netgen\Layouts\Sylius\Browser\Backend;
 
 use Netgen\ContentBrowser\Backend\BackendInterface;
 use Netgen\ContentBrowser\Backend\SearchQuery;
@@ -11,10 +11,10 @@ use Netgen\ContentBrowser\Backend\SearchResultInterface;
 use Netgen\ContentBrowser\Config\Configuration;
 use Netgen\ContentBrowser\Exceptions\NotFoundException;
 use Netgen\ContentBrowser\Item\LocationInterface;
-use Netgen\Layouts\Browser\Item\Layout\RootLocation;
-use Netgen\Layouts\Sylius\API\ComponentInterface;
-use Netgen\Layouts\Sylius\ContentBrowser\Item\Component\Item;
-use Netgen\Layouts\Sylius\ContentBrowser\Item\Component\ItemValue;
+use Netgen\Layouts\Sylius\Browser\Item\Component\Item;
+use Netgen\Layouts\Sylius\Browser\Item\Component\RootLocation;
+use Netgen\Layouts\Sylius\Component\ComponentId;
+use Netgen\Layouts\Sylius\Component\ComponentInterface;
 use Netgen\Layouts\Sylius\Repository\ComponentRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
@@ -26,8 +26,7 @@ final class ComponentBackend implements BackendInterface
         private ComponentRepositoryInterface $componentRepository,
         private LocaleContextInterface $localeContext,
         private Configuration $config,
-    ) {
-    }
+    ) {}
 
     public function getSections(): iterable
     {
@@ -41,16 +40,16 @@ final class ComponentBackend implements BackendInterface
 
     public function loadItem($value): Item
     {
-        $itemValue = ItemValue::fromValue((string) $value);
+        $componentId = ComponentId::fromString((string) $value);
 
-        $component = $this->componentRepository->load($itemValue->getComponentTypeIdentifier(), $itemValue->getId());
+        $component = $this->componentRepository->load($componentId);
 
         if (!$component instanceof ComponentInterface) {
             throw new NotFoundException(
                 sprintf(
-                    'Component with identifier "%s" and id "%d" not found.',
-                    $itemValue->getComponentTypeIdentifier(),
-                    $itemValue->getId(),
+                    'Component with type "%s" and id "%d" not found.',
+                    $componentId->getComponentType(),
+                    $componentId->getId(),
                 ),
             );
         }
@@ -70,12 +69,12 @@ final class ComponentBackend implements BackendInterface
 
     public function getSubItems(LocationInterface $location, int $offset = 0, int $limit = 25): iterable
     {
-        if (!$this->config->hasParameter('component_type_identifier')) {
+        if (!$this->config->hasParameter('component_type')) {
             return [];
         }
 
         $paginator = $this->componentRepository->createListPaginator(
-            $this->config->getParameter('component_type_identifier'),
+            $this->config->getParameter('component_type'),
             $this->localeContext->getLocaleCode(),
         );
 
@@ -89,12 +88,12 @@ final class ComponentBackend implements BackendInterface
 
     public function getSubItemsCount(LocationInterface $location): int
     {
-        if (!$this->config->hasParameter('component_type_identifier')) {
+        if (!$this->config->hasParameter('component_type')) {
             return 0;
         }
 
         $paginator = $this->componentRepository->createListPaginator(
-            $this->config->getParameter('component_type_identifier'),
+            $this->config->getParameter('component_type'),
             $this->localeContext->getLocaleCode(),
         );
 
@@ -103,12 +102,12 @@ final class ComponentBackend implements BackendInterface
 
     public function searchItems(SearchQuery $searchQuery): SearchResultInterface
     {
-        if (!$this->config->hasParameter('component_type_identifier')) {
-            return new SearchResult([]);
+        if (!$this->config->hasParameter('component_type')) {
+            return new SearchResult();
         }
 
         $paginator = $this->componentRepository->createSearchPaginator(
-            $this->config->getParameter('component_type_identifier'),
+            $this->config->getParameter('component_type'),
             $searchQuery->getSearchText(),
             $this->localeContext->getLocaleCode(),
         );
@@ -125,12 +124,12 @@ final class ComponentBackend implements BackendInterface
 
     public function searchItemsCount(SearchQuery $searchQuery): int
     {
-        if (!$this->config->hasParameter('component_type_identifier')) {
+        if (!$this->config->hasParameter('component_type')) {
             return 0;
         }
 
         $paginator = $this->componentRepository->createSearchPaginator(
-            $this->config->getParameter('component_type_identifier'),
+            $this->config->getParameter('component_type'),
             $searchQuery->getSearchText(),
             $this->localeContext->getLocaleCode(),
         );
@@ -144,9 +143,7 @@ final class ComponentBackend implements BackendInterface
         $searchQuery->setOffset($offset);
         $searchQuery->setLimit($limit);
 
-        $searchResult = $this->searchItems($searchQuery);
-
-        return $searchResult->getResults();
+        return $this->searchItems($searchQuery)->getResults();
     }
 
     public function searchCount(string $searchText): int
@@ -165,9 +162,9 @@ final class ComponentBackend implements BackendInterface
     /**
      * Builds the items from provided components.
      *
-     * @param iterable<\Netgen\Layouts\Sylius\API\ComponentInterface> $components
+     * @param iterable<\Netgen\Layouts\Sylius\Component\ComponentInterface> $components
      *
-     * @return \Netgen\Layouts\Sylius\ContentBrowser\Item\Component\Item[]
+     * @return \Netgen\Layouts\Sylius\Browser\Item\Component\Item[]
      */
     private function buildItems(iterable $components): array
     {

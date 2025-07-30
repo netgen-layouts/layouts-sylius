@@ -11,7 +11,7 @@ services:
             - "@sylius.repository.taxon"
             - "@sylius.repository.channel"
             - "@sylius.repository.locale"
-            - '%netgen_layouts.sylius.component_create_routes%'
-            - '%netgen_layouts.sylius.component_update_routes%'
+            - "%netgen_layouts.sylius.component_create_routes%"
+            - "%netgen_layouts.sylius.component_update_routes%"
         tags:
             - { name: twig.runtime }

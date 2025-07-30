@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Sylius\Component\Core\Model\AdminUser;
 use Sylius\Component\User\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
 #[CoversClass(AdminAccessVoter::class)]
 final class AdminAccessVoterTest extends TestCase
@@ -28,7 +29,7 @@ final class AdminAccessVoterTest extends TestCase
             ->method('getUser')
             ->willReturn(new AdminUser());
 
-        self::assertSame(1, $this->voter->vote($token, null, []));
+        self::assertSame(VoterInterface::ACCESS_GRANTED, $this->voter->vote($token, null, ['nglayouts:foo:bar']));
     }
 
     public function testVoteWithoutAdminUser(): void
@@ -38,6 +39,6 @@ final class AdminAccessVoterTest extends TestCase
             ->method('getUser')
             ->willReturn(new User());
 
-        self::assertSame(0, $this->voter->vote($token, null, []));
+        self::assertSame(VoterInterface::ACCESS_DENIED, $this->voter->vote($token, null, ['nglayouts:foo:bar']));
     }
 }

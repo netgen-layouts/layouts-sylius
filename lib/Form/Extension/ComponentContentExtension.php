@@ -11,7 +11,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 
-final class ComponentComponentExtension extends AbstractTypeExtension
+final class ComponentContentExtension extends AbstractTypeExtension
 {
     public function getExtendedType(): string
     {
@@ -34,6 +34,6 @@ final class ComponentComponentExtension extends AbstractTypeExtension
             return;
         }
 
-        $view->vars['block_prefixes'][] = 'sylius_component_component';
+        $view->vars['block_prefixes'][] = 'sylius_component_content';
     }
 }

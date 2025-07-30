@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Component;
 
-use Netgen\Layouts\Sylius\API\ComponentInterface;
-use Netgen\Layouts\Sylius\API\ComponentTranslationInterface;
-use Sylius\Component\Resource\Model\TimestampableTrait;
-use Sylius\Component\Resource\Model\ToggleableTrait;
-use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Resource\Model\TranslationInterface;
+use DateTimeImmutable;
+use Netgen\Layouts\Exception\RuntimeException;
+use Sylius\Resource\Model\TimestampableTrait;
+use Sylius\Resource\Model\ToggleableTrait;
+use Sylius\Resource\Model\TranslatableTrait;
+
+use function sprintf;
 
 abstract class AbstractComponent implements ComponentInterface
 {
@@ -25,7 +26,7 @@ abstract class AbstractComponent implements ComponentInterface
     {
         $this->initializeTranslationsCollection();
 
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -35,13 +36,14 @@ abstract class AbstractComponent implements ComponentInterface
 
     public function getName(): string
     {
-        $componentTranslation = $this->getComponentTranslation();
+        $translation = $this->getTranslation();
 
-        return $componentTranslation->getName();
-    }
+        if ($translation instanceof ComponentTranslationInterface) {
+            return $translation->getName();
+        }
 
-    protected function getComponentTranslation(): ComponentTranslationInterface|TranslationInterface
-    {
-        return $this->getTranslation();
+        throw new RuntimeException(
+            sprintf('Invalid translation for component of type "%s" with ID "%d"', static::class, $this->id),
+        );
     }
 }

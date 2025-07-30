@@ -6,23 +6,25 @@ namespace Netgen\Layouts\Sylius\Security\Authorization\Voter;
 
 use Sylius\Component\Core\Model\AdminUserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Voter;
+
+use function str_starts_with;
 
 /**
  * Votes on Netgen Layouts attributes (ROLE_NGLAYOUTS_*) by matching corresponding access
  * rights in Sylius eCommerce.
+ *
+ * @extends \Symfony\Component\Security\Core\Authorization\Voter\Voter<string, \Netgen\Layouts\API\Values\Value|null>
  */
-final class AdminAccessVoter implements VoterInterface
+final class AdminAccessVoter extends Voter
 {
-    /**
-     * @param mixed[] $attributes
-     */
-    public function vote(TokenInterface $token, mixed $subject, array $attributes): int
+    protected function supports(string $attribute, mixed $subject): bool
     {
-        if ($token->getUser() instanceof AdminUserInterface) {
-            return self::ACCESS_GRANTED;
-        }
+        return str_starts_with($attribute, 'nglayouts:');
+    }
 
-        return self::ACCESS_ABSTAIN;
+    protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
+    {
+        return $token->getUser() instanceof AdminUserInterface;
     }
 }

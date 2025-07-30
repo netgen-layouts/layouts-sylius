@@ -12,7 +12,7 @@ use Sylius\Resource\Model\ResourceInterface;
 
 use function is_string;
 
-class SyliusResourceViewProvider implements ViewProviderInterface
+final class SyliusResourceViewProvider implements ViewProviderInterface
 {
     public function provideView($value, array $parameters = []): ViewInterface
     {

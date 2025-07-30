@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\ContentBrowser\Item\Component;
+namespace Netgen\Layouts\Sylius\Browser\Item\Component;
 
-use Netgen\Layouts\Sylius\API\ComponentInterface as APIComponentInterface;
+use Netgen\Layouts\Sylius\Component\ComponentInterface as APIComponentInterface;
 
 interface ComponentInterface
 {

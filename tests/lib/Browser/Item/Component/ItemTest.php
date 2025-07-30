@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Tests\ContentBrowser\Item\Component;
+namespace Netgen\Layouts\Sylius\Tests\Browser\Item\Component;
 
-
-use Netgen\Layouts\Sylius\API\ComponentInterface;
-use Netgen\Layouts\Sylius\ContentBrowser\Item\Component\Item;
+use Netgen\Layouts\Sylius\Browser\Item\Component\Item;
+use Netgen\Layouts\Sylius\Component\ComponentInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Component;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +26,7 @@ final class ItemTest extends TestCase
 
     public function testGetValue(): void
     {
-        self::assertSame('component_stub_3', $this->item->getValue());
+        self::assertSame('component_stub-3', $this->item->getValue());
     }
 
     public function testGetName(): void

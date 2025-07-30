@@ -4,20 +4,28 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Repository;
 
-use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-use Http\Discovery\Exception\NotFoundException;
-use Netgen\Layouts\Sylius\API\ComponentInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Netgen\Layouts\Exception\RuntimeException;
+use Netgen\Layouts\Sylius\Component\ComponentId;
+use Netgen\Layouts\Sylius\Component\ComponentInterface;
 use Pagerfanta\PagerfantaInterface;
 use ReflectionClass;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\ResourceRepositoryTrait;
 
+use function is_a;
 use function sprintf;
 
+/**
+ * @extends \Doctrine\ORM\EntityRepository<\Netgen\Layouts\Sylius\Component\ComponentInterface>
+ */
 final class ComponentRepository extends EntityRepository implements ComponentRepositoryInterface
 {
+    use ResourceRepositoryTrait;
+
     /**
-     * @var array<string, \Sylius\Resource\Doctrine\Persistence\RepositoryInterface>
+     * @var array<string, \Doctrine\ORM\EntityRepository<\Netgen\Layouts\Sylius\Component\ComponentInterface>>
      */
     private array $componentRepositories = [];
 
@@ -26,18 +34,19 @@ final class ComponentRepository extends EntityRepository implements ComponentRep
     ) {
         foreach ($entityManager->getMetadataFactory()->getAllMetadata() as $metadata) {
             $class = $metadata->getName();
-            $reflClass = new ReflectionClass($class);
-            if ($reflClass->implementsInterface(ComponentInterface::class) && !$reflClass->isAbstract()) {
-                $componentTypeIdentifier = $class::getIdentifier();
+            $reflectionClass = new ReflectionClass($class);
 
-                $this->componentRepositories[$componentTypeIdentifier] = $entityManager->getRepository($class);
+            if (!is_a($class, ComponentInterface::class, true) || $reflectionClass->isAbstract()) {
+                continue;
             }
+
+            $this->componentRepositories[$class::getIdentifier()] = $entityManager->getRepository($class);
         }
     }
 
-    public function load(string $identifier, int $id): ?ComponentInterface
+    public function load(ComponentId $componentId): ?ComponentInterface
     {
-        return $this->resolveRepository($identifier)->find($id);
+        return $this->resolveRepository($componentId->getComponentType())->find($componentId->getId());
     }
 
     public function createListPaginator(string $identifier, string $localeCode): PagerfantaInterface
@@ -72,16 +81,14 @@ final class ComponentRepository extends EntityRepository implements ComponentRep
         return $queryBuilder;
     }
 
+    /**
+     * @return \Doctrine\ORM\EntityRepository<\Netgen\Layouts\Sylius\Component\ComponentInterface>
+     */
     private function resolveRepository(string $identifier): EntityRepository
     {
-        $repository = $this->componentRepositories[$identifier];
-
-        if (!$repository instanceof EntityRepository) {
-            throw new NotFoundException(
-                sprintf('Sylius entity repository for component with identifier %s not found!', $identifier),
+        return $this->componentRepositories[$identifier] ??
+            throw new RuntimeException(
+                sprintf('Sylius entity repository for component with identifier "%s" not found!', $identifier),
             );
-        }
-
-        return $repository;
     }
 }

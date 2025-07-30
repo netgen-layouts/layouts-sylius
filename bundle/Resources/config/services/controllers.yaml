@@ -6,8 +6,8 @@ services:
             - [setContainer, [ "@service_container"]]
             - [checkPermissions]
 
-    netgen_layouts.sylius.controller.connect_component_content:
-        class: Netgen\Bundle\LayoutsSyliusBundle\Controller\Admin\ConnectComponentContent
+    netgen_layouts.sylius.controller.connect_component:
+        class: Netgen\Bundle\LayoutsSyliusBundle\Controller\Admin\ConnectComponent
         public: true
         parent: netgen_layouts.sylius.controller.base
         arguments:

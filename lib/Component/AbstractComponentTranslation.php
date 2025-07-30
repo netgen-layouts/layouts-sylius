@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Component;
 
-use Netgen\Layouts\Sylius\API\ComponentTranslationInterface;
-use Sylius\Component\Resource\Model\AbstractTranslation;
+use Sylius\Resource\Model\AbstractTranslation;
 
 abstract class AbstractComponentTranslation extends AbstractTranslation implements ComponentTranslationInterface
 {

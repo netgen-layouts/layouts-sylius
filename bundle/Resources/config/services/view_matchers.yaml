@@ -9,7 +9,7 @@ services:
         tags:
             - { name: netgen_layouts.view_matcher, identifier: sylius_resource\view_type }
 
-    netgen_layouts.sylius.view.matcher.sylius_resource.sylius_component_identifier:
-        class: Netgen\Layouts\Sylius\View\Matcher\SyliusResource\SyliusComponentIdentifier
+    netgen_layouts.sylius.view.matcher.sylius_component.identifier:
+        class: Netgen\Layouts\Sylius\View\Matcher\SyliusComponent\Identifier
         tags:
             - { name: netgen_layouts.view_matcher, identifier: sylius_component\identifier }

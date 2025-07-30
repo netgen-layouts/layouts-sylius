@@ -1,8 +1,6 @@
 services:
     netgen_layouts.sylius.block.block_definition_handler.component:
         class: Netgen\Layouts\Sylius\Block\BlockDefinition\Handler\ComponentHandler
-        arguments:
-            - '@netgen_layouts.sylius.component_repository'
         tags:
             - { name: netgen_layouts.block_definition_handler, identifier: sylius_component }
 
