@@ -35,7 +35,7 @@
             </header>
         {% endblock %}
 
-        {% include '@SyliusShop/_flashes.html.twig' %}
+        {{ include('@SyliusShop/_flashes.html.twig') }}
 
         {{ sylius_template_event('sylius.shop.layout.before_content') }}
 
@@ -48,7 +48,7 @@
     </div>
 
     {% block footer %}
-        {% include '@SyliusShop/_footer.html.twig' %}
+        {{ include('@SyliusShop/_footer.html.twig') }}
     {% endblock %}
 </div>
 
@@ -56,7 +56,7 @@
     {{ sylius_template_event('sylius.shop.layout.javascripts') }}
 {% endblock %}
 
-{% include '@SyliusUi/Modal/_confirmation.html.twig' %}
+{{ include('@SyliusUi/Modal/_confirmation.html.twig') }}
 {{ sylius_template_event('sylius.shop.layout.after_body') }}
 </body>
 </html>
