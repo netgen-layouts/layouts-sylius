@@ -14,7 +14,7 @@ use function is_string;
 
 final class SyliusResourceViewProvider implements ViewProviderInterface
 {
-    public function provideView($value, array $parameters = []): ViewInterface
+    public function provideView(mixed $value, array $parameters = []): ViewInterface
     {
         if (!isset($parameters['view_type'])) {
             throw ViewProviderException::noParameter('sylius_resource', 'view_type');
@@ -27,7 +27,7 @@ final class SyliusResourceViewProvider implements ViewProviderInterface
         return new SyliusResourceView($value, $parameters['view_type']);
     }
 
-    public function supports($value): bool
+    public function supports(mixed $value): bool
     {
         return $value instanceof ResourceInterface;
     }

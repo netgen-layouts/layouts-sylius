@@ -13,5 +13,6 @@ final class Product extends BaseProduct
         parent::__construct();
 
         $this->id = $id;
+        $this->setFallbackLocale('en');
     }
 }

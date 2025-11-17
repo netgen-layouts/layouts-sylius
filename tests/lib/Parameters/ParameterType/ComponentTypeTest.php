@@ -20,13 +20,13 @@ final class ComponentTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    private MockObject&ValueObjectProviderInterface $valueObjectProvider;
+    private MockObject&ValueObjectProviderInterface $valueObjectProviderMock;
 
     protected function setUp(): void
     {
-        $this->valueObjectProvider = $this->createMock(ValueObjectProviderInterface::class);
+        $this->valueObjectProviderMock = $this->createMock(ValueObjectProviderInterface::class);
 
-        $this->type = new ComponentType($this->valueObjectProvider);
+        $this->type = new ComponentType($this->valueObjectProviderMock);
     }
 
     public function testGetIdentifier(): void
@@ -91,7 +91,6 @@ final class ComponentTypeTest extends TestCase
                 [
                     'undefined_value' => 'Value',
                 ],
-                [],
             ],
         ];
     }

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Locale;
 
 use Netgen\Layouts\Locale\LocaleProviderInterface;
-use Netgen\Layouts\Utils\BackwardsCompatibility\Locales;
 use Sylius\Component\Locale\Provider\LocaleProviderInterface as SyliusLocaleProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Intl\Locales;
 
 use function asort;
 
@@ -17,7 +17,9 @@ use function asort;
  */
 final class LocaleProvider implements LocaleProviderInterface
 {
-    public function __construct(private SyliusLocaleProviderInterface $syliusLocaleProvider) {}
+    public function __construct(
+        private SyliusLocaleProviderInterface $syliusLocaleProvider,
+    ) {}
 
     public function getAvailableLocales(): array
     {

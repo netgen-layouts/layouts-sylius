@@ -15,7 +15,7 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 #[CoversClass(TaxonValueLoader::class)]
 final class TaxonValueLoaderTest extends TestCase
 {
-    private MockObject $taxonRepositoryMock;
+    private MockObject&TaxonRepositoryInterface $taxonRepositoryMock;
 
     private TaxonValueLoader $valueLoader;
 

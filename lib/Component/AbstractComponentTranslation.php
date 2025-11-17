@@ -8,9 +8,9 @@ use Sylius\Resource\Model\AbstractTranslation;
 
 abstract class AbstractComponentTranslation extends AbstractTranslation implements ComponentTranslationInterface
 {
-    protected int $id;
+    final protected int $id;
 
-    protected string $name;
+    final protected string $name;
 
     public function getId(): ?int
     {

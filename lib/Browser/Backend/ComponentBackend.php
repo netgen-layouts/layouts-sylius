@@ -33,18 +33,16 @@ final class ComponentBackend implements BackendInterface
         return [new RootLocation()];
     }
 
-    public function loadLocation($id): RootLocation
+    public function loadLocation(int|string $id): RootLocation
     {
         return new RootLocation();
     }
 
-    public function loadItem($value): Item
+    public function loadItem(int|string $value): Item
     {
         $componentId = ComponentId::fromString((string) $value);
 
-        $component = $this->componentRepository->load($componentId);
-
-        if (!$component instanceof ComponentInterface) {
+        $component = $this->componentRepository->load($componentId) ??
             throw new NotFoundException(
                 sprintf(
                     'Component with type "%s" and id "%d" not found.',
@@ -52,7 +50,6 @@ final class ComponentBackend implements BackendInterface
                     $componentId->getId(),
                 ),
             );
-        }
 
         return $this->buildItem($component);
     }

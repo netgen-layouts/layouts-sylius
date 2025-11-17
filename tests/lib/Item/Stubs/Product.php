@@ -14,7 +14,9 @@ final class Product extends BaseProduct
 
         $this->id = $id;
 
-        $this->currentLocale = 'en';
+        $this->setFallbackLocale('en');
+        $this->setCurrentLocale('en');
+
         $this->setName($name);
         $this->setSlug($slug);
         $this->setEnabled($enabled);

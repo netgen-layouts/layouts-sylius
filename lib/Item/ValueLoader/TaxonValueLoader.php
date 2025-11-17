@@ -14,20 +14,20 @@ final class TaxonValueLoader implements ValueLoaderInterface
     /**
      * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      */
-    public function __construct(private TaxonRepositoryInterface $taxonRepository) {}
+    public function __construct(
+        private TaxonRepositoryInterface $taxonRepository,
+    ) {}
 
-    public function load($id): ?TaxonInterface
+    public function load(int|string $id): ?TaxonInterface
     {
         try {
-            $taxon = $this->taxonRepository->find($id);
+            return $this->taxonRepository->find($id);
         } catch (Throwable) {
             return null;
         }
-
-        return $taxon instanceof TaxonInterface ? $taxon : null;
     }
 
-    public function loadByRemoteId($remoteId): ?TaxonInterface
+    public function loadByRemoteId(int|string $remoteId): ?TaxonInterface
     {
         return $this->load($remoteId);
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\EventListener\Admin;
 
 use Netgen\Bundle\LayoutsAdminBundle\Event\AdminMatchEvent;
-use Netgen\Bundle\LayoutsAdminBundle\Event\LayoutsAdminEvents;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\SetPageLayoutListener;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -25,14 +24,14 @@ final class SetPageLayoutListenerTest extends TestCase
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
-            [LayoutsAdminEvents::ADMIN_MATCH => ['onAdminMatch', -255]],
+            [AdminMatchEvent::class => ['onAdminMatch', -255]],
             $this->listener::getSubscribedEvents(),
         );
     }
 
     public function testOnAdminMatch(): void
     {
-        $event = new AdminMatchEvent(Request::create('/'), HttpKernelInterface::MASTER_REQUEST);
+        $event = new AdminMatchEvent(Request::create('/'), HttpKernelInterface::MAIN_REQUEST);
 
         $this->listener->onAdminMatch($event);
 
@@ -41,7 +40,7 @@ final class SetPageLayoutListenerTest extends TestCase
 
     public function testOnAdminMatchWithExistingPageLayout(): void
     {
-        $event = new AdminMatchEvent(Request::create('/'), HttpKernelInterface::MASTER_REQUEST);
+        $event = new AdminMatchEvent(Request::create('/'), HttpKernelInterface::MAIN_REQUEST);
         $event->setPageLayoutTemplate('existing.html.twig');
 
         $this->listener->onAdminMatch($event);

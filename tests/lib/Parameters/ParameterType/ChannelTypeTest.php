@@ -99,6 +99,8 @@ final class ChannelTypeTest extends TestCase
                 [
                     'undefined_value' => 'Value',
                 ],
+            ],
+            [
                 [
                     'multiple' => 'Value',
                 ],

@@ -14,20 +14,20 @@ final class ProductValueLoader implements ValueLoaderInterface
     /**
      * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface> $productRepository
      */
-    public function __construct(private ProductRepositoryInterface $productRepository) {}
+    public function __construct(
+        private ProductRepositoryInterface $productRepository,
+    ) {}
 
-    public function load($id): ?ProductInterface
+    public function load(int|string $id): ?ProductInterface
     {
         try {
-            $product = $this->productRepository->find($id);
+            return $this->productRepository->find($id);
         } catch (Throwable) {
             return null;
         }
-
-        return $product instanceof ProductInterface ? $product : null;
     }
 
-    public function loadByRemoteId($remoteId): ?ProductInterface
+    public function loadByRemoteId(int|string $remoteId): ?ProductInterface
     {
         return $this->load($remoteId);
     }

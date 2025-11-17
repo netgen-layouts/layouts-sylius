@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine;
 
-use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 
@@ -15,6 +15,6 @@ final class TaxonProduct implements TargetHandlerInterface
         $query->andWhere(
             $query->expr()->in('rt.value', [':target_value']),
         )
-        ->setParameter('target_value', $value, Connection::PARAM_INT_ARRAY);
+        ->setParameter('target_value', $value, ArrayParameterType::INTEGER);
     }
 }

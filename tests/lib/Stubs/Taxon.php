@@ -13,5 +13,6 @@ final class Taxon extends BaseTaxon
         parent::__construct();
 
         $this->id = $id;
+        $this->setFallbackLocale('en');
     }
 }

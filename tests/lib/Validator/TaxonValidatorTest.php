@@ -20,7 +20,7 @@ use function sprintf;
 #[CoversClass(TaxonValidator::class)]
 final class TaxonValidatorTest extends ValidatorTestCase
 {
-    private MockObject $repositoryMock;
+    private MockObject&TaxonRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {

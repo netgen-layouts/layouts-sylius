@@ -14,8 +14,8 @@ use function array_map;
 use function array_unique;
 use function in_array;
 use function mb_strtolower;
+use function mb_trim;
 use function preg_replace;
-use function trim;
 use function ucwords;
 
 final class ComponentConfigProvider implements ConfigProviderInterface
@@ -28,7 +28,9 @@ final class ComponentConfigProvider implements ConfigProviderInterface
     /**
      * @param mixed[] $viewConfig
      */
-    public function __construct(private array $viewConfig) {}
+    public function __construct(
+        private array $viewConfig,
+    ) {}
 
     public function provideViewTypes(?Block $block = null): array
     {
@@ -103,6 +105,6 @@ final class ComponentConfigProvider implements ConfigProviderInterface
      */
     private function humanize(string $text): string
     {
-        return ucwords(mb_strtolower(trim(preg_replace(['/([A-Z])/', '/[_\s]+/'], ['_$1', ' '], $text) ?? '')));
+        return ucwords(mb_strtolower(mb_trim(preg_replace(['/([A-Z])/', '/[_\s]+/'], ['_$1', ' '], $text) ?? '')));
     }
 }

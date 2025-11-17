@@ -16,7 +16,9 @@ final class Page extends Mapper
     /**
      * @param array<string, string> $allowedPages
      */
-    public function __construct(private array $allowedPages) {}
+    public function __construct(
+        private array $allowedPages,
+    ) {}
 
     public function getFormType(): string
     {

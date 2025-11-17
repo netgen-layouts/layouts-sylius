@@ -21,13 +21,13 @@ use Symfony\Component\Intl\Locales;
 #[CoversClass(SyliusRuntime::class)]
 final class SyliusRuntimeTest extends TestCase
 {
-    private MockObject $productRepositoryMock;
+    private MockObject&ProductRepositoryInterface $productRepositoryMock;
 
-    private MockObject $taxonRepositoryMock;
+    private MockObject&TaxonRepositoryInterface $taxonRepositoryMock;
 
-    private MockObject $channelRepositoryMock;
+    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
 
-    private MockObject $localeRepositoryMock;
+    private MockObject&RepositoryInterface $localeRepositoryMock;
 
     private SyliusRuntime $runtime;
 

@@ -13,7 +13,9 @@ final class Channel extends Mapper
     /**
      * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface> $channelRepository
      */
-    public function __construct(private ChannelRepositoryInterface $channelRepository) {}
+    public function __construct(
+        private ChannelRepositoryInterface $channelRepository,
+    ) {}
 
     public function getFormType(): string
     {
@@ -35,11 +37,9 @@ final class Channel extends Mapper
      */
     private function getChannelList(): array
     {
-        $channels = $this->channelRepository->findAll();
         $channelList = [];
 
-        /** @var \Sylius\Component\Channel\Model\ChannelInterface $channel */
-        foreach ($channels as $channel) {
+        foreach ($this->channelRepository->findAll() as $channel) {
             $channelList[(string) $channel->getName()] = (int) $channel->getId();
         }
 

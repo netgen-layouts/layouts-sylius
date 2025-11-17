@@ -14,7 +14,6 @@ final class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('netgen_layouts_sylius');
 
-        /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
         $this->addResourceTypeConditionConfiguration($rootNode);
         $this->addPageTargetConfiguration($rootNode);

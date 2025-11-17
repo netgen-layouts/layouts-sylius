@@ -18,11 +18,11 @@ final class ComponentMapperTest extends TestCase
 {
     private ComponentMapper $mapper;
 
-    private MockObject&ValueObjectProviderInterface $valueObjectProvider;
+    private MockObject&ValueObjectProviderInterface $valueObjectProviderMock;
 
     protected function setUp(): void
     {
-        $this->valueObjectProvider = $this->createMock(ValueObjectProviderInterface::class);
+        $this->valueObjectProviderMock = $this->createMock(ValueObjectProviderInterface::class);
 
         $this->mapper = new ComponentMapper();
     }
@@ -41,7 +41,7 @@ final class ComponentMapperTest extends TestCase
             ],
             $this->mapper->mapOptions(
                 ParameterDefinition::fromArray([
-                    'type' => new ComponentType($this->valueObjectProvider),
+                    'type' => new ComponentType($this->valueObjectProviderMock),
                 ]),
             ),
         );

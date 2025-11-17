@@ -13,11 +13,6 @@ use Symfony\Component\Form\FormView;
 
 final class ComponentContentExtension extends AbstractTypeExtension
 {
-    public function getExtendedType(): string
-    {
-        return ContentBrowserType::class;
-    }
-
     public static function getExtendedTypes(): iterable
     {
         return [ContentBrowserType::class];

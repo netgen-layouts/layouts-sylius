@@ -10,29 +10,27 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.4",
         "netgen/layouts-core": "~1.4.3",
         "netgen/content-browser-sylius": "^1.4",
-        "sylius/sylius": "^1.11.6",
-        "sylius/resource-bundle": "^1.12"
+        "sylius/sylius": "^2.1",
+        "sylius/resource-bundle": "^1.13"
     },
     "require-dev": {
         "netgen/layouts-coding-standard": "^2.0",
-        "phpunit/phpunit": "^10.1",
-        "symfony/phpunit-bridge": "^6.4",
-        "symfony/var-dumper": "^5.4 || ^6.4",
+        "phpunit/phpunit": "^12.4",
+        "symfony/var-dumper": "^7.3",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpstan/phpstan-symfony": "^2.0",
         "phpstan/phpstan-doctrine": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "matthiasnoback/symfony-dependency-injection-test": "^5.0"
+        "matthiasnoback/symfony-dependency-injection-test": "^6.1"
     },
     "config": {
         "allow-plugins": false
     },
     "scripts": {
-        "pre-command-run": "@putenv SYMFONY_DEPRECATIONS_HELPER=max[self]=0&quiet[]=indirect&quiet[]=other",
         "test": "@php vendor/bin/phpunit --colors=always",
         "coverage": "@php -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --coverage-html=coverage --colors=always",
         "phpstan": "@php vendor/bin/phpstan analyse -c phpstan.neon --level=8 --ansi lib bundle",

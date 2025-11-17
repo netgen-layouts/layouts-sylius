@@ -16,9 +16,6 @@ use Symfony\Component\Intl\Locales;
 #[CoversClass(Locale::class)]
 final class LocaleTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
-     */
     private MockObject&RepositoryInterface $localeRepositoryMock;
 
     private Locale $mapper;

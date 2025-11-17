@@ -15,16 +15,16 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 #[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
-    private MockObject $channelRepository;
+    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
 
     private Channel $mapper;
 
     protected function setUp(): void
     {
-        $this->channelRepository = $this->createMock(ChannelRepositoryInterface::class);
+        $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
 
         $this->mapper = new Channel(
-            $this->channelRepository,
+            $this->channelRepositoryMock,
         );
     }
 
@@ -45,7 +45,7 @@ final class ChannelTest extends TestCase
             'Other shop' => 2,
         ];
 
-        $this->channelRepository
+        $this->channelRepositoryMock
             ->expects(self::once())
             ->method('findAll')
             ->willReturn($channels);

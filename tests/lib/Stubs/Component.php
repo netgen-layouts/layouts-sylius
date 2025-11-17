@@ -23,6 +23,7 @@ final class Component extends AbstractComponent
         $this->name = $name;
         $this->enabled = $enabled;
         $this->currentLocale = $currentLocale;
+        $this->setFallbackLocale('en');
     }
 
     public static function getIdentifier(): string

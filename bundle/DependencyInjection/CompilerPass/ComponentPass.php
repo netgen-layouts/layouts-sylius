@@ -34,10 +34,11 @@ final class ComponentPass implements CompilerPassInterface
             unset($blockTypes[$identifier]['definition_identifier']);
 
             $blockDefinitions[$identifier] = [
+                ...$blockDefinitions['sylius_component'],
                 'name' => $blockType['name'],
                 'icon' => $blockType['icon'],
                 'enabled' => $blockType['enabled'],
-            ] + $blockDefinitions['sylius_component'];
+            ];
 
             $componentService = clone $container
                 ->findDefinition('netgen_layouts.sylius.block.block_definition_handler.component');

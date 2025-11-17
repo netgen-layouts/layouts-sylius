@@ -20,7 +20,7 @@ abstract class AbstractComponent implements ComponentInterface
         __construct as protected initializeTranslationsCollection;
     }
 
-    protected int $id;
+    final protected int $id;
 
     public function __construct()
     {

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin;
 
 use Knp\Menu\ItemInterface;
-use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -16,11 +15,13 @@ use function array_splice;
 
 final class MainMenuBuilderListener implements EventSubscriberInterface
 {
-    public function __construct(private AuthorizationCheckerInterface $authorizationChecker) {}
+    public function __construct(
+        private AuthorizationCheckerInterface $authorizationChecker,
+    ) {}
 
     public static function getSubscribedEvents(): array
     {
-        return [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'];
+        return [MenuBuilderEvent::class => 'onMainMenuBuild'];
     }
 
     /**

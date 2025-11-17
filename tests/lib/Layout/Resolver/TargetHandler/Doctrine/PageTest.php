@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetHandler\Doctrine;
 
 use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
-use Netgen\Layouts\Persistence\Values\Value;
+use Netgen\Layouts\Persistence\Values\Status;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetHandler\Doctrine\Page;
 use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerTestBase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -17,7 +17,7 @@ final class PageTest extends TargetHandlerTestBase
     public function testMatchRules(): void
     {
         $rules = $this->handler->matchRules(
-            $this->handler->loadRuleGroup(RuleGroup::ROOT_UUID, Value::STATUS_PUBLISHED),
+            $this->handler->loadRuleGroup(RuleGroup::ROOT_UUID, Status::Published),
             $this->getTargetIdentifier(),
             'homepage',
         );

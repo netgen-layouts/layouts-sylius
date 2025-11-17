@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
-    private MockObject $channelContextMock;
+    private MockObject&ChannelContextInterface $channelContextMock;
 
     private MockObject&ChannelRepositoryInterface $repositoryMock;
 

@@ -20,7 +20,7 @@ use function sprintf;
 #[CoversClass(ProductValidator::class)]
 final class ProductValidatorTest extends ValidatorTestCase
 {
-    private MockObject $repositoryMock;
+    private MockObject&ProductRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {

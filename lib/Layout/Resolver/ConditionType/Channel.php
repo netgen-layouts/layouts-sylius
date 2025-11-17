@@ -17,7 +17,9 @@ use function is_array;
 
 final class Channel extends ConditionType
 {
-    public function __construct(private ChannelContextInterface $channelContext) {}
+    public function __construct(
+        private ChannelContextInterface $channelContext,
+    ) {}
 
     public static function getType(): string
     {
@@ -29,12 +31,10 @@ final class Channel extends ConditionType
         return [
             new Constraints\NotBlank(),
             new Constraints\All(
-                [
-                    'constraints' => [
-                        new Constraints\Type(['type' => 'numeric']),
-                        new Constraints\GreaterThan(['value' => 0]),
-                        new SyliusConstraints\Channel(),
-                    ],
+                constraints: [
+                    new Constraints\Type(type: 'numeric'),
+                    new Constraints\Positive(),
+                    new SyliusConstraints\Channel(),
                 ],
             ),
         ];

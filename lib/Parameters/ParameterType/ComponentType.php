@@ -13,7 +13,9 @@ use Symfony\Component\Validator\Constraints;
 
 final class ComponentType extends ParameterType implements ValueObjectProviderInterface
 {
-    public function __construct(private ValueObjectProviderInterface $valueObjectProvider) {}
+    public function __construct(
+        private ValueObjectProviderInterface $valueObjectProvider,
+    ) {}
 
     public static function getIdentifier(): string
     {
@@ -22,26 +24,26 @@ final class ComponentType extends ParameterType implements ValueObjectProviderIn
 
     public function configureOptions(OptionsResolver $optionsResolver): void
     {
-        $optionsResolver->setDefault('allow_invalid', false);
-
-        $optionsResolver->setAllowedTypes('allow_invalid', 'bool');
+        $optionsResolver
+            ->define('allow_invalid')
+            ->required()
+            ->default(false)
+            ->allowedTypes('bool');
     }
 
-    public function getValueObject($value): ?object
+    public function getValueObject(mixed $value): ?object
     {
         return $this->valueObjectProvider->getValueObject($value);
     }
 
-    protected function getValueConstraints(ParameterDefinition $parameterDefinition, $value): array
+    protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
         $options = $parameterDefinition->getOptions();
 
         return [
-            new Constraints\Type(['type' => 'string']),
+            new Constraints\Type(type: 'string'),
             new SyliusConstraints\Component(
-                [
-                    'allowInvalid' => $options['allow_invalid'],
-                ],
+                allowInvalid: $options['allow_invalid'],
             ),
         ];
     }

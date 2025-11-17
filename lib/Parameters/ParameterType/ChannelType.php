@@ -20,7 +20,9 @@ final class ChannelType extends ParameterType implements ValueObjectProviderInte
     /**
      * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface> $channelRepository
      */
-    public function __construct(private ChannelRepositoryInterface $channelRepository) {}
+    public function __construct(
+        private ChannelRepositoryInterface $channelRepository,
+    ) {}
 
     public static function getIdentifier(): string
     {
@@ -29,12 +31,14 @@ final class ChannelType extends ParameterType implements ValueObjectProviderInte
 
     public function configureOptions(OptionsResolver $optionsResolver): void
     {
-        $optionsResolver->setDefault('multiple', false);
-        $optionsResolver->setRequired(['multiple']);
-        $optionsResolver->setAllowedTypes('multiple', 'bool');
+        $optionsResolver
+            ->define('multiple')
+            ->required()
+            ->default(false)
+            ->allowedTypes('bool');
     }
 
-    public function getValueObject($value): ?object
+    public function getValueObject(mixed $value): ?object
     {
         return $this->channelRepository->find($value);
     }
@@ -43,12 +47,10 @@ final class ChannelType extends ParameterType implements ValueObjectProviderInte
     {
         return [
             new Constraints\All(
-                [
-                    'constraints' => [
-                        new Constraints\Type(['type' => 'numeric']),
-                        new Constraints\GreaterThan(['value' => 0]),
-                        new SyliusConstraints\Channel(),
-                    ],
+                constraints: [
+                    new Constraints\Type(type: 'numeric'),
+                    new Constraints\Positive(),
+                    new SyliusConstraints\Channel(),
                 ],
             ),
         ];

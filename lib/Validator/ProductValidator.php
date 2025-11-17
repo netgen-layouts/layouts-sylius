@@ -18,7 +18,9 @@ final class ProductValidator extends ConstraintValidator
     /**
      * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface> $productRepository
      */
-    public function __construct(private ProductRepositoryInterface $productRepository) {}
+    public function __construct(
+        private ProductRepositoryInterface $productRepository,
+    ) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

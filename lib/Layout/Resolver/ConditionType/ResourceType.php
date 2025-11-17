@@ -9,6 +9,7 @@ use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
+use function array_any;
 use function array_filter;
 use function array_flip;
 use function array_map;
@@ -19,7 +20,9 @@ final class ResourceType extends ConditionType
     /**
      * @param array<string, string> $allowedResources
      */
-    public function __construct(private array $allowedResources) {}
+    public function __construct(
+        private array $allowedResources,
+    ) {}
 
     public static function getType(): string
     {
@@ -31,11 +34,9 @@ final class ResourceType extends ConditionType
         return [
             new Constraints\NotBlank(),
             new Constraints\All(
-                [
-                    'constraints' => [
-                        new Constraints\Type(['type' => 'string']),
-                        new SyliusConstraints\ResourceType(),
-                    ],
+                constraints: [
+                    new Constraints\Type(type: 'string'),
+                    new SyliusConstraints\ResourceType(),
                 ],
             ),
         ];
@@ -50,13 +51,9 @@ final class ResourceType extends ConditionType
             static fn (?string $value): bool => $value !== null,
         );
 
-        /** @var class-string $allowedClass */
-        foreach ($allowedClasses as $allowedClass) {
-            if (is_a($resource, $allowedClass)) {
-                return true;
-            }
-        }
-
-        return false;
+        return array_any(
+            $allowedClasses,
+            static fn (string $allowedClass): bool => is_a($resource, $allowedClass),
+        );
     }
 }

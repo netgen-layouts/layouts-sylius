@@ -19,14 +19,16 @@ final class TaxonType extends ParameterType implements ValueObjectProviderInterf
     /**
      * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      */
-    public function __construct(private TaxonRepositoryInterface $taxonRepository) {}
+    public function __construct(
+        private TaxonRepositoryInterface $taxonRepository,
+    ) {}
 
     public static function getIdentifier(): string
     {
         return 'sylius_taxon';
     }
 
-    public function getValueObject($value): ?object
+    public function getValueObject(mixed $value): ?object
     {
         return $this->taxonRepository->find($value);
     }
@@ -34,8 +36,8 @@ final class TaxonType extends ParameterType implements ValueObjectProviderInterf
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
         return [
-            new Constraints\Type(['type' => 'numeric']),
-            new Constraints\GreaterThan(['value' => 0]),
+            new Constraints\Type(type: 'numeric'),
+            new Constraints\Positive(),
             new SyliusConstraints\Taxon(),
         ];
     }

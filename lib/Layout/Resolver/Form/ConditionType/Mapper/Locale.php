@@ -13,7 +13,9 @@ final class Locale extends Mapper
     /**
      * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
      */
-    public function __construct(private RepositoryInterface $localeRepository) {}
+    public function __construct(
+        private RepositoryInterface $localeRepository,
+    ) {}
 
     public function getFormType(): string
     {
@@ -35,11 +37,9 @@ final class Locale extends Mapper
      */
     private function getLocaleList(): array
     {
-        $locales = $this->localeRepository->findAll();
         $localeList = [];
 
-        /** @var \Sylius\Component\Locale\Model\Locale $locale */
-        foreach ($locales as $locale) {
+        foreach ($this->localeRepository->findAll() as $locale) {
             $localeList[(string) $locale->getName()] = (string) $locale->getCode();
         }
 

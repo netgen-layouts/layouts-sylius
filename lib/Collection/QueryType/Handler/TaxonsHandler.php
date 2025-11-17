@@ -14,7 +14,7 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-use function trim;
+use function mb_trim;
 
 final class TaxonsHandler implements QueryTypeHandlerInterface
 {
@@ -91,7 +91,7 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
                 return null;
             }
 
-            $taxonSlug = trim($currentRequest->attributes->get('slug') ?? '');
+            $taxonSlug = mb_trim($currentRequest->attributes->get('slug') ?? '');
             if ($taxonSlug === '') {
                 return null;
             }
@@ -100,7 +100,7 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
         }
 
         $taxonId = $query->getParameter('taxon_id')->getValue();
-        if (trim($taxonId ?? '') === '') {
+        if (mb_trim($taxonId ?? '') === '') {
             return null;
         }
 

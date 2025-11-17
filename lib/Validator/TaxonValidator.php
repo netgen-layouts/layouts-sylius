@@ -18,7 +18,9 @@ final class TaxonValidator extends ConstraintValidator
     /**
      * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      */
-    public function __construct(private TaxonRepositoryInterface $taxonRepository) {}
+    public function __construct(
+        private TaxonRepositoryInterface $taxonRepository,
+    ) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

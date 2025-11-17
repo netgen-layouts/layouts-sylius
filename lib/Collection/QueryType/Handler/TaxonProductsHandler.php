@@ -16,11 +16,11 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-use function trim;
+use function mb_trim;
 
 final class TaxonProductsHandler implements QueryTypeHandlerInterface
 {
-    private const DEFAULT_LIMIT = 12;
+    private const int DEFAULT_LIMIT = 12;
 
     /**
      * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
@@ -131,7 +131,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
                 return null;
             }
 
-            $taxonSlug = trim($currentRequest->attributes->get('slug') ?? '');
+            $taxonSlug = mb_trim($currentRequest->attributes->get('slug') ?? '');
             if ($taxonSlug === '') {
                 return null;
             }
@@ -140,7 +140,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         }
 
         $parentTaxonId = $query->getParameter('parent_taxon_id')->getValue();
-        if (trim($parentTaxonId ?? '') === '') {
+        if (mb_trim($parentTaxonId ?? '') === '') {
             return null;
         }
 

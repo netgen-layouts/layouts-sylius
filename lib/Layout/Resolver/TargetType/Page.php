@@ -14,7 +14,9 @@ final class Page extends TargetType
     /**
      * @param array<string, string> $availablePages
      */
-    public function __construct(private array $availablePages) {}
+    public function __construct(
+        private array $availablePages,
+    ) {}
 
     public static function getType(): string
     {
@@ -25,7 +27,7 @@ final class Page extends TargetType
     {
         return [
             new Constraints\NotBlank(),
-            new Constraints\Type(['type' => 'string']),
+            new Constraints\Type(type: 'string'),
             new SyliusConstraints\Page(),
         ];
     }

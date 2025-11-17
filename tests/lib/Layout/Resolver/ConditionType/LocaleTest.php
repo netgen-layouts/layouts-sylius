@@ -18,9 +18,6 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(Locale::class)]
 final class LocaleTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Resource\Model\ResourceInterface>
-     */
     private MockObject&RepositoryInterface $localeRepositoryMock;
 
     private Locale $conditionType;

@@ -20,7 +20,7 @@ use function sprintf;
 #[CoversClass(ChannelValidator::class)]
 final class ChannelValidatorTest extends ValidatorTestCase
 {
-    private MockObject $repositoryMock;
+    private MockObject&ChannelRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {
