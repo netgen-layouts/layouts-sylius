@@ -46,7 +46,7 @@ final class ComponentRepository extends EntityRepository implements ComponentRep
 
     public function load(ComponentId $componentId): ?ComponentInterface
     {
-        return $this->resolveRepository($componentId->getComponentType())->find($componentId->getId());
+        return $this->resolveRepository($componentId->componentType)->find($componentId->id);
     }
 
     public function createListPaginator(string $identifier, string $localeCode): PagerfantaInterface

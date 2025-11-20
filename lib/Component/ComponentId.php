@@ -14,13 +14,13 @@ use function sprintf;
 final class ComponentId implements Stringable
 {
     public function __construct(
-        private string $componentType,
-        private int $id,
+        private(set) string $componentType,
+        private(set) int $id,
     ) {}
 
     public function __toString(): string
     {
-        return sprintf('%s-%s', $this->getComponentType(), $this->getId());
+        return sprintf('%s-%s', $this->componentType, $this->id);
     }
 
     public static function fromString(string $value): self
@@ -37,15 +37,5 @@ final class ComponentId implements Stringable
     public static function fromComponent(ComponentInterface $component): self
     {
         return new self($component::getIdentifier(), $component->getId());
-    }
-
-    public function getComponentType(): string
-    {
-        return $this->componentType;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
     }
 }

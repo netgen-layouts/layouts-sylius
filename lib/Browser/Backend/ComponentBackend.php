@@ -46,8 +46,8 @@ final class ComponentBackend implements BackendInterface
             throw new NotFoundException(
                 sprintf(
                     'Component with type "%s" and id "%d" not found.',
-                    $componentId->getComponentType(),
-                    $componentId->getId(),
+                    $componentId->componentType,
+                    $componentId->id,
                 ),
             );
 

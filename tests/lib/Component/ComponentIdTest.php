@@ -17,18 +17,18 @@ final class ComponentIdTest extends TestCase
     {
         $componentId = new ComponentId('banner_component', 5);
 
-        self::assertSame(5, $componentId->getId());
+        self::assertSame(5, $componentId->id);
         self::assertSame('banner_component-5', (string) $componentId);
-        self::assertSame('banner_component', $componentId->getComponentType());
+        self::assertSame('banner_component', $componentId->componentType);
     }
 
     public function testFromString(): void
     {
         $componentId = ComponentId::fromString('banner_component-5');
 
-        self::assertSame(5, $componentId->getId());
+        self::assertSame(5, $componentId->id);
         self::assertSame('banner_component-5', (string) $componentId);
-        self::assertSame('banner_component', $componentId->getComponentType());
+        self::assertSame('banner_component', $componentId->componentType);
     }
 
     public function testFromStringWithInvalidString(): void
@@ -45,8 +45,8 @@ final class ComponentIdTest extends TestCase
             new Component(4, 'My banner'),
         );
 
-        self::assertSame(4, $componentId->getId());
+        self::assertSame(4, $componentId->id);
         self::assertSame('component_stub-4', (string) $componentId);
-        self::assertSame('component_stub', $componentId->getComponentType());
+        self::assertSame('component_stub', $componentId->componentType);
     }
 }
