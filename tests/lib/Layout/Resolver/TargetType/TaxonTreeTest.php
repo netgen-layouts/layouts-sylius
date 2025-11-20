@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 
-use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\SingleTaxon;
+use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonTree;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -14,23 +14,23 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
-#[CoversClass(SingleTaxon::class)]
-final class SingleTaxonTest extends TestCase
+#[CoversClass(TaxonTree::class)]
+final class TaxonTreeTest extends TestCase
 {
     private MockObject&TaxonRepositoryInterface $repositoryMock;
 
-    private SingleTaxon $targetType;
+    private TaxonTree $targetType;
 
     protected function setUp(): void
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 
-        $this->targetType = new SingleTaxon();
+        $this->targetType = new TaxonTree();
     }
 
     public function testGetType(): void
     {
-        self::assertSame('sylius_single_taxon', $this->targetType::getType());
+        self::assertSame('sylius_taxon_tree', $this->targetType::getType());
     }
 
     public function testValidationValid(): void
@@ -73,7 +73,7 @@ final class SingleTaxonTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('nglayouts_sylius_resource', $taxon);
 
-        self::assertSame(42, $this->targetType->provideValue($request));
+        self::assertSame([42, 24], $this->targetType->provideValue($request));
     }
 
     public function testProvideValueWithNoTaxon(): void

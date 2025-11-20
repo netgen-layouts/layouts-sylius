@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Item\ValueUrlGenerator;
 
-use Netgen\Layouts\Item\ExtendedValueUrlGeneratorInterface;
+use Netgen\Layouts\Item\ValueUrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @implements \Netgen\Layouts\Item\ExtendedValueUrlGeneratorInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface>
+ * @implements \Netgen\Layouts\Item\ValueUrlGeneratorInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface>
  */
-final class TaxonValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
+final class TaxonValueUrlGenerator implements ValueUrlGeneratorInterface
 {
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
@@ -34,10 +34,5 @@ final class TaxonValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
                 'id' => $object->getId(),
             ],
         );
-    }
-
-    public function generate(object $object): string
-    {
-        return $this->generateDefaultUrl($object);
     }
 }

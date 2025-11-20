@@ -58,21 +58,4 @@ final class TaxonValueUrlGeneratorTest extends TestCase
             $this->urlGenerator->generateAdminUrl(new Taxon(42, 'Taxon name', 'taxon-name')),
         );
     }
-
-    public function testGenerate(): void
-    {
-        $this->urlGeneratorMock
-            ->expects(self::once())
-            ->method('generate')
-            ->with(
-                self::identicalTo('sylius_shop_product_index'),
-                self::identicalTo(['slug' => 'taxon-name']),
-            )
-            ->willReturn('/_partial/taxons/by-slug/taxon-name');
-
-        self::assertSame(
-            '/_partial/taxons/by-slug/taxon-name',
-            $this->urlGenerator->generate(new Taxon(42, 'Taxon name', 'taxon-name')),
-        );
-    }
 }

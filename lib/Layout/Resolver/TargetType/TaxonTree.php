@@ -10,14 +10,11 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
-/**
- * @deprecated this class will be renamed to simply Taxon in 2.0 release
- */
-final class SingleTaxon extends TargetType
+final class TaxonTree extends TargetType
 {
     public static function getType(): string
     {
-        return 'sylius_single_taxon';
+        return 'sylius_taxon_tree';
     }
 
     public function getConstraints(): array
@@ -30,13 +27,22 @@ final class SingleTaxon extends TargetType
         ];
     }
 
-    public function provideValue(Request $request): ?int
+    /**
+     * @return int[]|null
+     */
+    public function provideValue(Request $request): ?array
     {
         $taxon = $request->attributes->get('nglayouts_sylius_resource');
         if (!$taxon instanceof TaxonInterface) {
             return null;
         }
 
-        return $taxon->getId();
+        $taxonIds = [];
+        do {
+            $taxonIds[] = (int) $taxon->getId();
+            $taxon = $taxon->getParent();
+        } while ($taxon instanceof TaxonInterface);
+
+        return $taxonIds;
     }
 }

@@ -58,21 +58,4 @@ final class ProductValueUrlGeneratorTest extends TestCase
             $this->urlGenerator->generateAdminUrl(new Product(42, 'Product name', 'product-name')),
         );
     }
-
-    public function testGenerate(): void
-    {
-        $this->urlGeneratorMock
-            ->expects(self::once())
-            ->method('generate')
-            ->with(
-                self::identicalTo('sylius_shop_product_show'),
-                self::identicalTo(['slug' => 'product-name']),
-            )
-            ->willReturn('/products/product-name');
-
-        self::assertSame(
-            '/products/product-name',
-            $this->urlGenerator->generate(new Product(42, 'Product name', 'product-name')),
-        );
-    }
 }

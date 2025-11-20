@@ -73,7 +73,7 @@ final class TaxonTest extends TestCase
         $request = Request::create('/');
         $request->attributes->set('nglayouts_sylius_resource', $taxon);
 
-        self::assertSame([42, 24], $this->targetType->provideValue($request));
+        self::assertSame(42, $this->targetType->provideValue($request));
     }
 
     public function testProvideValueWithNoTaxon(): void

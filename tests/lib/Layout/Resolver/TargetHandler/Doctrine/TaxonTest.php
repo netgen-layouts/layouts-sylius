@@ -19,11 +19,11 @@ final class TaxonTest extends TargetHandlerTestBase
         $rules = $this->handler->matchRules(
             $this->handler->loadRuleGroup(RuleGroup::ROOT_UUID, Status::Published),
             $this->getTargetIdentifier(),
-            [1, 2, 42],
+            8,
         );
 
         self::assertCount(1, $rules);
-        self::assertSame(4, $rules[0]->id);
+        self::assertSame(9, $rules[0]->id);
     }
 
     protected function getTargetIdentifier(): string
