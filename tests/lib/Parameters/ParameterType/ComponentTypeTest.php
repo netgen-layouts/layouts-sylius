@@ -11,7 +11,6 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 
@@ -20,13 +19,11 @@ final class ComponentTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    private MockObject&ValueObjectProviderInterface $valueObjectProviderMock;
-
     protected function setUp(): void
     {
-        $this->valueObjectProviderMock = $this->createMock(ValueObjectProviderInterface::class);
-
-        $this->type = new ComponentType($this->valueObjectProviderMock);
+        $this->type = new ComponentType(
+            $this->createMock(ValueObjectProviderInterface::class),
+        );
     }
 
     public function testGetIdentifier(): void
