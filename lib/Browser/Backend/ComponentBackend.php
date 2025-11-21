@@ -105,12 +105,12 @@ final class ComponentBackend implements BackendInterface
 
         $paginator = $this->componentRepository->createSearchPaginator(
             $this->config->getParameter('component_type'),
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
-        $paginator->setMaxPerPage($searchQuery->getLimit());
-        $paginator->setCurrentPage((int) ($searchQuery->getOffset() / $searchQuery->getLimit()) + 1);
+        $paginator->setMaxPerPage($searchQuery->limit);
+        $paginator->setCurrentPage((int) ($searchQuery->offset / $searchQuery->limit) + 1);
 
         return new SearchResult(
             $this->buildItems(
@@ -127,7 +127,7 @@ final class ComponentBackend implements BackendInterface
 
         $paginator = $this->componentRepository->createSearchPaginator(
             $this->config->getParameter('component_type'),
-            $searchQuery->getSearchText(),
+            $searchQuery->searchText,
             $this->localeContext->getLocaleCode(),
         );
 
