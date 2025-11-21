@@ -26,38 +26,38 @@ final class ItemTest extends TestCase
 
     public function testGetValue(): void
     {
-        self::assertSame('component_stub-3', $this->item->getValue());
+        self::assertSame('component_stub-3', $this->item->value);
     }
 
     public function testGetName(): void
     {
-        self::assertSame('My component', $this->item->getName());
+        self::assertSame('My component', $this->item->name);
     }
 
     public function testIsVisible(): void
     {
-        self::assertTrue($this->item->isVisible());
+        self::assertTrue($this->item->isVisible);
 
         $item = new Item(
             new Component(4, 'My disabled component', false),
         );
 
-        self::assertFalse($item->isVisible());
+        self::assertFalse($item->isVisible);
     }
 
     public function testIsSelectable(): void
     {
-        self::assertTrue($this->item->isSelectable());
+        self::assertTrue($this->item->isSelectable);
 
         $item = new Item(
             new Component(4, 'My disabled component', false),
         );
 
-        self::assertFalse($item->isSelectable());
+        self::assertFalse($item->isSelectable);
     }
 
     public function testGetComponent(): void
     {
-        self::assertSame($this->component, $this->item->getComponent());
+        self::assertSame($this->component, $this->item->component);
     }
 }

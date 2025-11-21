@@ -73,8 +73,8 @@ final class ComponentBackendTest extends TestCase
 
         $item = $this->backend->loadItem('component_stub-3');
 
-        self::assertSame('component_stub-3', $item->getValue());
-        self::assertSame('Info', $item->getName());
+        self::assertSame('component_stub-3', $item->value);
+        self::assertSame('Info', $item->name);
     }
 
     public function testLoadItemThrowsNotFoundException(): void

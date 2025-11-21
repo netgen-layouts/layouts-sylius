@@ -10,32 +10,23 @@ use Netgen\Layouts\Sylius\Component\ComponentInterface as APIComponentInterface;
 
 final class Item implements ItemInterface, ComponentInterface
 {
+    public string $value {
+        get => (string) ComponentId::fromComponent($this->component);
+    }
+
+    public string $name {
+        get => $this->component->getName();
+    }
+
+    public bool $isVisible {
+        get => $this->component->isEnabled();
+    }
+
+    public bool $isSelectable {
+        get => $this->component->isEnabled();
+    }
+
     public function __construct(
-        private APIComponentInterface $component,
+        private(set) APIComponentInterface $component,
     ) {}
-
-    public function getValue(): string
-    {
-        return (string) ComponentId::fromComponent($this->component);
-    }
-
-    public function getName(): string
-    {
-        return $this->component->getName();
-    }
-
-    public function isVisible(): bool
-    {
-        return $this->component->isEnabled();
-    }
-
-    public function isSelectable(): bool
-    {
-        return $this->component->isEnabled();
-    }
-
-    public function getComponent(): APIComponentInterface
-    {
-        return $this->component;
-    }
 }

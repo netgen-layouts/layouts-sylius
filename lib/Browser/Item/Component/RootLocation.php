@@ -8,18 +8,15 @@ use Netgen\ContentBrowser\Item\LocationInterface;
 
 final class RootLocation implements LocationInterface
 {
-    public function getLocationId(): string
-    {
-        return '';
+    public string $locationId {
+        get => '';
     }
 
-    public function getName(): string
-    {
-        return 'All components';
+    public string $name {
+        get => 'All components';
     }
 
-    public function getParentId(): null
-    {
-        return null;
+    public null $parentId {
+        get => null;
     }
 }

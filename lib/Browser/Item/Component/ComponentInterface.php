@@ -11,5 +11,5 @@ interface ComponentInterface
     /**
      * Returns the Sylius component.
      */
-    public function getComponent(): APIComponentInterface;
+    public APIComponentInterface $component { get; }
 }
