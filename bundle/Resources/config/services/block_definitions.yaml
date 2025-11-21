@@ -7,6 +7,6 @@ services:
     netgen_layouts.sylius.block.block_definition.config_provider.component:
         class: Netgen\Layouts\Sylius\Block\BlockDefinition\Configuration\Provider\ComponentConfigProvider
         arguments:
-            - "@=service('netgen_layouts.configuration').getParameter('view')"
+            - "@netgen_layouts.configuration"
         tags:
             - { name: netgen_layouts.block_definition.config_provider, identifier: sylius_component }
