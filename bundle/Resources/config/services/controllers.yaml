@@ -8,8 +8,10 @@ services:
 
     netgen_layouts.sylius.controller.connect_component:
         class: Netgen\Bundle\LayoutsSyliusBundle\Controller\Admin\ConnectComponent
-        public: true
         parent: netgen_layouts.sylius.controller.base
         arguments:
             - "@netgen_layouts.api.service.block"
             - "@netgen_layouts.sylius.component_repository"
+        tags:
+            - { name: container.service_subscriber }
+            - { name: controller.service_arguments }
