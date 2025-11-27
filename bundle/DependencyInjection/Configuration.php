@@ -4,26 +4,19 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 final class Configuration implements ConfigurationInterface
 {
+    /**
+     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder<'array'>
+     */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('netgen_layouts_sylius');
-
         $rootNode = $treeBuilder->getRootNode();
-        $this->addResourceTypeConditionConfiguration($rootNode);
-        $this->addPageTargetConfiguration($rootNode);
-        $this->addComponentRoutesConfiguration($rootNode);
 
-        return $treeBuilder;
-    }
-
-    private function addResourceTypeConditionConfiguration(ArrayNodeDefinition $rootNode): void
-    {
         $rootNode
             ->children()
                 ->arrayNode('resource_type_condition')
@@ -35,13 +28,6 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
-    }
-
-    private function addPageTargetConfiguration(ArrayNodeDefinition $rootNode): void
-    {
-        $rootNode
-            ->children()
                 ->arrayNode('page_target')
                     ->children()
                         ->arrayNode('available_pages')
@@ -51,13 +37,6 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
-    }
-
-    private function addComponentRoutesConfiguration(ArrayNodeDefinition $rootNode): void
-    {
-        $rootNode
-            ->children()
                 ->arrayNode('component_routes')
                     ->children()
                         ->arrayNode('create')
@@ -73,5 +52,7 @@ final class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end();
+
+        return $treeBuilder;
     }
 }
