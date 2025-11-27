@@ -80,12 +80,12 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
 
     public function isContextual(Query $query): bool
     {
-        return $query->getParameter('use_current_taxon')->getValue() === true;
+        return $query->getParameter('use_current_taxon')->value === true;
     }
 
     private function getParentTaxon(Query $query): ?TaxonInterface
     {
-        if ($query->getParameter('use_current_taxon')->getValue() === true) {
+        if ($query->getParameter('use_current_taxon')->value === true) {
             $currentRequest = $this->requestStack->getCurrentRequest();
             if (!$currentRequest instanceof Request) {
                 return null;
@@ -99,7 +99,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             return $this->taxonRepository->findOneBySlug($taxonSlug, $currentRequest->getLocale());
         }
 
-        $parentTaxonId = $query->getParameter('parent_taxon_id')->getValue();
+        $parentTaxonId = $query->getParameter('parent_taxon_id')->value;
         if (mb_trim($parentTaxonId ?? '') === '') {
             return null;
         }

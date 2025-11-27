@@ -25,7 +25,7 @@ final class ComponentContentExtension extends AbstractTypeExtension
             return;
         }
 
-        if (!$block->getDefinition()->getHandler() instanceof ComponentHandler) {
+        if (!$block->definition->handler instanceof ComponentHandler) {
             return;
         }
 

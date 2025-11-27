@@ -23,19 +23,19 @@ final class ConnectComponent extends Controller
 
     public function __invoke(Request $request, Block $block, string $componentIdentifier, int $componentId): Response
     {
-        if (!$block->getDefinition()->getHandler() instanceof ComponentHandler) {
+        if (!$block->definition->handler instanceof ComponentHandler) {
             throw new BadRequestHttpException();
         }
 
-        $componentId = new ComponentId($componentIdentifier, $componentId);
-
-        $component = $this->componentRepository->load($componentId);
+        $component = $this->componentRepository->load(
+            new ComponentId($componentIdentifier, $componentId),
+        );
 
         if (!$component instanceof ComponentInterface) {
             throw new BadRequestHttpException();
         }
 
-        $blockUpdateStruct = $this->blockService->newBlockUpdateStruct($block->getLocale());
+        $blockUpdateStruct = $this->blockService->newBlockUpdateStruct($block->locale);
         $blockUpdateStruct->setParameterValue('content', (string) ComponentId::fromComponent($component));
 
         $this->blockService->updateBlock($block, $blockUpdateStruct);

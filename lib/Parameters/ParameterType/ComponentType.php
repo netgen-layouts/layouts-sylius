@@ -38,12 +38,10 @@ final class ComponentType extends ParameterType implements ValueObjectProviderIn
 
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
-        $options = $parameterDefinition->getOptions();
-
         return [
             new Constraints\Type(type: 'string'),
             new SyliusConstraints\Component(
-                allowInvalid: $options['allow_invalid'],
+                allowInvalid: $parameterDefinition->options['allow_invalid'],
             ),
         ];
     }

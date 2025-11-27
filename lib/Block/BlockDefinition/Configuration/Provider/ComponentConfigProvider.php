@@ -36,17 +36,17 @@ final class ComponentConfigProvider implements ConfigProviderInterface
             return [];
         }
 
-        if ($block->getParameter('component_type')->isEmpty()) {
+        if ($block->getParameter('component_type')->isEmpty) {
             return [];
         }
 
-        $componentType = $block->getParameter('component_type')->getValue();
+        $componentType = $block->getParameter('component_type')->value;
 
-        $this->viewTypes[$block->getId()->toString()] ??= $this->buildViewTypes(
+        $this->viewTypes[$block->id->toString()] ??= $this->buildViewTypes(
             $this->resolveViewTypes($componentType),
         );
 
-        return $this->viewTypes[$block->getId()->toString()];
+        return $this->viewTypes[$block->id->toString()];
     }
 
     /**

@@ -80,7 +80,7 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
 
     public function isContextual(Query $query): bool
     {
-        return $query->getParameter('use_current_taxon')->getValue() === true;
+        return $query->getParameter('use_current_taxon')->value === true;
     }
 
     private function getTaxon(Query $query): ?TaxonInterface
@@ -99,7 +99,7 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
             return $this->taxonRepository->findOneBySlug($taxonSlug, $currentRequest->getLocale());
         }
 
-        $taxonId = $query->getParameter('taxon_id')->getValue();
+        $taxonId = $query->getParameter('taxon_id')->value;
         if (mb_trim($taxonId ?? '') === '') {
             return null;
         }

@@ -19,7 +19,7 @@ final class ProductMapper extends Mapper
     {
         return [
             'item_type' => 'sylius_product',
-            'required' => $parameterDefinition->isRequired(),
+            'required' => $parameterDefinition->isRequired,
         ];
     }
 }

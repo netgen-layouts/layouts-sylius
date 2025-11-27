@@ -35,16 +35,16 @@ final class SetPageLayoutListenerTest extends TestCase
 
         $this->listener->onAdminMatch($event);
 
-        self::assertSame('pagelayout.html.twig', $event->getPageLayoutTemplate());
+        self::assertSame('pagelayout.html.twig', $event->pageLayoutTemplate);
     }
 
     public function testOnAdminMatchWithExistingPageLayout(): void
     {
         $event = new AdminMatchEvent(Request::create('/'), HttpKernelInterface::MAIN_REQUEST);
-        $event->setPageLayoutTemplate('existing.html.twig');
+        $event->pageLayoutTemplate = 'existing.html.twig';
 
         $this->listener->onAdminMatch($event);
 
-        self::assertSame('existing.html.twig', $event->getPageLayoutTemplate());
+        self::assertSame('existing.html.twig', $event->pageLayoutTemplate);
     }
 }

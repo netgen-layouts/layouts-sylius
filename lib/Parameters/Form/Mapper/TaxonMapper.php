@@ -19,7 +19,7 @@ final class TaxonMapper extends Mapper
     {
         return [
             'item_type' => 'sylius_taxon',
-            'required' => $parameterDefinition->isRequired(),
+            'required' => $parameterDefinition->isRequired,
         ];
     }
 }
