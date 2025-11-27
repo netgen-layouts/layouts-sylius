@@ -13,7 +13,7 @@
     {% set post_input_browse %}
         {% if form.vars.item is not empty and component_update_route is not empty %}
             {% set link_name = 'block.sylius_component.edit_component'|trans %}
-            {% set link_url = path(component_update_route, {'id': form.vars.item.component.id}) %}
+            {% set link_url = path(component_update_route, { 'id': form.vars.item.component.id }) %}
         {% elseif component_create_route is not empty %}
             {% set block = form.parent.parent.vars.block %}
             {% set link_name = 'block.sylius_component.create_component'|trans %}

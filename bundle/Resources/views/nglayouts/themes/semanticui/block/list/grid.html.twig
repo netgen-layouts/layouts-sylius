@@ -2,7 +2,7 @@
 
 {% set collection_identifier = 'default' %}
 {% set number_of_columns = block.parameter('number_of_columns').value|default(2) %}
-{% set number_of_columns_class_map = {2: 'two', 3: 'three', 4: 'four', 6: 'six'} %}
+{% set number_of_columns_class_map = { 2: 'two', 3: 'three', 4: 'four', 6: 'six' } %}
 
 {% set collection_html %}
     <div class="ui {{ number_of_columns_class_map[number_of_columns] }} column stackable grid">
@@ -17,7 +17,7 @@
 {% block content %}
     {% if collections[collection_identifier] is defined and collections[collection_identifier] is not empty %}
         {% if block.parameter('paged_collections:enabled').value %}
-            {% embed '@NetgenLayouts/collection/paged_collection.html.twig' with {pager: pagers[collection_identifier]} %}
+            {% embed '@NetgenLayouts/collection/paged_collection.html.twig' with { pager: pagers[collection_identifier] } %}
                 {% block collection_page %}
                     {{ collection_html }}
                 {% endblock %}
