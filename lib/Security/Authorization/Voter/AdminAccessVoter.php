@@ -6,6 +6,7 @@ namespace Netgen\Layouts\Sylius\Security\Authorization\Voter;
 
 use Sylius\Component\Core\Model\AdminUserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\Voter\Vote;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 use function str_starts_with;
@@ -23,7 +24,7 @@ final class AdminAccessVoter extends Voter
         return str_starts_with($attribute, 'nglayouts:');
     }
 
-    protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
+    protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token, ?Vote $vote = null): bool
     {
         return $token->getUser() instanceof AdminUserInterface;
     }
