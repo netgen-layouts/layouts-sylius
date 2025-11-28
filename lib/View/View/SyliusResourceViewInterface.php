@@ -12,10 +12,10 @@ interface SyliusResourceViewInterface extends ViewInterface
     /**
      * Returns the Sylius resource.
      */
-    public function getResource(): ResourceInterface;
+    public ResourceInterface $resource { get; }
 
     /**
      * Returns the view type with which the Sylius resource will be rendered.
      */
-    public function getViewType(): string;
+    public string $viewType { get; }
 }

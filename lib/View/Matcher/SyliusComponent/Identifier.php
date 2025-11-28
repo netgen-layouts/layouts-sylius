@@ -19,11 +19,10 @@ final class Identifier implements MatcherInterface
             return false;
         }
 
-        $resource = $view->getResource();
-        if (!$resource instanceof ComponentInterface) {
+        if (!$view->resource instanceof ComponentInterface) {
             return false;
         }
 
-        return in_array($resource::getIdentifier(), $config, true);
+        return in_array($view->resource::getIdentifier(), $config, true);
     }
 }

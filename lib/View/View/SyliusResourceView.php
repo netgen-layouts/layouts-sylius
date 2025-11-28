@@ -9,24 +9,22 @@ use Sylius\Resource\Model\ResourceInterface;
 
 final class SyliusResourceView extends View implements SyliusResourceViewInterface
 {
+    public string $identifier {
+        get => 'sylius_resource';
+    }
+
+    public ResourceInterface $resource {
+        get => $this->getParameter('resource');
+    }
+
+    public string $viewType {
+        get => $this->getParameter('view_type');
+    }
+
     public function __construct(ResourceInterface $resource, string $viewType)
     {
-        $this->parameters['resource'] = $resource;
-        $this->parameters['view_type'] = $viewType;
-    }
-
-    public function getResource(): ResourceInterface
-    {
-        return $this->parameters['resource'];
-    }
-
-    public function getViewType(): string
-    {
-        return $this->parameters['view_type'];
-    }
-
-    public static function getIdentifier(): string
-    {
-        return 'sylius_resource';
+        $this
+            ->addInternalParameter('resource', $resource)
+            ->addInternalParameter('view_type', $viewType);
     }
 }

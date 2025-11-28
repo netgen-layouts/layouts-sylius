@@ -20,7 +20,7 @@ final class Instance implements MatcherInterface
 
         return array_any(
             $config,
-            static fn (string $className): bool => $view->getResource() instanceof $className,
+            static fn (string $className): bool => $view->resource instanceof $className,
         );
     }
 }
