@@ -14,8 +14,8 @@ use function sprintf;
 final class ComponentId implements Stringable
 {
     public function __construct(
-        private(set) string $componentType,
-        private(set) int $id,
+        public private(set) string $componentType,
+        public private(set) int $id,
     ) {}
 
     public function __toString(): string

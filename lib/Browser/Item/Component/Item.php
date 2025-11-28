@@ -27,6 +27,6 @@ final class Item implements ItemInterface, ComponentInterface
     }
 
     public function __construct(
-        private(set) APIComponentInterface $component,
+        public private(set) APIComponentInterface $component,
     ) {}
 }
