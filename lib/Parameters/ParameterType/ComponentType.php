@@ -41,7 +41,7 @@ final class ComponentType extends ParameterType implements ValueObjectProviderIn
         return [
             new Constraints\Type(type: 'string'),
             new SyliusConstraints\Component(
-                allowInvalid: $parameterDefinition->options['allow_invalid'],
+                allowInvalid: $parameterDefinition->getOption('allow_invalid'),
             ),
         ];
     }

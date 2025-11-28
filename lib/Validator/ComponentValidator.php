@@ -38,13 +38,11 @@ final class ComponentValidator extends ConstraintValidator
 
         $component = $this->componentRepository->load($componentId);
 
-        if (!$component instanceof ComponentInterface) {
-            if (!$constraint->allowInvalid) {
-                $this->context->buildViolation($constraint->message)
-                    ->setParameter('%type%', $componentId->componentType)
-                    ->setParameter('%id%', (string) $componentId->id)
-                    ->addViolation();
-            }
+        if (!$component instanceof ComponentInterface && !$constraint->allowInvalid) {
+            $this->context->buildViolation($constraint->message)
+                ->setParameter('%type%', $componentId->componentType)
+                ->setParameter('%id%', (string) $componentId->id)
+                ->addViolation();
         }
     }
 }

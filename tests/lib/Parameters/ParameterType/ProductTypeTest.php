@@ -108,7 +108,7 @@ final class ProductTypeTest extends TestCase
                 ->expects(self::never())
                 ->method('find');
 
-        $parameter = $this->getParameterDefinition([], false);
+        $parameter = $this->getParameterDefinition();
         $validator = Validation::createValidatorBuilder()
             ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
             ->getValidator();
