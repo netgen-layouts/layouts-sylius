@@ -43,13 +43,13 @@ final class SyliusEventDispatcherTest extends TestCase
         $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatch')
             ->with($eventName, $requestConfiguration, $resource)
             ->willReturn($event);
 
         $this->eventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatch')
             ->with($event, 'nglayouts.sylius.resource.show')
             ->willReturn($event);
@@ -69,13 +69,13 @@ final class SyliusEventDispatcherTest extends TestCase
         $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatchMultiple')
             ->with($eventName, $requestConfiguration, $resource)
             ->willReturn($event);
 
         $this->eventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatch')
             ->with($event, 'nglayouts.sylius.resource.show')
             ->willReturn($event);
@@ -95,13 +95,13 @@ final class SyliusEventDispatcherTest extends TestCase
         $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatchPreEvent')
             ->with($eventName, $requestConfiguration, $resource)
             ->willReturn($event);
 
         $this->eventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatch')
             ->with($event, 'nglayouts.sylius.resource.pre_show')
             ->willReturn($event);
@@ -121,13 +121,13 @@ final class SyliusEventDispatcherTest extends TestCase
         $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatchPostEvent')
             ->with($eventName, $requestConfiguration, $resource)
             ->willReturn($event);
 
         $this->eventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatch')
             ->with($event, 'nglayouts.sylius.resource.post_show')
             ->willReturn($event);
@@ -147,13 +147,13 @@ final class SyliusEventDispatcherTest extends TestCase
         $event = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatchInitializeEvent')
             ->with($eventName, $requestConfiguration, $resource)
             ->willReturn($event);
 
         $this->eventDispatcherMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('dispatch')
             ->with($event, 'nglayouts.sylius.resource.initialize_show')
             ->willReturn($event);

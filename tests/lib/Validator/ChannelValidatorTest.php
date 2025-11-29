@@ -39,7 +39,7 @@ final class ChannelValidatorTest extends ValidatorTestCase
     public function testValidateValid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
@@ -50,7 +50,7 @@ final class ChannelValidatorTest extends ValidatorTestCase
     public function testValidateNull(): void
     {
         $this->repositoryMock
-            ->expects(self::never())
+            ->expects($this->never())
             ->method('find');
 
         $this->assertValid(true, null);
@@ -59,7 +59,7 @@ final class ChannelValidatorTest extends ValidatorTestCase
     public function testValidateInvalid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

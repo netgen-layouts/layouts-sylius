@@ -111,7 +111,7 @@ final class ChannelTypeTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
@@ -128,7 +128,7 @@ final class ChannelTypeTest extends TestCase
     public function testValidationValidWithNonRequiredValue(): void
     {
         $this->repositoryMock
-                ->expects(self::never())
+                ->expects($this->never())
                 ->method('find');
 
         $parameter = $this->getParameterDefinition();
@@ -143,7 +143,7 @@ final class ChannelTypeTest extends TestCase
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
-                ->expects(self::once())
+                ->expects($this->once())
                 ->method('find')
                 ->with(self::identicalTo(42))
                 ->willReturn(null);
@@ -176,7 +176,7 @@ final class ChannelTypeTest extends TestCase
         $stub = new ChannelStub(1, 'test', 'test');
 
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn($stub);

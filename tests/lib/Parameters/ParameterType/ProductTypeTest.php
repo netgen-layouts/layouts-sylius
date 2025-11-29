@@ -88,7 +88,7 @@ final class ProductTypeTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-                ->expects(self::once())
+                ->expects($this->once())
                 ->method('find')
                 ->with(self::identicalTo(42))
                 ->willReturn(new ProductStub(42));
@@ -105,7 +105,7 @@ final class ProductTypeTest extends TestCase
     public function testValidationValidWithNonRequiredValue(): void
     {
         $this->repositoryMock
-                ->expects(self::never())
+                ->expects($this->never())
                 ->method('find');
 
         $parameter = $this->getParameterDefinition();
@@ -120,7 +120,7 @@ final class ProductTypeTest extends TestCase
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
-                ->expects(self::once())
+                ->expects($this->once())
                 ->method('find')
                 ->with(self::identicalTo(42))
                 ->willReturn(null);
@@ -153,7 +153,7 @@ final class ProductTypeTest extends TestCase
         $stub = new ProductStub(1);
 
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn($stub);

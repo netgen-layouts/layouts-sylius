@@ -49,7 +49,7 @@ final class LocaleTest extends TestCase
         ];
 
         $this->localeRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findAll')
             ->willReturn($locales);
 

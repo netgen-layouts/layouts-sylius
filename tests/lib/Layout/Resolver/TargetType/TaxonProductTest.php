@@ -38,7 +38,7 @@ final class TaxonProductTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new TaxonStub(42));
@@ -54,7 +54,7 @@ final class TaxonProductTest extends TestCase
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

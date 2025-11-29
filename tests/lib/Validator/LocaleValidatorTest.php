@@ -41,7 +41,7 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $locale = new LocaleStub(1, 'en_US');
 
         $this->localeRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
@@ -52,7 +52,7 @@ final class LocaleValidatorTest extends ValidatorTestCase
     public function testValidateNull(): void
     {
         $this->localeRepositoryMock
-            ->expects(self::never())
+            ->expects($this->never())
             ->method('findOneBy');
 
         $this->assertValid(true, null);
@@ -61,7 +61,7 @@ final class LocaleValidatorTest extends ValidatorTestCase
     public function testValidateInvalid(): void
     {
         $this->localeRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);

@@ -66,7 +66,7 @@ final class ComponentBackendTest extends TestCase
         $componentId = new ComponentId('component_stub', 3);
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('load')
             ->with(self::equalTo($componentId))
             ->willReturn(new Component(3, 'Info'));
@@ -85,7 +85,7 @@ final class ComponentBackendTest extends TestCase
         $componentId = new ComponentId('component_stub', 3);
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('load')
             ->with(self::equalTo($componentId))
             ->willReturn(null);
@@ -122,7 +122,7 @@ final class ComponentBackendTest extends TestCase
             );
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createListPaginator')
             ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -154,7 +154,7 @@ final class ComponentBackendTest extends TestCase
             );
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createListPaginator')
             ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -178,7 +178,7 @@ final class ComponentBackendTest extends TestCase
             ->willReturn(2);
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createListPaginator')
             ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
@@ -205,7 +205,7 @@ final class ComponentBackendTest extends TestCase
             );
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createSearchPaginator')
             ->with(
                 self::identicalTo('component_stub'),
@@ -239,7 +239,7 @@ final class ComponentBackendTest extends TestCase
             );
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createSearchPaginator')
             ->with(
                 self::identicalTo('component_stub'),
@@ -267,7 +267,7 @@ final class ComponentBackendTest extends TestCase
             ->willReturn(2);
 
         $this->componentRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('createSearchPaginator')
             ->with(
                 self::identicalTo('component_stub'),

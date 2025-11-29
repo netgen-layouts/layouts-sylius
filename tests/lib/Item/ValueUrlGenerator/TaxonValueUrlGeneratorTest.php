@@ -28,7 +28,7 @@ final class TaxonValueUrlGeneratorTest extends TestCase
     public function testGenerateDefaultUrl(): void
     {
         $this->urlGeneratorMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('generate')
             ->with(
                 self::identicalTo('sylius_shop_product_index'),
@@ -45,7 +45,7 @@ final class TaxonValueUrlGeneratorTest extends TestCase
     public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('generate')
             ->with(
                 self::identicalTo('sylius_admin_taxon_update'),

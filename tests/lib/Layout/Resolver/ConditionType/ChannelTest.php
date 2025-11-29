@@ -42,7 +42,7 @@ final class ChannelTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEB SHOP', 'Web shop'));
@@ -58,7 +58,7 @@ final class ChannelTest extends TestCase
     public function testValidationInvalidNoChannel(): void
     {
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -87,7 +87,7 @@ final class ChannelTest extends TestCase
         $request = Request::create('/');
 
         $this->channelContextMock
-            ->expects(self::exactly(2))
+            ->expects($this->exactly(2))
             ->method('getChannel')
             ->willReturn(new ChannelStub(42, 'WEB SHOP', 'Web shop'));
 
@@ -100,7 +100,7 @@ final class ChannelTest extends TestCase
         $request = Request::create('/');
 
         $this->channelContextMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('getChannel')
             ->willThrowException(new ChannelNotFoundException());
 

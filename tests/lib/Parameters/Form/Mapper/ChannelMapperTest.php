@@ -46,7 +46,7 @@ final class ChannelMapperTest extends TestCase
         ];
 
         $this->repositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findAll')
             ->willReturn($channels);
 

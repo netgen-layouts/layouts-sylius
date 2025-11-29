@@ -39,7 +39,7 @@ final class LocaleTest extends TestCase
         $locale = new LocaleStub(5, 'en_US');
 
         $this->localeRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
@@ -55,7 +55,7 @@ final class LocaleTest extends TestCase
     public function testValidationInvalidNoLocale(): void
     {
         $this->localeRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);

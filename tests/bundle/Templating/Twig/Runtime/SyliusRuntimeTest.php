@@ -65,7 +65,7 @@ final class SyliusRuntimeTest extends TestCase
         $product->setName('Product name');
 
         $this->productRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($product);
@@ -76,7 +76,7 @@ final class SyliusRuntimeTest extends TestCase
     public function testGetProductNameWithoutProduct(): void
     {
         $this->productRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -102,7 +102,7 @@ final class SyliusRuntimeTest extends TestCase
         $taxon2->setParent($taxon3);
 
         $this->taxonRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($taxon1);
@@ -113,7 +113,7 @@ final class SyliusRuntimeTest extends TestCase
     public function testGetTaxonPathWithoutTaxon(): void
     {
         $this->taxonRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -126,7 +126,7 @@ final class SyliusRuntimeTest extends TestCase
         $channel = new Channel(42, 'WEBSHOP', 'Webshop');
 
         $this->channelRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($channel);
@@ -137,7 +137,7 @@ final class SyliusRuntimeTest extends TestCase
     public function testGetChannelNameWithoutChannel(): void
     {
         $this->channelRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -150,7 +150,7 @@ final class SyliusRuntimeTest extends TestCase
         $locale = new Locale(5, 'en_US');
 
         $this->localeRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
@@ -161,7 +161,7 @@ final class SyliusRuntimeTest extends TestCase
     public function testGetLocaleNameWithoutLocale(): void
     {
         $this->localeRepositoryMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);
