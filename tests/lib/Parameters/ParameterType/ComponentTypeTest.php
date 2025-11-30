@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 
 use Netgen\Layouts\Parameters\ParameterDefinition;
-use Netgen\Layouts\Parameters\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ComponentType;
+use Netgen\Layouts\Sylius\Repository\ComponentRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -22,7 +22,7 @@ final class ComponentTypeTest extends TestCase
     protected function setUp(): void
     {
         $this->type = new ComponentType(
-            $this->createMock(ValueObjectProviderInterface::class),
+            $this->createMock(ComponentRepositoryInterface::class),
         );
     }
 

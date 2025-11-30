@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ValueObjectProviderInterface;
+use Netgen\Layouts\Sylius\Component\ComponentId;
+use Netgen\Layouts\Sylius\Component\ComponentInterface;
+use Netgen\Layouts\Sylius\Repository\ComponentRepositoryInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints;
@@ -14,7 +17,7 @@ use Symfony\Component\Validator\Constraints;
 final class ComponentType extends ParameterType implements ValueObjectProviderInterface
 {
     public function __construct(
-        private ValueObjectProviderInterface $valueObjectProvider,
+        private ComponentRepositoryInterface $componentRepository,
     ) {}
 
     public static function getIdentifier(): string
@@ -31,9 +34,13 @@ final class ComponentType extends ParameterType implements ValueObjectProviderIn
             ->allowedTypes('bool');
     }
 
-    public function getValueObject(mixed $value): ?object
+    public function getValueObject(mixed $value): ?ComponentInterface
     {
-        return $this->valueObjectProvider->getValueObject($value);
+        if ($value === null) {
+            return null;
+        }
+
+        return $this->componentRepository->load(ComponentId::fromString($value));
     }
 
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
