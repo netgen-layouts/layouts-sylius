@@ -44,7 +44,14 @@ final class ComponentIndexListener implements EventSubscriberInterface
             return;
         }
 
-        $currentRequest->attributes->set('nglayouts_sylius_component_index_selected_id', $componentId);
-        $currentRequest->attributes->set('nglayouts_sylius_component_index_identifier', $component::getIdentifier());
+        $currentRequest->attributes->set(
+            'nglayouts_sylius_component_index_selected_id',
+            $componentId,
+        );
+
+        $currentRequest->attributes->set(
+            'nglayouts_sylius_component_index_identifier',
+            $component::getIdentifier(),
+        );
     }
 }

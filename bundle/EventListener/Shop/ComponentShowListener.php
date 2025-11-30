@@ -36,7 +36,14 @@ final class ComponentShowListener implements EventSubscriberInterface
             return;
         }
 
-        $currentRequest->attributes->set('nglayouts_sylius_component_show_id', $resource->getId());
-        $currentRequest->attributes->set('nglayouts_sylius_component_show_identifier', $resource::getIdentifier());
+        $currentRequest->attributes->set(
+            'nglayouts_sylius_component_show_id',
+            $resource->getId(),
+        );
+
+        $currentRequest->attributes->set(
+            'nglayouts_sylius_component_show_identifier',
+            $resource::getIdentifier(),
+        );
     }
 }

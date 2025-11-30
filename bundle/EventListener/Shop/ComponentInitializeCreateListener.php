@@ -33,6 +33,9 @@ final class ComponentInitializeCreateListener implements EventSubscriberInterfac
             return;
         }
 
-        $currentRequest->attributes->set('nglayouts_sylius_component_initialize_create_identifier', $subject::getIdentifier());
+        $currentRequest->attributes->set(
+            'nglayouts_sylius_component_initialize_create_identifier',
+            $subject::getIdentifier(),
+        );
     }
 }
