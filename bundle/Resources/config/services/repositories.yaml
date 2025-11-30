@@ -1,5 +1,5 @@
 services:
-    netgen_layouts.sylius.component_repository:
+    netgen_layouts.sylius.repository.component:
         class: Netgen\Layouts\Sylius\Repository\ComponentRepository
         arguments:
             - "@doctrine.orm.entity_manager"

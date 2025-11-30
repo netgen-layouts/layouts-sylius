@@ -52,4 +52,4 @@ services:
     netgen_layouts.sylius.parameters.value_object_provider.component:
         class: Netgen\Layouts\Sylius\Parameters\ValueObjectProvider\ComponentProvider
         arguments:
-            - "@netgen_layouts.sylius.component_repository"
+            - "@netgen_layouts.sylius.repository.component"
