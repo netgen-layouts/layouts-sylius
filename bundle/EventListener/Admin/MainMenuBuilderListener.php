@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin;
 
 use Knp\Menu\ItemInterface;
+use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -21,7 +22,7 @@ final class MainMenuBuilderListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        return [MenuBuilderEvent::class => 'onMainMenuBuild'];
+        return [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'];
     }
 
     /**
