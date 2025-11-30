@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Doctrine\ORM;
+namespace Netgen\Layouts\Sylius\Repository;
 
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface as BaseProductRepositoryInterface;

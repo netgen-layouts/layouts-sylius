@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Doctrine\ORM;
+namespace Netgen\Layouts\Sylius\Repository;
 
 use Sylius\Bundle\TaxonomyBundle\Doctrine\ORM\TaxonRepository as BaseTaxonRepository;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;

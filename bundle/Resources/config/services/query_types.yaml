@@ -1,16 +1,8 @@
 services:
-    netgen_layouts.sylius.product_repository:
-        class: Netgen\Layouts\Sylius\Doctrine\ORM\ProductRepository
-        parent: sylius.repository.product
-
-    netgen_layouts.sylius.taxon_repository:
-        class: Netgen\Layouts\Sylius\Doctrine\ORM\TaxonRepository
-        parent: sylius.repository.taxon
-
     netgen_layouts.sylius.query_type_handler.latest_products:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\LatestProductsHandler
         arguments:
-            - "@netgen_layouts.sylius.product_repository"
+            - "@netgen_layouts.sylius.repository.product"
             - "@sylius.repository.taxon"
             - "@sylius.context.channel"
             - "@request_stack"
@@ -20,7 +12,7 @@ services:
     netgen_layouts.sylius.query_type_handler.taxon_products:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\TaxonProductsHandler
         arguments:
-            - "@netgen_layouts.sylius.product_repository"
+            - "@netgen_layouts.sylius.repository.product"
             - "@sylius.repository.taxon"
             - "@sylius.context.channel"
             - "@request_stack"
@@ -30,7 +22,7 @@ services:
     netgen_layouts.sylius.query_type_handler.taxons:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\TaxonsHandler
         arguments:
-            - "@netgen_layouts.sylius.taxon_repository"
+            - "@netgen_layouts.sylius.repository.taxon"
             - "@request_stack"
         tags:
             - { name: netgen_layouts.query_type_handler, type: sylius_taxons }
