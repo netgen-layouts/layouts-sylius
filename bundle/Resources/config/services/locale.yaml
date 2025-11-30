@@ -5,4 +5,4 @@ services:
     netgen_layouts.sylius.locale.provider:
         class: Netgen\Layouts\Sylius\Locale\LocaleProvider
         arguments:
-            - "@sylius.locale_provider"
+            - "@sylius.provider.locale"
