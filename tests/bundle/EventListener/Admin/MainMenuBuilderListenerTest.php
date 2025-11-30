@@ -11,6 +11,7 @@ use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListene
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
@@ -33,7 +34,7 @@ final class MainMenuBuilderListenerTest extends TestCase
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
-            [MenuBuilderEvent::class => 'onMainMenuBuild'],
+            [MainMenuBuilder::EVENT_NAME => 'onMainMenuBuild'],
             $this->listener::getSubscribedEvents(),
         );
     }
