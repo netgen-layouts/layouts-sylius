@@ -31,7 +31,7 @@ layouts_sylius:
     resource: "@NetgenLayoutsSyliusBundle/Resources/config/routing.yaml"
 ```
 
-## Configure the main layout and design
+## Configure the main layout
 
 Due to how Netgen Layouts works, your main layout template needs to wrap the
 `content` block inside a new `layout` block:
@@ -63,13 +63,11 @@ they will not fallback to your main layout template. Because of that, you need
 to configure Netgen Layouts with your main layout template, so the fallback
 keeps working as it should.
 
-Add the following to your `app/config/config.yml` file to configure the layout
-and specify the default design for block and layout templates:
+Add the following to your `app/config/config.yml` file to configure the layout:
 
 ```
 netgen_layouts:
     pagelayout: '@MyShop/layout.html.twig'
-    design: sylius
 ```
 
 ## Activate ESI and fragments support

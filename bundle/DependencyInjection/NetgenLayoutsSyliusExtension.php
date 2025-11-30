@@ -68,7 +68,6 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
         $prependConfigs = [
             'default_settings.yaml' => 'netgen_layouts_sylius',
             'liip_imagine.yaml' => 'liip_imagine',
-            'design.yaml' => 'netgen_layouts',
             'value_types.yaml' => 'netgen_layouts',
             'query_types.yaml' => 'netgen_layouts',
             'block_definitions.yaml' => 'netgen_layouts',
