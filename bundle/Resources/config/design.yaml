@@ -1,2 +1,3 @@
 design_list:
-    sylius: [semanticui]
+    sylius:
+        - semanticui

@@ -1,37 +1,25 @@
-{% extends '@SyliusAdmin/layout.html.twig' %}
+{% set body = block('body') %}
 
-{% trans_default_domain 'nglayouts_admin' %}
+{#
+    We embed the main base.html.twig instead of extending it
+    to be able to inject additional markup before and after its
+    body block.
+#}
 
-{% block metatags %}
-    {{ include('@NetgenLayoutsAdmin/admin/head.html.twig') }}
-{% endblock %}
+{% embed '@SyliusAdmin/shared/layout/base.html.twig' %}
+    {% trans_default_domain 'nglayouts_admin' %}
 
-{% block title %}
-    {{ 'pagelayout.title'|trans }}
-{% endblock %}
+    {% block title %}
+        {{ 'pagelayout.title'|trans }}
+    {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
+    {% block body %}
+        <div class="ng-layouts-app">
+            <div class="layouts-content">
 
-    {{ include('@NetgenLayoutsAdmin/admin/stylesheets.html.twig') }}
+            {{ body|raw }}
 
-    <link rel="stylesheet" href="{{ asset('bundles/netgenlayoutssylius/css/style.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-
-    {{ include('@NetgenLayoutsAdmin/admin/javascripts.html.twig') }}
-
-    <script type="text/javascript" src="{{ asset('bundles/netgenlayoutssylius/js/app.js') }}"></script>
-{% endblock %}
-
-{% block pre_content %}
-    <div class="ng-layouts-app">
-        <div class="layouts-content">
-{% endblock %}
-
-{% block post_content %}
+            </div>
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}
+{% endembed %}

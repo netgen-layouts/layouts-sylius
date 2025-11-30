@@ -1,0 +1,34 @@
+hooks:
+    'sylius_shop.base#stylesheets':
+        netgen_layouts_stylesheets:
+            template: '@NetgenLayouts/stylesheets.html.twig'
+        netgen_layouts_standard_stylesheets:
+            template: '@NetgenLayoutsStandard/stylesheets.html.twig'
+            context:
+                full: true
+
+    'sylius_shop.base#javascripts':
+        netgen_layouts_javascripts:
+            template: '@NetgenLayouts/javascripts.html.twig'
+        netgen_layouts_standard_javascripts:
+            template: '@NetgenLayoutsStandard/javascripts.html.twig'
+            context:
+                full: true
+
+    'sylius_admin.base#metatags':
+        netgen_layouts_admin_head:
+            template: '@NetgenLayoutsAdmin/admin/head.html.twig'
+        netgen_layouts_sylius_admin_head:
+            template: '@NetgenLayoutsSylius/admin/head.html.twig'
+
+    'sylius_admin.base#stylesheets':
+        netgen_layouts_admin_stylesheets:
+            template: '@NetgenLayoutsAdmin/admin/stylesheets.html.twig'
+        netgen_layouts_sylius_admin_stylesheets:
+            template: '@NetgenLayoutsSylius/admin/stylesheets.html.twig'
+
+    'sylius_admin.base#javascripts':
+        netgen_layouts_admin_javascripts:
+            template: '@NetgenLayoutsAdmin/admin/javascripts.html.twig'
+        netgen_layouts_sylius_admin_javascripts:
+            template: '@NetgenLayoutsSylius/admin/javascripts.html.twig'

@@ -1,62 +1,46 @@
+{% import "@SyliusUi/macro/rtl.html.twig" as rtl %}
+
+{% set generic_hook = 'sylius_shop.base' %}
+{% set prefixes = prefixes|default([])|merge([generic_hook]) %}
+
 <!DOCTYPE html>
 
-<html lang="{{ app.request.locale|slice(0, 2) }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>{% block title %}{{ sylius.channel.name }}{% endblock %}</title>
-
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
-    {% block metatags %}
-    {% endblock %}
-
-    {% block stylesheets %}
-        {{ sylius_template_event('sylius.shop.layout.stylesheets') }}
-    {% endblock %}
-
-    {{ sylius_template_event('sylius.shop.layout.head') }}
-</head>
-
-<body class="pushable">
-{{ sylius_template_event('sylius.shop.layout.before_body') }}
-<div class="pusher">
-    {% block top %}
-        <div id="menu" class="ui large sticky inverted stackable menu">
-            {{ sylius_template_event('sylius.shop.layout.topbar') }}
-        </div>
-    {% endblock %}
-
-    <div class="ui container">
-        {% block header %}
-            <header>
-                {{ sylius_template_event('sylius.shop.layout.header') }}
-            </header>
+<html lang="{{ app.request.locale|slice(0, 2) }}" {{ rtl.default(sylius.localeCode) }}>
+    <head>
+        {% block metatags %}
+            {% hook '#metatags' with { _prefixes: prefixes } %}
         {% endblock %}
 
-        {{ include('@SyliusShop/_flashes.html.twig') }}
+        <title>{% block title %}{{ sylius.channel.name }}{% endblock %}</title>
 
-        {{ sylius_template_event('sylius.shop.layout.before_content') }}
-
-        {% block layout %}
-            {% block content %}
-            {% endblock %}
+        {% block stylesheets %}
+            {% hook '#stylesheets' with { _prefixes: prefixes } %}
         {% endblock %}
 
-        {{ sylius_template_event('sylius.shop.layout.after_content') }}
-    </div>
+        {% hook 'head' with { _prefixes: prefixes } %}
+    </head>
 
-    {% block footer %}
-        {{ include('@SyliusShop/_footer.html.twig') }}
-    {% endblock %}
-</div>
+    <body data-route="{{ app.current_route }}">
+        {% block body %}
+            <div class="{% apply escape %}{% hook '#body_classes' with { _prefixes: prefixes } %}{% endapply %}">
+                <h1 class="visually-hidden text-black" aria-hidden="true">{{ sylius.channel.name }}</h1>
+                {% block header %}
+                    {% hook 'header' with { _prefixes: prefixes } %}
+                {% endblock %}
 
-{% block javascripts %}
-    {{ sylius_template_event('sylius.shop.layout.javascripts') }}
-{% endblock %}
+                {% block layout %}
+                    {% block content %}{% endblock %}
+                {% endblock %}
 
-{{ include('@SyliusUi/Modal/_confirmation.html.twig') }}
-{{ sylius_template_event('sylius.shop.layout.after_body') }}
-</body>
+                {% block footer %}
+                    {% hook 'footer' with { _prefixes: prefixes } %}
+                {% endblock %}
+            </div>
+            {% hook 'offcanvas' with { _prefixes: prefixes } %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% hook '#javascripts' with { _prefixes: prefixes } %}
+        {% endblock %}
+    </body>
 </html>
