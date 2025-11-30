@@ -21,8 +21,11 @@ final class AbstractComponentTest extends TestCase
 
         self::assertSame(2, $stub->getId());
         self::assertSame('Test component', $stub->getName());
-        self::assertInstanceOf(AbstractComponentTranslation::class, $stub->getTranslation());
-        self::assertSame($translationStub->getId(), $stub->getTranslation()->getId());
-        self::assertSame($translationStub->getName(), $stub->getTranslation()->getName());
+
+        $translation = $stub->getTranslation();
+
+        self::assertInstanceOf(AbstractComponentTranslation::class, $translation);
+        self::assertSame($translationStub->getId(), $translation->getId());
+        self::assertSame($translationStub->getName(), $translation->getName());
     }
 }
