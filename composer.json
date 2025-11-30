@@ -24,7 +24,7 @@
         "phpstan/phpstan-symfony": "^2.0",
         "phpstan/phpstan-doctrine": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "matthiasnoback/symfony-dependency-injection-test": "^6.1"
+        "matthiasnoback/symfony-dependency-injection-test": "^6.2"
     },
     "config": {
         "allow-plugins": false
