@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime;
 
-use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
-use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 
 use function array_reverse;
@@ -16,14 +13,12 @@ use function array_reverse;
 final class SyliusRuntime
 {
     /**
-     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface> $channelRepository
      * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
      * @param string[] $componentCreateRoutes
      * @param string[] $componentUpdateRoutes
      */
     public function __construct(
-        private TaxonRepositoryInterface $taxonRepository,
         private ChannelRepositoryInterface $channelRepository,
         private RepositoryInterface $localeRepository,
         private array $componentCreateRoutes = [],
@@ -33,15 +28,10 @@ final class SyliusRuntime
     /**
      * Returns the taxon path.
      *
-     * @return array<string|null>|null
+     * @return array<string|null>
      */
-    public function getTaxonPath(int|string $taxonId): ?array
+    public function getTaxonPath(TaxonInterface $taxon): array
     {
-        $taxon = $this->taxonRepository->find($taxonId);
-        if (!$taxon instanceof TaxonInterface) {
-            return null;
-        }
-
         $parts = [$taxon->getName()];
 
         $parentTaxon = $taxon->getParent();
@@ -58,12 +48,7 @@ final class SyliusRuntime
      */
     public function getChannelName(int|string $channelId): ?string
     {
-        $channel = $this->channelRepository->find($channelId);
-        if (!$channel instanceof ChannelInterface) {
-            return null;
-        }
-
-        return $channel->getName();
+        return $this->channelRepository->find($channelId)?->getName();
     }
 
     /**
@@ -71,12 +56,7 @@ final class SyliusRuntime
      */
     public function getLocaleName(string $code): ?string
     {
-        $locale = $this->localeRepository->findOneBy(['code' => $code]);
-        if (!$locale instanceof LocaleInterface) {
-            return null;
-        }
-
-        return $locale->getName();
+        return $this->localeRepository->findOneBy(['code' => $code])?->getName();
     }
 
     public function getComponentCreateRoute(string $componentType): ?string

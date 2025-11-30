@@ -7,7 +7,6 @@ services:
     netgen_layouts.sylius.templating.twig.runtime.sylius:
         class: Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime
         arguments:
-            - "@sylius.repository.taxon"
             - "@sylius.repository.channel"
             - "@sylius.repository.locale"
             - "%netgen_layouts.sylius.component_create_routes%"

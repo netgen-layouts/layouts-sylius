@@ -1,3 +1,5 @@
-{% set path = nglayouts_sylius_taxon_path(target.value) %}
-
-{{ path != null ? path|join(' / ') : '(INVALID TAXON)' }}
+{% if target.valueObject is not null %}
+    {{ nglayouts_sylius_taxon_path(target.valueObject)|join(' / ') }}
+{% else %}
+    {{ '(INVALID TAXON)' }}
+{% endif %}

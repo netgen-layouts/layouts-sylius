@@ -12,15 +12,12 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Intl\Locales;
 
 #[CoversClass(SyliusRuntime::class)]
 final class SyliusRuntimeTest extends TestCase
 {
-    private MockObject&TaxonRepositoryInterface $taxonRepositoryMock;
-
     private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
 
     private MockObject&RepositoryInterface $localeRepositoryMock;
@@ -29,7 +26,6 @@ final class SyliusRuntimeTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
         $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
         $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
 
@@ -44,7 +40,6 @@ final class SyliusRuntimeTest extends TestCase
         ];
 
         $this->runtime = new SyliusRuntime(
-            $this->taxonRepositoryMock,
             $this->channelRepositoryMock,
             $this->localeRepositoryMock,
             $createRoutes,
@@ -69,24 +64,7 @@ final class SyliusRuntimeTest extends TestCase
         $taxon1->setParent($taxon2);
         $taxon2->setParent($taxon3);
 
-        $this->taxonRepositoryMock
-            ->expects($this->once())
-            ->method('find')
-            ->with(self::identicalTo(42))
-            ->willReturn($taxon1);
-
-        self::assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath(42));
-    }
-
-    public function testGetTaxonPathWithoutTaxon(): void
-    {
-        $this->taxonRepositoryMock
-            ->expects($this->once())
-            ->method('find')
-            ->with(self::identicalTo(42))
-            ->willReturn(null);
-
-        self::assertNull($this->runtime->getTaxonPath(42));
+        self::assertSame(['Taxon 44', 'Taxon 43', 'Taxon 42'], $this->runtime->getTaxonPath($taxon1));
     }
 
     public function testGetChannelName(): void
