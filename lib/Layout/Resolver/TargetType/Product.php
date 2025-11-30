@@ -5,13 +5,22 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Layout\Resolver\TargetType;
+use Netgen\Layouts\Layout\Resolver\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
-final class Product extends TargetType
+final class Product extends TargetType implements ValueObjectProviderInterface
 {
+    /**
+     * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface> $productRepository
+     */
+    public function __construct(
+        private ProductRepositoryInterface $productRepository,
+    ) {}
+
     public static function getType(): string
     {
         return 'sylius_product';
@@ -32,5 +41,10 @@ final class Product extends TargetType
         $product = $request->attributes->get('nglayouts_sylius_resource');
 
         return $product instanceof ProductInterface ? $product->getId() : null;
+    }
+
+    public function getValueObject(mixed $value): ?ProductInterface
+    {
+        return $this->productRepository->find($value);
     }
 }

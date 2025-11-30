@@ -7,8 +7,6 @@ namespace Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
@@ -18,7 +16,6 @@ use function array_reverse;
 final class SyliusRuntime
 {
     /**
-     * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface> $productRepository
      * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
      * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface> $channelRepository
      * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository
@@ -26,26 +23,12 @@ final class SyliusRuntime
      * @param string[] $componentUpdateRoutes
      */
     public function __construct(
-        private ProductRepositoryInterface $productRepository,
         private TaxonRepositoryInterface $taxonRepository,
         private ChannelRepositoryInterface $channelRepository,
         private RepositoryInterface $localeRepository,
         private array $componentCreateRoutes = [],
         private array $componentUpdateRoutes = [],
     ) {}
-
-    /**
-     * Returns the product name.
-     */
-    public function getProductName(int|string $productId): ?string
-    {
-        $product = $this->productRepository->find($productId);
-        if (!$product instanceof ProductInterface) {
-            return null;
-        }
-
-        return $product->getName();
-    }
 
     /**
      * Returns the taxon path.

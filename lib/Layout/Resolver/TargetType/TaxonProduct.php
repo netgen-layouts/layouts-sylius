@@ -5,16 +5,25 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Layout\Resolver\TargetType;
+use Netgen\Layouts\Layout\Resolver\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
 use function array_map;
 
-final class TaxonProduct extends TargetType
+final class TaxonProduct extends TargetType implements ValueObjectProviderInterface
 {
+    /**
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
+     */
+    public function __construct(
+        private TaxonRepositoryInterface $taxonRepository,
+    ) {}
+
     public static function getType(): string
     {
         return 'sylius_taxon_product';
@@ -44,5 +53,10 @@ final class TaxonProduct extends TargetType
             static fn (TaxonInterface $taxon): int => $taxon->getId(),
             $product->getTaxons()->getValues(),
         );
+    }
+
+    public function getValueObject(mixed $value): ?TaxonInterface
+    {
+        return $this->taxonRepository->find($value);
     }
 }

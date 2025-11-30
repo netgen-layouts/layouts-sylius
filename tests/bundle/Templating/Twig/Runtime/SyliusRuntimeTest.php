@@ -7,13 +7,11 @@ namespace Netgen\Bundle\LayoutsSyliusBundle\Tests\Templating\Twig\Runtime;
 use Netgen\Bundle\LayoutsSyliusBundle\Templating\Twig\Runtime\SyliusRuntime;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Locale;
-use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Intl\Locales;
@@ -21,8 +19,6 @@ use Symfony\Component\Intl\Locales;
 #[CoversClass(SyliusRuntime::class)]
 final class SyliusRuntimeTest extends TestCase
 {
-    private MockObject&ProductRepositoryInterface $productRepositoryMock;
-
     private MockObject&TaxonRepositoryInterface $taxonRepositoryMock;
 
     private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
@@ -33,7 +29,6 @@ final class SyliusRuntimeTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
         $this->taxonRepositoryMock = $this->createMock(TaxonRepositoryInterface::class);
         $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
         $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
@@ -49,39 +44,12 @@ final class SyliusRuntimeTest extends TestCase
         ];
 
         $this->runtime = new SyliusRuntime(
-            $this->productRepositoryMock,
             $this->taxonRepositoryMock,
             $this->channelRepositoryMock,
             $this->localeRepositoryMock,
             $createRoutes,
             $updateRoutes,
         );
-    }
-
-    public function testGetProductName(): void
-    {
-        $product = new Product(42);
-        $product->setCurrentLocale('en');
-        $product->setName('Product name');
-
-        $this->productRepositoryMock
-            ->expects($this->once())
-            ->method('find')
-            ->with(self::identicalTo(42))
-            ->willReturn($product);
-
-        self::assertSame('Product name', $this->runtime->getProductName(42));
-    }
-
-    public function testGetProductNameWithoutProduct(): void
-    {
-        $this->productRepositoryMock
-            ->expects($this->once())
-            ->method('find')
-            ->with(self::identicalTo(42))
-            ->willReturn(null);
-
-        self::assertNull($this->runtime->getProductName(42));
     }
 
     public function testGetTaxonPath(): void

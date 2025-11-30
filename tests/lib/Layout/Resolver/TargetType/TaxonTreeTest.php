@@ -25,7 +25,7 @@ final class TaxonTreeTest extends TestCase
     {
         $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
 
-        $this->targetType = new TaxonTree();
+        $this->targetType = new TaxonTree($this->repositoryMock);
     }
 
     public function testGetType(): void
@@ -81,5 +81,29 @@ final class TaxonTreeTest extends TestCase
         $request = Request::create('/');
 
         self::assertNull($this->targetType->provideValue($request));
+    }
+
+    public function testGetValueObject(): void
+    {
+        $stub = new TaxonStub(1);
+
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(1))
+            ->willReturn($stub);
+
+        self::assertSame($stub, $this->targetType->getValueObject(1));
+    }
+
+    public function testGetValueObjectWithNoTaxon(): void
+    {
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(1))
+            ->willReturn(null);
+
+        self::assertNull($this->targetType->getValueObject(1));
     }
 }

@@ -5,13 +5,22 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Layout\Resolver\TargetType;
+use Netgen\Layouts\Layout\Resolver\ValueObjectProviderInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
-final class TaxonTree extends TargetType
+final class TaxonTree extends TargetType implements ValueObjectProviderInterface
 {
+    /**
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
+     */
+    public function __construct(
+        private TaxonRepositoryInterface $taxonRepository,
+    ) {}
+
     public static function getType(): string
     {
         return 'sylius_taxon_tree';
@@ -44,5 +53,10 @@ final class TaxonTree extends TargetType
         } while ($taxon instanceof TaxonInterface);
 
         return $taxonIds;
+    }
+
+    public function getValueObject(mixed $value): ?TaxonInterface
+    {
+        return $this->taxonRepository->find($value);
     }
 }

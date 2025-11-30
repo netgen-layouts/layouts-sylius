@@ -25,7 +25,7 @@ final class ProductTest extends TestCase
     {
         $this->repositoryMock = $this->createMock(ProductRepositoryInterface::class);
 
-        $this->targetType = new Product();
+        $this->targetType = new Product($this->repositoryMock);
     }
 
     public function testGetType(): void
@@ -78,5 +78,29 @@ final class ProductTest extends TestCase
         $request = Request::create('/');
 
         self::assertNull($this->targetType->provideValue($request));
+    }
+
+    public function testGetValueObject(): void
+    {
+        $stub = new ProductStub(1);
+
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(1))
+            ->willReturn($stub);
+
+        self::assertSame($stub, $this->targetType->getValueObject(1));
+    }
+
+    public function testGetValueObjectWithNoProduct(): void
+    {
+        $this->repositoryMock
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(1))
+            ->willReturn(null);
+
+        self::assertNull($this->targetType->getValueObject(1));
     }
 }
