@@ -1,4 +1,4 @@
-{% set body = block('body') %}
+{% set content = block('content') %}
 
 {#
     We embed the main base.html.twig instead of extending it
@@ -14,11 +14,15 @@
     {% endblock %}
 
     {% block body %}
-        <div class="ng-layouts-app">
-            <div class="layouts-content">
+        {% hook 'netgen_layouts.sylius_admin.common.index' %}
 
-            {{ body|raw }}
+        <div class="page-wrapper">
+            <div class="ng-layouts-app">
+                <div class="layouts-content">
 
+                {{ content|raw }}
+
+                </div>
             </div>
         </div>
     {% endblock %}

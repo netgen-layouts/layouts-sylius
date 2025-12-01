@@ -32,3 +32,11 @@ hooks:
             template: '@NetgenLayoutsAdmin/admin/javascripts.html.twig'
         netgen_layouts_sylius_admin_javascripts:
             template: '@NetgenLayoutsSylius/admin/javascripts.html.twig'
+
+    'netgen_layouts.sylius_admin.common.index':
+        sidebar:
+            template: '@SyliusAdmin/shared/crud/common/sidebar.html.twig'
+            priority: 200
+        navbar:
+            template: '@SyliusAdmin/shared/crud/common/navbar.html.twig'
+            priority: 100
