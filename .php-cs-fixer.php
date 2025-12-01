@@ -6,7 +6,7 @@ require_once __DIR__ . '/vendor/netgen/layouts-coding-standard/lib/PhpCsFixer/Co
 return new Netgen\Layouts\CodingStandard\PhpCsFixer\Config()
     ->setFinder(
         PhpCsFixer\Finder::create()
-            ->exclude(['vendor', 'node_modules'])
+            ->exclude(['vendor'])
             ->in(__DIR__)
     )
 ;
