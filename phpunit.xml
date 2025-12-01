@@ -9,6 +9,7 @@
     displayDetailsOnTestsThatTriggerDeprecations="true"
     failOnRisky="true"
     failOnWarning="true"
+    colors="true"
 >
     <testsuites>
         <testsuite name="Netgen\Layouts\Sylius">
@@ -21,8 +22,8 @@
 
     <source ignoreSuppressionOfDeprecations="true" ignoreIndirectDeprecations="true">
         <include>
-            <directory suffix=".php">lib</directory>
-            <directory suffix=".php">bundle</directory>
+            <directory>lib</directory>
+            <directory>bundle</directory>
         </include>
         <exclude>
             <directory>bundle/Resources</directory>
