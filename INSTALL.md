@@ -27,7 +27,7 @@ return $bundles;
 ## Include routing configuration:
 
 ```yaml
-layouts_sylius:
+netgen_layouts_sylius:
     resource: "@NetgenLayoutsSyliusBundle/Resources/config/routing.yaml"
 ```
 
