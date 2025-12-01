@@ -1,6 +1,8 @@
 services:
     netgen_layouts.sylius.layout_resolver.target_type.product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product
+        arguments:
+            - "@sylius.repository.product"
         tags:
             - { name: netgen_layouts.target_type, priority: 170 }
 
@@ -16,6 +18,8 @@ services:
 
     netgen_layouts.sylius.layout_resolver.target_type.taxon_product:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct
+        arguments:
+            - "@sylius.repository.taxon"
         tags:
             - { name: netgen_layouts.target_type, priority: 160 }
 
@@ -31,6 +35,8 @@ services:
 
     netgen_layouts.sylius.layout_resolver.target_type.taxon:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Taxon
+        arguments:
+            - "@sylius.repository.taxon"
         tags:
             - { name: netgen_layouts.target_type, priority: 150 }
 
@@ -46,6 +52,8 @@ services:
 
     netgen_layouts.sylius.layout_resolver.target_type.taxon_tree:
         class: Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonTree
+        arguments:
+            - "@sylius.repository.taxon"
         tags:
             - { name: netgen_layouts.target_type, priority: 140 }
 
