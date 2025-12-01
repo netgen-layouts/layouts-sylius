@@ -65,13 +65,13 @@ framework:
 ### Update security rules for admin UI integration
 
 To properly integrate Netgen Layouts and Sylius admin interfaces, you need to
-add some access control rules to your security configuration to allow
-access to Netgen Layouts admin routes:
+redefine the `sylius.security.admin_regex` parameter to allow  access to
+Netgen Layouts admin routes:
 
 ```yaml
 # config/packages/security.yaml
-access_control:
-    - { path: "%netgen_layouts.sylius.security.admin_regex%", role: ROLE_ADMINISTRATION_ACCESS }
+parameters:
+    sylius.security.admin_regex: "^(/%sylius_admin.path_name%|/nglayouts/app|/nglayouts/api|/nglayouts/admin|/cb)"
 ```
 
 ## Running tests

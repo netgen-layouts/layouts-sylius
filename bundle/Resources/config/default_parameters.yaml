@@ -1,3 +1,2 @@
 parameters:
     netgen_layouts.sylius.admin.pagelayout: '@@NetgenLayoutsSylius/admin/pagelayout.html.twig'
-    netgen_layouts.sylius.security.admin_regex: '^(/nglayouts/app|/nglayouts/api|/nglayouts/admin|/cb)'
