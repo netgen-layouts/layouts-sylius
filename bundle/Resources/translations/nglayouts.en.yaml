@@ -10,8 +10,8 @@ query.sylius_taxons.use_current_taxon: 'Use current taxon'
 query.sylius_taxons.taxon_id: 'Sylius taxon'
 
 layout_resolver.target.sylius_product: 'Sylius product'
-layout_resolver.target.sylius_single_taxon: 'Sylius taxon'
-layout_resolver.target.sylius_taxon: 'Sylius taxon tree'
+layout_resolver.target.sylius_taxon: 'Sylius taxon'
+layout_resolver.target.sylius_taxon_tree: 'Sylius taxon tree'
 layout_resolver.target.sylius_taxon_product: 'Sylius taxon products'
 layout_resolver.target.sylius_page: 'Sylius page'
 
