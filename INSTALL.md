@@ -18,13 +18,14 @@ Make sure they are activated after all other Netgen Layouts and Content Browser 
 ```
 ...
 
-$bundles[] = new Netgen\Bundle\LayoutsSyliusBundle\NetgenLayoutsSyliusBundle();
-$bundles[] = new Netgen\Bundle\ContentBrowserSyliusBundle\NetgenContentBrowserSyliusBundle();
-
-return $bundles;
+Netgen\Bundle\LayoutsSyliusBundle\NetgenLayoutsSyliusBundle::class => ['all' => true],
+Netgen\Bundle\ContentBrowserSyliusBundle\NetgenContentBrowserSyliusBundle::class => ['all' => true],
 ```
 
 ## Include routing configuration:
+
+Create the `config/routes/netgen_layouts_sylius.yaml` file and add the following
+routing configuration:
 
 ```yaml
 netgen_layouts_sylius:
@@ -63,17 +64,17 @@ they will not fallback to your main layout template. Because of that, you need
 to configure Netgen Layouts with your main layout template, so the fallback
 keeps working as it should.
 
-Add the following to your `app/config/config.yml` file to configure the layout:
+Create the `config/packages/netgen_layouts.yaml` file to configure the layout:
 
 ```
 netgen_layouts:
-    pagelayout: '@MyShop/layout.html.twig'
+    pagelayout: 'templates/shop/layout.html.twig'
 ```
 
 ## Activate ESI and fragments support
 
 Netgen Layouts requires that ESI and fragments support is activated in Symfony.
-Add the following to your `app/config/config.yml` file:
+Add the following to your `config/packages/framework.yaml` file:
 
 ```
 framework:
@@ -84,10 +85,10 @@ framework:
 ## Update security rules for admin UI integration
 
 To properly integrate Netgen Layouts and Sylius admin interfaces, you need to
-update (or add, if missing) admin regex parameter in your
-`app/config/security.yml` file to allow access to Netgen Layouts admin routes:
+add some access control rules to your `config/packages/security.yaml` file to allow
+access to Netgen Layouts admin routes:
 
 ```
-parameters:
-    sylius.security.admin_regex: "^(/admin|/nglayouts/app|/nglayouts/api|/nglayouts/admin|/cb)"
+access_control:
+    - { path: "%netgen_layouts.sylius.security.admin_regex%", role: ROLE_ADMINISTRATION_ACCESS }
 ```
