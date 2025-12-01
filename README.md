@@ -71,7 +71,7 @@ Netgen Layouts admin routes:
 ```yaml
 # config/packages/security.yaml
 parameters:
-    sylius.security.admin_regex: "^(/%sylius_admin.path_name%|/nglayouts/app|/nglayouts/api|/nglayouts/admin|/cb)"
+    sylius.security.admin_regex: "^(/%sylius_admin.path_name%|/nglayouts/(dev/)?app|/nglayouts/api|/nglayouts/admin|/cb)"
 ```
 
 ## Running tests
