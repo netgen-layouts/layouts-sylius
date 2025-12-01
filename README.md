@@ -2,7 +2,7 @@
 
 ## Installation instructions
 
-### Use Composer to install the integration
+### Use Composer
 
 Run the following command to install Netgen Layouts & Sylius eCommerce
 integration:
@@ -71,16 +71,5 @@ Netgen Layouts admin routes:
 ```yaml
 # config/packages/security.yaml
 parameters:
-    sylius.security.admin_regex: "^(/%sylius_admin.path_name%|/nglayouts/(dev/)?app|/nglayouts/api|/nglayouts/admin|/cb)"
-```
-
-## Running tests
-
-Running tests requires that you have complete vendors installed, so run
-`composer install` before running the tests.
-
-You can run unit tests by calling `composer test` from the repo root:
-
-```bash
-$ composer test
+    sylius.security.admin_regex: "^(/%sylius_admin.path_name%|/nglayouts/app|/nglayouts/api|/nglayouts/admin|/cb)"
 ```
