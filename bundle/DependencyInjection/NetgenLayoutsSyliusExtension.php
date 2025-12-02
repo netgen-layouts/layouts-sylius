@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\DependencyInjection;
 
+use Jean85\PrettyVersions;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\Loader\LoaderResolver;
@@ -65,6 +66,11 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
 
     public function prepend(ContainerBuilder $container): void
     {
+        $container->setParameter(
+            'netgen_layouts_sylius.asset_version',
+            PrettyVersions::getVersion('netgen/layouts-sylius')->getShortReference(),
+        );
+
         $prependConfigs = [
             'default_settings.yaml' => 'netgen_layouts_sylius',
             'liip_imagine.yaml' => 'liip_imagine',
@@ -74,6 +80,7 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             'block_types.yaml' => 'netgen_layouts',
             'doctrine.yaml' => 'doctrine',
             'framework/twig.yaml' => 'twig',
+            'framework/assets.yaml' => 'framework',
             'view/block_view.yaml' => 'netgen_layouts',
             'view/item_view.yaml' => 'netgen_layouts',
             'view/rule_target_view.yaml' => 'netgen_layouts',

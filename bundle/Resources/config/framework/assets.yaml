@@ -1,0 +1,14 @@
+assets:
+    packages:
+        nglayouts_sylius_css:
+            base_path: '/bundles/netgenlayoutssylius/css'
+            version: '%netgen_layouts_sylius.asset_version%'
+            version_format: '%%s?%%s'
+        nglayouts_sylius_js:
+            base_path: '/bundles/netgenlayoutssylius/js'
+            version: '%netgen_layouts_sylius.asset_version%'
+            version_format: '%%s?%%s'
+        nglayouts_sylius:
+            base_path: '/bundles/netgenlayoutssylius'
+            version: '%netgen_layouts_sylius.asset_version%'
+            version_format: '%%s?%%s'

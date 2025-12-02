@@ -15,7 +15,8 @@
         "netgen/content-browser-sylius": "^2.0",
         "doctrine/orm": "^3.5",
         "sylius/sylius": "^2.1",
-        "sylius/resource-bundle": "^1.13"
+        "sylius/resource-bundle": "^1.13",
+        "jean85/pretty-package-versions": "^2.1"
     },
     "require-dev": {
         "netgen/layouts-coding-standard": "^3.0",
