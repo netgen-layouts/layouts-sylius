@@ -14,6 +14,10 @@ hooks:
             template: '@NetgenLayoutsStandard/javascripts.html.twig'
             context:
                 full: true
+        netgen_layouts_preview_javascripts:
+            template: '@NetgenLayouts/preview/javascripts.html.twig'
+        netgen_layouts_preview_body:
+            template: '@NetgenLayouts/preview/body.html.twig'
 
     'sylius_admin.base#metatags':
         netgen_layouts_admin_head:
