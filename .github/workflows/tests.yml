@@ -9,7 +9,7 @@ on:
 
 jobs:
   tests:
-    name: ${{ matrix.php }} / ${{ matrix.symfony }}
+    name: ${{ matrix.php }} / ${{ matrix.symfony }}${{ matrix.deps == 'lowest' && ' / lowest' || '' }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,11 +17,11 @@ jobs:
       matrix:
         php: ['8.4']
         symfony: ['~7.4.0']
-        deps: ['normal']
+        deps: ['latest']
         include:
           - php: '8.4'
             symfony: '~7.4.0'
-            deps: 'low'
+            deps: 'lowest'
 
     steps:
       - uses: actions/checkout@v6
@@ -42,10 +42,10 @@ jobs:
 
       -
         run: composer update --prefer-dist
-        if: ${{ matrix.deps != 'low' }}
+        if: ${{ matrix.deps == 'latest' }}
 
       -
         run: composer update --prefer-dist --prefer-lowest --prefer-stable
-        if: ${{ matrix.deps == 'low' }}
+        if: ${{ matrix.deps == 'lowest' }}
 
       - run: composer test
