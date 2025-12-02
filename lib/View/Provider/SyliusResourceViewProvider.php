@@ -12,6 +12,9 @@ use Sylius\Resource\Model\ResourceInterface;
 
 use function is_string;
 
+/**
+ * @implements \Netgen\Layouts\View\Provider\ViewProviderInterface<\Sylius\Resource\Model\ResourceInterface>
+ */
 final class SyliusResourceViewProvider implements ViewProviderInterface
 {
     public function provideView(mixed $value, array $parameters = []): ViewInterface
