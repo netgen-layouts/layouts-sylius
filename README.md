@@ -58,8 +58,8 @@ Netgen Layouts requires that ESI and fragments support is activated in Symfony.
 ```yaml
 # config/packages/framework.yaml
 framework:
-    esi: ~
-    fragments: ~
+    esi: true
+    fragments: true
 ```
 
 ### Update security rules for admin UI integration
