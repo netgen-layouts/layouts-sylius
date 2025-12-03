@@ -37,130 +37,130 @@ final class SyliusEventDispatcherTest extends TestCase
     public function testDispatch(): void
     {
         $eventName = 'show';
-        $requestConfiguration = $this->createMock(RequestConfiguration::class);
+        $requestConfigurationMock = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = $this->createMock(ResourceControllerEvent::class);
+        $eventMock = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects($this->once())
             ->method('dispatch')
-            ->with($eventName, $requestConfiguration, $resource)
-            ->willReturn($event);
+            ->with($eventName, $requestConfigurationMock, $resource)
+            ->willReturn($eventMock);
 
         $this->eventDispatcherMock
             ->expects($this->once())
             ->method('dispatch')
-            ->with($event, 'nglayouts.sylius.resource.show')
-            ->willReturn($event);
+            ->with($eventMock, 'nglayouts.sylius.resource.show')
+            ->willReturn($eventMock);
 
         self::assertSame(
-            $event,
-            $this->dispatcher->dispatch($eventName, $requestConfiguration, $resource),
+            $eventMock,
+            $this->dispatcher->dispatch($eventName, $requestConfigurationMock, $resource),
         );
     }
 
     public function testDispatchMultiple(): void
     {
         $eventName = 'show';
-        $requestConfiguration = $this->createMock(RequestConfiguration::class);
+        $requestConfigurationMock = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = $this->createMock(ResourceControllerEvent::class);
+        $eventMock = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects($this->once())
             ->method('dispatchMultiple')
-            ->with($eventName, $requestConfiguration, $resource)
-            ->willReturn($event);
+            ->with($eventName, $requestConfigurationMock, $resource)
+            ->willReturn($eventMock);
 
         $this->eventDispatcherMock
             ->expects($this->once())
             ->method('dispatch')
-            ->with($event, 'nglayouts.sylius.resource.show')
-            ->willReturn($event);
+            ->with($eventMock, 'nglayouts.sylius.resource.show')
+            ->willReturn($eventMock);
 
         self::assertSame(
-            $event,
-            $this->dispatcher->dispatchMultiple($eventName, $requestConfiguration, $resource),
+            $eventMock,
+            $this->dispatcher->dispatchMultiple($eventName, $requestConfigurationMock, $resource),
         );
     }
 
     public function testDispatchPreEvent(): void
     {
         $eventName = 'show';
-        $requestConfiguration = $this->createMock(RequestConfiguration::class);
+        $requestConfigurationMock = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = $this->createMock(ResourceControllerEvent::class);
+        $eventMock = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects($this->once())
             ->method('dispatchPreEvent')
-            ->with($eventName, $requestConfiguration, $resource)
-            ->willReturn($event);
+            ->with($eventName, $requestConfigurationMock, $resource)
+            ->willReturn($eventMock);
 
         $this->eventDispatcherMock
             ->expects($this->once())
             ->method('dispatch')
-            ->with($event, 'nglayouts.sylius.resource.pre_show')
-            ->willReturn($event);
+            ->with($eventMock, 'nglayouts.sylius.resource.pre_show')
+            ->willReturn($eventMock);
 
         self::assertSame(
-            $event,
-            $this->dispatcher->dispatchPreEvent($eventName, $requestConfiguration, $resource),
+            $eventMock,
+            $this->dispatcher->dispatchPreEvent($eventName, $requestConfigurationMock, $resource),
         );
     }
 
     public function testDispatchPostEvent(): void
     {
         $eventName = 'show';
-        $requestConfiguration = $this->createMock(RequestConfiguration::class);
+        $requestConfigurationMock = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = $this->createMock(ResourceControllerEvent::class);
+        $eventMock = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects($this->once())
             ->method('dispatchPostEvent')
-            ->with($eventName, $requestConfiguration, $resource)
-            ->willReturn($event);
+            ->with($eventName, $requestConfigurationMock, $resource)
+            ->willReturn($eventMock);
 
         $this->eventDispatcherMock
             ->expects($this->once())
             ->method('dispatch')
-            ->with($event, 'nglayouts.sylius.resource.post_show')
-            ->willReturn($event);
+            ->with($eventMock, 'nglayouts.sylius.resource.post_show')
+            ->willReturn($eventMock);
 
         self::assertSame(
-            $event,
-            $this->dispatcher->dispatchPostEvent($eventName, $requestConfiguration, $resource),
+            $eventMock,
+            $this->dispatcher->dispatchPostEvent($eventName, $requestConfigurationMock, $resource),
         );
     }
 
     public function testDispatchInitializeEvent(): void
     {
         $eventName = 'show';
-        $requestConfiguration = $this->createMock(RequestConfiguration::class);
+        $requestConfigurationMock = $this->createMock(RequestConfiguration::class);
         $resource = new Product(5);
 
-        $event = $this->createMock(ResourceControllerEvent::class);
+        $eventMock = $this->createMock(ResourceControllerEvent::class);
 
         $this->innerEventDispatcherMock
             ->expects($this->once())
             ->method('dispatchInitializeEvent')
-            ->with($eventName, $requestConfiguration, $resource)
-            ->willReturn($event);
+            ->with($eventName, $requestConfigurationMock, $resource)
+            ->willReturn($eventMock);
 
         $this->eventDispatcherMock
             ->expects($this->once())
             ->method('dispatch')
-            ->with($event, 'nglayouts.sylius.resource.initialize_show')
-            ->willReturn($event);
+            ->with($eventMock, 'nglayouts.sylius.resource.initialize_show')
+            ->willReturn($eventMock);
 
         self::assertSame(
-            $event,
-            $this->dispatcher->dispatchInitializeEvent($eventName, $requestConfiguration, $resource),
+            $eventMock,
+            $this->dispatcher->dispatchInitializeEvent($eventName, $requestConfigurationMock, $resource),
         );
     }
 }

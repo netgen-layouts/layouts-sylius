@@ -11,5 +11,5 @@ interface ComponentTranslationInterface extends ResourceInterface, TranslationIn
 {
     public function getName(): string;
 
-    public function setName(string $name): void;
+    public function setName(string $name): static;
 }

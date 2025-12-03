@@ -24,21 +24,21 @@ final class AdminAccessVoterTest extends TestCase
 
     public function testVote(): void
     {
-        $token = $this->createMock(TokenInterface::class);
-        $token
+        $tokenMock = $this->createMock(TokenInterface::class);
+        $tokenMock
             ->method('getUser')
             ->willReturn(new AdminUser());
 
-        self::assertSame(VoterInterface::ACCESS_GRANTED, $this->voter->vote($token, null, ['nglayouts:foo:bar']));
+        self::assertSame(VoterInterface::ACCESS_GRANTED, $this->voter->vote($tokenMock, null, ['nglayouts:foo:bar']));
     }
 
     public function testVoteWithoutAdminUser(): void
     {
-        $token = $this->createMock(TokenInterface::class);
-        $token
+        $tokenMock = $this->createMock(TokenInterface::class);
+        $tokenMock
             ->method('getUser')
             ->willReturn(new User());
 
-        self::assertSame(VoterInterface::ACCESS_DENIED, $this->voter->vote($token, null, ['nglayouts:foo:bar']));
+        self::assertSame(VoterInterface::ACCESS_DENIED, $this->voter->vote($tokenMock, null, ['nglayouts:foo:bar']));
     }
 }

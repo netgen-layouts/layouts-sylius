@@ -88,10 +88,10 @@ final class TaxonTypeTest extends TestCase
     public function testValidationValid(): void
     {
         $this->repositoryMock
-                ->expects($this->once())
-                ->method('find')
-                ->with(self::identicalTo(42))
-                ->willReturn(new TaxonStub(42));
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(new TaxonStub(42));
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
@@ -105,8 +105,8 @@ final class TaxonTypeTest extends TestCase
     public function testValidationValidWithNonRequiredValue(): void
     {
         $this->repositoryMock
-                ->expects($this->never())
-                ->method('find');
+            ->expects($this->never())
+            ->method('find');
 
         $parameter = $this->getParameterDefinition();
         $validator = Validation::createValidatorBuilder()
@@ -120,10 +120,10 @@ final class TaxonTypeTest extends TestCase
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
-                ->expects($this->once())
-                ->method('find')
-                ->with(self::identicalTo(42))
-                ->willReturn(null);
+            ->expects($this->once())
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(null);
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
