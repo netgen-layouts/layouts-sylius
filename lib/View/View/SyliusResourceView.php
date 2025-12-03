@@ -13,18 +13,12 @@ final class SyliusResourceView extends View implements SyliusResourceViewInterfa
         get => 'sylius_resource';
     }
 
-    public ResourceInterface $resource {
-        get => $this->getParameter('resource');
-    }
-
-    public string $viewType {
-        get => $this->getParameter('view_type');
-    }
-
-    public function __construct(ResourceInterface $resource, string $viewType)
-    {
+    public function __construct(
+        public private(set) ResourceInterface $resource,
+        public private(set) string $viewType,
+    ) {
         $this
-            ->addInternalParameter('resource', $resource)
-            ->addInternalParameter('view_type', $viewType);
+            ->addInternalParameter('resource', $this->resource)
+            ->addInternalParameter('view_type', $this->viewType);
     }
 }
