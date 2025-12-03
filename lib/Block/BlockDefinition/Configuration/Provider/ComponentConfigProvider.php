@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Block\BlockDefinition\Configuration\Provider;
 
-use Netgen\Bundle\LayoutsBundle\Configuration\ConfigurationInterface;
 use Netgen\Layouts\API\Values\Block\Block;
 use Netgen\Layouts\Block\BlockDefinition\Configuration\ConfigProviderInterface;
 use Netgen\Layouts\Block\BlockDefinition\Configuration\ItemViewType;
@@ -26,8 +25,11 @@ final class ComponentConfigProvider implements ConfigProviderInterface
      */
     private array $viewTypes = [];
 
+    /**
+     * @param array<string, array<string, array<string, mixed>>> $viewConfig
+     */
     public function __construct(
-        private ConfigurationInterface $configuration,
+        private array $viewConfig,
     ) {}
 
     public function provideViewTypes(?Block $block = null): array
@@ -54,9 +56,7 @@ final class ComponentConfigProvider implements ConfigProviderInterface
      */
     private function resolveViewTypes(string $componentType): array
     {
-        $viewConfig = $this->configuration->getParameter('view');
-
-        $defaultViewConfig = $viewConfig['sylius_resource_view']['default'] ?? [];
+        $defaultViewConfig = $this->viewConfig['sylius_resource_view']['default'] ?? [];
 
         $viewTypes = [];
         foreach ($defaultViewConfig as $config) {
