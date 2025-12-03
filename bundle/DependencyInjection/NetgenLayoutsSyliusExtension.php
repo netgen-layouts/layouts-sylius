@@ -79,7 +79,7 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
             'block_definitions.yaml' => 'netgen_layouts',
             'block_types.yaml' => 'netgen_layouts',
             'doctrine.yaml' => 'doctrine',
-            'framework/twig.yaml' => 'twig',
+            'twig.yaml' => 'twig',
             'framework/assets.yaml' => 'framework',
             'view/block_view.yaml' => 'netgen_layouts',
             'view/item_view.yaml' => 'netgen_layouts',
