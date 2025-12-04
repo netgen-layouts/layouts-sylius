@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Core\Model\ProductTaxon;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
@@ -19,15 +19,15 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(TaxonProduct::class)]
 final class TaxonProductTest extends TestCase
 {
-    private MockObject&TaxonRepositoryInterface $repositoryMock;
+    private Stub&TaxonRepositoryInterface $repositoryStub;
 
     private TaxonProduct $targetType;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
 
-        $this->targetType = new TaxonProduct($this->repositoryMock);
+        $this->targetType = new TaxonProduct($this->repositoryStub);
     }
 
     public function testGetType(): void
@@ -37,14 +37,13 @@ final class TaxonProductTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new TaxonStub(42));
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
@@ -53,14 +52,13 @@ final class TaxonProductTest extends TestCase
 
     public function testValidationInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
@@ -94,8 +92,7 @@ final class TaxonProductTest extends TestCase
     {
         $stub = new TaxonStub(1);
 
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn($stub);
@@ -105,8 +102,7 @@ final class TaxonProductTest extends TestCase
 
     public function testGetValueObjectWithNoTaxon(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn(null);

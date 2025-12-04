@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Parameters\Form\Mapper\ChannelMapper;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType as ParameterType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -19,13 +19,13 @@ final class ChannelMapperTest extends TestCase
 {
     private ChannelMapper $mapper;
 
-    private MockObject&ChannelRepositoryInterface $repositoryMock;
+    private Stub&ChannelRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(ChannelRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
 
-        $this->mapper = new ChannelMapper($this->repositoryMock);
+        $this->mapper = new ChannelMapper($this->repositoryStub);
     }
 
     public function testGetFormType(): void
@@ -45,8 +45,7 @@ final class ChannelMapperTest extends TestCase
             'Other shop' => 2,
         ];
 
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('findAll')
             ->willReturn($channels);
 
@@ -58,7 +57,7 @@ final class ChannelMapperTest extends TestCase
             $this->mapper->mapOptions(
                 ParameterDefinition::fromArray(
                     [
-                        'type' => new ParameterType($this->repositoryMock),
+                        'type' => new ParameterType($this->repositoryStub),
                         'options' => [
                             'multiple' => false,
                         ],

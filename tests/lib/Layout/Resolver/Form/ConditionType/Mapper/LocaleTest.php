@@ -7,7 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\ConditionType\Mapper;
 use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Locale;
 use Netgen\Layouts\Sylius\Tests\Stubs\Locale as LocaleStub;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -16,16 +16,16 @@ use Symfony\Component\Intl\Locales;
 #[CoversClass(Locale::class)]
 final class LocaleTest extends TestCase
 {
-    private MockObject&RepositoryInterface $localeRepositoryMock;
+    private Stub&RepositoryInterface $localeRepositoryStub;
 
     private Locale $mapper;
 
     protected function setUp(): void
     {
-        $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
+        $this->localeRepositoryStub = self::createStub(RepositoryInterface::class);
 
         $this->mapper = new Locale(
-            $this->localeRepositoryMock,
+            $this->localeRepositoryStub,
         );
     }
 
@@ -48,8 +48,7 @@ final class LocaleTest extends TestCase
             Locales::getName('de_DE') => 'de_DE',
         ];
 
-        $this->localeRepositoryMock
-            ->expects($this->once())
+        $this->localeRepositoryStub
             ->method('findAll')
             ->willReturn($locales);
 

@@ -8,7 +8,7 @@ use Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Locale;
 use Netgen\Layouts\Sylius\Tests\Stubs\Locale as LocaleStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,13 +18,13 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(Locale::class)]
 final class LocaleTest extends TestCase
 {
-    private MockObject&RepositoryInterface $localeRepositoryMock;
+    private Stub&RepositoryInterface $localeRepositoryStub;
 
     private Locale $conditionType;
 
     protected function setUp(): void
     {
-        $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
+        $this->localeRepositoryStub = self::createStub(RepositoryInterface::class);
 
         $this->conditionType = new Locale();
     }
@@ -38,14 +38,13 @@ final class LocaleTest extends TestCase
     {
         $locale = new LocaleStub(5, 'en_US');
 
-        $this->localeRepositoryMock
-            ->expects($this->once())
+        $this->localeRepositoryStub
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(['en_US'], $this->conditionType->getConstraints());
@@ -54,14 +53,13 @@ final class LocaleTest extends TestCase
 
     public function testValidationInvalidNoLocale(): void
     {
-        $this->localeRepositoryMock
-            ->expects($this->once())
+        $this->localeRepositoryStub
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(['fr_FR'], $this->conditionType->getConstraints());
@@ -71,7 +69,7 @@ final class LocaleTest extends TestCase
     public function testValidationInvalidValue(): void
     {
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->localeRepositoryStub))
             ->getValidator();
 
         $this->expectException(UnexpectedTypeException::class);

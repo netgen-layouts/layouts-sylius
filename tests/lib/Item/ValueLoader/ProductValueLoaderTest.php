@@ -8,28 +8,28 @@ use Exception;
 use Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 #[CoversClass(ProductValueLoader::class)]
 final class ProductValueLoaderTest extends TestCase
 {
-    private MockObject&ProductRepositoryInterface $productRepositoryMock;
+    private Stub&ProductRepositoryInterface $productRepositoryStub;
 
     private ProductValueLoader $valueLoader;
 
     protected function setUp(): void
     {
-        $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
-        $this->valueLoader = new ProductValueLoader($this->productRepositoryMock);
+        $this->productRepositoryStub = self::createStub(ProductRepositoryInterface::class);
+        $this->valueLoader = new ProductValueLoader($this->productRepositoryStub);
     }
 
     public function testLoad(): void
     {
         $product = new Product(42, 'Product name');
 
-        $this->productRepositoryMock
+        $this->productRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($product);
@@ -39,7 +39,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadWithNoProduct(): void
     {
-        $this->productRepositoryMock
+        $this->productRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -49,7 +49,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadWithRepositoryException(): void
     {
-        $this->productRepositoryMock
+        $this->productRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -61,7 +61,7 @@ final class ProductValueLoaderTest extends TestCase
     {
         $product = new Product(42, 'Product name');
 
-        $this->productRepositoryMock
+        $this->productRepositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn($product);
@@ -71,7 +71,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithNoProduct(): void
     {
-        $this->productRepositoryMock
+        $this->productRepositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn(null);
@@ -81,7 +81,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
-        $this->productRepositoryMock
+        $this->productRepositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willThrowException(new Exception());

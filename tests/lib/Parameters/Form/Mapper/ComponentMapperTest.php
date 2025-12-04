@@ -38,7 +38,7 @@ final class ComponentMapperTest extends TestCase
                 ParameterDefinition::fromArray(
                     [
                         'type' => new ComponentType(
-                            $this->createMock(ComponentRepositoryInterface::class),
+                            self::createStub(ComponentRepositoryInterface::class),
                         ),
                     ],
                 ),

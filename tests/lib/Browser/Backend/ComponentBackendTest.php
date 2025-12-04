@@ -17,23 +17,23 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Component;
 use Pagerfanta\Adapter\AdapterInterface;
 use Pagerfanta\Pagerfanta;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 #[CoversClass(ComponentBackend::class)]
 final class ComponentBackendTest extends TestCase
 {
-    private MockObject&ComponentRepositoryInterface $componentRepositoryMock;
+    private Stub&ComponentRepositoryInterface $componentRepositoryStub;
 
     private ComponentBackend $backend;
 
     protected function setUp(): void
     {
-        $this->componentRepositoryMock = $this->createMock(ComponentRepositoryInterface::class);
-        $localeContextMock = $this->createMock(LocaleContextInterface::class);
+        $this->componentRepositoryStub = self::createStub(ComponentRepositoryInterface::class);
+        $localeContextStub = self::createStub(LocaleContextInterface::class);
 
-        $localeContextMock
+        $localeContextStub
             ->method('getLocaleCode')
             ->willReturn('en');
 
@@ -47,8 +47,8 @@ final class ComponentBackendTest extends TestCase
         );
 
         $this->backend = new ComponentBackend(
-            $this->componentRepositoryMock,
-            $localeContextMock,
+            $this->componentRepositoryStub,
+            $localeContextStub,
             $configuration,
         );
     }
@@ -65,8 +65,7 @@ final class ComponentBackendTest extends TestCase
     {
         $componentId = new ComponentId('component_stub', 3);
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('load')
             ->with(self::equalTo($componentId))
             ->willReturn(new Component(3, 'Info'));
@@ -84,8 +83,7 @@ final class ComponentBackendTest extends TestCase
 
         $componentId = new ComponentId('component_stub', 3);
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('load')
             ->with(self::equalTo($componentId))
             ->willReturn(null);
@@ -109,9 +107,9 @@ final class ComponentBackendTest extends TestCase
 
     public function testGetSubItems(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(
@@ -121,11 +119,10 @@ final class ComponentBackendTest extends TestCase
                 ]),
             );
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('createListPaginator')
             ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = $this->backend->getSubItems(
             new RootLocation(),
@@ -137,13 +134,13 @@ final class ComponentBackendTest extends TestCase
 
     public function testGetSubItemsWithOffsetAndLimit(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(15);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(
@@ -153,11 +150,10 @@ final class ComponentBackendTest extends TestCase
                 ]),
             );
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('createListPaginator')
             ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = $this->backend->getSubItems(
             new RootLocation(),
@@ -171,17 +167,16 @@ final class ComponentBackendTest extends TestCase
 
     public function testGetSubItemsCount(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(2);
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('createListPaginator')
             ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->getSubItemsCount(
             new RootLocation(),
@@ -192,9 +187,9 @@ final class ComponentBackendTest extends TestCase
 
     public function testSearchItems(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(
@@ -204,15 +199,14 @@ final class ComponentBackendTest extends TestCase
                 ]),
             );
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('createSearchPaginator')
             ->with(
                 self::identicalTo('component_stub'),
                 self::identicalTo('component'),
                 self::identicalTo('en'),
             )
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchResult = $this->backend->searchItems(new SearchQuery('component'));
 
@@ -222,13 +216,13 @@ final class ComponentBackendTest extends TestCase
 
     public function testSearchItemsWithOffsetAndLimit(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(15);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(
@@ -238,15 +232,14 @@ final class ComponentBackendTest extends TestCase
                 ]),
             );
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('createSearchPaginator')
             ->with(
                 self::identicalTo('component_stub'),
                 self::identicalTo('component'),
                 self::identicalTo('en'),
             )
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchQuery = new SearchQuery('component');
         $searchQuery->offset = 8;
@@ -260,21 +253,20 @@ final class ComponentBackendTest extends TestCase
 
     public function testSearchItemsCount(): void
     {
-        $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
+        $pagerfantaAdapterStub = self::createStub(AdapterInterface::class);
 
-        $pagerfantaAdapterMock
+        $pagerfantaAdapterStub
             ->method('getNbResults')
             ->willReturn(2);
 
-        $this->componentRepositoryMock
-            ->expects($this->once())
+        $this->componentRepositoryStub
             ->method('createSearchPaginator')
             ->with(
                 self::identicalTo('component_stub'),
                 self::identicalTo('component'),
                 self::identicalTo('en'),
             )
-            ->willReturn(new Pagerfanta($pagerfantaAdapterMock));
+            ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->searchItemsCount(new SearchQuery('component'));
 

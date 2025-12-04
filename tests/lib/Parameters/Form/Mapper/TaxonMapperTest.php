@@ -9,7 +9,7 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType as ParameterType;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
@@ -18,12 +18,12 @@ final class TaxonMapperTest extends TestCase
 {
     private TaxonMapper $mapper;
 
-    private MockObject&TaxonRepositoryInterface $repositoryMock;
+    private Stub&TaxonRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
         $this->mapper = new TaxonMapper();
-        $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
     }
 
     public function testGetFormType(): void
@@ -39,7 +39,7 @@ final class TaxonMapperTest extends TestCase
                 'required' => false,
             ],
             $this->mapper->mapOptions(ParameterDefinition::fromArray([
-                'type' => new ParameterType($this->repositoryMock),
+                'type' => new ParameterType($this->repositoryStub),
                 'isRequired' => false,
             ])),
         );

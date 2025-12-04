@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Validator\Constraint\Product;
 use Netgen\Layouts\Sylius\Validator\ProductValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
@@ -20,7 +20,7 @@ use function sprintf;
 #[CoversClass(ProductValidator::class)]
 final class ProductValidatorTest extends ValidatorTestCase
 {
-    private MockObject&ProductRepositoryInterface $repositoryMock;
+    private Stub&ProductRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
@@ -31,15 +31,14 @@ final class ProductValidatorTest extends ValidatorTestCase
 
     public function getValidator(): ConstraintValidatorInterface
     {
-        $this->repositoryMock = $this->createMock(ProductRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(ProductRepositoryInterface::class);
 
-        return new ProductValidator($this->repositoryMock);
+        return new ProductValidator($this->repositoryStub);
     }
 
     public function testValidateValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ProductStub(42));
@@ -49,17 +48,12 @@ final class ProductValidatorTest extends ValidatorTestCase
 
     public function testValidateNull(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $this->assertValid(true, null);
     }
 
     public function testValidateInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

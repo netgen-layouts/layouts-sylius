@@ -7,7 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\ConditionType\Mapper;
 use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -15,16 +15,16 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 #[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
-    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
+    private Stub&ChannelRepositoryInterface $channelRepositoryStub;
 
     private Channel $mapper;
 
     protected function setUp(): void
     {
-        $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
+        $this->channelRepositoryStub = self::createStub(ChannelRepositoryInterface::class);
 
         $this->mapper = new Channel(
-            $this->channelRepositoryMock,
+            $this->channelRepositoryStub,
         );
     }
 
@@ -45,8 +45,7 @@ final class ChannelTest extends TestCase
             'Other shop' => 2,
         ];
 
-        $this->channelRepositoryMock
-            ->expects($this->once())
+        $this->channelRepositoryStub
             ->method('findAll')
             ->willReturn($channels);
 

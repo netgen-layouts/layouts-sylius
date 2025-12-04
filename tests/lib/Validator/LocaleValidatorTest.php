@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Validator\Constraint\Locale;
 use Netgen\Layouts\Sylius\Validator\LocaleValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
@@ -20,7 +20,7 @@ use function sprintf;
 #[CoversClass(LocaleValidator::class)]
 final class LocaleValidatorTest extends ValidatorTestCase
 {
-    private MockObject&RepositoryInterface $localeRepositoryMock;
+    private Stub&RepositoryInterface $localeRepositoryStub;
 
     protected function setUp(): void
     {
@@ -31,17 +31,16 @@ final class LocaleValidatorTest extends ValidatorTestCase
 
     public function getValidator(): ConstraintValidatorInterface
     {
-        $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
+        $this->localeRepositoryStub = self::createStub(RepositoryInterface::class);
 
-        return new LocaleValidator($this->localeRepositoryMock);
+        return new LocaleValidator($this->localeRepositoryStub);
     }
 
     public function testValidateValid(): void
     {
         $locale = new LocaleStub(1, 'en_US');
 
-        $this->localeRepositoryMock
-            ->expects($this->once())
+        $this->localeRepositoryStub
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
@@ -51,17 +50,12 @@ final class LocaleValidatorTest extends ValidatorTestCase
 
     public function testValidateNull(): void
     {
-        $this->localeRepositoryMock
-            ->expects($this->never())
-            ->method('findOneBy');
-
         $this->assertValid(true, null);
     }
 
     public function testValidateInvalid(): void
     {
-        $this->localeRepositoryMock
-            ->expects($this->once())
+        $this->localeRepositoryStub
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);

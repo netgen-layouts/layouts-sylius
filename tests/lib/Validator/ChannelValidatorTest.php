@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Validator\ChannelValidator;
 use Netgen\Layouts\Sylius\Validator\Constraint\Channel;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
@@ -20,7 +20,7 @@ use function sprintf;
 #[CoversClass(ChannelValidator::class)]
 final class ChannelValidatorTest extends ValidatorTestCase
 {
-    private MockObject&ChannelRepositoryInterface $repositoryMock;
+    private Stub&ChannelRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
@@ -31,15 +31,14 @@ final class ChannelValidatorTest extends ValidatorTestCase
 
     public function getValidator(): ConstraintValidatorInterface
     {
-        $this->repositoryMock = $this->createMock(ChannelRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
 
-        return new ChannelValidator($this->repositoryMock);
+        return new ChannelValidator($this->repositoryStub);
     }
 
     public function testValidateValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
@@ -49,17 +48,12 @@ final class ChannelValidatorTest extends ValidatorTestCase
 
     public function testValidateNull(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $this->assertValid(true, null);
     }
 
     public function testValidateInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

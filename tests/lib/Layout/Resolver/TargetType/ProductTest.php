@@ -8,7 +8,7 @@ use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,15 +17,15 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(Product::class)]
 final class ProductTest extends TestCase
 {
-    private MockObject&ProductRepositoryInterface $repositoryMock;
+    private Stub&ProductRepositoryInterface $repositoryStub;
 
     private Product $targetType;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(ProductRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(ProductRepositoryInterface::class);
 
-        $this->targetType = new Product($this->repositoryMock);
+        $this->targetType = new Product($this->repositoryStub);
     }
 
     public function testGetType(): void
@@ -35,14 +35,13 @@ final class ProductTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ProductStub(42));
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
@@ -51,14 +50,13 @@ final class ProductTest extends TestCase
 
     public function testValidationInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
@@ -84,8 +82,7 @@ final class ProductTest extends TestCase
     {
         $stub = new ProductStub(1);
 
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn($stub);
@@ -95,8 +92,7 @@ final class ProductTest extends TestCase
 
     public function testGetValueObjectWithNoProduct(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn(null);

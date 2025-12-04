@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Validator\Constraint\Taxon;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
@@ -20,7 +20,7 @@ use function sprintf;
 #[CoversClass(TaxonValidator::class)]
 final class TaxonValidatorTest extends ValidatorTestCase
 {
-    private MockObject&TaxonRepositoryInterface $repositoryMock;
+    private Stub&TaxonRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
@@ -31,15 +31,14 @@ final class TaxonValidatorTest extends ValidatorTestCase
 
     public function getValidator(): ConstraintValidatorInterface
     {
-        $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
 
-        return new TaxonValidator($this->repositoryMock);
+        return new TaxonValidator($this->repositoryStub);
     }
 
     public function testValidateValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new TaxonStub(42));
@@ -49,17 +48,12 @@ final class TaxonValidatorTest extends ValidatorTestCase
 
     public function testValidateNull(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $this->assertValid(true, null);
     }
 
     public function testValidateInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);

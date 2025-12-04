@@ -11,7 +11,7 @@ use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
@@ -22,13 +22,13 @@ final class ChannelTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    private MockObject&ChannelRepositoryInterface $repositoryMock;
+    private Stub&ChannelRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(ChannelRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
 
-        $this->type = new ChannelType($this->repositoryMock);
+        $this->type = new ChannelType($this->repositoryStub);
     }
 
     public function testGetIdentifier(): void
@@ -110,15 +110,14 @@ final class ChannelTypeTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate([42], $this->type->getConstraints($parameter, 42));
@@ -127,13 +126,9 @@ final class ChannelTypeTest extends TestCase
 
     public function testValidationValidWithNonRequiredValue(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $parameter = $this->getParameterDefinition();
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
@@ -142,15 +137,14 @@ final class ChannelTypeTest extends TestCase
 
     public function testValidationInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate([42], $this->type->getConstraints($parameter, 42));
@@ -175,8 +169,7 @@ final class ChannelTypeTest extends TestCase
     {
         $stub = new ChannelStub(1, 'test', 'test');
 
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn($stub);

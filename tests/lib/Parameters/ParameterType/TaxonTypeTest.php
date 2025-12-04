@@ -11,7 +11,7 @@ use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
@@ -22,13 +22,13 @@ final class TaxonTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    private MockObject&TaxonRepositoryInterface $repositoryMock;
+    private Stub&TaxonRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(TaxonRepositoryInterface::class);
+        $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
 
-        $this->type = new TaxonType($this->repositoryMock);
+        $this->type = new TaxonType($this->repositoryStub);
     }
 
     public function testGetIdentifier(): void
@@ -87,15 +87,14 @@ final class TaxonTypeTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new TaxonStub(42));
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
@@ -104,13 +103,9 @@ final class TaxonTypeTest extends TestCase
 
     public function testValidationValidWithNonRequiredValue(): void
     {
-        $this->repositoryMock
-            ->expects($this->never())
-            ->method('find');
-
         $parameter = $this->getParameterDefinition();
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
@@ -119,15 +114,14 @@ final class TaxonTypeTest extends TestCase
 
     public function testValidationInvalid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $parameter = $this->getParameterDefinition([], true);
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
@@ -152,8 +146,7 @@ final class TaxonTypeTest extends TestCase
     {
         $stub = new TaxonStub(1);
 
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(1))
             ->willReturn($stub);

@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\Tests\Stubs\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Locale;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
@@ -18,16 +18,16 @@ use Symfony\Component\Intl\Locales;
 #[CoversClass(SyliusRuntime::class)]
 final class SyliusRuntimeTest extends TestCase
 {
-    private MockObject&ChannelRepositoryInterface $channelRepositoryMock;
+    private Stub&ChannelRepositoryInterface $channelRepositoryStub;
 
-    private MockObject&RepositoryInterface $localeRepositoryMock;
+    private Stub&RepositoryInterface $localeRepositoryStub;
 
     private SyliusRuntime $runtime;
 
     protected function setUp(): void
     {
-        $this->channelRepositoryMock = $this->createMock(ChannelRepositoryInterface::class);
-        $this->localeRepositoryMock = $this->createMock(RepositoryInterface::class);
+        $this->channelRepositoryStub = self::createStub(ChannelRepositoryInterface::class);
+        $this->localeRepositoryStub = self::createStub(RepositoryInterface::class);
 
         $createRoutes = [
             'banner_component' => 'app_banner_component_create',
@@ -40,8 +40,8 @@ final class SyliusRuntimeTest extends TestCase
         ];
 
         $this->runtime = new SyliusRuntime(
-            $this->channelRepositoryMock,
-            $this->localeRepositoryMock,
+            $this->channelRepositoryStub,
+            $this->localeRepositoryStub,
             $createRoutes,
             $updateRoutes,
         );
@@ -71,8 +71,7 @@ final class SyliusRuntimeTest extends TestCase
     {
         $channel = new Channel(42, 'WEBSHOP', 'Webshop');
 
-        $this->channelRepositoryMock
-            ->expects($this->once())
+        $this->channelRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($channel);
@@ -82,8 +81,7 @@ final class SyliusRuntimeTest extends TestCase
 
     public function testGetChannelNameWithoutChannel(): void
     {
-        $this->channelRepositoryMock
-            ->expects($this->once())
+        $this->channelRepositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -95,8 +93,7 @@ final class SyliusRuntimeTest extends TestCase
     {
         $locale = new Locale(5, 'en_US');
 
-        $this->localeRepositoryMock
-            ->expects($this->once())
+        $this->localeRepositoryStub
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
@@ -106,8 +103,7 @@ final class SyliusRuntimeTest extends TestCase
 
     public function testGetLocaleNameWithoutLocale(): void
     {
-        $this->localeRepositoryMock
-            ->expects($this->once())
+        $this->localeRepositoryStub
             ->method('findOneBy')
             ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);

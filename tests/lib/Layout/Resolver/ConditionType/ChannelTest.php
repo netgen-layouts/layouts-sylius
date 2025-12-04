@@ -8,7 +8,7 @@ use Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Channel\Context\ChannelNotFoundException;
@@ -20,18 +20,18 @@ use Symfony\Component\Validator\Validation;
 #[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
-    private MockObject&ChannelContextInterface $channelContextMock;
+    private Stub&ChannelContextInterface $channelContextStub;
 
-    private MockObject&ChannelRepositoryInterface $repositoryMock;
+    private Stub&ChannelRepositoryInterface $repositoryStub;
 
     private Channel $conditionType;
 
     protected function setUp(): void
     {
-        $this->channelContextMock = $this->createMock(ChannelContextInterface::class);
-        $this->repositoryMock = $this->createMock(ChannelRepositoryInterface::class);
+        $this->channelContextStub = self::createStub(ChannelContextInterface::class);
+        $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
 
-        $this->conditionType = new Channel($this->channelContextMock);
+        $this->conditionType = new Channel($this->channelContextStub);
     }
 
     public function testGetType(): void
@@ -41,14 +41,13 @@ final class ChannelTest extends TestCase
 
     public function testValidationValid(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEB SHOP', 'Web shop'));
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate([42], $this->conditionType->getConstraints());
@@ -57,14 +56,13 @@ final class ChannelTest extends TestCase
 
     public function testValidationInvalidNoChannel(): void
     {
-        $this->repositoryMock
-            ->expects($this->once())
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $errors = $validator->validate([42], $this->conditionType->getConstraints());
@@ -74,7 +72,7 @@ final class ChannelTest extends TestCase
     public function testValidationInvalidValue(): void
     {
         $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryMock))
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
             ->getValidator();
 
         $this->expectException(UnexpectedTypeException::class);
@@ -86,8 +84,7 @@ final class ChannelTest extends TestCase
     {
         $request = Request::create('/');
 
-        $this->channelContextMock
-            ->expects($this->exactly(2))
+        $this->channelContextStub
             ->method('getChannel')
             ->willReturn(new ChannelStub(42, 'WEB SHOP', 'Web shop'));
 
@@ -99,8 +96,7 @@ final class ChannelTest extends TestCase
     {
         $request = Request::create('/');
 
-        $this->channelContextMock
-            ->expects($this->once())
+        $this->channelContextStub
             ->method('getChannel')
             ->willThrowException(new ChannelNotFoundException());
 

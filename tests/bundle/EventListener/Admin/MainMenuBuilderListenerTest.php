@@ -9,7 +9,7 @@ use Knp\Menu\MenuFactory;
 use Knp\Menu\MenuItem;
 use Netgen\Bundle\LayoutsSyliusBundle\EventListener\Admin\MainMenuBuilderListener;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\AdminBundle\Menu\MainMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
@@ -22,13 +22,13 @@ final class MainMenuBuilderListenerTest extends TestCase
 {
     private MainMenuBuilderListener $listener;
 
-    private MockObject&AuthorizationCheckerInterface $authCheckerMock;
+    private Stub&AuthorizationCheckerInterface $authCheckerStub;
 
     protected function setUp(): void
     {
-        $this->authCheckerMock = $this->createMock(AuthorizationCheckerInterface::class);
+        $this->authCheckerStub = self::createStub(AuthorizationCheckerInterface::class);
 
-        $this->listener = new MainMenuBuilderListener($this->authCheckerMock);
+        $this->listener = new MainMenuBuilderListener($this->authCheckerStub);
     }
 
     public function testGetSubscribedEvents(): void
@@ -41,7 +41,7 @@ final class MainMenuBuilderListenerTest extends TestCase
 
     public function testOnMainMenuBuild(): void
     {
-        $this->authCheckerMock
+        $this->authCheckerStub
             ->method('isGranted')
             ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(true);
@@ -61,7 +61,7 @@ final class MainMenuBuilderListenerTest extends TestCase
 
     public function testOnMainMenuBuildPlacedBeforeConfiguration(): void
     {
-        $this->authCheckerMock
+        $this->authCheckerStub
             ->method('isGranted')
             ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(true);
@@ -81,7 +81,7 @@ final class MainMenuBuilderListenerTest extends TestCase
 
     public function testOnMainMenuBuildWithNoAccess(): void
     {
-        $this->authCheckerMock
+        $this->authCheckerStub
             ->method('isGranted')
             ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(false);

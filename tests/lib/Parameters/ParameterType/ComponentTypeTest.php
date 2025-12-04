@@ -22,7 +22,7 @@ final class ComponentTypeTest extends TestCase
     protected function setUp(): void
     {
         $this->type = new ComponentType(
-            $this->createMock(ComponentRepositoryInterface::class),
+            self::createStub(ComponentRepositoryInterface::class),
         );
     }
 

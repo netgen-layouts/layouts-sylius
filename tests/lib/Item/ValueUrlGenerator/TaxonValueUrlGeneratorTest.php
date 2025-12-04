@@ -7,28 +7,27 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueUrlGenerator;
 use Netgen\Layouts\Sylius\Item\ValueUrlGenerator\TaxonValueUrlGenerator;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Taxon;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[CoversClass(TaxonValueUrlGenerator::class)]
 final class TaxonValueUrlGeneratorTest extends TestCase
 {
-    private MockObject&UrlGeneratorInterface $urlGeneratorMock;
+    private Stub&UrlGeneratorInterface $urlGeneratorStub;
 
     private TaxonValueUrlGenerator $urlGenerator;
 
     protected function setUp(): void
     {
-        $this->urlGeneratorMock = $this->createMock(UrlGeneratorInterface::class);
+        $this->urlGeneratorStub = self::createStub(UrlGeneratorInterface::class);
 
-        $this->urlGenerator = new TaxonValueUrlGenerator($this->urlGeneratorMock);
+        $this->urlGenerator = new TaxonValueUrlGenerator($this->urlGeneratorStub);
     }
 
     public function testGenerateDefaultUrl(): void
     {
-        $this->urlGeneratorMock
-            ->expects($this->once())
+        $this->urlGeneratorStub
             ->method('generate')
             ->with(
                 self::identicalTo('sylius_shop_product_index'),
@@ -44,8 +43,7 @@ final class TaxonValueUrlGeneratorTest extends TestCase
 
     public function testGenerateAdminUrl(): void
     {
-        $this->urlGeneratorMock
-            ->expects($this->once())
+        $this->urlGeneratorStub
             ->method('generate')
             ->with(
                 self::identicalTo('sylius_admin_taxon_update'),

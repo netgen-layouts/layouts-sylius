@@ -9,7 +9,7 @@ includes:
 
 parameters:
     ignoreErrors:
-        - '#Property .+::\$\w+Mock with generic interface .+ does not specify its types: T#'
+        - '#Property .+::\$\w+Stub with generic interface .+ does not specify its types: T#'
 
         # Disable errors about missing value types in PHPUnit data providers
 
