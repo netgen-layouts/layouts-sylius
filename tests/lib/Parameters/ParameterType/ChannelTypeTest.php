@@ -61,9 +61,6 @@ final class ChannelTypeTest extends TestCase
         $this->getParameterDefinition($options);
     }
 
-    /**
-     * Provider for testing valid parameter attributes.
-     */
     public static function validOptionsDataProvider(): iterable
     {
         return [
@@ -92,9 +89,6 @@ final class ChannelTypeTest extends TestCase
         ];
     }
 
-    /**
-     * Provider for testing invalid parameter attributes.
-     */
     public static function invalidOptionsDataProvider(): iterable
     {
         return [

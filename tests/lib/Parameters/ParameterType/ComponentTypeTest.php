@@ -53,9 +53,6 @@ final class ComponentTypeTest extends TestCase
         $this->getParameterDefinition($options);
     }
 
-    /**
-     * Provider for testing valid parameter attributes.
-     */
     public static function validOptionsDataProvider(): iterable
     {
         return [
@@ -78,9 +75,6 @@ final class ComponentTypeTest extends TestCase
         ];
     }
 
-    /**
-     * Provider for testing invalid parameter attributes.
-     */
     public static function invalidOptionsDataProvider(): iterable
     {
         return [
@@ -98,9 +92,6 @@ final class ComponentTypeTest extends TestCase
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
-    /**
-     * Provider for testing if the value is empty.
-     */
     public static function emptyDataProvider(): iterable
     {
         return [
