@@ -13,6 +13,6 @@ parameters:
 
         - '#Method .+Test::\w+DataProvider\(\) return type has no value type specified in iterable type iterable.#'
 
-        # Integration specifics
+        # Netgen Layouts
 
         - '#Method Netgen\\Layouts\\Sylius\\Tests\\Validator\\RepositoryValidatorFactory::__construct\(\) has parameter \$repository with generic interface#'
