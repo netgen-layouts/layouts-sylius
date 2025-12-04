@@ -15,6 +15,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 #[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface>
+     */
     private Stub&ChannelRepositoryInterface $channelRepositoryStub;
 
     private Channel $mapper;

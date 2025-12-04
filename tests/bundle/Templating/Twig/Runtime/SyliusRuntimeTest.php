@@ -18,8 +18,14 @@ use Symfony\Component\Intl\Locales;
 #[CoversClass(SyliusRuntime::class)]
 final class SyliusRuntimeTest extends TestCase
 {
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface>
+     */
     private Stub&ChannelRepositoryInterface $channelRepositoryStub;
 
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
+     */
     private Stub&RepositoryInterface $localeRepositoryStub;
 
     private SyliusRuntime $runtime;

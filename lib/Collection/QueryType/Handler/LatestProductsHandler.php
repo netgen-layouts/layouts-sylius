@@ -10,9 +10,9 @@ use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
+use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -22,9 +22,6 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
 {
     private const int DEFAULT_LIMIT = 12;
 
-    /**
-     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
-     */
     public function __construct(
         private ProductRepositoryInterface $productRepository,
         private TaxonRepositoryInterface $taxonRepository,

@@ -20,6 +20,9 @@ use function sprintf;
 #[CoversClass(LocaleValidator::class)]
 final class LocaleValidatorTest extends ValidatorTestCase
 {
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface>
+     */
     private Stub&RepositoryInterface $localeRepositoryStub;
 
     protected function setUp(): void

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Repository;
 
 use Sylius\Component\Channel\Model\ChannelInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface as BaseProductRepositoryInterface;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface as BaseProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
 /**
- * @extends \Sylius\Component\Core\Repository\ProductRepositoryInterface<\Sylius\Component\Core\Model\ProductInterface>
+ * @extends \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface>
  */
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {

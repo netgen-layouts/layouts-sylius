@@ -22,6 +22,9 @@ final class ChannelTest extends TestCase
 {
     private Stub&ChannelContextInterface $channelContextStub;
 
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface>
+     */
     private Stub&ChannelRepositoryInterface $repositoryStub;
 
     private Channel $conditionType;

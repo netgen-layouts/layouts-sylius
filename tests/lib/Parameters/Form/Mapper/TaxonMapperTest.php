@@ -8,10 +8,10 @@ use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\Form\Mapper\TaxonMapper;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType as ParameterType;
+use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 #[CoversClass(TaxonMapper::class)]
 final class TaxonMapperTest extends TestCase

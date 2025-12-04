@@ -3,7 +3,7 @@ services:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\LatestProductsHandler
         arguments:
             - "@netgen_layouts.sylius.repository.product"
-            - "@sylius.repository.taxon"
+            - "@netgen_layouts.sylius.repository.taxon"
             - "@sylius.context.channel"
             - "@request_stack"
         tags:
@@ -13,7 +13,7 @@ services:
         class: Netgen\Layouts\Sylius\Collection\QueryType\Handler\TaxonProductsHandler
         arguments:
             - "@netgen_layouts.sylius.repository.product"
-            - "@sylius.repository.taxon"
+            - "@netgen_layouts.sylius.repository.taxon"
             - "@sylius.context.channel"
             - "@request_stack"
         tags:

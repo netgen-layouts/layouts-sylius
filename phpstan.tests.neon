@@ -9,8 +9,10 @@ includes:
 
 parameters:
     ignoreErrors:
-        - '#Property .+::\$\w+Stub with generic interface .+ does not specify its types: T#'
-
         # Disable errors about missing value types in PHPUnit data providers
 
         - '#Method .+Test::\w+DataProvider\(\) return type has no value type specified in iterable type iterable.#'
+
+        # Integration specifics
+
+        - '#Method Netgen\\Layouts\\Sylius\\Tests\\Validator\\RepositoryValidatorFactory::__construct\(\) has parameter \$repository with generic interface#'

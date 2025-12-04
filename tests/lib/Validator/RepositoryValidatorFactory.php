@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Validator;
 
+use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
+use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Validator\ChannelValidator;
 use Netgen\Layouts\Sylius\Validator\LocaleValidator;
 use Netgen\Layouts\Sylius\Validator\ProductValidator;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
@@ -21,9 +21,6 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 
-    /**
-     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Resource\Model\ResourceInterface> $repository
-     */
     public function __construct(
         private RepositoryInterface $repository,
     ) {

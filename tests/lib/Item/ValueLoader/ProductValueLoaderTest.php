@@ -6,11 +6,11 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueLoader;
 
 use Exception;
 use Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader;
+use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 #[CoversClass(ProductValueLoader::class)]
 final class ProductValueLoaderTest extends TestCase

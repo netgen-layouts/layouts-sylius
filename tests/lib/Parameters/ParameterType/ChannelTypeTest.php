@@ -22,6 +22,9 @@ final class ChannelTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface>
+     */
     private Stub&ChannelRepositoryInterface $repositoryStub;
 
     protected function setUp(): void

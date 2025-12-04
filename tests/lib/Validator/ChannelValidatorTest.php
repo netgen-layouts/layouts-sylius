@@ -20,6 +20,9 @@ use function sprintf;
 #[CoversClass(ChannelValidator::class)]
 final class ChannelValidatorTest extends ValidatorTestCase
 {
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface>
+     */
     private Stub&ChannelRepositoryInterface $repositoryStub;
 
     protected function setUp(): void

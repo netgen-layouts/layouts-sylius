@@ -8,10 +8,10 @@ use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\Form\Mapper\ProductMapper;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType as ParameterType;
+use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 #[CoversClass(ProductMapper::class)]
 final class ProductMapperTest extends TestCase

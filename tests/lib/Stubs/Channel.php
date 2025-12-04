@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Stubs;
 
-use Sylius\Component\Core\Model\Channel as BaseChannel;
+use Sylius\Component\Channel\Model\Channel as BaseChannel;
 
 final class Channel extends BaseChannel
 {
