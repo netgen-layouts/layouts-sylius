@@ -36,8 +36,8 @@ final class ProductTest extends TargetHandlerTestBase
         return new Product();
     }
 
-    protected function insertDatabaseFixtures(string $fixturesPath): void
+    protected function provideFixturesPath(): string
     {
-        parent::insertDatabaseFixtures(__DIR__ . '/../../../../../_fixtures/data.php');
+        return __DIR__ . '/../../../../../_fixtures';
     }
 }
