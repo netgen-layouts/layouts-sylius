@@ -10,6 +10,7 @@ use Netgen\Layouts\View\Provider\ViewProviderInterface;
 use Netgen\Layouts\View\ViewInterface;
 use Sylius\Resource\Model\ResourceInterface;
 
+use function array_key_exists;
 use function is_string;
 
 /**
@@ -19,7 +20,7 @@ final class SyliusResourceViewProvider implements ViewProviderInterface
 {
     public function provideView(mixed $value, array $parameters = []): ViewInterface
     {
-        if (!isset($parameters['view_type'])) {
+        if (!array_key_exists('view_type', $parameters)) {
             throw ViewProviderException::noParameter('sylius_resource', 'view_type');
         }
 
