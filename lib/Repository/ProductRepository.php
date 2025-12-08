@@ -92,7 +92,7 @@ final class ProductRepository extends BaseProductRepository implements ProductRe
     /**
      * @param array<string, string> $sorting
      */
-    public function createByTaxonQueryBuilder(
+    private function createByTaxonQueryBuilder(
         ChannelInterface $channel,
         ?TaxonInterface $taxon,
         string $locale,
