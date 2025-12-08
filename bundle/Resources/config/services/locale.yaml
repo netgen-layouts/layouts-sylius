@@ -1,8 +1,6 @@
 services:
-    netgen_layouts.locale.provider:
-        alias: netgen_layouts.sylius.locale.provider
-
     netgen_layouts.sylius.locale.provider:
         class: Netgen\Layouts\Sylius\Locale\LocaleProvider
+        decorates: netgen_layouts.locale.provider
         arguments:
             - "@sylius.provider.locale"
