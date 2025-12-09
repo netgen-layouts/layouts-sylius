@@ -31,7 +31,7 @@ final class ChannelTypeTest extends TestCase
     {
         $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
 
-        $this->type = new ChannelType($this->repositoryStub);
+        $this->type = new ChannelType();
     }
 
     public function testGetIdentifier(): void
@@ -160,20 +160,5 @@ final class ChannelTypeTest extends TestCase
             [null, true],
             [new ChannelStub(42, 'WEBSHOP', 'Webshop'), false],
         ];
-    }
-
-    public function testGetValueObject(): void
-    {
-        $stub = new ChannelStub(1, 'test', 'test');
-
-        $this->repositoryStub
-            ->method('find')
-            ->with(self::identicalTo(1))
-            ->willReturn($stub);
-
-        /** @var \Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType $type */
-        $type = $this->type;
-
-        self::assertSame($stub, $type->getValueObject(1));
     }
 }

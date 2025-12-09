@@ -60,7 +60,7 @@ final class ChannelMapperTest extends TestCase
             $this->mapper->mapOptions(
                 ParameterDefinition::fromArray(
                     [
-                        'type' => new ParameterType($this->repositoryStub),
+                        'type' => new ParameterType(),
                         'options' => [
                             'multiple' => false,
                         ],
