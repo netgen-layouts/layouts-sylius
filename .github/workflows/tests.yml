@@ -17,7 +17,7 @@ jobs:
       matrix:
         php: ['8.4']
         symfony: ['~7.4.0']
-        deps: ['latest']
+        deps: ['highest']
         include:
           - php: '8.4'
             symfony: '~7.4.0'
@@ -40,12 +40,9 @@ jobs:
 
       - run: composer config extra.symfony.require ${{ matrix.symfony }}
 
-      -
-        run: composer update --prefer-dist
-        if: ${{ matrix.deps == 'latest' }}
-
-      -
-        run: composer update --prefer-dist --prefer-lowest --prefer-stable
-        if: ${{ matrix.deps == 'lowest' }}
+      - uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: ${{ matrix.deps }}
+          composer-options: '--prefer-dist'
 
       - run: composer test
