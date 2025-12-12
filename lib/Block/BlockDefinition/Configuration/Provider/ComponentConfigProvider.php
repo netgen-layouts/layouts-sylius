@@ -13,10 +13,7 @@ use function array_combine;
 use function array_map;
 use function array_unique;
 use function in_array;
-use function mb_strtolower;
-use function mb_trim;
-use function preg_replace;
-use function ucwords;
+use function Symfony\Component\String\u;
 
 final class ComponentConfigProvider implements ConfigProviderInterface
 {
@@ -80,10 +77,10 @@ final class ComponentConfigProvider implements ConfigProviderInterface
         return array_combine(
             $validViews,
             array_map(
-                fn (string $view): ViewType => ViewType::fromArray(
+                static fn (string $view): ViewType => ViewType::fromArray(
                     [
                         'identifier' => $view,
-                        'name' => $this->humanize($view),
+                        'name' => u($view)->title(true)->toString(),
                         'itemViewTypes' => [
                             'standard' => ItemViewType::fromArray(
                                 [
@@ -98,13 +95,5 @@ final class ComponentConfigProvider implements ConfigProviderInterface
                 $validViews,
             ),
         );
-    }
-
-    /**
-     * Returns the human-readable version of the provided string.
-     */
-    private function humanize(string $text): string
-    {
-        return ucwords(mb_strtolower(mb_trim(preg_replace(['/([A-Z])/', '/[_\s]+/'], ['_$1', ' '], $text) ?? '')));
     }
 }
