@@ -14,10 +14,10 @@ use function ucfirst;
 final class ResourceType extends Mapper
 {
     /**
-     * @param array<string, string> $allowedResources
+     * @param array<string, string> $allowedResourceTypes
      */
     public function __construct(
-        private array $allowedResources,
+        private array $allowedResourceTypes,
     ) {}
 
     public function getFormType(): string
@@ -28,7 +28,7 @@ final class ResourceType extends Mapper
     public function getFormOptions(): array
     {
         return [
-            'choices' => array_values($this->allowedResources),
+            'choices' => array_values($this->allowedResourceTypes),
             'choice_label' => fn (string $type): string => $this->humanizeType($type),
             'choice_translation_domain' => false,
             'multiple' => true,

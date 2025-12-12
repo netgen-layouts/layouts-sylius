@@ -29,15 +29,15 @@ final class Page extends Mapper
     {
         return [
             'choices' => array_values($this->allowedPages),
-            'choice_label' => fn (string $type): string => $this->humanizePage($type),
+            'choice_label' => fn (string $page): string => $this->humanizePage($page),
             'choice_translation_domain' => false,
             'multiple' => false,
             'expanded' => false,
         ];
     }
 
-    private function humanizePage(string $allowedPages): string
+    private function humanizePage(string $page): string
     {
-        return ucfirst(str_replace(['-', '_'], ' ', $allowedPages));
+        return ucfirst(str_replace(['-', '_'], ' ', $page));
     }
 }
