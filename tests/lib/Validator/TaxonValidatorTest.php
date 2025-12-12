@@ -29,13 +29,6 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->constraint = new Taxon();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
-
-        return new TaxonValidator($this->repositoryStub);
-    }
-
     public function testValidateValid(): void
     {
         $this->repositoryStub
@@ -76,5 +69,12 @@ final class TaxonValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "scalar", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
+
+        return new TaxonValidator($this->repositoryStub);
     }
 }

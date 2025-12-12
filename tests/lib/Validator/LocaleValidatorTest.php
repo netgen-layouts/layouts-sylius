@@ -32,13 +32,6 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $this->constraint = new Locale();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $this->localeRepositoryStub = self::createStub(RepositoryInterface::class);
-
-        return new LocaleValidator($this->localeRepositoryStub);
-    }
-
     public function testValidateValid(): void
     {
         $locale = new LocaleStub(1, 'en_US');
@@ -81,5 +74,12 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "string", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $this->localeRepositoryStub = self::createStub(RepositoryInterface::class);
+
+        return new LocaleValidator($this->localeRepositoryStub);
     }
 }

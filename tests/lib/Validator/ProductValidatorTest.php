@@ -29,13 +29,6 @@ final class ProductValidatorTest extends ValidatorTestCase
         $this->constraint = new Product();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $this->repositoryStub = self::createStub(ProductRepositoryInterface::class);
-
-        return new ProductValidator($this->repositoryStub);
-    }
-
     public function testValidateValid(): void
     {
         $this->repositoryStub
@@ -76,5 +69,12 @@ final class ProductValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "scalar", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $this->repositoryStub = self::createStub(ProductRepositoryInterface::class);
+
+        return new ProductValidator($this->repositoryStub);
     }
 }

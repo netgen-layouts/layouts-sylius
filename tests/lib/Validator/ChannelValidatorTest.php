@@ -32,13 +32,6 @@ final class ChannelValidatorTest extends ValidatorTestCase
         $this->constraint = new Channel();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
-
-        return new ChannelValidator($this->repositoryStub);
-    }
-
     public function testValidateValid(): void
     {
         $this->repositoryStub
@@ -79,5 +72,12 @@ final class ChannelValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "numeric", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
+
+        return new ChannelValidator($this->repositoryStub);
     }
 }

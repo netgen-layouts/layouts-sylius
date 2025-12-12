@@ -26,16 +26,6 @@ final class ResourceTypeValidatorTest extends ValidatorTestCase
         $this->constraint = new ResourceType();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $allowedResources = [
-            ProductInterface::class => 'product',
-            TaxonInterface::class => 'taxon',
-        ];
-
-        return new ResourceTypeValidator($allowedResources);
-    }
-
     public function testValidateValid(): void
     {
         $this->assertValid(true, 'product');
@@ -67,5 +57,15 @@ final class ResourceTypeValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "string", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $allowedResources = [
+            ProductInterface::class => 'product',
+            TaxonInterface::class => 'taxon',
+        ];
+
+        return new ResourceTypeValidator($allowedResources);
     }
 }

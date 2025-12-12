@@ -24,18 +24,6 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->constraint = new Page();
     }
 
-    public function getValidator(): ConstraintValidatorInterface
-    {
-        $allowedPages = [
-            'sylius_shop_homepage' => 'homepage',
-            'sylius_shop_cart_summary' => 'cart_summary',
-            'sylius_shop_order_thank_you' => 'order_thank_you',
-            'sylius_shop_order_show' => 'order_show',
-        ];
-
-        return new PageValidator($allowedPages);
-    }
-
     public function testValidateValid(): void
     {
         $this->assertValid(true, 'homepage');
@@ -67,5 +55,17 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->expectExceptionMessage('Expected argument of type "string", "array" given');
 
         $this->assertValid(true, []);
+    }
+
+    protected function getValidator(): ConstraintValidatorInterface
+    {
+        $allowedPages = [
+            'sylius_shop_homepage' => 'homepage',
+            'sylius_shop_cart_summary' => 'cart_summary',
+            'sylius_shop_order_thank_you' => 'order_thank_you',
+            'sylius_shop_order_show' => 'order_show',
+        ];
+
+        return new PageValidator($allowedPages);
     }
 }
