@@ -39,9 +39,6 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
         );
     }
 
-    /**
-     * @return \Sylius\Component\Taxonomy\Model\TaxonInterface[]
-     */
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
         $currentRequest = $this->requestStack->getCurrentRequest();
