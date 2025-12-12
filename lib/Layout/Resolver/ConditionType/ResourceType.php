@@ -13,7 +13,6 @@ use function array_any;
 use function array_filter;
 use function array_flip;
 use function array_map;
-use function is_a;
 
 final class ResourceType extends ConditionType
 {
@@ -53,7 +52,7 @@ final class ResourceType extends ConditionType
 
         return array_any(
             $allowedClasses,
-            static fn (string $allowedClass): bool => is_a($resource, $allowedClass),
+            static fn (string $allowedClass): bool => $resource instanceof $allowedClass,
         );
     }
 }
