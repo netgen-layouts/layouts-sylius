@@ -12,17 +12,14 @@ use Netgen\Layouts\Sylius\Component\ComponentId;
 use Netgen\Layouts\Sylius\Component\ComponentInterface;
 use Pagerfanta\PagerfantaInterface;
 use ReflectionClass;
-use Sylius\Bundle\ResourceBundle\Doctrine\ORM\ResourceRepositoryTrait;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\CreatePaginatorTrait;
 
 use function is_a;
 use function sprintf;
 
-/**
- * @extends \Doctrine\ORM\EntityRepository<\Netgen\Layouts\Sylius\Component\ComponentInterface>
- */
-final class ComponentRepository extends EntityRepository implements ComponentRepositoryInterface
+final class ComponentRepository implements ComponentRepositoryInterface
 {
-    use ResourceRepositoryTrait;
+    use CreatePaginatorTrait;
 
     /**
      * @var array<string, \Doctrine\ORM\EntityRepository<\Netgen\Layouts\Sylius\Component\ComponentInterface>>
@@ -30,18 +27,9 @@ final class ComponentRepository extends EntityRepository implements ComponentRep
     private array $componentRepositories = [];
 
     public function __construct(
-        EntityManagerInterface $entityManager,
+        private EntityManagerInterface $entityManager,
     ) {
-        foreach ($entityManager->getMetadataFactory()->getAllMetadata() as $metadata) {
-            $class = $metadata->getName();
-            $reflectionClass = new ReflectionClass($class);
-
-            if (!is_a($class, ComponentInterface::class, true) || $reflectionClass->isAbstract()) {
-                continue;
-            }
-
-            $this->componentRepositories[$class::getIdentifier()] = $entityManager->getRepository($class);
-        }
+        $this->buildRepositories($this->entityManager);
     }
 
     public function load(ComponentId $componentId): ?ComponentInterface
@@ -79,6 +67,19 @@ final class ComponentRepository extends EntityRepository implements ComponentRep
             ->setParameter('search', '%' . $searchText . '%');
 
         return $queryBuilder;
+    }
+
+    private function buildRepositories(EntityManagerInterface $entityManager): void
+    {
+        foreach ($entityManager->getMetadataFactory()->getAllMetadata() as $metadata) {
+            $class = $metadata->name;
+
+            if (!is_a($class, ComponentInterface::class, true) || new ReflectionClass($class)->isAbstract()) {
+                continue;
+            }
+
+            $this->componentRepositories[$class::getIdentifier()] = $entityManager->getRepository($class);
+        }
     }
 
     /**

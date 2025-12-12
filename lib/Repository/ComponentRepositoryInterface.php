@@ -7,12 +7,8 @@ namespace Netgen\Layouts\Sylius\Repository;
 use Netgen\Layouts\Sylius\Component\ComponentId;
 use Netgen\Layouts\Sylius\Component\ComponentInterface;
 use Pagerfanta\PagerfantaInterface;
-use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 
-/**
- * @extends \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Netgen\Layouts\Sylius\Component\ComponentInterface>
- */
-interface ComponentRepositoryInterface extends RepositoryInterface
+interface ComponentRepositoryInterface
 {
     /**
      * Loads a component with given ID.
