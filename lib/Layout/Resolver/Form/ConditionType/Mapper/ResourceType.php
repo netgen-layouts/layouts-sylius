@@ -29,7 +29,7 @@ final class ResourceType extends Mapper
     {
         return [
             'choices' => array_values($this->allowedResourceTypes),
-            'choice_label' => fn (string $type): string => $this->humanizeType($type),
+            'choice_label' => $this->humanizeType(...),
             'choice_translation_domain' => false,
             'multiple' => true,
             'expanded' => true,

@@ -10,7 +10,6 @@ use Netgen\Layouts\Sylius\Block\BlockDefinition\Handler\ComponentHandler;
 use Netgen\Layouts\Sylius\Component\ComponentId;
 use Netgen\Layouts\Sylius\Component\ComponentInterface;
 use Netgen\Layouts\Sylius\Repository\ComponentRepositoryInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -21,7 +20,7 @@ final class ConnectComponent extends Controller
         private ComponentRepositoryInterface $componentRepository,
     ) {}
 
-    public function __invoke(Request $request, Block $block, string $componentIdentifier, int $componentId): Response
+    public function __invoke(Block $block, string $componentIdentifier, int $componentId): Response
     {
         if (!$block->definition->handler instanceof ComponentHandler) {
             throw new BadRequestHttpException();

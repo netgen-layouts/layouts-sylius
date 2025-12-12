@@ -29,7 +29,7 @@ final class Page extends Mapper
     {
         return [
             'choices' => array_values($this->allowedPages),
-            'choice_label' => fn (string $page): string => $this->humanizePage($page),
+            'choice_label' => $this->humanizePage(...),
             'choice_translation_domain' => false,
             'multiple' => false,
             'expanded' => false,
