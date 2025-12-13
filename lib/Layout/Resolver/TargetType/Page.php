@@ -34,7 +34,7 @@ final class Page extends TargetType
 
     public function provideValue(Request $request): ?string
     {
-        $route = $request->attributes->get('_route');
+        $route = $request->attributes->getString('_route');
 
         return $this->availablePages[$route] ?? null;
     }
