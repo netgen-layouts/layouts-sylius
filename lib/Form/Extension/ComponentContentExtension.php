@@ -15,7 +15,7 @@ final class ComponentContentExtension extends AbstractTypeExtension
 {
     public static function getExtendedTypes(): iterable
     {
-        return [ContentBrowserType::class];
+        yield ContentBrowserType::class;
     }
 
     public function buildView(FormView $view, FormInterface $form, array $options): void
