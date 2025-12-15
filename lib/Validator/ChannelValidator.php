@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-use function is_numeric;
+use function is_int;
 
 final class ChannelValidator extends ConstraintValidator
 {
@@ -32,8 +32,8 @@ final class ChannelValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, Channel::class);
         }
 
-        if (!is_numeric($value)) {
-            throw new UnexpectedTypeException($value, 'numeric');
+        if (!is_int($value)) {
+            throw new UnexpectedTypeException($value, 'int');
         }
 
         $channel = $this->channelRepository->find($value);

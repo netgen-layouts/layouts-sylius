@@ -32,7 +32,7 @@ final class Channel extends ConditionType
             new Constraints\NotBlank(),
             new Constraints\All(
                 constraints: [
-                    new Constraints\Type(type: 'numeric'),
+                    new Constraints\Type(type: 'int'),
                     new Constraints\Positive(),
                     new SyliusConstraints\Channel(),
                 ],
