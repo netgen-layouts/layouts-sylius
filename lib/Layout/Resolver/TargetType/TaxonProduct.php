@@ -30,7 +30,7 @@ final class TaxonProduct extends TargetType implements ValueObjectProviderInterf
     {
         return [
             new Constraints\NotBlank(),
-            new Constraints\Type(type: 'numeric'),
+            new Constraints\Type(type: 'int'),
             new Constraints\Positive(),
             new SyliusConstraints\Taxon(),
         ];

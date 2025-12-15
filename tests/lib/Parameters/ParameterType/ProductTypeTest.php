@@ -36,6 +36,16 @@ final class ProductTypeTest extends TestCase
         self::assertSame('sylius_product', $this->type::getIdentifier());
     }
 
+    public function testFromHash(): void
+    {
+        self::assertSame(42, $this->type->fromHash(new ParameterDefinition(), '42'));
+    }
+
+    public function testFromHashWithNullValue(): void
+    {
+        self::assertNull($this->type->fromHash(new ParameterDefinition(), null));
+    }
+
     /**
      * @param mixed[] $options
      * @param mixed[] $resolvedOptions

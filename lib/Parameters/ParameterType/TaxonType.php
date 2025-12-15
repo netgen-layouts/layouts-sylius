@@ -26,6 +26,11 @@ final class TaxonType extends ParameterType implements ValueObjectProviderInterf
         return 'sylius_taxon';
     }
 
+    public function fromHash(ParameterDefinition $parameterDefinition, mixed $value): ?int
+    {
+        return $value !== null ? (int) $value : null;
+    }
+
     public function getValueObject(mixed $value): ?TaxonInterface
     {
         return $this->taxonRepository->find($value);
@@ -34,7 +39,7 @@ final class TaxonType extends ParameterType implements ValueObjectProviderInterf
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
         return [
-            new Constraints\Type(type: 'numeric'),
+            new Constraints\Type(type: 'int'),
             new Constraints\Positive(),
             new SyliusConstraints\Taxon(),
         ];

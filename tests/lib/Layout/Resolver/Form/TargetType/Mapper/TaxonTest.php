@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
-use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
+use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
 use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -21,7 +21,7 @@ final class TaxonTest extends TestCase
 
     public function testGetFormType(): void
     {
-        self::assertSame(ContentBrowserType::class, $this->mapper->getFormType());
+        self::assertSame(ContentBrowserIntegerType::class, $this->mapper->getFormType());
     }
 
     public function testGetFormOptions(): void

@@ -16,6 +16,7 @@ use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+use function is_int;
 use function mb_trim;
 
 final class TaxonProductsHandler implements QueryTypeHandlerInterface
@@ -137,7 +138,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         }
 
         $parentTaxonId = $query->getParameter('parent_taxon_id')->value;
-        if (mb_trim($parentTaxonId ?? '') === '') {
+        if (!is_int($parentTaxonId)) {
             return null;
         }
 

@@ -26,6 +26,11 @@ final class ProductType extends ParameterType implements ValueObjectProviderInte
         return 'sylius_product';
     }
 
+    public function fromHash(ParameterDefinition $parameterDefinition, mixed $value): ?int
+    {
+        return $value !== null ? (int) $value : null;
+    }
+
     public function getValueObject(mixed $value): ?ProductInterface
     {
         return $this->productRepository->find($value);
@@ -34,7 +39,7 @@ final class ProductType extends ParameterType implements ValueObjectProviderInte
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
     {
         return [
-            new Constraints\Type(type: 'numeric'),
+            new Constraints\Type(type: 'int'),
             new Constraints\Positive(),
             new SyliusConstraints\Product(),
         ];

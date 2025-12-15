@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper;
 
-use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
+use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
 use Netgen\Layouts\Layout\Resolver\Form\TargetType\Mapper;
 
 final class TaxonProduct extends Mapper
 {
     public function getFormType(): string
     {
-        return ContentBrowserType::class;
+        return ContentBrowserIntegerType::class;
     }
 
     public function getFormOptions(): array
