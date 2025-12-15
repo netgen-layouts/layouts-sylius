@@ -11,7 +11,7 @@ use function array_values;
 use function str_replace;
 use function ucfirst;
 
-final class ResourceType extends Mapper
+final class ResourceTypeMapper extends Mapper
 {
     /**
      * @param array<string, string> $allowedResourceTypes

@@ -8,7 +8,7 @@ use Netgen\Layouts\Layout\Resolver\Form\ConditionType\Mapper;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-final class Channel extends Mapper
+final class ChannelMapper extends Mapper
 {
     /**
      * @param \Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface> $channelRepository

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
-use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Page;
+use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\PageMapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-#[CoversClass(Page::class)]
-final class PageTest extends TestCase
+#[CoversClass(PageMapper::class)]
+final class PageMapperTest extends TestCase
 {
-    private Page $mapper;
+    private PageMapper $mapper;
 
     protected function setUp(): void
     {
@@ -23,7 +23,7 @@ final class PageTest extends TestCase
             'sylius_shop_order_show' => 'order_show',
         ];
 
-        $this->mapper = new Page($allowedPages);
+        $this->mapper = new PageMapper($allowedPages);
     }
 
     public function testGetFormType(): void

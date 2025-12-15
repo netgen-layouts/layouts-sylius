@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\TargetType\Mapper;
 
 use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
-use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonTree;
+use Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProductMapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(TaxonTree::class)]
-final class TaxonTreeTest extends TestCase
+#[CoversClass(TaxonProductMapper::class)]
+final class TaxonProductMapperTest extends TestCase
 {
-    private TaxonTree $mapper;
+    private TaxonProductMapper $mapper;
 
     protected function setUp(): void
     {
-        $this->mapper = new TaxonTree();
+        $this->mapper = new TaxonProductMapper();
     }
 
     public function testGetFormType(): void

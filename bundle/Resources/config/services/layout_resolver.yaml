@@ -7,7 +7,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 170 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.product:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Product
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\ProductMapper
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_product }
 
@@ -24,7 +24,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 160 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon_product:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProduct
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonProductMapper
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_taxon_product }
 
@@ -41,7 +41,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 150 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Taxon
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonMapper
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_taxon }
 
@@ -58,7 +58,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 140 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.taxon_tree:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonTree
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\TaxonTreeMapper
         tags:
             - { name: netgen_layouts.target_type.form_mapper, target_type: sylius_taxon_tree }
 
@@ -75,7 +75,7 @@ services:
             - { name: netgen_layouts.target_type, priority: 130 }
 
     netgen_layouts.sylius.layout_resolver.target_type.form_mapper.page:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\Page
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper\PageMapper
         arguments:
             - "%netgen_layouts.sylius.target.pages%"
         tags:
@@ -94,7 +94,7 @@ services:
             - { name: netgen_layouts.condition_type }
 
     netgen_layouts.sylius.layout_resolver.condition_type.form_mapper.channel:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ChannelMapper
         arguments:
             - "@sylius.repository.channel"
         tags:
@@ -106,7 +106,7 @@ services:
             - { name: netgen_layouts.condition_type }
 
     netgen_layouts.sylius.layout_resolver.condition_type.form_mapper.locale:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Locale
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\LocaleMapper
         arguments:
             - "@sylius.repository.locale"
         tags:
@@ -120,7 +120,7 @@ services:
             - { name: netgen_layouts.condition_type }
 
     netgen_layouts.sylius.layout_resolver.condition_type.form_mapper.resource_type:
-        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ResourceType
+        class: Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ResourceTypeMapper
         arguments:
             - "%netgen_layouts.sylius.condition.resource_types%"
         tags:

@@ -8,7 +8,7 @@ use Netgen\Layouts\Layout\Resolver\Form\ConditionType\Mapper;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-final class Locale extends Mapper
+final class LocaleMapper extends Mapper
 {
     /**
      * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Component\Locale\Model\LocaleInterface> $localeRepository

@@ -11,7 +11,7 @@ use function array_values;
 use function str_replace;
 use function ucfirst;
 
-final class Page extends Mapper
+final class PageMapper extends Mapper
 {
     /**
      * @param array<string, string> $allowedPages

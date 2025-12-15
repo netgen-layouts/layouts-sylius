@@ -7,7 +7,7 @@ namespace Netgen\Layouts\Sylius\Layout\Resolver\Form\TargetType\Mapper;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserIntegerType;
 use Netgen\Layouts\Layout\Resolver\Form\TargetType\Mapper;
 
-final class Taxon extends Mapper
+final class ProductMapper extends Mapper
 {
     public function getFormType(): string
     {
@@ -17,7 +17,7 @@ final class Taxon extends Mapper
     public function getFormOptions(): array
     {
         return [
-            'item_type' => 'sylius_taxon',
+            'item_type' => 'sylius_product',
         ];
     }
 }

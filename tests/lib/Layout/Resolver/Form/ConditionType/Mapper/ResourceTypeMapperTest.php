@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\ConditionType\Mapper;
 
-use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ResourceType;
+use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ResourceTypeMapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Model\Product;
@@ -13,10 +13,10 @@ use Sylius\Component\Taxonomy\Model\Taxon;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-#[CoversClass(ResourceType::class)]
-final class ResourceTypeTest extends TestCase
+#[CoversClass(ResourceTypeMapper::class)]
+final class ResourceTypeMapperTest extends TestCase
 {
-    private ResourceType $mapper;
+    private ResourceTypeMapper $mapper;
 
     protected function setUp(): void
     {
@@ -27,7 +27,7 @@ final class ResourceTypeTest extends TestCase
             Taxon::class => 'taxon_test',
         ];
 
-        $this->mapper = new ResourceType($allowedResources);
+        $this->mapper = new ResourceTypeMapper($allowedResources);
     }
 
     public function testGetFormType(): void

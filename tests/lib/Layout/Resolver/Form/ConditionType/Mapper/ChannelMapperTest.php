@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\Form\ConditionType\Mapper;
 
-use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\Channel;
+use Netgen\Layouts\Sylius\Layout\Resolver\Form\ConditionType\Mapper\ChannelMapper;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
@@ -12,21 +12,21 @@ use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-#[CoversClass(Channel::class)]
-final class ChannelTest extends TestCase
+#[CoversClass(ChannelMapper::class)]
+final class ChannelMapperTest extends TestCase
 {
     /**
      * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface>
      */
     private Stub&ChannelRepositoryInterface $channelRepositoryStub;
 
-    private Channel $mapper;
+    private ChannelMapper $mapper;
 
     protected function setUp(): void
     {
         $this->channelRepositoryStub = self::createStub(ChannelRepositoryInterface::class);
 
-        $this->mapper = new Channel(
+        $this->mapper = new ChannelMapper(
             $this->channelRepositoryStub,
         );
     }
