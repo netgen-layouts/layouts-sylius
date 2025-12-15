@@ -54,6 +54,6 @@ final class TaxonTree extends TargetType implements ValueObjectProviderInterface
 
     public function getValueObject(mixed $value): ?TaxonInterface
     {
-        return $this->taxonRepository->find($value);
+        return $this->taxonRepository->find((int) $value);
     }
 }

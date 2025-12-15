@@ -40,7 +40,7 @@ final class ComponentType extends ParameterType implements ValueObjectProviderIn
             return null;
         }
 
-        return $this->componentRepository->load(ComponentId::fromString($value));
+        return $this->componentRepository->load(ComponentId::fromString((string) $value));
     }
 
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array

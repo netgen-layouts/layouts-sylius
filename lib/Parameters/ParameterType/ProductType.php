@@ -33,7 +33,7 @@ final class ProductType extends ParameterType implements ValueObjectProviderInte
 
     public function getValueObject(mixed $value): ?ProductInterface
     {
-        return $this->productRepository->find($value);
+        return $this->productRepository->find((int) $value);
     }
 
     protected function getValueConstraints(ParameterDefinition $parameterDefinition, mixed $value): array
