@@ -44,5 +44,6 @@ jobs:
         with:
           dependency-versions: ${{ matrix.deps }}
           composer-options: '--prefer-dist'
+          ignore-cache: 'yes'
 
       - run: composer test
