@@ -32,10 +32,10 @@
         "allow-plugins": false
     },
     "scripts": {
-        "test": "@php vendor/bin/phpunit --colors=always",
-        "coverage": "@php -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit --coverage-html=coverage --colors=always",
-        "phpstan": "@php vendor/bin/phpstan analyse -c phpstan.neon --level=8 --ansi lib bundle",
-        "phpstan-tests": "@php vendor/bin/phpstan analyse -c phpstan.tests.neon --level=8 --ansi tests"
+        "test": "@php vendor/bin/phpunit -c phpunit.xml --colors=always",
+        "coverage": "@php -dzend_extension=xdebug.so -dxdebug.mode=coverage vendor/bin/phpunit -c phpunit.xml --coverage-html=coverage --colors=always",
+        "phpstan": "@php vendor/bin/phpstan analyse -c phpstan.neon --ansi",
+        "phpstan-tests": "@php vendor/bin/phpstan analyse -c phpstan.tests.neon --ansi"
     },
     "autoload": {
         "psr-4": {
