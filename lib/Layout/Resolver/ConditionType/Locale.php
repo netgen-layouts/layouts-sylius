@@ -31,10 +31,10 @@ final class Locale extends ConditionType
         ];
     }
 
-    public function matches(Request $request, mixed $value): bool
+    public function matches(Request $request, int|string|array $value): bool
     {
         $locale = $request->getLocale();
 
-        return in_array($locale, $value, true);
+        return in_array($locale, (array) $value, true);
     }
 }

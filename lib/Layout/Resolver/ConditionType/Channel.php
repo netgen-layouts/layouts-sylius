@@ -40,7 +40,7 @@ final class Channel extends ConditionType
         ];
     }
 
-    public function matches(Request $request, mixed $value): bool
+    public function matches(Request $request, int|string|array $value): bool
     {
         try {
             $channel = $this->channelContext->getChannel();

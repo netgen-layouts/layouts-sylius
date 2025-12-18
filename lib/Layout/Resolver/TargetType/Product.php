@@ -40,7 +40,7 @@ final class Product extends TargetType implements ValueObjectProviderInterface
         return $product instanceof ProductInterface ? $product->getId() : null;
     }
 
-    public function getValueObject(mixed $value): ?ProductInterface
+    public function getValueObject(int|string $value): ?ProductInterface
     {
         return $this->productRepository->find((int) $value);
     }

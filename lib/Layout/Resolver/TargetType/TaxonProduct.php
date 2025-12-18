@@ -52,7 +52,7 @@ final class TaxonProduct extends TargetType implements ValueObjectProviderInterf
         );
     }
 
-    public function getValueObject(mixed $value): ?TaxonInterface
+    public function getValueObject(int|string $value): ?TaxonInterface
     {
         return $this->taxonRepository->find((int) $value);
     }

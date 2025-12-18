@@ -43,7 +43,7 @@ final class Taxon extends TargetType implements ValueObjectProviderInterface
         return $taxon->getId();
     }
 
-    public function getValueObject(mixed $value): ?TaxonInterface
+    public function getValueObject(int|string $value): ?TaxonInterface
     {
         return $this->taxonRepository->find((int) $value);
     }

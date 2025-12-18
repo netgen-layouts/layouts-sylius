@@ -41,12 +41,12 @@ final class ResourceType extends ConditionType
         ];
     }
 
-    public function matches(Request $request, mixed $value): bool
+    public function matches(Request $request, int|string|array $value): bool
     {
         $resource = $request->attributes->get('nglayouts_sylius_resource');
 
         $allowedClasses = array_filter(
-            array_map(fn (string $type): ?string => array_flip($this->allowedResources)[$type] ?? null, $value),
+            array_map(fn (string $type): ?string => array_flip($this->allowedResources)[$type] ?? null, (array) $value),
             static fn (?string $value): bool => $value !== null,
         );
 
