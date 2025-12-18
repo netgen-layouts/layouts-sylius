@@ -8,16 +8,20 @@ use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Validator\ChannelValidator;
 use Netgen\Layouts\Sylius\Validator\LocaleValidator;
+use Netgen\Layouts\Sylius\Validator\PageValidator;
 use Netgen\Layouts\Sylius\Validator\ProductValidator;
+use Netgen\Layouts\Sylius\Validator\ResourceTypeValidator;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
+use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;
 use Symfony\Component\Validator\ConstraintValidatorFactoryInterface;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 
-final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
+final class ValidatorFactory implements ConstraintValidatorFactoryInterface
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 
@@ -45,6 +49,24 @@ final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInte
 
         if ($name === 'nglayouts_sylius_locale') {
             return new LocaleValidator($this->repository);
+        }
+
+        if ($name === 'nglayouts_sylius_resource_type') {
+            return new ResourceTypeValidator(
+                [
+                    ProductInterface::class => 'product',
+                    TaxonInterface::class => 'taxon',
+                ],
+            );
+        }
+
+        if ($name === 'nglayouts_sylius_page') {
+            return new PageValidator(
+                [
+                    'sylius_shop_homepage' => 'homepage',
+                    'sylius_shop_order_show' => 'order_show',
+                ],
+            );
         }
 
         return $this->baseValidatorFactory->getInstance($constraint);

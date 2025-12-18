@@ -7,7 +7,7 @@ namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ChannelType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
-use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -15,12 +15,12 @@ use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
-use Symfony\Component\Validator\Validation;
 
 #[CoversClass(ChannelType::class)]
 final class ChannelTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
+    use ValidatorTestCaseTrait;
 
     /**
      * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Channel\Repository\ChannelRepositoryInterface<\Sylius\Component\Channel\Model\ChannelInterface>
@@ -112,23 +112,21 @@ final class ChannelTypeTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
 
-        $parameter = $this->getParameterDefinition([], true);
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate([42], $this->type->getConstraints($parameter, 42));
+        $parameterDefinition = $this->getParameterDefinition([], true);
+
+        $errors = $validator->validate([42], $this->type->getConstraints($parameterDefinition, 42));
         self::assertCount(0, $errors);
     }
 
     public function testValidationValidWithNonRequiredValue(): void
     {
-        $parameter = $this->getParameterDefinition();
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
+        $parameterDefinition = $this->getParameterDefinition();
+
+        $errors = $validator->validate(null, $this->type->getConstraints($parameterDefinition, null));
         self::assertCount(0, $errors);
     }
 
@@ -139,12 +137,11 @@ final class ChannelTypeTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
-        $parameter = $this->getParameterDefinition([], true);
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate([42], $this->type->getConstraints($parameter, 42));
+        $parameterDefinition = $this->getParameterDefinition([], true);
+
+        $errors = $validator->validate([42], $this->type->getConstraints($parameterDefinition, 42));
         self::assertNotCount(0, $errors);
     }
 

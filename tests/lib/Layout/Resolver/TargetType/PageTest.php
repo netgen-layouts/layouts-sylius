@@ -5,32 +5,29 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Page;
-use Netgen\Layouts\Sylius\Tests\Validator\SettingsValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[CoversClass(Page::class)]
 final class PageTest extends TestCase
 {
-    private Page $targetType;
+    use ValidatorTestCaseTrait;
 
     private ValidatorInterface $validator;
+
+    private Page $targetType;
 
     protected function setUp(): void
     {
         $allowedPages = [
             'sylius_shop_homepage' => 'homepage',
-            'sylius_shop_cart_summary' => 'cart_summary',
-            'sylius_shop_order_thank_you' => 'order_thank_you',
             'sylius_shop_order_show' => 'order_show',
         ];
 
-        $this->validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new SettingsValidatorFactory($allowedPages))
-            ->getValidator();
+        $this->validator = $this->createValidator();
 
         $this->targetType = new Page($allowedPages);
     }

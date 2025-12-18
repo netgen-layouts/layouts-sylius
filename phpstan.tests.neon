@@ -11,4 +11,4 @@ parameters:
 
         # Netgen Layouts
 
-        - '#Method Netgen\\Layouts\\Sylius\\Tests\\Validator\\RepositoryValidatorFactory::__construct\(\) has parameter \$repository with generic interface#'
+        - '#has parameter \$repository with generic interface Sylius\\Resource\\Doctrine\\Persistence\\RepositoryInterface#'

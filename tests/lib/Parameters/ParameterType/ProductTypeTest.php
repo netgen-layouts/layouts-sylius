@@ -8,19 +8,19 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType;
 use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
-use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
-use Symfony\Component\Validator\Validation;
 
 #[CoversClass(ProductType::class)]
 final class ProductTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
+    use ValidatorTestCaseTrait;
 
     private Stub&ProductRepositoryInterface $repositoryStub;
 
@@ -96,23 +96,21 @@ final class ProductTypeTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(new ProductStub(42));
 
-        $parameter = $this->getParameterDefinition([], true);
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
+        $parameterDefinition = $this->getParameterDefinition([], true);
+
+        $errors = $validator->validate(42, $this->type->getConstraints($parameterDefinition, 42));
         self::assertCount(0, $errors);
     }
 
     public function testValidationValidWithNonRequiredValue(): void
     {
-        $parameter = $this->getParameterDefinition();
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
+        $parameterDefinition = $this->getParameterDefinition();
+
+        $errors = $validator->validate(null, $this->type->getConstraints($parameterDefinition, null));
         self::assertCount(0, $errors);
     }
 
@@ -123,12 +121,11 @@ final class ProductTypeTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
-        $parameter = $this->getParameterDefinition([], true);
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
+        $parameterDefinition = $this->getParameterDefinition([], true);
+
+        $errors = $validator->validate(42, $this->type->getConstraints($parameterDefinition, 42));
         self::assertNotCount(0, $errors);
     }
 

@@ -8,15 +8,13 @@ use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType;
 use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
-use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
-use Netgen\Layouts\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
-use Symfony\Component\Validator\Validation;
 
 #[CoversClass(TaxonType::class)]
 final class TaxonTypeTest extends TestCase
@@ -28,17 +26,6 @@ final class TaxonTypeTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->repositoryStub
-            ->method('find')
-            ->with(self::identicalTo(42))
-            ->willReturn(null);
-
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
-
-        $this->createValidator();
-
         $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
 
         $this->type = new TaxonType($this->repositoryStub);
@@ -109,31 +96,36 @@ final class TaxonTypeTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(new TaxonStub(42));
 
-        $parameter = $this->getParameterDefinition([], true);
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
+        $parameterDefinition = $this->getParameterDefinition([], true);
+
+        $errors = $validator->validate(42, $this->type->getConstraints($parameterDefinition, 42));
         self::assertCount(0, $errors);
     }
 
     public function testValidationValidWithNonRequiredValue(): void
     {
-        $parameter = $this->getParameterDefinition();
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
-        $errors = $validator->validate(null, $this->type->getConstraints($parameter, null));
+        $parameterDefinition = $this->getParameterDefinition();
+
+        $errors = $validator->validate(null, $this->type->getConstraints($parameterDefinition, null));
         self::assertCount(0, $errors);
     }
 
     public function testValidationInvalid(): void
     {
+        $this->repositoryStub
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(null);
+
+        $validator = $this->createValidator($this->repositoryStub);
+
         $parameterDefinition = $this->getParameterDefinition([], true);
 
-        $errors = $this->validator->validate(42, $this->type->getConstraints($parameterDefinition, 42));
+        $errors = $validator->validate(42, $this->type->getConstraints($parameterDefinition, 42));
         self::assertNotCount(0, $errors);
     }
 

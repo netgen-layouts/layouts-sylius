@@ -7,33 +7,32 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\ConditionType;
 use Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\ResourceType;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon;
-use Netgen\Layouts\Sylius\Tests\Validator\SettingsValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
-use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[CoversClass(ResourceType::class)]
 final class ResourceTypeTest extends TestCase
 {
-    private ResourceType $conditionType;
+    use ValidatorTestCaseTrait;
 
     private ValidatorInterface $validator;
 
+    private ResourceType $conditionType;
+
     protected function setUp(): void
     {
+        $this->validator = $this->createValidator();
+
         $allowedResources = [
             ProductInterface::class => 'product',
             TaxonInterface::class => 'taxon',
         ];
-
-        $this->validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new SettingsValidatorFactory($allowedResources))
-            ->getValidator();
 
         $this->conditionType = new ResourceType($allowedResources);
     }

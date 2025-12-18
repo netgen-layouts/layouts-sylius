@@ -7,16 +7,17 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product;
 use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
-use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Validation;
 
 #[CoversClass(Product::class)]
 final class ProductTest extends TestCase
 {
+    use ValidatorTestCaseTrait;
+
     private Stub&ProductRepositoryInterface $repositoryStub;
 
     private Product $targetType;
@@ -40,9 +41,7 @@ final class ProductTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(new ProductStub(42));
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
         self::assertCount(0, $errors);
@@ -55,9 +54,7 @@ final class ProductTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
         self::assertNotCount(0, $errors);

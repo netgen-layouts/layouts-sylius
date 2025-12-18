@@ -7,16 +7,17 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonTree;
 use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
-use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Validation;
 
 #[CoversClass(TaxonTree::class)]
 final class TaxonTreeTest extends TestCase
 {
+    use ValidatorTestCaseTrait;
+
     private Stub&TaxonRepositoryInterface $repositoryStub;
 
     private TaxonTree $targetType;
@@ -40,9 +41,7 @@ final class TaxonTreeTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(new TaxonStub(42));
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
         self::assertCount(0, $errors);
@@ -55,9 +54,7 @@ final class TaxonTreeTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate(42, $this->targetType->getConstraints());
         self::assertNotCount(0, $errors);

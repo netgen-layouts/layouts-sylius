@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\ConditionType;
 
 use Netgen\Layouts\Sylius\Layout\Resolver\ConditionType\Channel;
 use Netgen\Layouts\Sylius\Tests\Stubs\Channel as ChannelStub;
-use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
+use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
@@ -15,11 +15,12 @@ use Sylius\Component\Channel\Context\ChannelNotFoundException;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
-use Symfony\Component\Validator\Validation;
 
 #[CoversClass(Channel::class)]
 final class ChannelTest extends TestCase
 {
+    use ValidatorTestCaseTrait;
+
     private Stub&ChannelContextInterface $channelContextStub;
 
     /**
@@ -49,9 +50,7 @@ final class ChannelTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEB SHOP', 'Web shop'));
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate([42], $this->conditionType->getConstraints());
         self::assertCount(0, $errors);
@@ -64,9 +63,7 @@ final class ChannelTest extends TestCase
             ->with(self::identicalTo(42))
             ->willReturn(null);
 
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $errors = $validator->validate([42], $this->conditionType->getConstraints());
         self::assertCount(1, $errors);
@@ -74,9 +71,7 @@ final class ChannelTest extends TestCase
 
     public function testValidationInvalidValue(): void
     {
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
+        $validator = $this->createValidator($this->repositoryStub);
 
         $this->expectException(UnexpectedTypeException::class);
 
