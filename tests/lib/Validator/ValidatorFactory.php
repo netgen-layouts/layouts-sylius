@@ -25,6 +25,9 @@ final class ValidatorFactory implements ConstraintValidatorFactoryInterface
 {
     private ConstraintValidatorFactory $baseValidatorFactory;
 
+    /**
+     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<covariant \Sylius\Resource\Model\ResourceInterface> $repository
+     */
     public function __construct(
         private RepositoryInterface $repository,
     ) {

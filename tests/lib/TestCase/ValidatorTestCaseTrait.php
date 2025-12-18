@@ -11,6 +11,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 trait ValidatorTestCaseTrait
 {
+    /**
+     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<covariant \Sylius\Resource\Model\ResourceInterface>|null $repository
+     */
     private function createValidator(
         ?RepositoryInterface $repository = null,
     ): ValidatorInterface {

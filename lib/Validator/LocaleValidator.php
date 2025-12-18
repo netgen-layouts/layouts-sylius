@@ -16,7 +16,7 @@ use function is_string;
 final class LocaleValidator extends ConstraintValidator
 {
     /**
-     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<\Sylius\Resource\Model\ResourceInterface> $localeRepository
+     * @param \Sylius\Resource\Doctrine\Persistence\RepositoryInterface<covariant \Sylius\Resource\Model\ResourceInterface> $localeRepository
      */
     public function __construct(
         private RepositoryInterface $localeRepository,
