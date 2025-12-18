@@ -10,6 +10,7 @@ use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
+use Netgen\Layouts\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Stub;
@@ -21,11 +22,23 @@ use Symfony\Component\Validator\Validation;
 final class TaxonTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
+    use ValidatorTestCaseTrait;
 
     private Stub&TaxonRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
     {
+        $this->repositoryStub
+            ->method('find')
+            ->with(self::identicalTo(42))
+            ->willReturn(null);
+
+        $validator = Validation::createValidatorBuilder()
+            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
+            ->getValidator();
+
+        $this->createValidator();
+
         $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
 
         $this->type = new TaxonType($this->repositoryStub);
@@ -118,17 +131,9 @@ final class TaxonTypeTest extends TestCase
 
     public function testValidationInvalid(): void
     {
-        $this->repositoryStub
-            ->method('find')
-            ->with(self::identicalTo(42))
-            ->willReturn(null);
+        $parameterDefinition = $this->getParameterDefinition([], true);
 
-        $parameter = $this->getParameterDefinition([], true);
-        $validator = Validation::createValidatorBuilder()
-            ->setConstraintValidatorFactory(new RepositoryValidatorFactory($this->repositoryStub))
-            ->getValidator();
-
-        $errors = $validator->validate(42, $this->type->getConstraints($parameter, 42));
+        $errors = $this->validator->validate(42, $this->type->getConstraints($parameterDefinition, 42));
         self::assertNotCount(0, $errors);
     }
 

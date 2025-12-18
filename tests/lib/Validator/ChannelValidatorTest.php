@@ -74,7 +74,7 @@ final class ChannelValidatorTest extends ValidatorTestCase
         $this->assertValid(true, []);
     }
 
-    protected function getValidator(): ConstraintValidatorInterface
+    protected function getConstraintValidator(): ConstraintValidatorInterface
     {
         $this->repositoryStub = self::createStub(ChannelRepositoryInterface::class);
 

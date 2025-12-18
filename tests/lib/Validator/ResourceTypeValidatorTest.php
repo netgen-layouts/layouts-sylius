@@ -59,7 +59,7 @@ final class ResourceTypeValidatorTest extends ValidatorTestCase
         $this->assertValid(true, []);
     }
 
-    protected function getValidator(): ConstraintValidatorInterface
+    protected function getConstraintValidator(): ConstraintValidatorInterface
     {
         $allowedResources = [
             ProductInterface::class => 'product',

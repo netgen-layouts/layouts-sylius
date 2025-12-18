@@ -76,7 +76,7 @@ final class LocaleValidatorTest extends ValidatorTestCase
         $this->assertValid(true, []);
     }
 
-    protected function getValidator(): ConstraintValidatorInterface
+    protected function getConstraintValidator(): ConstraintValidatorInterface
     {
         $this->localeRepositoryStub = self::createStub(RepositoryInterface::class);
 

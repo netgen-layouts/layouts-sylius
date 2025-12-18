@@ -57,7 +57,7 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->assertValid(true, []);
     }
 
-    protected function getValidator(): ConstraintValidatorInterface
+    protected function getConstraintValidator(): ConstraintValidatorInterface
     {
         $allowedPages = [
             'sylius_shop_homepage' => 'homepage',
