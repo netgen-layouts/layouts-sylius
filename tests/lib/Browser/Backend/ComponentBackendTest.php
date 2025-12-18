@@ -41,10 +41,9 @@ final class ComponentBackendTest extends TestCase
             'sylius_component',
             'item_types.sylius_component',
             [],
-            [
-                'component_type' => 'component_stub',
-            ],
         );
+
+        $configuration->setParameter('component_type', 'component_stub');
 
         $this->backend = new ComponentBackend(
             $this->componentRepositoryStub,

@@ -12,6 +12,7 @@ use Netgen\Layouts\Block\BlockDefinition\Configuration\ViewType;
 use function array_combine;
 use function array_map;
 use function array_unique;
+use function array_values;
 use function in_array;
 use function Symfony\Component\String\u;
 
@@ -64,7 +65,7 @@ final class ComponentConfigProvider implements ConfigProviderInterface
             $viewTypes = [...$viewTypes, ...((array) ($config['match']['sylius_resource\view_type'] ?? []))];
         }
 
-        return array_unique($viewTypes);
+        return array_values(array_unique($viewTypes));
     }
 
     /**
