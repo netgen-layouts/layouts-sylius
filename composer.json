@@ -13,7 +13,7 @@
         "php": "^8.4",
         "netgen/layouts-core": "~2.0.0",
         "netgen/content-browser-sylius": "^2.0",
-        "doctrine/orm": "^3.5",
+        "doctrine/orm": "^3.6",
         "sylius/sylius": "^2.2",
         "sylius/resource-bundle": "^1.13",
         "jean85/pretty-package-versions": "^2.1"
