@@ -9,8 +9,9 @@ use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
+use Netgen\Layouts\Sylius\Service\TaxonServiceInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -19,8 +20,12 @@ use function mb_trim;
 
 final class TaxonsHandler implements QueryTypeHandlerInterface
 {
+    /**
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
+     */
     public function __construct(
         private TaxonRepositoryInterface $taxonRepository,
+        private TaxonServiceInterface $taxonService,
         private RequestStack $requestStack,
     ) {}
 
@@ -73,7 +78,7 @@ final class TaxonsHandler implements QueryTypeHandlerInterface
             return 0;
         }
 
-        return $this->taxonRepository->countTaxonChildren($taxon);
+        return $this->taxonService->countTaxonChildren($taxon);
     }
 
     public function isContextual(Query $query): bool

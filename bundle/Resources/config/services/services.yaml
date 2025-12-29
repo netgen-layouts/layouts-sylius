@@ -1,0 +1,8 @@
+services:
+    netgen_layouts.sylius.service.product:
+        class: Netgen\Layouts\Sylius\Service\ProductService
+        parent: sylius.repository.product
+
+    netgen_layouts.sylius.service.taxon:
+        class: Netgen\Layouts\Sylius\Service\TaxonService
+        parent: sylius.repository.taxon

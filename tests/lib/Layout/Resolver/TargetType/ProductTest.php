@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\Product;
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 #[CoversClass(Product::class)]
@@ -18,6 +18,9 @@ final class ProductTest extends TestCase
 {
     use ValidatorTestCaseTrait;
 
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface>
+     */
     private Stub&ProductRepositoryInterface $repositoryStub;
 
     private Product $targetType;

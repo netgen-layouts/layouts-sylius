@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Item\ValueLoader;
 
 use Netgen\Layouts\Item\ValueLoaderInterface;
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Throwable;
 
 final class ProductValueLoader implements ValueLoaderInterface
 {
+    /**
+     * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface> $productRepository
+     */
     public function __construct(
         private ProductRepositoryInterface $productRepository,
     ) {}

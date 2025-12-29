@@ -6,7 +6,6 @@ namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
@@ -14,6 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 
 #[CoversClass(TaxonType::class)]
@@ -22,6 +22,9 @@ final class TaxonTypeTest extends TestCase
     use ParameterTypeTestTrait;
     use ValidatorTestCaseTrait;
 
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface>
+     */
     private Stub&TaxonRepositoryInterface $repositoryStub;
 
     protected function setUp(): void

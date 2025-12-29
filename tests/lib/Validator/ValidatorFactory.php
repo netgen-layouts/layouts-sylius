@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\Tests\Validator;
 
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Validator\ChannelValidator;
 use Netgen\Layouts\Sylius\Validator\LocaleValidator;
 use Netgen\Layouts\Sylius\Validator\PageValidator;
@@ -14,7 +12,9 @@ use Netgen\Layouts\Sylius\Validator\ResourceTypeValidator;
 use Netgen\Layouts\Sylius\Validator\TaxonValidator;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorFactory;

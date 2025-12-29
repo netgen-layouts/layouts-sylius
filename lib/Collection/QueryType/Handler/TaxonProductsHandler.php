@@ -9,10 +9,10 @@ use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
+use Netgen\Layouts\Sylius\Service\ProductServiceInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -23,8 +23,11 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
 {
     private const int DEFAULT_LIMIT = 12;
 
+    /**
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
+     */
     public function __construct(
-        private ProductRepositoryInterface $productRepository,
+        private ProductServiceInterface $productService,
         private TaxonRepositoryInterface $taxonRepository,
         private ChannelContextInterface $channelContext,
         private RequestStack $requestStack,
@@ -90,7 +93,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
         /** @var string $sortDirection */
         $sortDirection = $query->getParameter('sort_direction')->value;
 
-        return $this->productRepository->findByChannelAndTaxon(
+        return $this->productService->findByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $parentTaxon,
             $currentRequest->getLocale(),
@@ -109,7 +112,7 @@ final class TaxonProductsHandler implements QueryTypeHandlerInterface
 
         $parentTaxon = $this->getParentTaxon($query);
 
-        return $this->productRepository->countByChannelAndTaxon(
+        return $this->productService->countByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $parentTaxon,
             $currentRequest->getLocale(),

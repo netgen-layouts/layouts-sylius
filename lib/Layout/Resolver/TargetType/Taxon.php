@@ -6,14 +6,17 @@ namespace Netgen\Layouts\Sylius\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Layout\Resolver\TargetType;
 use Netgen\Layouts\Layout\Resolver\ValueObjectProviderInterface;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
 
 final class Taxon extends TargetType implements ValueObjectProviderInterface
 {
+    /**
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
+     */
     public function __construct(
         private TaxonRepositoryInterface $taxonRepository,
     ) {}

@@ -1,12 +1,4 @@
 services:
-    netgen_layouts.sylius.repository.product:
-        class: Netgen\Layouts\Sylius\Repository\ProductRepository
-        parent: sylius.repository.product
-
-    netgen_layouts.sylius.repository.taxon:
-        class: Netgen\Layouts\Sylius\Repository\TaxonRepository
-        parent: sylius.repository.taxon
-
     netgen_layouts.sylius.repository.component:
         class: Netgen\Layouts\Sylius\Repository\ComponentRepository
         arguments:

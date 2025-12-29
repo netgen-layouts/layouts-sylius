@@ -7,9 +7,9 @@ namespace Netgen\Layouts\Sylius\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Parameters\ValueObjectProviderInterface;
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Validator\Constraint as SyliusConstraints;
 use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Validator\Constraints;
 
 /**
@@ -17,6 +17,9 @@ use Symfony\Component\Validator\Constraints;
  */
 final class ProductType extends ParameterType implements ValueObjectProviderInterface
 {
+    /**
+     * @param \Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface> $productRepository
+     */
     public function __construct(
         private ProductRepositoryInterface $productRepository,
     ) {}

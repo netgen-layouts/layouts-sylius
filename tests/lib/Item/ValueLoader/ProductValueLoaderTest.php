@@ -6,30 +6,33 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueLoader;
 
 use Exception;
 use Netgen\Layouts\Sylius\Item\ValueLoader\ProductValueLoader;
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Product;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 
 #[CoversClass(ProductValueLoader::class)]
 final class ProductValueLoaderTest extends TestCase
 {
-    private Stub&ProductRepositoryInterface $productRepositoryStub;
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface>
+     */
+    private Stub&ProductRepositoryInterface $repositoryStub;
 
     private ProductValueLoader $valueLoader;
 
     protected function setUp(): void
     {
-        $this->productRepositoryStub = self::createStub(ProductRepositoryInterface::class);
-        $this->valueLoader = new ProductValueLoader($this->productRepositoryStub);
+        $this->repositoryStub = self::createStub(ProductRepositoryInterface::class);
+        $this->valueLoader = new ProductValueLoader($this->repositoryStub);
     }
 
     public function testLoad(): void
     {
         $product = new Product(42, 'Product name');
 
-        $this->productRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($product);
@@ -39,7 +42,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadWithNoProduct(): void
     {
-        $this->productRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -49,7 +52,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadWithRepositoryException(): void
     {
-        $this->productRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -61,7 +64,7 @@ final class ProductValueLoaderTest extends TestCase
     {
         $product = new Product(42, 'Product name');
 
-        $this->productRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn($product);
@@ -71,7 +74,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithNoProduct(): void
     {
-        $this->productRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn(null);
@@ -81,7 +84,7 @@ final class ProductValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
-        $this->productRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willThrowException(new Exception());

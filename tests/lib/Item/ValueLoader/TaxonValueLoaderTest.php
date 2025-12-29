@@ -6,30 +6,33 @@ namespace Netgen\Layouts\Sylius\Tests\Item\ValueLoader;
 
 use Exception;
 use Netgen\Layouts\Sylius\Item\ValueLoader\TaxonValueLoader;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Item\Stubs\Taxon;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 #[CoversClass(TaxonValueLoader::class)]
 final class TaxonValueLoaderTest extends TestCase
 {
-    private Stub&TaxonRepositoryInterface $taxonRepositoryStub;
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface>
+     */
+    private Stub&TaxonRepositoryInterface $repositoryStub;
 
     private TaxonValueLoader $valueLoader;
 
     protected function setUp(): void
     {
-        $this->taxonRepositoryStub = self::createStub(TaxonRepositoryInterface::class);
-        $this->valueLoader = new TaxonValueLoader($this->taxonRepositoryStub);
+        $this->repositoryStub = self::createStub(TaxonRepositoryInterface::class);
+        $this->valueLoader = new TaxonValueLoader($this->repositoryStub);
     }
 
     public function testLoad(): void
     {
         $taxon = new Taxon(42, 'Taxon name');
 
-        $this->taxonRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($taxon);
@@ -39,7 +42,7 @@ final class TaxonValueLoaderTest extends TestCase
 
     public function testLoadWithNoTaxon(): void
     {
-        $this->taxonRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -49,7 +52,7 @@ final class TaxonValueLoaderTest extends TestCase
 
     public function testLoadWithRepositoryException(): void
     {
-        $this->taxonRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -61,7 +64,7 @@ final class TaxonValueLoaderTest extends TestCase
     {
         $taxon = new Taxon(42, 'Taxon name');
 
-        $this->taxonRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn($taxon);
@@ -71,7 +74,7 @@ final class TaxonValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithNoTaxon(): void
     {
-        $this->taxonRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willReturn(null);
@@ -81,7 +84,7 @@ final class TaxonValueLoaderTest extends TestCase
 
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
-        $this->taxonRepositoryStub
+        $this->repositoryStub
             ->method('find')
             ->with(self::identicalTo('abc'))
             ->willThrowException(new Exception());

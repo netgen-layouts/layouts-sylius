@@ -2,14 +2,14 @@ services:
     netgen_layouts.sylius.validator.product:
         class: Netgen\Layouts\Sylius\Validator\ProductValidator
         arguments:
-            - "@netgen_layouts.sylius.repository.product"
+            - "@sylius.repository.product"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_product }
 
     netgen_layouts.sylius.validator.taxon:
         class: Netgen\Layouts\Sylius\Validator\TaxonValidator
         arguments:
-            - "@netgen_layouts.sylius.repository.taxon"
+            - "@sylius.repository.taxon"
         tags:
             - { name: validator.constraint_validator, alias: nglayouts_sylius_taxon }
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\Tests\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Sylius\Layout\Resolver\TargetType\TaxonProduct;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\Stubs\Taxon as TaxonStub;
 use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
@@ -13,6 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Core\Model\ProductTaxon;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 #[CoversClass(TaxonProduct::class)]
@@ -20,6 +20,9 @@ final class TaxonProductTest extends TestCase
 {
     use ValidatorTestCaseTrait;
 
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface>
+     */
     private Stub&TaxonRepositoryInterface $repositoryStub;
 
     private TaxonProduct $targetType;

@@ -9,10 +9,10 @@ use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
-use Netgen\Layouts\Sylius\Repository\TaxonRepositoryInterface;
+use Netgen\Layouts\Sylius\Service\ProductServiceInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -23,8 +23,11 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
 {
     private const int DEFAULT_LIMIT = 12;
 
+    /**
+     * @param \Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface<\Sylius\Component\Taxonomy\Model\TaxonInterface> $taxonRepository
+     */
     public function __construct(
-        private ProductRepositoryInterface $productRepository,
+        private ProductServiceInterface $productService,
         private TaxonRepositoryInterface $taxonRepository,
         private ChannelContextInterface $channelContext,
         private RequestStack $requestStack,
@@ -53,7 +56,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             return [];
         }
 
-        return $this->productRepository->findLatestByChannelAndTaxon(
+        return $this->productService->findLatestByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $this->getParentTaxon($query),
             $currentRequest->getLocale(),
@@ -69,7 +72,7 @@ final class LatestProductsHandler implements QueryTypeHandlerInterface
             return 0;
         }
 
-        return $this->productRepository->countLatestByChannelAndTaxon(
+        return $this->productService->countLatestByChannelAndTaxon(
             $this->channelContext->getChannel(),
             $this->getParentTaxon($query),
             $currentRequest->getLocale(),

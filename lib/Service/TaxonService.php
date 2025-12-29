@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Repository;
+namespace Netgen\Layouts\Sylius\Service;
 
-use Sylius\Bundle\TaxonomyBundle\Doctrine\ORM\TaxonRepository as BaseTaxonRepository;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
-final class TaxonRepository extends BaseTaxonRepository implements TaxonRepositoryInterface
+final class TaxonService extends EntityRepository implements TaxonServiceInterface
 {
     public function countTaxonChildren(TaxonInterface $parent): int
     {

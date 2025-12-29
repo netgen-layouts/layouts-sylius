@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Layouts\Sylius\Repository;
+namespace Netgen\Layouts\Sylius\Service;
 
 use Doctrine\ORM\QueryBuilder;
-use Sylius\Bundle\ProductBundle\Doctrine\ORM\ProductRepository as BaseProductRepository;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
-final class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
+final class ProductService extends EntityRepository implements ProductServiceInterface
 {
     public function findByChannelAndTaxon(
         ChannelInterface $channel,

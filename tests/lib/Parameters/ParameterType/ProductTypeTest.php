@@ -6,7 +6,6 @@ namespace Netgen\Layouts\Sylius\Tests\Parameters\ParameterType;
 
 use Netgen\Layouts\Parameters\ParameterDefinition;
 use Netgen\Layouts\Sylius\Parameters\ParameterType\ProductType;
-use Netgen\Layouts\Sylius\Repository\ProductRepositoryInterface;
 use Netgen\Layouts\Sylius\Tests\Stubs\Product as ProductStub;
 use Netgen\Layouts\Sylius\Tests\TestCase\ValidatorTestCaseTrait;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
@@ -14,6 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
+use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 
 #[CoversClass(ProductType::class)]
@@ -22,6 +22,9 @@ final class ProductTypeTest extends TestCase
     use ParameterTypeTestTrait;
     use ValidatorTestCaseTrait;
 
+    /**
+     * @var \PHPUnit\Framework\MockObject\Stub&\Sylius\Component\Product\Repository\ProductRepositoryInterface<\Sylius\Component\Product\Model\ProductInterface>
+     */
     private Stub&ProductRepositoryInterface $repositoryStub;
 
     protected function setUp(): void
