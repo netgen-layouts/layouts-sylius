@@ -61,6 +61,9 @@ final class ChannelTypeTest extends TestCase
         $this->getParameterDefinition($options);
     }
 
+    /**
+     * @return iterable<mixed>
+     */
     public static function validOptionsDataProvider(): iterable
     {
         return [
@@ -89,6 +92,9 @@ final class ChannelTypeTest extends TestCase
         ];
     }
 
+    /**
+     * @return iterable<mixed>
+     */
     public static function invalidOptionsDataProvider(): iterable
     {
         return [
@@ -151,6 +157,9 @@ final class ChannelTypeTest extends TestCase
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }
 
+    /**
+     * @return iterable<mixed>
+     */
     public static function emptyDataProvider(): iterable
     {
         return [
