@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\LayoutsSyliusBundle\DependencyInjection;
 
-use Jean85\PrettyVersions;
+use Composer\InstalledVersions;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\Loader\LoaderResolver;
@@ -17,6 +17,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
 use function file_get_contents;
+use function mb_substr;
 
 final class NetgenLayoutsSyliusExtension extends Extension implements PrependExtensionInterface
 {
@@ -65,7 +66,7 @@ final class NetgenLayoutsSyliusExtension extends Extension implements PrependExt
     {
         $container->setParameter(
             'netgen_layouts_sylius.asset_version',
-            PrettyVersions::getVersion('netgen/layouts-sylius')->getShortReference(),
+            mb_substr(InstalledVersions::getReference('netgen/layouts-sylius') ?? '', 0, 8),
         );
 
         $prependConfigs = [
