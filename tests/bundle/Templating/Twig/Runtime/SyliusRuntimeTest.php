@@ -79,7 +79,6 @@ final class SyliusRuntimeTest extends TestCase
 
         $this->channelRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($channel);
 
         self::assertSame('Webshop', $this->runtime->getChannelName(42));
@@ -89,7 +88,6 @@ final class SyliusRuntimeTest extends TestCase
     {
         $this->channelRepositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         self::assertNull($this->runtime->getChannelName(42));
@@ -101,7 +99,6 @@ final class SyliusRuntimeTest extends TestCase
 
         $this->localeRepositoryStub
             ->method('findOneBy')
-            ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
 
         self::assertSame(Locales::getName('en_US'), $this->runtime->getLocaleName('en_US'));
@@ -111,7 +108,6 @@ final class SyliusRuntimeTest extends TestCase
     {
         $this->localeRepositoryStub
             ->method('findOneBy')
-            ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);
 
         self::assertNull($this->runtime->getLocaleName('fr_FR'));

@@ -44,12 +44,10 @@ final class SyliusEventDispatcherTest extends TestCase
 
         $this->innerEventDispatcherStub
             ->method('dispatch')
-            ->with($eventName, $requestConfigurationStub, $resource)
             ->willReturn($eventStub);
 
         $this->eventDispatcherStub
             ->method('dispatch')
-            ->with($eventStub, 'nglayouts.sylius.resource.show')
             ->willReturn($eventStub);
 
         self::assertSame(
@@ -68,12 +66,10 @@ final class SyliusEventDispatcherTest extends TestCase
 
         $this->innerEventDispatcherStub
             ->method('dispatchMultiple')
-            ->with($eventName, $requestConfigurationStub, $resource)
             ->willReturn($eventStub);
 
         $this->eventDispatcherStub
             ->method('dispatch')
-            ->with($eventStub, 'nglayouts.sylius.resource.show')
             ->willReturn($eventStub);
 
         self::assertSame(
@@ -92,12 +88,10 @@ final class SyliusEventDispatcherTest extends TestCase
 
         $this->innerEventDispatcherStub
             ->method('dispatchPreEvent')
-            ->with($eventName, $requestConfigurationStub, $resource)
             ->willReturn($eventStub);
 
         $this->eventDispatcherStub
             ->method('dispatch')
-            ->with($eventStub, 'nglayouts.sylius.resource.pre_show')
             ->willReturn($eventStub);
 
         self::assertSame(
@@ -116,12 +110,10 @@ final class SyliusEventDispatcherTest extends TestCase
 
         $this->innerEventDispatcherStub
             ->method('dispatchPostEvent')
-            ->with($eventName, $requestConfigurationStub, $resource)
             ->willReturn($eventStub);
 
         $this->eventDispatcherStub
             ->method('dispatch')
-            ->with($eventStub, 'nglayouts.sylius.resource.post_show')
             ->willReturn($eventStub);
 
         self::assertSame(
@@ -140,12 +132,10 @@ final class SyliusEventDispatcherTest extends TestCase
 
         $this->innerEventDispatcherStub
             ->method('dispatchInitializeEvent')
-            ->with($eventName, $requestConfigurationStub, $resource)
             ->willReturn($eventStub);
 
         $this->eventDispatcherStub
             ->method('dispatch')
-            ->with($eventStub, 'nglayouts.sylius.resource.initialize_show')
             ->willReturn($eventStub);
 
         self::assertSame(

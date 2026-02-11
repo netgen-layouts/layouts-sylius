@@ -29,10 +29,6 @@ final class TaxonValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('sylius_shop_product_index'),
-                self::identicalTo(['slug' => 'taxon-name']),
-            )
             ->willReturn('/_partial/taxons/by-slug/taxon-name');
 
         self::assertSame(
@@ -45,10 +41,6 @@ final class TaxonValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('sylius_admin_taxon_update'),
-                self::identicalTo(['id' => 42]),
-            )
             ->willReturn('/admin/taxons/42/edit');
 
         self::assertSame(

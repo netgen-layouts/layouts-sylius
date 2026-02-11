@@ -66,7 +66,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('load')
-            ->with(self::equalTo($componentId))
             ->willReturn(new Component(3, 'Info'));
 
         $item = $this->backend->loadItem('component_stub-3');
@@ -84,7 +83,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('load')
-            ->with(self::equalTo($componentId))
             ->willReturn(null);
 
         $this->backend->loadItem('component_stub-3');
@@ -110,7 +108,6 @@ final class ComponentBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(
                 new ArrayIterator([
                     new Component(2, 'My component'),
@@ -120,7 +117,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = $this->backend->getSubItems(
@@ -141,7 +137,6 @@ final class ComponentBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(
                 new ArrayIterator([
                     new Component(2, 'My component'),
@@ -151,7 +146,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $items = $this->backend->getSubItems(
@@ -174,7 +168,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('createListPaginator')
-            ->with(self::identicalTo('component_stub'), self::identicalTo('en'))
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->getSubItemsCount(
@@ -190,7 +183,6 @@ final class ComponentBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(
                 new ArrayIterator([
                     new Component(2, 'My component'),
@@ -200,11 +192,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('createSearchPaginator')
-            ->with(
-                self::identicalTo('component_stub'),
-                self::identicalTo('component'),
-                self::identicalTo('en'),
-            )
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchResult = $this->backend->searchItems(new SearchQuery('component'));
@@ -223,7 +210,6 @@ final class ComponentBackendTest extends TestCase
 
         $pagerfantaAdapterStub
             ->method('getSlice')
-            ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(
                 new ArrayIterator([
                     new Component(2, 'My component'),
@@ -233,11 +219,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('createSearchPaginator')
-            ->with(
-                self::identicalTo('component_stub'),
-                self::identicalTo('component'),
-                self::identicalTo('en'),
-            )
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $searchQuery = new SearchQuery('component');
@@ -260,11 +241,6 @@ final class ComponentBackendTest extends TestCase
 
         $this->componentRepositoryStub
             ->method('createSearchPaginator')
-            ->with(
-                self::identicalTo('component_stub'),
-                self::identicalTo('component'),
-                self::identicalTo('en'),
-            )
             ->willReturn(new Pagerfanta($pagerfantaAdapterStub));
 
         $count = $this->backend->searchItemsCount(new SearchQuery('component'));

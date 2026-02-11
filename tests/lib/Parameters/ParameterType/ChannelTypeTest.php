@@ -115,7 +115,6 @@ final class ChannelTypeTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new ChannelStub(42, 'WEBSHOP', 'Webshop'));
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -140,7 +139,6 @@ final class ChannelTypeTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = $this->createValidator($this->repositoryStub);

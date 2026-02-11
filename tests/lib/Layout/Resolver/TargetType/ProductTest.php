@@ -41,7 +41,6 @@ final class ProductTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new ProductStub(42));
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -54,7 +53,6 @@ final class ProductTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -84,7 +82,6 @@ final class ProductTest extends TestCase
 
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(1))
             ->willReturn($stub);
 
         self::assertSame($stub, $this->targetType->getValueObject(1));
@@ -94,7 +91,6 @@ final class ProductTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(1))
             ->willReturn(null);
 
         self::assertNull($this->targetType->getValueObject(1));

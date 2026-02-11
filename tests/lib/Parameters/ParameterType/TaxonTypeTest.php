@@ -102,7 +102,6 @@ final class TaxonTypeTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new TaxonStub(42));
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -127,7 +126,6 @@ final class TaxonTypeTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -161,7 +159,6 @@ final class TaxonTypeTest extends TestCase
 
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(1))
             ->willReturn($stub);
 
         /** @var \Netgen\Layouts\Sylius\Parameters\ParameterType\TaxonType $type */

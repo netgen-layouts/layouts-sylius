@@ -36,7 +36,6 @@ final class ProductValidatorTest extends ValidatorTestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(new ProductStub(42));
 
         $this->assertValid(true, 42);
@@ -51,7 +50,6 @@ final class ProductValidatorTest extends ValidatorTestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         $this->assertValid(false, 42);

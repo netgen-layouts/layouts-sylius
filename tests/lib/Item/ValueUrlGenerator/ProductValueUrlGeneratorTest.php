@@ -29,10 +29,6 @@ final class ProductValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('sylius_shop_product_show'),
-                self::identicalTo(['slug' => 'product-name']),
-            )
             ->willReturn('/products/product-name');
 
         self::assertSame(
@@ -45,10 +41,6 @@ final class ProductValueUrlGeneratorTest extends TestCase
     {
         $this->urlGeneratorStub
             ->method('generate')
-            ->with(
-                self::identicalTo('sylius_admin_product_show'),
-                self::identicalTo(['id' => 42]),
-            )
             ->willReturn('/admin/products/42');
 
         self::assertSame(

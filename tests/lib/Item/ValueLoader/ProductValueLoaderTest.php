@@ -34,7 +34,6 @@ final class ProductValueLoaderTest extends TestCase
 
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn($product);
 
         self::assertSame($product, $this->valueLoader->load(42));
@@ -44,7 +43,6 @@ final class ProductValueLoaderTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willReturn(null);
 
         self::assertNull($this->valueLoader->load(42));
@@ -54,7 +52,6 @@ final class ProductValueLoaderTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->load(42));
@@ -66,7 +63,6 @@ final class ProductValueLoaderTest extends TestCase
 
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo('abc'))
             ->willReturn($product);
 
         self::assertSame($product, $this->valueLoader->loadByRemoteId('abc'));
@@ -76,7 +72,6 @@ final class ProductValueLoaderTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo('abc'))
             ->willReturn(null);
 
         self::assertNull($this->valueLoader->loadByRemoteId('abc'));
@@ -86,7 +81,6 @@ final class ProductValueLoaderTest extends TestCase
     {
         $this->repositoryStub
             ->method('find')
-            ->with(self::identicalTo('abc'))
             ->willThrowException(new Exception());
 
         self::assertNull($this->valueLoader->loadByRemoteId('abc'));

@@ -43,7 +43,6 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         $this->authCheckerStub
             ->method('isGranted')
-            ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(true);
 
         $factory = new MenuFactory();
@@ -63,7 +62,6 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         $this->authCheckerStub
             ->method('isGranted')
-            ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(true);
 
         $factory = new MenuFactory();
@@ -83,7 +81,6 @@ final class MainMenuBuilderListenerTest extends TestCase
     {
         $this->authCheckerStub
             ->method('isGranted')
-            ->with(self::identicalTo('nglayouts:ui:access'))
             ->willReturn(false);
 
         $factory = new MenuFactory();

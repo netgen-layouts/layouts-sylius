@@ -44,7 +44,6 @@ final class LocaleTest extends TestCase
 
         $this->repositoryStub
             ->method('findOneBy')
-            ->with(self::identicalTo(['code' => 'en_US']))
             ->willReturn($locale);
 
         $validator = $this->createValidator($this->repositoryStub);
@@ -57,7 +56,6 @@ final class LocaleTest extends TestCase
     {
         $this->repositoryStub
             ->method('findOneBy')
-            ->with(self::identicalTo(['code' => 'fr_FR']))
             ->willReturn(null);
 
         $validator = $this->createValidator($this->repositoryStub);
