@@ -19,7 +19,7 @@
     },
     "require-dev": {
         "netgen/layouts-coding-standard": "^3.0",
-        "phpunit/phpunit": "^12.5",
+        "phpunit/phpunit": "^13.0",
         "phpstan/phpstan": "^2.1",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-strict-rules": "^2.0",
