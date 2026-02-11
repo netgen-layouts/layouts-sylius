@@ -23,8 +23,7 @@
         "phpstan/phpstan": "^2.1",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "phpstan/phpstan-phpunit": "^2.0",
-        "matthiasnoback/symfony-dependency-injection-test": "^6.2"
+        "phpstan/phpstan-phpunit": "^2.0"
     },
     "config": {
         "allow-plugins": {
