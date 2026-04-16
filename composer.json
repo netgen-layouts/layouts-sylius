@@ -12,6 +12,7 @@
     "require": {
         "php": "^8.4",
         "netgen/layouts-core": "~2.0.0",
+        "netgen/layouts-standard": "~2.0.0",
         "netgen/content-browser-sylius": "^2.0",
         "doctrine/orm": "^3.6",
         "sylius/sylius": "^2.2",
