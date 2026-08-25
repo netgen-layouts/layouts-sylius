@@ -13,6 +13,19 @@ composer require netgen/layouts-sylius
 
 Symfony Flex will automatically enable the bundle and import the routes.
 
+### Upgrading from Netgen Layouts 1.4
+
+Version 2.0 renamed the taxon rule target types: 1.4's `sylius_single_taxon` (exact match) is
+now `sylius_taxon`, and 1.4's `sylius_taxon` (subtree match) is now `sylius_taxon_tree`.
+Existing rule targets need a one-time rename, shipped as a Doctrine migration:
+
+```bash
+php bin/console doctrine:migrations:migrate --configuration=vendor/netgen/layouts-sylius/migrations/doctrine.yaml
+```
+
+The migration only acts on databases still carrying the 1.4 names, so it is safe to run it
+unconditionally as part of the upgrade.
+
 ### Configure the main layout
 
 Due to how Netgen Layouts works, your main layout template needs to wrap the
