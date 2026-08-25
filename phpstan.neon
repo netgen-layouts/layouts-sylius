@@ -4,3 +4,4 @@ parameters:
     paths:
         - lib
         - bundle
+        - migrations
