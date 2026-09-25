@@ -41,6 +41,7 @@
     "autoload": {
         "psr-4": {
             "Netgen\\Layouts\\Sylius\\": "lib/",
+            "Netgen\\Layouts\\Sylius\\Migrations\\": "migrations/",
             "Netgen\\Bundle\\LayoutsSyliusBundle\\": "bundle/"
         }
     },

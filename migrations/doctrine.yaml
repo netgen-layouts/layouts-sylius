@@ -1,0 +1,7 @@
+migrations_paths:
+    Netgen\Layouts\Sylius\Migrations\Doctrine: Doctrine
+
+table_storage:
+    table_name: nglayouts_migration_versions
+
+transactional: false
